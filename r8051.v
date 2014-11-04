@@ -1,4 +1,4 @@
-`define TYPE8052
+`include "define.v"
 module r8051 (
 
 input  wire        clk,
@@ -300,9 +300,9 @@ assign  length3 = anl_di_da(cmda)|orl_di_da(cmda)|xrl_di_da(cmda)|mov_di_di(cmda
 /*********************************************************/
 //ram_rd_en ram_rd_addr 
 
-assign rd_en_data_sfr = add_a_rn(cmda)|add_a_di(cmdb)|add_a_ri(cmda)|addc_a_rn(cmda)|addc_a_di(cmdb)|addc_a_ri(cmda)|subb_a_rn(cmda)|subb_a_di(cmdb)|subb_a_ri(cmda)|inc_rn(cmda)|inc_di(cmdb)|inc_ri(cmda)|dec_rn(cmda)|dec_di(cmdb)|dec_ri(cmda)|anl_a_rn(cmda)|anl_a_di(cmdb)|anl_a_ri(cmda)|anl_di_a(cmdb)|anl_di_da(cmdb)|orl_a_rn(cmda)|orl_a_di(cmdb)|orl_a_ri(cmda)|orl_di_a(cmdb)|orl_di_da(cmdb)|xrl_a_rn(cmda)|xrl_a_di(cmdb)|xrl_a_ri(cmda)|xrl_di_a(cmdb)|xrl_di_da(cmdb)|mov_a_rn(cmda)|mov_a_di(cmdb)|mov_a_ri(cmda)|mov_rn_di(cmdb)|mov_di_rn(cmda)|mov_di_di(cmdb)|mov_di_ri(cmda)|mov_ri_a(cmda)|mov_ri_di(cmda)|mov_ri_di(cmdb)|mov_ri_da(cmda)|movx_a_ri(cmda)|movx_ri_a(cmda)|push(cmdb)|pop(cmda)|xch_a_rn(cmda)|xch_a_di(cmdb)|xch_a_ri(cmda)|xchd(cmda)|clr_bit(cmdb)|setb_bit(cmdb)|cpl_bit(cmdb)|anl_c_bit(cmdb)|anl_c_nbit(cmdb)|orl_c_bit(cmdb)|orl_c_nbit(cmdb)|mov_c_bit(cmdb)|mov_bit_c(cmdb)|jb(cmdb)|jnb(cmdb)|jbc(cmdb)|ret(cmda)|ret(cmdb)|reti(cmda)|reti(cmdb)|cjne_a_di_rel(cmdb)|cjne_rn_da_rel(cmda)|cjne_ri_da_rel(cmda)|djnz_rn_rel(cmda)|djnz_di_rel(cmdb);
+assign rd_en_data_sfr = add_a_rn(cmda)|add_a_di(cmdb)|add_a_ri(cmda)|addc_a_rn(cmda)|addc_a_di(cmdb)|addc_a_ri(cmda)|subb_a_rn(cmda)|subb_a_di(cmdb)|subb_a_ri(cmda)|inc_rn(cmda)|inc_di(cmdb)|inc_ri(cmda)|dec_rn(cmda)|dec_di(cmdb)|dec_ri(cmda)|anl_a_rn(cmda)|anl_a_di(cmdb)|anl_a_ri(cmda)|anl_di_a(cmdb)|anl_di_da(cmdb)|orl_a_rn(cmda)|orl_a_di(cmdb)|orl_a_ri(cmda)|orl_di_a(cmdb)|orl_di_da(cmdb)|xrl_a_rn(cmda)|xrl_a_di(cmdb)|xrl_a_ri(cmda)|xrl_di_a(cmdb)|xrl_di_da(cmdb)|mov_a_rn(cmda)|mov_a_di(cmdb)|mov_a_ri(cmda)|mov_rn_di(cmdb)|mov_di_rn(cmda)|mov_di_di(cmdb)|mov_di_ri(cmda)|mov_ri_a(cmda)|mov_ri_di(cmda)|mov_ri_di(cmdb)|mov_ri_da(cmda)|movx_a_ri(cmda)|movx_ri_a(cmda)|push(cmdb)|xch_a_rn(cmda)|xch_a_di(cmdb)|xch_a_ri(cmda)|xchd(cmda)|clr_bit(cmdb)|setb_bit(cmdb)|cpl_bit(cmdb)|anl_c_bit(cmdb)|anl_c_nbit(cmdb)|orl_c_bit(cmdb)|orl_c_nbit(cmdb)|mov_c_bit(cmdb)|mov_bit_c(cmdb)|jb(cmdb)|jnb(cmdb)|jbc(cmdb)|cjne_a_di_rel(cmdb)|cjne_rn_da_rel(cmda)|cjne_ri_da_rel(cmda)|djnz_rn_rel(cmda)|djnz_di_rel(cmdb);
 
-assign rd_en_data_idata = add_a_ri(cmdb)|addc_a_ri(cmdb)|subb_a_ri(cmdb)|inc_ri(cmdb)|dec_ri(cmdb)|anl_a_ri(cmdb)|orl_a_ri(cmdb)|xrl_a_ri(cmdb)|mov_a_ri(cmdb)|mov_di_ri(cmdb)|xch_a_ri(cmdb)|xchd(cmdb)|cjne_ri_da_rel(cmdb);
+assign rd_en_data_idata = add_a_ri(cmdb)|addc_a_ri(cmdb)|subb_a_ri(cmdb)|inc_ri(cmdb)|dec_ri(cmdb)|anl_a_ri(cmdb)|orl_a_ri(cmdb)|xrl_a_ri(cmdb)|mov_a_ri(cmdb)|mov_di_ri(cmdb)|xch_a_ri(cmdb)|xchd(cmdb)|cjne_ri_da_rel(cmdb)|ret(cmda)|ret(cmdb)|reti(cmda)|reti(cmdb)|pop(cmda);
 
 assign rd_en_xdata = movx_a_ri(cmdb)|movx_a_dp(cmda);
 
@@ -365,9 +365,9 @@ assign wait_en = (use_psw_rs&wr_psw_rs)|(use_dp&wr_dp)|(use_acc&wr_acc)|(use_sp&
 /*********************************************************/
 //ram_wr_en ram_wr_addr  
 
-assign wr_en_data_sfr = inc_rn(cmdb)|inc_di(cmdc)|dec_rn(cmdb)|dec_di(cmdc)|anl_di_a(cmdc)|anl_di_da(cmdc)|orl_di_a(cmdc)|orl_di_da(cmdc)|xrl_di_a(cmdc)|xrl_di_da(cmdc)|mov_rn_a(cmdb)|mov_rn_di(cmdc)|mov_rn_da(cmdb)|mov_di_a(cmdb)|mov_di_rn(cmdb)|mov_di_di(cmdc)|mov_di_ri(cmdc)|mov_di_da(cmdc)|push(cmdc)|pop(cmdb)|xch_a_rn(cmdb)|xch_a_di(cmdc)|clr_bit(cmdc)|setb_bit(cmdc)|cpl_bit(cmdc)|mov_bit_c(cmdc)|(jbc(cmdc)&data0[cmd1[2:0]])|acall(cmdb)|acall(cmdc)|lcall(cmdb)|lcall(cmdc)|djnz_rn_rel(cmdb)|djnz_di_rel(cmdc);
+assign wr_en_data_sfr = inc_rn(cmdb)|inc_di(cmdc)|dec_rn(cmdb)|dec_di(cmdc)|anl_di_a(cmdc)|anl_di_da(cmdc)|orl_di_a(cmdc)|orl_di_da(cmdc)|xrl_di_a(cmdc)|xrl_di_da(cmdc)|mov_rn_a(cmdb)|mov_rn_di(cmdc)|mov_rn_da(cmdb)|mov_di_a(cmdb)|mov_di_rn(cmdb)|mov_di_di(cmdc)|mov_di_ri(cmdc)|mov_di_da(cmdc)|pop(cmdb)|xch_a_rn(cmdb)|xch_a_di(cmdc)|clr_bit(cmdc)|setb_bit(cmdc)|cpl_bit(cmdc)|mov_bit_c(cmdc)|(jbc(cmdc)&data0[cmd1[2:0]])|djnz_rn_rel(cmdb)|djnz_di_rel(cmdc);
 
-assign wr_en_data_idata = inc_ri(cmdc)|dec_ri(cmdc)|mov_ri_a(cmdb)|mov_ri_di(cmdc)|mov_ri_da(cmdb)|xch_a_ri(cmdc)|xchd(cmdc);
+assign wr_en_data_idata = inc_ri(cmdc)|dec_ri(cmdc)|mov_ri_a(cmdb)|mov_ri_di(cmdc)|mov_ri_da(cmdb)|xch_a_ri(cmdc)|xchd(cmdc)|acall(cmdb)|acall(cmdc)|lcall(cmdb)|lcall(cmdc)|push(cmdc);
 
 assign wr_en_xdata = movx_ri_a(cmdb)|movx_dp_a(cmdb);
 
