@@ -1,4 +1,4 @@
-`include "define.v"
+//`define TYPE8052
 module r8051 (
 
 input  wire        clk,
