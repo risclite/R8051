@@ -1,5 +1,6 @@
 R8051
 =====
+[Amazon Book: How to design 8051-compatiable soft core for FPGA] (https://www.amazon.com/dp/B00UH9GLQ6/)
 
 Thank you for interesting in this new type of 8051 soft core. This core has only 2 files and the main one has 700 statements to support all 111 instructions of 8051. Yes, I make it with fully synthesizable verilog. 
 
