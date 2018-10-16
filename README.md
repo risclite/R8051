@@ -1,6 +1,5 @@
 R8051
 =====
-[Amazon Book: How to design 8051-compatiable soft core for FPGA](https://www.amazon.com/dp/B00UH9GLQ6/)
 
 Thank you for interesting in this new type of 8051 soft core. This core has only 2 files and the main one has 700 statements to support all 111 instructions of 8051. Yes, I make it with fully synthesizable verilog. 
 
@@ -12,5 +11,9 @@ May you are pulsed with how this works. 8051 has 111-instructions and each has 1
 
 I made it with an incremental method. As a centipede for example, it has a bulk body and 111 legs. I build the bulk body firstly and give it one leg one time. When all legs are installed, this centipede is finished. In the fold **illustration**, there are several **.v** files. The **r8051_bulk.v** is the bulk body I mentioned and it could not interpret any instruction. It may look ugly but helpful on its structure. Since 111 instruction are divided into five categories(ARITHMETIC/LOGICAL/DATA/BOOLEAN/PROGRAM), the **r8051_0/1/2/3/4.v** is for every category solely and the **r8051_a/b/c/d/e.v** is for building these 5 categories incrementally. 
 
+If you can read Chinese, please refer this:
 
+![book Picture](https://github.com/risclite/R8051/blob/master/doc/book.jpg)
+
+[Amazon Book: How to design 8051-compatiable soft core for FPGA](https://www.amazon.com/dp/B00UH9GLQ6/)
 
