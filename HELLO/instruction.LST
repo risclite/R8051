@@ -1,0 +1,406 @@
+C51 COMPILER V9.52.0.0   INSTRUCTION                                                       07/21/2014 16:39:35 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE INSTRUCTION
+OBJECT MODULE PLACED IN instruction.OBJ
+COMPILER INVOKED BY: C:\myprog\Keil\C51\BIN\C51.EXE instruction.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include <stdio.h> 
+   3          #include "instruction.h"
+   4          
+   5          void error(void){
+   6   1        if (test_status==0) {
+   7   2          printf("ERROR HERE...\n");
+   8   2          while(1);
+   9   2        }
+  10   1      } 
+  11          
+  12          void instruction_test_all(void){
+  13   1      #ifdef ARITHMETIC
+  14   1        arithmetic();  
+  15   1      #endif
+  16   1      #ifdef LOGICAL
+  17   1        logical();
+  18   1      #endif
+  19   1      #ifdef TRANSFER
+  20   1        transfer();
+  21   1      #endif
+  22   1      #ifdef BOOLEAN
+  23   1        boolean();
+  24   1      #endif
+  25   1      #ifdef PROGRAM
+  26   1        program();
+  27   1      #endif
+  28   1      }
+  29          
+  30          void arithmetic(void){
+  31   1      #ifdef ADD_A_RN
+  32   1          add_a_rn();
+  33   1      #endif
+  34   1      #ifdef ADD_A_DI
+  35   1          add_a_di();
+  36   1      #endif  
+  37   1      #ifdef ADD_A_RI
+  38   1          add_a_ri();
+  39   1      #endif    
+  40   1      #ifdef ADD_A_DA
+  41   1          add_a_da();
+  42   1      #endif
+  43   1      #ifdef ADDC_A_RN
+  44   1          addc_a_rn();
+  45   1      #endif  
+  46   1      #ifdef ADDC_A_DI
+  47   1          addc_a_di();
+  48   1      #endif    
+  49   1      #ifdef ADDC_A_RI
+  50   1          addc_a_ri();
+  51   1      #endif
+  52   1      #ifdef ADDC_A_DA
+  53   1          addc_a_da();
+  54   1      #endif
+  55   1      #ifdef SUBB_A_RN
+C51 COMPILER V9.52.0.0   INSTRUCTION                                                       07/21/2014 16:39:35 PAGE 2   
+
+  56   1          subb_a_rn();
+  57   1      #endif
+  58   1      #ifdef SUBB_A_DI
+  59   1          subb_a_di();
+  60   1      #endif
+  61   1      #ifdef SUBB_A_RI
+  62   1          subb_a_ri();
+  63   1      #endif
+  64   1      #ifdef SUBB_A_DA
+  65   1          subb_a_da();
+  66   1      #endif
+  67   1      #ifdef INC_A
+  68   1          inc_a();
+  69   1      #endif
+  70   1      #ifdef INC_RN
+  71   1          inc_rn();
+  72   1      #endif
+  73   1      #ifdef INC_DI
+  74   1          inc_di();
+  75   1      #endif
+  76   1      #ifdef INC_RI
+  77   1          inc_ri();
+  78   1      #endif
+  79   1      #ifdef INC_DP
+  80   1          inc_dp();
+  81   1      #endif
+  82   1      #ifdef DEC_A
+  83   1          dec_a();
+  84   1      #endif
+  85   1      #ifdef DEC_RN
+  86   1          dec_rn();
+  87   1      #endif
+  88   1      #ifdef DEC_DI
+  89   1          dec_di();
+  90   1      #endif
+  91   1      #ifdef DEC_RI
+  92   1          dec_ri();
+  93   1      #endif
+  94   1      #ifdef MULT
+  95   1          mult();
+  96   1      #endif
+  97   1      #ifdef DIVIDE
+  98   1          divide();
+  99   1      #endif
+ 100   1      #ifdef DA_A
+ 101   1          da_a();
+ 102   1      #endif
+ 103   1      }
+ 104          
+ 105          void logical(void){
+ 106   1      #ifdef ANL_A_RN
+ 107   1          anl_a_rn();
+ 108   1      #endif  
+ 109   1      #ifdef ANL_A_DI
+ 110   1          anl_a_di();
+ 111   1      #endif  
+ 112   1      #ifdef ANL_A_RI
+ 113   1          anl_a_ri();
+ 114   1      #endif  
+ 115   1      #ifdef ANL_A_DA
+ 116   1          anl_a_da();
+ 117   1      #endif
+C51 COMPILER V9.52.0.0   INSTRUCTION                                                       07/21/2014 16:39:35 PAGE 3   
+
+ 118   1      #ifdef ANL_DI_A
+ 119   1          anl_di_a();
+ 120   1      #endif  
+ 121   1      #ifdef ANL_DI_DA
+ 122   1          anl_di_da();
+ 123   1      #endif  
+ 124   1      #ifdef ORL_A_RN
+ 125   1          orl_a_rn();
+ 126   1      #endif  
+ 127   1      #ifdef ORL_A_DI
+ 128   1          orl_a_di();
+ 129   1      #endif  
+ 130   1      #ifdef ORL_A_RI
+ 131   1          orl_a_ri();
+ 132   1      #endif  
+ 133   1      #ifdef ORL_A_DA
+ 134   1          orl_a_da();
+ 135   1      #endif
+ 136   1      #ifdef ORL_DI_A
+ 137   1          orl_di_a();
+ 138   1      #endif  
+ 139   1      #ifdef ORL_DI_DA
+ 140   1          orl_di_da();
+ 141   1      #endif  
+ 142   1      #ifdef XRL_A_RN
+ 143   1          xrl_a_rn();
+ 144   1      #endif  
+ 145   1      #ifdef XRL_A_DI
+ 146   1          xrl_a_di();
+ 147   1      #endif  
+ 148   1      #ifdef XRL_A_RI
+ 149   1          xrl_a_ri();
+ 150   1      #endif  
+ 151   1      #ifdef XRL_A_DA
+ 152   1          xrl_a_da();
+ 153   1      #endif
+ 154   1      #ifdef XRL_DI_A
+ 155   1          xrl_di_a();
+ 156   1      #endif  
+ 157   1      #ifdef XRL_DI_DA
+ 158   1          xrl_di_da();
+ 159   1      #endif
+ 160   1      #ifdef CLR_A
+ 161   1          clr_a();
+ 162   1      #endif
+ 163   1      #ifdef CPL_A
+ 164   1          cpl_a();
+ 165   1      #endif
+ 166   1      #ifdef RL_A
+ 167   1          rl_a();
+ 168   1      #endif
+ 169   1      #ifdef RLC_A
+ 170   1          rlc_a();
+ 171   1      #endif
+ 172   1      #ifdef RR_A
+ 173   1          rr_a();
+ 174   1      #endif
+ 175   1      #ifdef RRC_A
+ 176   1          rrc_a();
+ 177   1      #endif
+ 178   1      #ifdef SWAP_A
+ 179   1          swap_a();
+C51 COMPILER V9.52.0.0   INSTRUCTION                                                       07/21/2014 16:39:35 PAGE 4   
+
+ 180   1      #endif
+ 181   1      }
+ 182          
+ 183          void transfer(void){
+ 184   1      #ifdef MOV_A_RN
+ 185   1          mov_a_rn();
+ 186   1      #endif  
+ 187   1      #ifdef MOV_A_DI
+ 188   1          mov_a_di();
+ 189   1      #endif    
+ 190   1      #ifdef MOV_A_RI
+ 191   1          mov_a_ri();
+ 192   1      #endif  
+ 193   1      #ifdef MOV_A_DA
+ 194   1          mov_a_da();
+ 195   1      #endif
+ 196   1      #ifdef MOV_RN_A
+ 197   1          mov_rn_a();
+ 198   1      #endif
+ 199   1      #ifdef MOV_RN_DI
+ 200   1          mov_rn_di();
+ 201   1      #endif  
+ 202   1      #ifdef MOV_RN_DA
+ 203   1          mov_rn_da();
+ 204   1      #endif    
+ 205   1      #ifdef MOV_DI_A
+ 206   1          mov_di_a();
+ 207   1      #endif
+ 208   1      #ifdef MOV_DI_RN
+ 209   1          mov_di_rn();
+ 210   1      #endif
+ 211   1      #ifdef MOV_DI_DI
+ 212   1          mov_di_di();
+ 213   1      #endif
+ 214   1      #ifdef MOV_DI_RI
+ 215   1          mov_di_ri();
+ 216   1      #endif
+ 217   1      #ifdef MOV_DI_DA
+ 218   1          mov_di_da();
+ 219   1      #endif
+ 220   1      #ifdef MOV_RI_A
+ 221   1          mov_ri_a();
+ 222   1      #endif
+ 223   1      #ifdef MOV_RI_DI
+ 224   1          mov_ri_di();
+ 225   1      #endif
+ 226   1      #ifdef MOV_RI_DA
+ 227   1          mov_ri_da();
+ 228   1      #endif
+ 229   1      #ifdef MOV_DP_DA
+ 230   1          mov_dp_da();
+ 231   1      #endif
+ 232   1      #ifdef MOVC_A_DP
+ 233   1          movc_a_dp();
+ 234   1      #endif
+ 235   1      #ifdef MOVC_A_PC
+ 236   1          movc_a_pc();
+ 237   1      #endif
+ 238   1      #ifdef MOVX_A_RI
+ 239   1          movx_a_ri();
+ 240   1      #endif
+ 241   1      #ifdef MOVX_A_DP
+C51 COMPILER V9.52.0.0   INSTRUCTION                                                       07/21/2014 16:39:35 PAGE 5   
+
+ 242   1          movx_a_dp();
+ 243   1      #endif
+ 244   1      #ifdef MOVX_RI_A
+ 245   1          movx_ri_a();
+ 246   1      #endif
+ 247   1      #ifdef MOVX_DP_A
+ 248   1          movx_dp_a();
+ 249   1      #endif
+ 250   1      #ifdef PUSH_DI
+ 251   1          push_di();
+ 252   1      #endif
+ 253   1      #ifdef POP_DI
+ 254   1          pop_di();
+ 255   1      #endif
+ 256   1      #ifdef XCH_A_RN
+ 257   1          xch_a_rn();
+ 258   1      #endif
+ 259   1      #ifdef XCH_A_DI
+ 260   1          xch_a_di();
+ 261   1      #endif
+ 262   1      #ifdef XCH_A_RI
+ 263   1          xch_a_ri();
+ 264   1      #endif
+ 265   1      #ifdef XCHD_A_RI
+ 266   1          xchd_a_ri();
+ 267   1      #endif
+ 268   1      }
+ 269          
+ 270          void boolean(void){
+ 271   1      #ifdef CLR_C
+ 272   1          clr_c();
+ 273   1      #endif  
+ 274   1      #ifdef CLR_BIT
+ 275   1          clr_bit();
+ 276   1      #endif
+ 277   1      #ifdef SETB_C
+ 278   1          setb_c();
+ 279   1      #endif
+ 280   1      #ifdef SETB_BIT
+ 281   1          setb_bit();
+ 282   1      #endif
+ 283   1      #ifdef CPL_C
+ 284   1          cpl_c();
+ 285   1      #endif
+ 286   1      #ifdef CPL_BIT
+ 287   1          cpl_bit();
+ 288   1      #endif  
+ 289   1      #ifdef ANL_C_BIT
+ 290   1          anl_c_bit();
+ 291   1      #endif
+ 292   1      #ifdef ANL_C_NBIT
+ 293   1          anl_c_nbit();
+ 294   1      #endif
+ 295   1      #ifdef ORL_C_BIT
+ 296   1          orl_c_bit();
+ 297   1      #endif
+ 298   1      #ifdef ORL_C_NBIT
+ 299   1          orl_c_nbit();
+ 300   1      #endif
+ 301   1      #ifdef MOV_C_BIT
+ 302   1          mov_c_bit();
+ 303   1      #endif
+C51 COMPILER V9.52.0.0   INSTRUCTION                                                       07/21/2014 16:39:35 PAGE 6   
+
+ 304   1      #ifdef MOV_BIT_C
+ 305   1          mov_bit_c();
+ 306   1      #endif
+ 307   1      #ifdef JC_C
+ 308   1          jc_c();
+ 309   1      #endif
+ 310   1      #ifdef JNC_C
+ 311   1          jnc_c();
+ 312   1      #endif
+ 313   1      #ifdef JB_BIT
+ 314   1          jb_bit();
+ 315   1      #endif
+ 316   1      #ifdef JNB_BIT
+ 317   1          jnb_bit();
+ 318   1      #endif
+ 319   1      #ifdef JBC_BIT
+ 320   1          jbc_bit();
+ 321   1      #endif
+ 322   1      }
+ 323          
+ 324          void program(void){
+ 325   1      #ifdef ACALL_FUNC
+ 326   1          acall_func();
+ 327   1      #endif  
+ 328   1      #ifdef LCALL_FUNC
+ 329   1          lcall_func();
+ 330   1      #endif  
+ 331   1      #ifdef RET_FUNC
+ 332   1          ret_func();
+ 333   1      #endif
+ 334   1      #ifdef RETI_FUNC
+ 335   1          reti_func();
+ 336   1      #endif  
+ 337   1      #ifdef AJMP_FUNC
+ 338   1          ajmp_func();
+ 339   1      #endif  
+ 340   1      #ifdef SJMP_FUNC
+ 341   1          sjmp_func();
+ 342   1      #endif  
+ 343   1      #ifdef JMP_FUNC
+ 344   1          jmp_func();
+ 345   1      #endif  
+ 346   1      #ifdef JZ_FUNC
+ 347   1          jz_func();
+ 348   1      #endif  
+ 349   1      #ifdef JNZ_FUNC
+ 350   1          jnz_func();
+ 351   1      #endif
+ 352   1      #ifdef CJNE_A_DI_REL
+ 353   1          cjne_a_di_rel();
+ 354   1      #endif
+ 355   1      #ifdef CJNE_A_DA_REL
+ 356   1          cjne_a_da_rel();
+ 357   1      #endif
+ 358   1      #ifdef CJNE_RN_DA_REL
+ 359   1          cjne_rn_da_rel();
+ 360   1      #endif
+ 361   1      #ifdef CJNE_RI_DA_REL
+ 362   1          cjne_ri_da_rel();
+ 363   1      #endif
+ 364   1      #ifdef DJNZ_RN_REL
+ 365   1          djnz_rn_rel();
+C51 COMPILER V9.52.0.0   INSTRUCTION                                                       07/21/2014 16:39:35 PAGE 7   
+
+ 366   1      #endif
+ 367   1      #ifdef DJNZ_DI_REL
+ 368   1          djnz_di_rel();
+ 369   1      #endif
+ 370   1      }
+ 371          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    360    ----
+   CONSTANT SIZE    =     15    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

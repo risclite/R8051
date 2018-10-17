@@ -1,0 +1,1915 @@
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN logical.OBJ
+ASSEMBLER INVOKED BY: C:\myprog\Keil\C51\BIN\A51.EXE logical.src PR(.\logical.ls1) EP DEBUG
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; .\logical.SRC generated from: logical.c
+                       2     ; COMPILER INVOKED BY:
+                       3     ;        C:\myprog\Keil\C51\BIN\C51.EXE logical.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\l
+                             ogical.SRC)
+                       4     
+                       5     $nomod51 
+                       6     
+                       7     NAME    LOGICAL
+                       8     
+  0080                 9     P0      DATA    080H
+  0090                10     P1      DATA    090H
+  00A0                11     P2      DATA    0A0H
+  00B0                12     P3      DATA    0B0H
+  00B4                13     T0      BIT     0B0H.4
+  00D6                14     AC      BIT     0D0H.6
+  00B5                15     T1      BIT     0B0H.5
+  0090                16     T2      BIT     090H.0
+  00AF                17     EA      BIT     0A8H.7
+  00A8                18     IE      DATA    0A8H
+  00CE                19     EXF2    BIT     0C8H.6
+  00B7                20     RD      BIT     0B0H.7
+  00AC                21     ES      BIT     0A8H.4
+  00B8                22     IP      DATA    0B8H
+  0098                23     RI      BIT     098H.0
+  00B2                24     INT0    BIT     0B0H.2
+  00D7                25     CY      BIT     0D0H.7
+  0099                26     TI      BIT     098H.1
+  00B3                27     INT1    BIT     0B0H.3
+  00CB                28     RCAP2H  DATA    0CBH
+  00BC                29     PS      BIT     0B8H.4
+  0081                30     SP      DATA    081H
+  0091                31     T2EX    BIT     090H.1
+  00D2                32     OV      BIT     0D0H.2
+  00CA                33     RCAP2L  DATA    0CAH
+  00C9                34     C_T2    BIT     0C8H.1
+  00B6                35     WR      BIT     0B0H.6
+  00CD                36     RCLK    BIT     0C8H.5
+  00CC                37     TCLK    BIT     0C8H.4
+  0099                38     SBUF    DATA    099H
+  0087                39     PCON    DATA    087H
+  0098                40     SCON    DATA    098H
+  0089                41     TMOD    DATA    089H
+  0088                42     TCON    DATA    088H
+  0089                43     IE0     BIT     088H.1
+  008B                44     IE1     BIT     088H.3
+  00F0                45     B       DATA    0F0H
+  00C8                46     CP_RL2  BIT     0C8H.0
+  00E0                47     ACC     DATA    0E0H
+  00A9                48     ET0     BIT     0A8H.1
+  00AB                49     ET1     BIT     0A8H.3
+  008D                50     TF0     BIT     088H.5
+  00AD                51     ET2     BIT     0A8H.5
+  008F                52     TF1     BIT     088H.7
+  00CF                53     TF2     BIT     0C8H.7
+  009A                54     RB8     BIT     098H.2
+  008C                55     TH0     DATA    08CH
+  00A8                56     EX0     BIT     0A8H.0
+  0088                57     IT0     BIT     088H.0
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     2
+
+  008D                58     TH1     DATA    08DH
+  009B                59     TB8     BIT     098H.3
+  00AA                60     EX1     BIT     0A8H.2
+  008A                61     IT1     BIT     088H.2
+  00CD                62     TH2     DATA    0CDH
+  00D0                63     P       BIT     0D0H.0
+  009F                64     SM0     BIT     098H.7
+  008A                65     TL0     DATA    08AH
+  009E                66     SM1     BIT     098H.6
+  008B                67     TL1     DATA    08BH
+  009D                68     SM2     BIT     098H.5
+  00CC                69     TL2     DATA    0CCH
+  00B9                70     PT0     BIT     0B8H.1
+  00BB                71     PT1     BIT     0B8H.3
+  00D3                72     RS0     BIT     0D0H.3
+  00BD                73     PT2     BIT     0B8H.5
+  008C                74     TR0     BIT     088H.4
+  00D4                75     RS1     BIT     0D0H.4
+  008E                76     TR1     BIT     088H.6
+  00CA                77     TR2     BIT     0C8H.2
+  00B8                78     PX0     BIT     0B8H.0
+  00BA                79     PX1     BIT     0B8H.2
+  0083                80     DPH     DATA    083H
+  0082                81     DPL     DATA    082H
+  00CB                82     EXEN2   BIT     0C8H.3
+  009C                83     REN     BIT     098H.4
+  00C8                84     T2CON   DATA    0C8H
+  00B0                85     RXD     BIT     0B0H.0
+  00B1                86     TXD     BIT     0B0H.1
+  00D5                87     F0      BIT     0D0H.5
+  00D0                88     PSW     DATA    0D0H
+                      89     ?PR?anl_a_rn?LOGICAL SEGMENT CODE 
+                      90     ?PR?anl_a_di?LOGICAL SEGMENT CODE 
+                      91     ?PR?anl_a_ri?LOGICAL SEGMENT CODE 
+                      92     ?PR?anl_a_da?LOGICAL SEGMENT CODE 
+                      93     ?PR?anl_di_a?LOGICAL SEGMENT CODE 
+                      94     ?PR?anl_di_da?LOGICAL                    SEGMENT CODE 
+                      95     ?PR?orl_a_rn?LOGICAL SEGMENT CODE 
+                      96     ?PR?orl_a_di?LOGICAL SEGMENT CODE 
+                      97     ?PR?orl_a_ri?LOGICAL SEGMENT CODE 
+                      98     ?PR?orl_a_da?LOGICAL SEGMENT CODE 
+                      99     ?PR?orl_di_a?LOGICAL SEGMENT CODE 
+                     100     ?PR?orl_di_da?LOGICAL                    SEGMENT CODE 
+                     101     ?PR?xrl_a_rn?LOGICAL SEGMENT CODE 
+                     102     ?PR?xrl_a_di?LOGICAL SEGMENT CODE 
+                     103     ?PR?xrl_a_ri?LOGICAL SEGMENT CODE 
+                     104     ?PR?xrl_a_da?LOGICAL SEGMENT CODE 
+                     105     ?PR?xrl_di_a?LOGICAL SEGMENT CODE 
+                     106     ?PR?xrl_di_da?LOGICAL                    SEGMENT CODE 
+                     107     ?PR?clr_a?LOGICAL    SEGMENT CODE 
+                     108     ?PR?cpl_a?LOGICAL    SEGMENT CODE 
+                     109     ?PR?rl_a?LOGICAL     SEGMENT CODE 
+                     110     ?PR?rlc_a?LOGICAL    SEGMENT CODE 
+                     111     ?PR?rr_a?LOGICAL     SEGMENT CODE 
+                     112     ?PR?rrc_a?LOGICAL    SEGMENT CODE 
+                     113     ?PR?swap_a?LOGICAL   SEGMENT CODE 
+                     114     ?CO?LOGICAL          SEGMENT CODE 
+                     115             EXTRN   CODE (_printf)
+                     116             EXTRN   DATA (?_printf?BYTE)
+                     117             EXTRN   CODE (error)
+                     118             PUBLIC  swap_a
+                     119             PUBLIC  rrc_a
+                     120             PUBLIC  rr_a
+                     121             PUBLIC  rlc_a
+                     122             PUBLIC  rl_a
+                     123             PUBLIC  cpl_a
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     3
+
+                     124             PUBLIC  clr_a
+                     125             PUBLIC  xrl_di_da
+                     126             PUBLIC  xrl_di_a
+                     127             PUBLIC  xrl_a_da
+                     128             PUBLIC  xrl_a_ri
+                     129             PUBLIC  xrl_a_di
+                     130             PUBLIC  xrl_a_rn
+                     131             PUBLIC  orl_di_da
+                     132             PUBLIC  orl_di_a
+                     133             PUBLIC  orl_a_da
+                     134             PUBLIC  orl_a_ri
+                     135             PUBLIC  orl_a_di
+                     136             PUBLIC  orl_a_rn
+                     137             PUBLIC  anl_di_da
+                     138             PUBLIC  anl_di_a
+                     139             PUBLIC  anl_a_da
+                     140             PUBLIC  anl_a_ri
+                     141             PUBLIC  anl_a_di
+                     142             PUBLIC  anl_a_rn
+                     143     
+----                 144             RSEG  ?CO?LOGICAL
+0000                 145     ?SC_0:
+0000 414E4C5F        146             DB  'A' ,'N' ,'L' ,'_' ,'A' ,'_' ,'R' ,'N' ,00AH,000H
+0004 415F524E                
+0008 0A00                    
+                     147     
+000A                 148     ?SC_10:
+000A 414E4C5F        149             DB  'A' ,'N' ,'L' ,'_' ,'A' ,'_' ,'D' ,'I' ,00AH,000H
+000E 415F4449                
+0012 0A00                    
+                     150     
+0014                 151     ?SC_20:
+0014 414E4C5F        152             DB  'A' ,'N' ,'L' ,'_' ,'A' ,'_' ,'R' ,'I' ,00AH,000H
+0018 415F5249                
+001C 0A00                    
+                     153     
+001E                 154     ?SC_30:
+001E 414E4C5F        155             DB  'A' ,'N' ,'L' ,'_' ,'A' ,'_' ,'D' ,'A' ,00AH,000H
+0022 415F4441                
+0026 0A00                    
+                     156     
+0028                 157     ?SC_40:
+0028 414E4C5F        158             DB  'A' ,'N' ,'L' ,'_' ,'D' ,'I' ,'_' ,'A' ,00AH,000H
+002C 44495F41                
+0030 0A00                    
+                     159     
+0032                 160     ?SC_50:
+0032 414E4C5F        161             DB  'A' ,'N' ,'L' ,'_' ,'D' ,'I' ,'_' ,'D' ,'A' ,00AH
+0036 44495F44                
+003A 410A                    
+003C 00              162             DB  000H
+                     163     
+003D                 164     ?SC_61:
+003D 4F524C5F        165             DB  'O' ,'R' ,'L' ,'_' ,'A' ,'_' ,'R' ,'N' ,00AH,000H
+0041 415F524E                
+0045 0A00                    
+                     166     
+0047                 167     ?SC_71:
+0047 4F524C5F        168             DB  'O' ,'R' ,'L' ,'_' ,'A' ,'_' ,'D' ,'I' ,00AH,000H
+004B 415F4449                
+004F 0A00                    
+                     169     
+0051                 170     ?SC_81:
+0051 4F524C5F        171             DB  'O' ,'R' ,'L' ,'_' ,'A' ,'_' ,'R' ,'I' ,00AH,000H
+0055 415F5249                
+0059 0A00                    
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     4
+
+                     172     
+005B                 173     ?SC_91:
+005B 4F524C5F        174             DB  'O' ,'R' ,'L' ,'_' ,'A' ,'_' ,'D' ,'A' ,00AH,000H
+005F 415F4441                
+0063 0A00                    
+                     175     
+0065                 176     ?SC_101:
+0065 4F524C5F        177             DB  'O' ,'R' ,'L' ,'_' ,'D' ,'I' ,'_' ,'A' ,00AH,000H
+0069 44495F41                
+006D 0A00                    
+                     178     
+006F                 179     ?SC_111:
+006F 4F524C5F        180             DB  'O' ,'R' ,'L' ,'_' ,'D' ,'I' ,'_' ,'D' ,'A' ,00AH
+0073 44495F44                
+0077 410A                    
+0079 00              181             DB  000H
+                     182     
+007A                 183     ?SC_122:
+007A 58524C5F        184             DB  'X' ,'R' ,'L' ,'_' ,'A' ,'_' ,'R' ,'N' ,00AH,000H
+007E 415F524E                
+0082 0A00                    
+                     185     
+0084                 186     ?SC_132:
+0084 58524C5F        187             DB  'X' ,'R' ,'L' ,'_' ,'A' ,'_' ,'D' ,'I' ,00AH,000H
+0088 415F4449                
+008C 0A00                    
+                     188     
+008E                 189     ?SC_142:
+008E 58524C5F        190             DB  'X' ,'R' ,'L' ,'_' ,'A' ,'_' ,'R' ,'I' ,00AH,000H
+0092 415F5249                
+0096 0A00                    
+                     191     
+0098                 192     ?SC_152:
+0098 58524C5F        193             DB  'X' ,'R' ,'L' ,'_' ,'A' ,'_' ,'D' ,'A' ,00AH,000H
+009C 415F4441                
+00A0 0A00                    
+                     194     
+00A2                 195     ?SC_162:
+00A2 58524C5F        196             DB  'X' ,'R' ,'L' ,'_' ,'D' ,'I' ,'_' ,'A' ,00AH,000H
+00A6 44495F41                
+00AA 0A00                    
+                     197     
+00AC                 198     ?SC_172:
+00AC 58524C5F        199             DB  'X' ,'R' ,'L' ,'_' ,'D' ,'I' ,'_' ,'D' ,'A' ,00AH
+00B0 44495F44                
+00B4 410A                    
+00B6 00              200             DB  000H
+                     201     
+00B7                 202     ?SC_183:
+00B7 434C525F        203             DB  'C' ,'L' ,'R' ,'_' ,'A' ,00AH,000H
+00BB 410A00                  
+                     204     
+00BE                 205     ?SC_190:
+00BE 43504C5F        206             DB  'C' ,'P' ,'L' ,'_' ,'A' ,00AH,000H
+00C2 410A00                  
+                     207     
+00C5                 208     ?SC_197:
+00C5 524C5F41        209             DB  'R' ,'L' ,'_' ,'A' ,00AH,000H
+00C9 0A00                    
+                     210     
+00CB                 211     ?SC_203:
+00CB 524C435F        212             DB  'R' ,'L' ,'C' ,'_' ,'A' ,00AH,000H
+00CF 410A00                  
+                     213     
+00D2                 214     ?SC_210:
+00D2 52525F41        215             DB  'R' ,'R' ,'_' ,'A' ,00AH,000H
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     5
+
+00D6 0A00                    
+                     216     
+00D8                 217     ?SC_216:
+00D8 5252435F        218             DB  'R' ,'R' ,'C' ,'_' ,'A' ,00AH,000H
+00DC 410A00                  
+                     219     
+00DF                 220     ?SC_223:
+00DF 53574150        221             DB  'S' ,'W' ,'A' ,'P' ,'_' ,'A' ,00AH,000H
+00E3 5F410A00                
+                     222     
+                     223     ; #include <REG52.H>
+                     224     ; #include <stdio.h> 
+                     225     ; #include "instruction.h"
+                     226     ; 
+                     227     ; void anl_a_rn(void) {
+                     228     
+----                 229             RSEG  ?PR?anl_a_rn?LOGICAL
+0000                 230     anl_a_rn:
+                     231             USING   0
+                     232                             ; SOURCE LINE # 5
+                     233     ;       printf("ANL_A_RN\n");
+                     234                             ; SOURCE LINE # 6
+0000 7BFF            235             MOV     R3,#0FFH
+0002 7A00     F      236             MOV     R2,#HIGH (?SC_0)
+0004 7900     F      237             MOV     R1,#LOW (?SC_0)
+0006 120000   F      238             LCALL   _printf
+                     239     ;       #pragma ASM  
+                     240     ;       push psw
+0009 C0D0            241               push psw
+                     242     ;       push acc
+000B C0E0            243               push acc
+                     244     ;     mov  psw,#0H      
+000D 75D000          245               mov  psw,#0H  
+                     246     ;     setb rs0     
+0010 D2D3            247               setb rs0     
+                     248     ;       setb rs1        
+0012 D2D4            249               setb rs1      
+                     250     ;     #pragma ENDASM 
+                     251     ;       
+                     252     ;       #pragma ASM
+                     253     ;       mov acc,#0a5H
+0014 75E0A5          254               mov acc,#0a5H
+                     255     ;       mov R0,#0f0H
+0017 78F0            256               mov R0,#0f0H
+                     257     ;       anl A,R0
+0019 58              258               anl A,R0
+                     259     ;   #pragma ENDASM      
+                     260     ;       if (ACC!=0xa0) test_status = 0;
+                     261                             ; SOURCE LINE # 20
+001A 64A0            262             XRL     A,#0A0H
+001C 6005            263             JZ      ?C0001
+001E 90007E          264             MOV     DPTR,#07EH
+0021 E4              265             CLR     A
+0022 F0              266             MOVX    @DPTR,A
+0023                 267     ?C0001:
+                     268     ;       
+                     269     ;       #pragma ASM 
+                     270     ;       pop acc
+0023 D0E0            271               pop acc
+                     272     ;   pop psw     
+0025 D0D0            273               pop psw       
+                     274     ;   #pragma ENDASM
+                     275     ;   error();  
+                     276                             ; SOURCE LINE # 26
+0027 020000   F      277             LJMP    error
+                     278     ; END OF anl_a_rn
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     6
+
+                     279     
+                     280     ; }
+                     281     ; 
+                     282     ; void anl_a_di(void) {
+                     283     
+----                 284             RSEG  ?PR?anl_a_di?LOGICAL
+0000                 285     anl_a_di:
+                     286             USING   0
+                     287                             ; SOURCE LINE # 29
+                     288     ;       printf("ANL_A_DI\n");
+                     289                             ; SOURCE LINE # 30
+0000 7BFF            290             MOV     R3,#0FFH
+0002 7A00     F      291             MOV     R2,#HIGH (?SC_10)
+0004 7900     F      292             MOV     R1,#LOW (?SC_10)
+0006 120000   F      293             LCALL   _printf
+                     294     ;       #pragma ASM  
+                     295     ;       push psw
+0009 C0D0            296               push psw
+                     297     ;       push acc
+000B C0E0            298               push acc
+                     299     ;     mov  psw,#0H      
+000D 75D000          300               mov  psw,#0H  
+                     301     ;     setb rs0     
+0010 D2D3            302               setb rs0     
+                     303     ;       setb rs1        
+0012 D2D4            304               setb rs1      
+                     305     ;     #pragma ENDASM 
+                     306     ;       
+                     307     ;       #pragma ASM
+                     308     ;       mov acc,#0a5H
+0014 75E0A5          309               mov acc,#0a5H
+                     310     ;       mov R3,#0fH
+0017 7B0F            311               mov R3,#0fH
+                     312     ;       anl A,0x1b
+0019 551B            313               anl A,0x1b
+                     314     ;   #pragma ENDASM      
+                     315     ;       if (ACC!=0x5) test_status = 0;
+                     316                             ; SOURCE LINE # 44
+001B 6405            317             XRL     A,#05H
+001D 6005            318             JZ      ?C0003
+001F 90007E          319             MOV     DPTR,#07EH
+0022 E4              320             CLR     A
+0023 F0              321             MOVX    @DPTR,A
+0024                 322     ?C0003:
+                     323     ;       
+                     324     ;       #pragma ASM 
+                     325     ;       pop acc
+0024 D0E0            326               pop acc
+                     327     ;     pop psw   
+0026 D0D0            328               pop psw       
+                     329     ;     #pragma ENDASM
+                     330     ;     error();  
+                     331                             ; SOURCE LINE # 50
+0028 020000   F      332             LJMP    error
+                     333     ; END OF anl_a_di
+                     334     
+                     335     ; }
+                     336     ; 
+                     337     ; void anl_a_ri(void) {
+                     338     
+----                 339             RSEG  ?PR?anl_a_ri?LOGICAL
+0000                 340     anl_a_ri:
+                     341             USING   0
+                     342                             ; SOURCE LINE # 53
+                     343     ;       printf("ANL_A_RI\n");
+                     344                             ; SOURCE LINE # 54
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     7
+
+0000 7BFF            345             MOV     R3,#0FFH
+0002 7A00     F      346             MOV     R2,#HIGH (?SC_20)
+0004 7900     F      347             MOV     R1,#LOW (?SC_20)
+0006 120000   F      348             LCALL   _printf
+                     349     ;       #pragma ASM  
+                     350     ;       push psw
+0009 C0D0            351               push psw
+                     352     ;       push acc
+000B C0E0            353               push acc
+                     354     ;     mov  psw,#0H      
+000D 75D000          355               mov  psw,#0H  
+                     356     ;     setb rs0     
+0010 D2D3            357               setb rs0     
+                     358     ;       setb rs1        
+0012 D2D4            359               setb rs1      
+                     360     ;     #pragma ENDASM 
+                     361     ;       
+                     362     ;       #pragma ASM
+                     363     ;       mov acc,#0a5H
+0014 75E0A5          364               mov acc,#0a5H
+                     365     ;       mov R3,#0f0H
+0017 7BF0            366               mov R3,#0f0H
+                     367     ;       mov R1,#0x1b
+0019 791B            368               mov R1,#0x1b
+                     369     ;       anl A,@R1
+001B 57              370               anl A,@R1
+                     371     ;     #pragma ENDASM    
+                     372     ;       if (ACC!=0xa0) test_status = 0;
+                     373                             ; SOURCE LINE # 69
+001C 64A0            374             XRL     A,#0A0H
+001E 6005            375             JZ      ?C0005
+0020 90007E          376             MOV     DPTR,#07EH
+0023 E4              377             CLR     A
+0024 F0              378             MOVX    @DPTR,A
+0025                 379     ?C0005:
+                     380     ;       
+                     381     ;       #pragma ASM 
+                     382     ;       pop acc
+0025 D0E0            383               pop acc
+                     384     ;     pop psw   
+0027 D0D0            385               pop psw       
+                     386     ;     #pragma ENDASM
+                     387     ;     error();  
+                     388                             ; SOURCE LINE # 75
+0029 020000   F      389             LJMP    error
+                     390     ; END OF anl_a_ri
+                     391     
+                     392     ; }
+                     393     ; 
+                     394     ; void anl_a_da(void) {
+                     395     
+----                 396             RSEG  ?PR?anl_a_da?LOGICAL
+0000                 397     anl_a_da:
+                     398             USING   0
+                     399                             ; SOURCE LINE # 78
+                     400     ;       printf("ANL_A_DA\n");
+                     401                             ; SOURCE LINE # 79
+0000 7BFF            402             MOV     R3,#0FFH
+0002 7A00     F      403             MOV     R2,#HIGH (?SC_30)
+0004 7900     F      404             MOV     R1,#LOW (?SC_30)
+0006 120000   F      405             LCALL   _printf
+                     406     ;       #pragma ASM  
+                     407     ;       push psw
+0009 C0D0            408               push psw
+                     409     ;       push acc
+000B C0E0            410               push acc
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     8
+
+                     411     ;     mov  psw,#0H      
+000D 75D000          412               mov  psw,#0H  
+                     413     ;     setb rs0     
+0010 D2D3            414               setb rs0     
+                     415     ;       setb rs1        
+0012 D2D4            416               setb rs1      
+                     417     ;     #pragma ENDASM 
+                     418     ;       
+                     419     ;       #pragma ASM
+                     420     ;       mov acc,#0a5H
+0014 75E0A5          421               mov acc,#0a5H
+                     422     ;       anl A,#0fH
+0017 540F            423               anl A,#0fH
+                     424     ;     #pragma ENDASM    
+                     425     ;       if (ACC!=0x5) test_status = 0;
+                     426                             ; SOURCE LINE # 92
+0019 6405            427             XRL     A,#05H
+001B 6005            428             JZ      ?C0007
+001D 90007E          429             MOV     DPTR,#07EH
+0020 E4              430             CLR     A
+0021 F0              431             MOVX    @DPTR,A
+0022                 432     ?C0007:
+                     433     ;       
+                     434     ;       #pragma ASM 
+                     435     ;       pop acc
+0022 D0E0            436               pop acc
+                     437     ;     pop psw   
+0024 D0D0            438               pop psw       
+                     439     ;     #pragma ENDASM
+                     440     ;     error();  
+                     441                             ; SOURCE LINE # 98
+0026 020000   F      442             LJMP    error
+                     443     ; END OF anl_a_da
+                     444     
+                     445     ; }
+                     446     ; 
+                     447     ; void anl_di_a(void) {
+                     448     
+----                 449             RSEG  ?PR?anl_di_a?LOGICAL
+0000                 450     anl_di_a:
+                     451             USING   0
+                     452                             ; SOURCE LINE # 101
+                     453     ;       printf("ANL_DI_A\n");
+                     454                             ; SOURCE LINE # 102
+0000 7BFF            455             MOV     R3,#0FFH
+0002 7A00     F      456             MOV     R2,#HIGH (?SC_40)
+0004 7900     F      457             MOV     R1,#LOW (?SC_40)
+0006 120000   F      458             LCALL   _printf
+                     459     ;       #pragma ASM  
+                     460     ;       push psw
+0009 C0D0            461               push psw
+                     462     ;       push acc
+000B C0E0            463               push acc
+                     464     ;     mov  psw,#0H      
+000D 75D000          465               mov  psw,#0H  
+                     466     ;     setb rs0     
+0010 D2D3            467               setb rs0     
+                     468     ;       setb rs1        
+0012 D2D4            469               setb rs1      
+                     470     ;     #pragma ENDASM 
+                     471     ;       
+                     472     ;       #pragma ASM
+                     473     ;       mov acc,#0a5H
+0014 75E0A5          474               mov acc,#0a5H
+                     475     ;       mov R3,#0fH
+0017 7B0F            476               mov R3,#0fH
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE     9
+
+                     477     ;       anl 0x1b,A
+0019 521B            478               anl 0x1b,A
+                     479     ;     #pragma ENDASM    
+                     480     ;       if (R(3,3)!=0x5) test_status = 0;
+                     481                             ; SOURCE LINE # 116
+001B 781B            482             MOV     R0,#01BH
+001D E6              483             MOV     A,@R0
+001E 6405            484             XRL     A,#05H
+0020 6005            485             JZ      ?C0009
+0022 90007E          486             MOV     DPTR,#07EH
+0025 E4              487             CLR     A
+0026 F0              488             MOVX    @DPTR,A
+0027                 489     ?C0009:
+                     490     ;       
+                     491     ;       #pragma ASM 
+                     492     ;       pop acc
+0027 D0E0            493               pop acc
+                     494     ;     pop psw   
+0029 D0D0            495               pop psw       
+                     496     ;     #pragma ENDASM
+                     497     ;     error();  
+                     498                             ; SOURCE LINE # 122
+002B 020000   F      499             LJMP    error
+                     500     ; END OF anl_di_a
+                     501     
+                     502     ; }
+                     503     ; 
+                     504     ; void anl_di_da(void) {
+                     505     
+----                 506             RSEG  ?PR?anl_di_da?LOGICAL
+0000                 507     anl_di_da:
+                     508             USING   0
+                     509                             ; SOURCE LINE # 125
+                     510     ;       printf("ANL_DI_DA\n");
+                     511                             ; SOURCE LINE # 126
+0000 7BFF            512             MOV     R3,#0FFH
+0002 7A00     F      513             MOV     R2,#HIGH (?SC_50)
+0004 7900     F      514             MOV     R1,#LOW (?SC_50)
+0006 120000   F      515             LCALL   _printf
+                     516     ;       #pragma ASM  
+                     517     ;       push psw
+0009 C0D0            518               push psw
+                     519     ;       push acc
+000B C0E0            520               push acc
+                     521     ;     mov  psw,#0H      
+000D 75D000          522               mov  psw,#0H  
+                     523     ;     setb rs0     
+0010 D2D3            524               setb rs0     
+                     525     ;       setb rs1        
+0012 D2D4            526               setb rs1      
+                     527     ;     #pragma ENDASM 
+                     528     ;       
+                     529     ;       #pragma ASM
+                     530     ;       mov R3,#0f0H
+0014 7BF0            531               mov R3,#0f0H
+                     532     ;       anl 0x1b,#0a5H
+0016 531BA5          533               anl 0x1b,#0a5H
+                     534     ;   #pragma ENDASM      
+                     535     ;       if (R(3,3)!=0xa0) test_status = 0;
+                     536                             ; SOURCE LINE # 139
+0019 781B            537             MOV     R0,#01BH
+001B E6              538             MOV     A,@R0
+001C 64A0            539             XRL     A,#0A0H
+001E 6005            540             JZ      ?C0011
+0020 90007E          541             MOV     DPTR,#07EH
+0023 E4              542             CLR     A
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    10
+
+0024 F0              543             MOVX    @DPTR,A
+0025                 544     ?C0011:
+                     545     ;       
+                     546     ;       #pragma ASM 
+                     547     ;       pop acc
+0025 D0E0            548               pop acc
+                     549     ;     pop psw   
+0027 D0D0            550               pop psw       
+                     551     ;     #pragma ENDASM
+                     552     ;     error();  
+                     553                             ; SOURCE LINE # 145
+0029 020000   F      554             LJMP    error
+                     555     ; END OF anl_di_da
+                     556     
+                     557     ; }
+                     558     ; 
+                     559     ; void orl_a_rn(void) {
+                     560     
+----                 561             RSEG  ?PR?orl_a_rn?LOGICAL
+0000                 562     orl_a_rn:
+                     563             USING   0
+                     564                             ; SOURCE LINE # 148
+                     565     ;       printf("ORL_A_RN\n");
+                     566                             ; SOURCE LINE # 149
+0000 7BFF            567             MOV     R3,#0FFH
+0002 7A00     F      568             MOV     R2,#HIGH (?SC_61)
+0004 7900     F      569             MOV     R1,#LOW (?SC_61)
+0006 120000   F      570             LCALL   _printf
+                     571     ;       #pragma ASM  
+                     572     ;       push psw
+0009 C0D0            573               push psw
+                     574     ;       push acc
+000B C0E0            575               push acc
+                     576     ;     mov  psw,#0H      
+000D 75D000          577               mov  psw,#0H  
+                     578     ;     setb rs0     
+0010 D2D3            579               setb rs0     
+                     580     ;       setb rs1        
+0012 D2D4            581               setb rs1      
+                     582     ;     #pragma ENDASM 
+                     583     ;       
+                     584     ;       #pragma ASM
+                     585     ;       mov acc,#0a5H
+0014 75E0A5          586               mov acc,#0a5H
+                     587     ;       mov R0,#0f0H
+0017 78F0            588               mov R0,#0f0H
+                     589     ;       orl A,R0
+0019 48              590               orl A,R0
+                     591     ;     #pragma ENDASM    
+                     592     ;       if (ACC!=0xf5) test_status = 0;
+                     593                             ; SOURCE LINE # 163
+001A 64F5            594             XRL     A,#0F5H
+001C 6005            595             JZ      ?C0013
+001E 90007E          596             MOV     DPTR,#07EH
+0021 E4              597             CLR     A
+0022 F0              598             MOVX    @DPTR,A
+0023                 599     ?C0013:
+                     600     ;       
+                     601     ;       #pragma ASM 
+                     602     ;       pop acc
+0023 D0E0            603               pop acc
+                     604     ;     pop psw   
+0025 D0D0            605               pop psw       
+                     606     ;     #pragma ENDASM
+                     607     ;     error();  
+                     608                             ; SOURCE LINE # 169
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    11
+
+0027 020000   F      609             LJMP    error
+                     610     ; END OF orl_a_rn
+                     611     
+                     612     ; }
+                     613     ; 
+                     614     ; void orl_a_di(void) {
+                     615     
+----                 616             RSEG  ?PR?orl_a_di?LOGICAL
+0000                 617     orl_a_di:
+                     618             USING   0
+                     619                             ; SOURCE LINE # 172
+                     620     ;       printf("ORL_A_DI\n");
+                     621                             ; SOURCE LINE # 173
+0000 7BFF            622             MOV     R3,#0FFH
+0002 7A00     F      623             MOV     R2,#HIGH (?SC_71)
+0004 7900     F      624             MOV     R1,#LOW (?SC_71)
+0006 120000   F      625             LCALL   _printf
+                     626     ;       #pragma ASM  
+                     627     ;       push psw
+0009 C0D0            628               push psw
+                     629     ;       push acc
+000B C0E0            630               push acc
+                     631     ;     mov  psw,#0H      
+000D 75D000          632               mov  psw,#0H  
+                     633     ;     setb rs0     
+0010 D2D3            634               setb rs0     
+                     635     ;       setb rs1        
+0012 D2D4            636               setb rs1      
+                     637     ;     #pragma ENDASM 
+                     638     ;       
+                     639     ;       #pragma ASM
+                     640     ;       mov acc,#0a5H
+0014 75E0A5          641               mov acc,#0a5H
+                     642     ;       mov R3,#0fH
+0017 7B0F            643               mov R3,#0fH
+                     644     ;       orl A,0x1b
+0019 451B            645               orl A,0x1b
+                     646     ;     #pragma ENDASM    
+                     647     ;       if (ACC!=0xaf) test_status = 0;
+                     648                             ; SOURCE LINE # 187
+001B 64AF            649             XRL     A,#0AFH
+001D 6005            650             JZ      ?C0015
+001F 90007E          651             MOV     DPTR,#07EH
+0022 E4              652             CLR     A
+0023 F0              653             MOVX    @DPTR,A
+0024                 654     ?C0015:
+                     655     ;       
+                     656     ;       #pragma ASM 
+                     657     ;       pop acc
+0024 D0E0            658               pop acc
+                     659     ;     pop psw   
+0026 D0D0            660               pop psw       
+                     661     ;     #pragma ENDASM
+                     662     ;     error();  
+                     663                             ; SOURCE LINE # 193
+0028 020000   F      664             LJMP    error
+                     665     ; END OF orl_a_di
+                     666     
+                     667     ; }
+                     668     ; 
+                     669     ; void orl_a_ri(void) {
+                     670     
+----                 671             RSEG  ?PR?orl_a_ri?LOGICAL
+0000                 672     orl_a_ri:
+                     673             USING   0
+                     674                             ; SOURCE LINE # 196
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    12
+
+                     675     ;       printf("ORL_A_RI\n");
+                     676                             ; SOURCE LINE # 197
+0000 7BFF            677             MOV     R3,#0FFH
+0002 7A00     F      678             MOV     R2,#HIGH (?SC_81)
+0004 7900     F      679             MOV     R1,#LOW (?SC_81)
+0006 120000   F      680             LCALL   _printf
+                     681     ;       #pragma ASM  
+                     682     ;       push psw
+0009 C0D0            683               push psw
+                     684     ;       push acc
+000B C0E0            685               push acc
+                     686     ;     mov  psw,#0H      
+000D 75D000          687               mov  psw,#0H  
+                     688     ;     setb rs0     
+0010 D2D3            689               setb rs0     
+                     690     ;       setb rs1        
+0012 D2D4            691               setb rs1      
+                     692     ;     #pragma ENDASM 
+                     693     ;       
+                     694     ;       #pragma ASM
+                     695     ;       mov acc,#0a5H
+0014 75E0A5          696               mov acc,#0a5H
+                     697     ;       mov R3,#0f0H
+0017 7BF0            698               mov R3,#0f0H
+                     699     ;       mov R1,#0x1b
+0019 791B            700               mov R1,#0x1b
+                     701     ;       orl A,@R1
+001B 47              702               orl A,@R1
+                     703     ;     #pragma ENDASM    
+                     704     ;       if (ACC!=0xf5) test_status = 0;
+                     705                             ; SOURCE LINE # 212
+001C 64F5            706             XRL     A,#0F5H
+001E 6005            707             JZ      ?C0017
+0020 90007E          708             MOV     DPTR,#07EH
+0023 E4              709             CLR     A
+0024 F0              710             MOVX    @DPTR,A
+0025                 711     ?C0017:
+                     712     ;       
+                     713     ;       #pragma ASM 
+                     714     ;       pop acc
+0025 D0E0            715               pop acc
+                     716     ;     pop psw   
+0027 D0D0            717               pop psw       
+                     718     ;     #pragma ENDASM
+                     719     ;     error();  
+                     720                             ; SOURCE LINE # 218
+0029 020000   F      721             LJMP    error
+                     722     ; END OF orl_a_ri
+                     723     
+                     724     ; }
+                     725     ; 
+                     726     ; void orl_a_da(void) {
+                     727     
+----                 728             RSEG  ?PR?orl_a_da?LOGICAL
+0000                 729     orl_a_da:
+                     730             USING   0
+                     731                             ; SOURCE LINE # 221
+                     732     ;       printf("ORL_A_DA\n");
+                     733                             ; SOURCE LINE # 222
+0000 7BFF            734             MOV     R3,#0FFH
+0002 7A00     F      735             MOV     R2,#HIGH (?SC_91)
+0004 7900     F      736             MOV     R1,#LOW (?SC_91)
+0006 120000   F      737             LCALL   _printf
+                     738     ;       #pragma ASM  
+                     739     ;       push psw
+0009 C0D0            740               push psw
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    13
+
+                     741     ;       push acc
+000B C0E0            742               push acc
+                     743     ;     mov  psw,#0H      
+000D 75D000          744               mov  psw,#0H  
+                     745     ;     setb rs0     
+0010 D2D3            746               setb rs0     
+                     747     ;       setb rs1        
+0012 D2D4            748               setb rs1      
+                     749     ;     #pragma ENDASM 
+                     750     ;       
+                     751     ;       #pragma ASM
+                     752     ;       mov acc,#0a5H
+0014 75E0A5          753               mov acc,#0a5H
+                     754     ;       orl A,#0fH
+0017 440F            755               orl A,#0fH
+                     756     ;     #pragma ENDASM    
+                     757     ;       if (ACC!=0xaf) test_status = 0;
+                     758                             ; SOURCE LINE # 235
+0019 64AF            759             XRL     A,#0AFH
+001B 6005            760             JZ      ?C0019
+001D 90007E          761             MOV     DPTR,#07EH
+0020 E4              762             CLR     A
+0021 F0              763             MOVX    @DPTR,A
+0022                 764     ?C0019:
+                     765     ;       
+                     766     ;       #pragma ASM 
+                     767     ;       pop acc
+0022 D0E0            768               pop acc
+                     769     ;     pop psw   
+0024 D0D0            770               pop psw       
+                     771     ;     #pragma ENDASM 
+                     772     ;     error();  
+                     773                             ; SOURCE LINE # 241
+0026 020000   F      774             LJMP    error
+                     775     ; END OF orl_a_da
+                     776     
+                     777     ; }
+                     778     ; 
+                     779     ; void orl_di_a(void) {
+                     780     
+----                 781             RSEG  ?PR?orl_di_a?LOGICAL
+0000                 782     orl_di_a:
+                     783             USING   0
+                     784                             ; SOURCE LINE # 244
+                     785     ;       printf("ORL_DI_A\n");
+                     786                             ; SOURCE LINE # 245
+0000 7BFF            787             MOV     R3,#0FFH
+0002 7A00     F      788             MOV     R2,#HIGH (?SC_101)
+0004 7900     F      789             MOV     R1,#LOW (?SC_101)
+0006 120000   F      790             LCALL   _printf
+                     791     ;       #pragma ASM  
+                     792     ;       push psw
+0009 C0D0            793               push psw
+                     794     ;       push acc
+000B C0E0            795               push acc
+                     796     ;     mov  psw,#0H      
+000D 75D000          797               mov  psw,#0H  
+                     798     ;     setb rs0     
+0010 D2D3            799               setb rs0     
+                     800     ;       setb rs1        
+0012 D2D4            801               setb rs1      
+                     802     ;     #pragma ENDASM 
+                     803     ;       
+                     804     ;       #pragma ASM
+                     805     ;       mov acc,#0a5H
+0014 75E0A5          806               mov acc,#0a5H
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    14
+
+                     807     ;       mov R3,#0fH
+0017 7B0F            808               mov R3,#0fH
+                     809     ;       orl 0x1b,A
+0019 421B            810               orl 0x1b,A
+                     811     ;     #pragma ENDASM    
+                     812     ;       if (R(3,3)!=0xaf) test_status = 0;
+                     813                             ; SOURCE LINE # 259
+001B 781B            814             MOV     R0,#01BH
+001D E6              815             MOV     A,@R0
+001E 64AF            816             XRL     A,#0AFH
+0020 6005            817             JZ      ?C0021
+0022 90007E          818             MOV     DPTR,#07EH
+0025 E4              819             CLR     A
+0026 F0              820             MOVX    @DPTR,A
+0027                 821     ?C0021:
+                     822     ;       
+                     823     ;       #pragma ASM 
+                     824     ;       pop acc
+0027 D0E0            825               pop acc
+                     826     ;     pop psw   
+0029 D0D0            827               pop psw       
+                     828     ;     #pragma ENDASM 
+                     829     ;     error();  
+                     830                             ; SOURCE LINE # 265
+002B 020000   F      831             LJMP    error
+                     832     ; END OF orl_di_a
+                     833     
+                     834     ; }
+                     835     ; 
+                     836     ; void orl_di_da(void) {
+                     837     
+----                 838             RSEG  ?PR?orl_di_da?LOGICAL
+0000                 839     orl_di_da:
+                     840             USING   0
+                     841                             ; SOURCE LINE # 268
+                     842     ;       printf("ORL_DI_DA\n");
+                     843                             ; SOURCE LINE # 269
+0000 7BFF            844             MOV     R3,#0FFH
+0002 7A00     F      845             MOV     R2,#HIGH (?SC_111)
+0004 7900     F      846             MOV     R1,#LOW (?SC_111)
+0006 120000   F      847             LCALL   _printf
+                     848     ;       #pragma ASM  
+                     849     ;       push psw
+0009 C0D0            850               push psw
+                     851     ;       push acc
+000B C0E0            852               push acc
+                     853     ;     mov  psw,#0H      
+000D 75D000          854               mov  psw,#0H  
+                     855     ;     setb rs0     
+0010 D2D3            856               setb rs0     
+                     857     ;       setb rs1        
+0012 D2D4            858               setb rs1      
+                     859     ;     #pragma ENDASM 
+                     860     ;       
+                     861     ;       #pragma ASM
+                     862     ;       mov R3,#0f0H
+0014 7BF0            863               mov R3,#0f0H
+                     864     ;       orl 0x1b,#0a5H
+0016 431BA5          865               orl 0x1b,#0a5H
+                     866     ;     #pragma ENDASM    
+                     867     ;       if (R(3,3)!=0xf5) test_status = 0;
+                     868                             ; SOURCE LINE # 282
+0019 781B            869             MOV     R0,#01BH
+001B E6              870             MOV     A,@R0
+001C 64F5            871             XRL     A,#0F5H
+001E 6005            872             JZ      ?C0023
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    15
+
+0020 90007E          873             MOV     DPTR,#07EH
+0023 E4              874             CLR     A
+0024 F0              875             MOVX    @DPTR,A
+0025                 876     ?C0023:
+                     877     ;       
+                     878     ;       #pragma ASM 
+                     879     ;       pop acc
+0025 D0E0            880               pop acc
+                     881     ;     pop psw   
+0027 D0D0            882               pop psw       
+                     883     ;     #pragma ENDASM
+                     884     ;     error();  
+                     885                             ; SOURCE LINE # 288
+0029 020000   F      886             LJMP    error
+                     887     ; END OF orl_di_da
+                     888     
+                     889     ; }
+                     890     ; 
+                     891     ; void xrl_a_rn(void) {
+                     892     
+----                 893             RSEG  ?PR?xrl_a_rn?LOGICAL
+0000                 894     xrl_a_rn:
+                     895             USING   0
+                     896                             ; SOURCE LINE # 291
+                     897     ;       printf("XRL_A_RN\n");
+                     898                             ; SOURCE LINE # 292
+0000 7BFF            899             MOV     R3,#0FFH
+0002 7A00     F      900             MOV     R2,#HIGH (?SC_122)
+0004 7900     F      901             MOV     R1,#LOW (?SC_122)
+0006 120000   F      902             LCALL   _printf
+                     903     ;       #pragma ASM  
+                     904     ;       push psw
+0009 C0D0            905               push psw
+                     906     ;       push acc
+000B C0E0            907               push acc
+                     908     ;     mov  psw,#0H      
+000D 75D000          909               mov  psw,#0H  
+                     910     ;     setb rs0     
+0010 D2D3            911               setb rs0     
+                     912     ;       setb rs1        
+0012 D2D4            913               setb rs1      
+                     914     ;     #pragma ENDASM 
+                     915     ;       
+                     916     ;       #pragma ASM
+                     917     ;       mov acc,#0a5H
+0014 75E0A5          918               mov acc,#0a5H
+                     919     ;       mov R0,#0f0H
+0017 78F0            920               mov R0,#0f0H
+                     921     ;       xrl A,R0
+0019 68              922               xrl A,R0
+                     923     ;   #pragma ENDASM      
+                     924     ;       if (ACC!=0x55) test_status = 0;
+                     925                             ; SOURCE LINE # 306
+001A 6455            926             XRL     A,#055H
+001C 6005            927             JZ      ?C0025
+001E 90007E          928             MOV     DPTR,#07EH
+0021 E4              929             CLR     A
+0022 F0              930             MOVX    @DPTR,A
+0023                 931     ?C0025:
+                     932     ;       
+                     933     ;       #pragma ASM 
+                     934     ;       pop acc
+0023 D0E0            935               pop acc
+                     936     ;   pop psw     
+0025 D0D0            937               pop psw       
+                     938     ;   #pragma ENDASM
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    16
+
+                     939     ;   error();  
+                     940                             ; SOURCE LINE # 312
+0027 020000   F      941             LJMP    error
+                     942     ; END OF xrl_a_rn
+                     943     
+                     944     ; }
+                     945     ; 
+                     946     ; void xrl_a_di(void) {
+                     947     
+----                 948             RSEG  ?PR?xrl_a_di?LOGICAL
+0000                 949     xrl_a_di:
+                     950             USING   0
+                     951                             ; SOURCE LINE # 315
+                     952     ;       printf("XRL_A_DI\n");
+                     953                             ; SOURCE LINE # 316
+0000 7BFF            954             MOV     R3,#0FFH
+0002 7A00     F      955             MOV     R2,#HIGH (?SC_132)
+0004 7900     F      956             MOV     R1,#LOW (?SC_132)
+0006 120000   F      957             LCALL   _printf
+                     958     ;       #pragma ASM  
+                     959     ;       push psw
+0009 C0D0            960               push psw
+                     961     ;       push acc
+000B C0E0            962               push acc
+                     963     ;     mov  psw,#0H      
+000D 75D000          964               mov  psw,#0H  
+                     965     ;     setb rs0     
+0010 D2D3            966               setb rs0     
+                     967     ;       setb rs1        
+0012 D2D4            968               setb rs1      
+                     969     ;     #pragma ENDASM 
+                     970     ;       
+                     971     ;       #pragma ASM
+                     972     ;       mov acc,#0a5H
+0014 75E0A5          973               mov acc,#0a5H
+                     974     ;       mov R3,#0fH
+0017 7B0F            975               mov R3,#0fH
+                     976     ;       xrl A,0x1b
+0019 651B            977               xrl A,0x1b
+                     978     ;   #pragma ENDASM      
+                     979     ;       if (ACC!=0xaa) test_status = 0;
+                     980                             ; SOURCE LINE # 330
+001B 64AA            981             XRL     A,#0AAH
+001D 6005            982             JZ      ?C0027
+001F 90007E          983             MOV     DPTR,#07EH
+0022 E4              984             CLR     A
+0023 F0              985             MOVX    @DPTR,A
+0024                 986     ?C0027:
+                     987     ;       
+                     988     ;       #pragma ASM 
+                     989     ;       pop acc
+0024 D0E0            990               pop acc
+                     991     ;     pop psw   
+0026 D0D0            992               pop psw       
+                     993     ;     #pragma ENDASM
+                     994     ;     error();  
+                     995                             ; SOURCE LINE # 336
+0028 020000   F      996             LJMP    error
+                     997     ; END OF xrl_a_di
+                     998     
+                     999     ; }
+                    1000     ; 
+                    1001     ; void xrl_a_ri(void) {
+                    1002     
+----                1003             RSEG  ?PR?xrl_a_ri?LOGICAL
+0000                1004     xrl_a_ri:
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    17
+
+                    1005             USING   0
+                    1006                             ; SOURCE LINE # 339
+                    1007     ;       printf("XRL_A_RI\n");
+                    1008                             ; SOURCE LINE # 340
+0000 7BFF           1009             MOV     R3,#0FFH
+0002 7A00     F     1010             MOV     R2,#HIGH (?SC_142)
+0004 7900     F     1011             MOV     R1,#LOW (?SC_142)
+0006 120000   F     1012             LCALL   _printf
+                    1013     ;       #pragma ASM  
+                    1014     ;       push psw
+0009 C0D0           1015               push psw
+                    1016     ;       push acc
+000B C0E0           1017               push acc
+                    1018     ;     mov  psw,#0H      
+000D 75D000         1019               mov  psw,#0H  
+                    1020     ;     setb rs0     
+0010 D2D3           1021               setb rs0     
+                    1022     ;       setb rs1        
+0012 D2D4           1023               setb rs1      
+                    1024     ;     #pragma ENDASM 
+                    1025     ;       
+                    1026     ;       #pragma ASM
+                    1027     ;       mov acc,#0a5H
+0014 75E0A5         1028               mov acc,#0a5H
+                    1029     ;       mov R3,#0f0H
+0017 7BF0           1030               mov R3,#0f0H
+                    1031     ;       mov R1,#0x1b
+0019 791B           1032               mov R1,#0x1b
+                    1033     ;       xrl A,@R1
+001B 67             1034               xrl A,@R1
+                    1035     ;     #pragma ENDASM    
+                    1036     ;       if (ACC!=0x55) test_status = 0;
+                    1037                             ; SOURCE LINE # 355
+001C 6455           1038             XRL     A,#055H
+001E 6005           1039             JZ      ?C0029
+0020 90007E         1040             MOV     DPTR,#07EH
+0023 E4             1041             CLR     A
+0024 F0             1042             MOVX    @DPTR,A
+0025                1043     ?C0029:
+                    1044     ;       
+                    1045     ;       #pragma ASM 
+                    1046     ;       pop acc
+0025 D0E0           1047               pop acc
+                    1048     ;     pop psw   
+0027 D0D0           1049               pop psw       
+                    1050     ;     #pragma ENDASM
+                    1051     ;     error();  
+                    1052                             ; SOURCE LINE # 361
+0029 020000   F     1053             LJMP    error
+                    1054     ; END OF xrl_a_ri
+                    1055     
+                    1056     ; }
+                    1057     ; 
+                    1058     ; void xrl_a_da(void) {
+                    1059     
+----                1060             RSEG  ?PR?xrl_a_da?LOGICAL
+0000                1061     xrl_a_da:
+                    1062             USING   0
+                    1063                             ; SOURCE LINE # 364
+                    1064     ;       printf("XRL_A_DA\n");
+                    1065                             ; SOURCE LINE # 365
+0000 7BFF           1066             MOV     R3,#0FFH
+0002 7A00     F     1067             MOV     R2,#HIGH (?SC_152)
+0004 7900     F     1068             MOV     R1,#LOW (?SC_152)
+0006 120000   F     1069             LCALL   _printf
+                    1070     ;       #pragma ASM  
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    18
+
+                    1071     ;       push psw
+0009 C0D0           1072               push psw
+                    1073     ;       push acc
+000B C0E0           1074               push acc
+                    1075     ;     mov  psw,#0H      
+000D 75D000         1076               mov  psw,#0H  
+                    1077     ;     setb rs0     
+0010 D2D3           1078               setb rs0     
+                    1079     ;       setb rs1        
+0012 D2D4           1080               setb rs1      
+                    1081     ;     #pragma ENDASM 
+                    1082     ;       
+                    1083     ;       #pragma ASM
+                    1084     ;       mov acc,#0a5H
+0014 75E0A5         1085               mov acc,#0a5H
+                    1086     ;       xrl A,#0fH
+0017 640F           1087               xrl A,#0fH
+                    1088     ;     #pragma ENDASM    
+                    1089     ;       if (ACC!=0xaa) test_status = 0;
+                    1090                             ; SOURCE LINE # 378
+0019 64AA           1091             XRL     A,#0AAH
+001B 6005           1092             JZ      ?C0031
+001D 90007E         1093             MOV     DPTR,#07EH
+0020 E4             1094             CLR     A
+0021 F0             1095             MOVX    @DPTR,A
+0022                1096     ?C0031:
+                    1097     ;       
+                    1098     ;       #pragma ASM 
+                    1099     ;       pop acc
+0022 D0E0           1100               pop acc
+                    1101     ;     pop psw   
+0024 D0D0           1102               pop psw       
+                    1103     ;     #pragma ENDASM
+                    1104     ;     error();  
+                    1105                             ; SOURCE LINE # 384
+0026 020000   F     1106             LJMP    error
+                    1107     ; END OF xrl_a_da
+                    1108     
+                    1109     ; }
+                    1110     ; 
+                    1111     ; void xrl_di_a(void) {
+                    1112     
+----                1113             RSEG  ?PR?xrl_di_a?LOGICAL
+0000                1114     xrl_di_a:
+                    1115             USING   0
+                    1116                             ; SOURCE LINE # 387
+                    1117     ;       printf("XRL_DI_A\n");
+                    1118                             ; SOURCE LINE # 388
+0000 7BFF           1119             MOV     R3,#0FFH
+0002 7A00     F     1120             MOV     R2,#HIGH (?SC_162)
+0004 7900     F     1121             MOV     R1,#LOW (?SC_162)
+0006 120000   F     1122             LCALL   _printf
+                    1123     ;       #pragma ASM  
+                    1124     ;       push psw
+0009 C0D0           1125               push psw
+                    1126     ;       push acc
+000B C0E0           1127               push acc
+                    1128     ;     mov  psw,#0H      
+000D 75D000         1129               mov  psw,#0H  
+                    1130     ;     setb rs0     
+0010 D2D3           1131               setb rs0     
+                    1132     ;       setb rs1        
+0012 D2D4           1133               setb rs1      
+                    1134     ;     #pragma ENDASM 
+                    1135     ;       
+                    1136     ;       #pragma ASM
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    19
+
+                    1137     ;       mov acc,#0a5H
+0014 75E0A5         1138               mov acc,#0a5H
+                    1139     ;       mov R3,#0fH
+0017 7B0F           1140               mov R3,#0fH
+                    1141     ;       xrl 0x1b,A
+0019 621B           1142               xrl 0x1b,A
+                    1143     ;     #pragma ENDASM    
+                    1144     ;       if (R(3,3)!=0xaa) test_status = 0;
+                    1145                             ; SOURCE LINE # 402
+001B 781B           1146             MOV     R0,#01BH
+001D E6             1147             MOV     A,@R0
+001E 64AA           1148             XRL     A,#0AAH
+0020 6005           1149             JZ      ?C0033
+0022 90007E         1150             MOV     DPTR,#07EH
+0025 E4             1151             CLR     A
+0026 F0             1152             MOVX    @DPTR,A
+0027                1153     ?C0033:
+                    1154     ;       
+                    1155     ;       #pragma ASM 
+                    1156     ;       pop acc
+0027 D0E0           1157               pop acc
+                    1158     ;     pop psw   
+0029 D0D0           1159               pop psw       
+                    1160     ;     #pragma ENDASM
+                    1161     ;     error();  
+                    1162                             ; SOURCE LINE # 408
+002B 020000   F     1163             LJMP    error
+                    1164     ; END OF xrl_di_a
+                    1165     
+                    1166     ; }
+                    1167     ; 
+                    1168     ; void xrl_di_da(void) {
+                    1169     
+----                1170             RSEG  ?PR?xrl_di_da?LOGICAL
+0000                1171     xrl_di_da:
+                    1172             USING   0
+                    1173                             ; SOURCE LINE # 411
+                    1174     ;       printf("XRL_DI_DA\n");
+                    1175                             ; SOURCE LINE # 412
+0000 7BFF           1176             MOV     R3,#0FFH
+0002 7A00     F     1177             MOV     R2,#HIGH (?SC_172)
+0004 7900     F     1178             MOV     R1,#LOW (?SC_172)
+0006 120000   F     1179             LCALL   _printf
+                    1180     ;       #pragma ASM  
+                    1181     ;       push psw
+0009 C0D0           1182               push psw
+                    1183     ;       push acc
+000B C0E0           1184               push acc
+                    1185     ;     mov  psw,#0H      
+000D 75D000         1186               mov  psw,#0H  
+                    1187     ;     setb rs0     
+0010 D2D3           1188               setb rs0     
+                    1189     ;       setb rs1        
+0012 D2D4           1190               setb rs1      
+                    1191     ;     #pragma ENDASM 
+                    1192     ;       
+                    1193     ;       #pragma ASM
+                    1194     ;       mov R3,#0f0H
+0014 7BF0           1195               mov R3,#0f0H
+                    1196     ;       xrl 0x1b,#0a5H
+0016 631BA5         1197               xrl 0x1b,#0a5H
+                    1198     ;   #pragma ENDASM      
+                    1199     ;       if (R(3,3)!=0x55) test_status = 0;
+                    1200                             ; SOURCE LINE # 425
+0019 781B           1201             MOV     R0,#01BH
+001B E6             1202             MOV     A,@R0
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    20
+
+001C 6455           1203             XRL     A,#055H
+001E 6005           1204             JZ      ?C0035
+0020 90007E         1205             MOV     DPTR,#07EH
+0023 E4             1206             CLR     A
+0024 F0             1207             MOVX    @DPTR,A
+0025                1208     ?C0035:
+                    1209     ;       
+                    1210     ;       #pragma ASM 
+                    1211     ;       pop acc
+0025 D0E0           1212               pop acc
+                    1213     ;     pop psw   
+0027 D0D0           1214               pop psw       
+                    1215     ;     #pragma ENDASM
+                    1216     ;     error();  
+                    1217                             ; SOURCE LINE # 431
+0029 020000   F     1218             LJMP    error
+                    1219     ; END OF xrl_di_da
+                    1220     
+                    1221     ; }
+                    1222     ; 
+                    1223     ; void clr_a(void) {
+                    1224     
+----                1225             RSEG  ?PR?clr_a?LOGICAL
+0000                1226     clr_a:
+                    1227             USING   0
+                    1228                             ; SOURCE LINE # 434
+                    1229     ;       printf("CLR_A\n");
+                    1230                             ; SOURCE LINE # 435
+0000 7BFF           1231             MOV     R3,#0FFH
+0002 7A00     F     1232             MOV     R2,#HIGH (?SC_183)
+0004 7900     F     1233             MOV     R1,#LOW (?SC_183)
+0006 120000   F     1234             LCALL   _printf
+                    1235     ;       #pragma ASM  
+                    1236     ;       push psw
+0009 C0D0           1237               push psw
+                    1238     ;       push acc
+000B C0E0           1239               push acc
+                    1240     ;     mov  psw,#0H      
+000D 75D000         1241               mov  psw,#0H  
+                    1242     ;     setb rs0     
+0010 D2D3           1243               setb rs0     
+                    1244     ;       setb rs1        
+0012 D2D4           1245               setb rs1      
+                    1246     ;     #pragma ENDASM 
+                    1247     ;       
+                    1248     ;       #pragma ASM
+                    1249     ;       mov A,#0ffH
+0014 74FF           1250               mov A,#0ffH
+                    1251     ;       clr A
+0016 E4             1252               clr A
+                    1253     ;   #pragma ENDASM      
+                    1254     ;       if (ACC!=0x0) test_status = 0;
+                    1255                             ; SOURCE LINE # 448
+0017 6005           1256             JZ      ?C0037
+0019 90007E         1257             MOV     DPTR,#07EH
+001C E4             1258             CLR     A
+001D F0             1259             MOVX    @DPTR,A
+001E                1260     ?C0037:
+                    1261     ;       
+                    1262     ;       #pragma ASM 
+                    1263     ;       pop acc
+001E D0E0           1264               pop acc
+                    1265     ;     pop psw   
+0020 D0D0           1266               pop psw       
+                    1267     ;     #pragma ENDASM
+                    1268     ;     error();  
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    21
+
+                    1269                             ; SOURCE LINE # 454
+0022 020000   F     1270             LJMP    error
+                    1271     ; END OF clr_a
+                    1272     
+                    1273     ; }
+                    1274     ; 
+                    1275     ; void cpl_a(void) {
+                    1276     
+----                1277             RSEG  ?PR?cpl_a?LOGICAL
+0000                1278     cpl_a:
+                    1279             USING   0
+                    1280                             ; SOURCE LINE # 457
+                    1281     ;       printf("CPL_A\n");
+                    1282                             ; SOURCE LINE # 458
+0000 7BFF           1283             MOV     R3,#0FFH
+0002 7A00     F     1284             MOV     R2,#HIGH (?SC_190)
+0004 7900     F     1285             MOV     R1,#LOW (?SC_190)
+0006 120000   F     1286             LCALL   _printf
+                    1287     ;       #pragma ASM  
+                    1288     ;       push psw
+0009 C0D0           1289               push psw
+                    1290     ;       push acc
+000B C0E0           1291               push acc
+                    1292     ;     mov  psw,#0H      
+000D 75D000         1293               mov  psw,#0H  
+                    1294     ;     setb rs0     
+0010 D2D3           1295               setb rs0     
+                    1296     ;       setb rs1        
+0012 D2D4           1297               setb rs1      
+                    1298     ;     #pragma ENDASM 
+                    1299     ;       
+                    1300     ;       #pragma ASM
+                    1301     ;       mov A,#0a5H
+0014 74A5           1302               mov A,#0a5H
+                    1303     ;       cpl A
+0016 F4             1304               cpl A
+                    1305     ;   #pragma ENDASM      
+                    1306     ;       if (ACC!=0x5a) test_status = 0;
+                    1307                             ; SOURCE LINE # 471
+0017 645A           1308             XRL     A,#05AH
+0019 6005           1309             JZ      ?C0039
+001B 90007E         1310             MOV     DPTR,#07EH
+001E E4             1311             CLR     A
+001F F0             1312             MOVX    @DPTR,A
+0020                1313     ?C0039:
+                    1314     ;       
+                    1315     ;       #pragma ASM 
+                    1316     ;       pop acc
+0020 D0E0           1317               pop acc
+                    1318     ;     pop psw   
+0022 D0D0           1319               pop psw       
+                    1320     ;     #pragma ENDASM
+                    1321     ;     error();  
+                    1322                             ; SOURCE LINE # 477
+0024 020000   F     1323             LJMP    error
+                    1324     ; END OF cpl_a
+                    1325     
+                    1326     ; }
+                    1327     ; 
+                    1328     ; void rl_a(void) {
+                    1329     
+----                1330             RSEG  ?PR?rl_a?LOGICAL
+0000                1331     rl_a:
+                    1332             USING   0
+                    1333                             ; SOURCE LINE # 480
+                    1334     ;       printf("RL_A\n");
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    22
+
+                    1335                             ; SOURCE LINE # 481
+0000 7BFF           1336             MOV     R3,#0FFH
+0002 7A00     F     1337             MOV     R2,#HIGH (?SC_197)
+0004 7900     F     1338             MOV     R1,#LOW (?SC_197)
+0006 120000   F     1339             LCALL   _printf
+                    1340     ;       #pragma ASM  
+                    1341     ;       push psw
+0009 C0D0           1342               push psw
+                    1343     ;       push acc
+000B C0E0           1344               push acc
+                    1345     ;     mov  psw,#0H      
+000D 75D000         1346               mov  psw,#0H  
+                    1347     ;     setb rs0     
+0010 D2D3           1348               setb rs0     
+                    1349     ;       setb rs1        
+0012 D2D4           1350               setb rs1      
+                    1351     ;     #pragma ENDASM 
+                    1352     ;       
+                    1353     ;       #pragma ASM
+                    1354     ;       mov A,#0a0H
+0014 74A0           1355               mov A,#0a0H
+                    1356     ;       rl A
+0016 23             1357               rl A
+                    1358     ;   #pragma ENDASM      
+                    1359     ;       if (ACC!=0x41) test_status = 0;
+                    1360                             ; SOURCE LINE # 494
+0017 6441           1361             XRL     A,#041H
+0019 6005           1362             JZ      ?C0041
+001B 90007E         1363             MOV     DPTR,#07EH
+001E E4             1364             CLR     A
+001F F0             1365             MOVX    @DPTR,A
+0020                1366     ?C0041:
+                    1367     ;       
+                    1368     ;       #pragma ASM 
+                    1369     ;       pop acc
+0020 D0E0           1370               pop acc
+                    1371     ;     pop psw   
+0022 D0D0           1372               pop psw       
+                    1373     ;     #pragma ENDASM
+                    1374     ;     error();  
+                    1375                             ; SOURCE LINE # 500
+0024 020000   F     1376             LJMP    error
+                    1377     ; END OF rl_a
+                    1378     
+                    1379     ; }
+                    1380     ; 
+                    1381     ; void rlc_a(void) {
+                    1382     
+----                1383             RSEG  ?PR?rlc_a?LOGICAL
+0000                1384     rlc_a:
+                    1385             USING   0
+                    1386                             ; SOURCE LINE # 503
+                    1387     ;       printf("RLC_A\n");
+                    1388                             ; SOURCE LINE # 504
+0000 7BFF           1389             MOV     R3,#0FFH
+0002 7A00     F     1390             MOV     R2,#HIGH (?SC_203)
+0004 7900     F     1391             MOV     R1,#LOW (?SC_203)
+0006 120000   F     1392             LCALL   _printf
+                    1393     ;       #pragma ASM  
+                    1394     ;       push psw
+0009 C0D0           1395               push psw
+                    1396     ;       push acc
+000B C0E0           1397               push acc
+                    1398     ;     mov  psw,#0H      
+000D 75D000         1399               mov  psw,#0H  
+                    1400     ;     setb rs0     
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    23
+
+0010 D2D3           1401               setb rs0     
+                    1402     ;       setb rs1        
+0012 D2D4           1403               setb rs1      
+                    1404     ;     #pragma ENDASM 
+                    1405     ;       
+                    1406     ;       #pragma ASM
+                    1407     ;       mov A,#0a0H
+0014 74A0           1408               mov A,#0a0H
+                    1409     ;       rlc A
+0016 33             1410               rlc A
+                    1411     ;   #pragma ENDASM      
+                    1412     ;       if (ACC!=0x40) test_status = 0;
+                    1413                             ; SOURCE LINE # 517
+0017 6440           1414             XRL     A,#040H
+0019 6005           1415             JZ      ?C0043
+001B 90007E         1416             MOV     DPTR,#07EH
+001E E4             1417             CLR     A
+001F F0             1418             MOVX    @DPTR,A
+0020                1419     ?C0043:
+                    1420     ;       if (CY!=1) test_status = 0;
+                    1421                             ; SOURCE LINE # 518
+0020 20D705         1422             JB      CY,?C0044
+0023 90007E         1423             MOV     DPTR,#07EH
+0026 E4             1424             CLR     A
+0027 F0             1425             MOVX    @DPTR,A
+0028                1426     ?C0044:
+                    1427     ;       
+                    1428     ;       #pragma ASM 
+                    1429     ;       pop acc
+0028 D0E0           1430               pop acc
+                    1431     ;     pop psw   
+002A D0D0           1432               pop psw       
+                    1433     ;     #pragma ENDASM
+                    1434     ;     error();  
+                    1435                             ; SOURCE LINE # 524
+002C 020000   F     1436             LJMP    error
+                    1437     ; END OF rlc_a
+                    1438     
+                    1439     ; }
+                    1440     ; 
+                    1441     ; void rr_a(void) {
+                    1442     
+----                1443             RSEG  ?PR?rr_a?LOGICAL
+0000                1444     rr_a:
+                    1445             USING   0
+                    1446                             ; SOURCE LINE # 527
+                    1447     ;       printf("RR_A\n");
+                    1448                             ; SOURCE LINE # 528
+0000 7BFF           1449             MOV     R3,#0FFH
+0002 7A00     F     1450             MOV     R2,#HIGH (?SC_210)
+0004 7900     F     1451             MOV     R1,#LOW (?SC_210)
+0006 120000   F     1452             LCALL   _printf
+                    1453     ;       #pragma ASM  
+                    1454     ;       push psw
+0009 C0D0           1455               push psw
+                    1456     ;       push acc
+000B C0E0           1457               push acc
+                    1458     ;     mov  psw,#0H      
+000D 75D000         1459               mov  psw,#0H  
+                    1460     ;     setb rs0     
+0010 D2D3           1461               setb rs0     
+                    1462     ;       setb rs1        
+0012 D2D4           1463               setb rs1      
+                    1464     ;     #pragma ENDASM 
+                    1465     ;       
+                    1466     ;       #pragma ASM
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    24
+
+                    1467     ;       mov A,#0e1H
+0014 74E1           1468               mov A,#0e1H
+                    1469     ;       rr A
+0016 03             1470               rr A
+                    1471     ;   #pragma ENDASM      
+                    1472     ;       if (ACC!=0xf0) test_status = 0;
+                    1473                             ; SOURCE LINE # 541
+0017 64F0           1474             XRL     A,#0F0H
+0019 6005           1475             JZ      ?C0046
+001B 90007E         1476             MOV     DPTR,#07EH
+001E E4             1477             CLR     A
+001F F0             1478             MOVX    @DPTR,A
+0020                1479     ?C0046:
+                    1480     ;       
+                    1481     ;       #pragma ASM 
+                    1482     ;       pop acc
+0020 D0E0           1483               pop acc
+                    1484     ;     pop psw   
+0022 D0D0           1485               pop psw       
+                    1486     ;     #pragma ENDASM
+                    1487     ;     error();  
+                    1488                             ; SOURCE LINE # 547
+0024 020000   F     1489             LJMP    error
+                    1490     ; END OF rr_a
+                    1491     
+                    1492     ; }
+                    1493     ; 
+                    1494     ; void rrc_a(void) {
+                    1495     
+----                1496             RSEG  ?PR?rrc_a?LOGICAL
+0000                1497     rrc_a:
+                    1498             USING   0
+                    1499                             ; SOURCE LINE # 550
+                    1500     ;       printf("RRC_A\n");
+                    1501                             ; SOURCE LINE # 551
+0000 7BFF           1502             MOV     R3,#0FFH
+0002 7A00     F     1503             MOV     R2,#HIGH (?SC_216)
+0004 7900     F     1504             MOV     R1,#LOW (?SC_216)
+0006 120000   F     1505             LCALL   _printf
+                    1506     ;       #pragma ASM  
+                    1507     ;       push psw
+0009 C0D0           1508               push psw
+                    1509     ;       push acc
+000B C0E0           1510               push acc
+                    1511     ;     mov  psw,#0H      
+000D 75D000         1512               mov  psw,#0H  
+                    1513     ;     setb rs0     
+0010 D2D3           1514               setb rs0     
+                    1515     ;       setb rs1        
+0012 D2D4           1516               setb rs1      
+                    1517     ;     #pragma ENDASM 
+                    1518     ;       
+                    1519     ;       #pragma ASM
+                    1520     ;       mov A,#0e1H
+0014 74E1           1521               mov A,#0e1H
+                    1522     ;       rrc A
+0016 13             1523               rrc A
+                    1524     ;   #pragma ENDASM      
+                    1525     ;       if (ACC!=0x70) test_status = 0;
+                    1526                             ; SOURCE LINE # 564
+0017 6470           1527             XRL     A,#070H
+0019 6005           1528             JZ      ?C0048
+001B 90007E         1529             MOV     DPTR,#07EH
+001E E4             1530             CLR     A
+001F F0             1531             MOVX    @DPTR,A
+0020                1532     ?C0048:
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    25
+
+                    1533     ;       if (CY!=1) test_status = 0;
+                    1534                             ; SOURCE LINE # 565
+0020 20D705         1535             JB      CY,?C0049
+0023 90007E         1536             MOV     DPTR,#07EH
+0026 E4             1537             CLR     A
+0027 F0             1538             MOVX    @DPTR,A
+0028                1539     ?C0049:
+                    1540     ;       
+                    1541     ;       #pragma ASM 
+                    1542     ;       pop acc
+0028 D0E0           1543               pop acc
+                    1544     ;     pop psw   
+002A D0D0           1545               pop psw       
+                    1546     ;     #pragma ENDASM
+                    1547     ;     error();  
+                    1548                             ; SOURCE LINE # 571
+002C 020000   F     1549             LJMP    error
+                    1550     ; END OF rrc_a
+                    1551     
+                    1552     ; }
+                    1553     ; 
+                    1554     ; void swap_a(void) {
+                    1555     
+----                1556             RSEG  ?PR?swap_a?LOGICAL
+0000                1557     swap_a:
+                    1558             USING   0
+                    1559                             ; SOURCE LINE # 574
+                    1560     ;       printf("SWAP_A\n");
+                    1561                             ; SOURCE LINE # 575
+0000 7BFF           1562             MOV     R3,#0FFH
+0002 7A00     F     1563             MOV     R2,#HIGH (?SC_223)
+0004 7900     F     1564             MOV     R1,#LOW (?SC_223)
+0006 120000   F     1565             LCALL   _printf
+                    1566     ;       #pragma ASM  
+                    1567     ;       push psw
+0009 C0D0           1568               push psw
+                    1569     ;       push acc
+000B C0E0           1570               push acc
+                    1571     ;     mov  psw,#0H      
+000D 75D000         1572               mov  psw,#0H  
+                    1573     ;     setb rs0     
+0010 D2D3           1574               setb rs0     
+                    1575     ;       setb rs1        
+0012 D2D4           1576               setb rs1      
+                    1577     ;     #pragma ENDASM 
+                    1578     ;       
+                    1579     ;       #pragma ASM
+                    1580     ;       mov A,#037H
+0014 7437           1581               mov A,#037H
+                    1582     ;       swap A
+0016 C4             1583               swap A
+                    1584     ;   #pragma ENDASM      
+                    1585     ;       if (ACC!=0x73) test_status = 0;
+                    1586                             ; SOURCE LINE # 588
+0017 6473           1587             XRL     A,#073H
+0019 6005           1588             JZ      ?C0051
+001B 90007E         1589             MOV     DPTR,#07EH
+001E E4             1590             CLR     A
+001F F0             1591             MOVX    @DPTR,A
+0020                1592     ?C0051:
+                    1593     ;       
+                    1594     ;       #pragma ASM 
+                    1595     ;       pop acc
+0020 D0E0           1596               pop acc
+                    1597     ;     pop psw   
+0022 D0D0           1598               pop psw       
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    26
+
+                    1599     ;     #pragma ENDASM
+                    1600     ;     error();  
+                    1601                             ; SOURCE LINE # 594
+0024 020000   F     1602             LJMP    error
+                    1603     ; END OF swap_a
+                    1604     
+                    1605             END
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    27
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                T Y P E  V A L U E   ATTRIBUTES
+
+?C0001. . . . . . . .  C ADDR   0023H   R   SEG=?PR?ANL_A_RN?LOGICAL
+?C0003. . . . . . . .  C ADDR   0024H   R   SEG=?PR?ANL_A_DI?LOGICAL
+?C0005. . . . . . . .  C ADDR   0025H   R   SEG=?PR?ANL_A_RI?LOGICAL
+?C0007. . . . . . . .  C ADDR   0022H   R   SEG=?PR?ANL_A_DA?LOGICAL
+?C0009. . . . . . . .  C ADDR   0027H   R   SEG=?PR?ANL_DI_A?LOGICAL
+?C0011. . . . . . . .  C ADDR   0025H   R   SEG=?PR?ANL_DI_DA?LOGICAL
+?C0013. . . . . . . .  C ADDR   0023H   R   SEG=?PR?ORL_A_RN?LOGICAL
+?C0015. . . . . . . .  C ADDR   0024H   R   SEG=?PR?ORL_A_DI?LOGICAL
+?C0017. . . . . . . .  C ADDR   0025H   R   SEG=?PR?ORL_A_RI?LOGICAL
+?C0019. . . . . . . .  C ADDR   0022H   R   SEG=?PR?ORL_A_DA?LOGICAL
+?C0021. . . . . . . .  C ADDR   0027H   R   SEG=?PR?ORL_DI_A?LOGICAL
+?C0023. . . . . . . .  C ADDR   0025H   R   SEG=?PR?ORL_DI_DA?LOGICAL
+?C0025. . . . . . . .  C ADDR   0023H   R   SEG=?PR?XRL_A_RN?LOGICAL
+?C0027. . . . . . . .  C ADDR   0024H   R   SEG=?PR?XRL_A_DI?LOGICAL
+?C0029. . . . . . . .  C ADDR   0025H   R   SEG=?PR?XRL_A_RI?LOGICAL
+?C0031. . . . . . . .  C ADDR   0022H   R   SEG=?PR?XRL_A_DA?LOGICAL
+?C0033. . . . . . . .  C ADDR   0027H   R   SEG=?PR?XRL_DI_A?LOGICAL
+?C0035. . . . . . . .  C ADDR   0025H   R   SEG=?PR?XRL_DI_DA?LOGICAL
+?C0037. . . . . . . .  C ADDR   001EH   R   SEG=?PR?CLR_A?LOGICAL
+?C0039. . . . . . . .  C ADDR   0020H   R   SEG=?PR?CPL_A?LOGICAL
+?C0041. . . . . . . .  C ADDR   0020H   R   SEG=?PR?RL_A?LOGICAL
+?C0043. . . . . . . .  C ADDR   0020H   R   SEG=?PR?RLC_A?LOGICAL
+?C0044. . . . . . . .  C ADDR   0028H   R   SEG=?PR?RLC_A?LOGICAL
+?C0046. . . . . . . .  C ADDR   0020H   R   SEG=?PR?RR_A?LOGICAL
+?C0048. . . . . . . .  C ADDR   0020H   R   SEG=?PR?RRC_A?LOGICAL
+?C0049. . . . . . . .  C ADDR   0028H   R   SEG=?PR?RRC_A?LOGICAL
+?C0051. . . . . . . .  C ADDR   0020H   R   SEG=?PR?SWAP_A?LOGICAL
+?CO?LOGICAL . . . . .  C SEG    00E7H       REL=UNIT
+?PR?ANL_A_DA?LOGICAL.  C SEG    0029H       REL=UNIT
+?PR?ANL_A_DI?LOGICAL.  C SEG    002BH       REL=UNIT
+?PR?ANL_A_RI?LOGICAL.  C SEG    002CH       REL=UNIT
+?PR?ANL_A_RN?LOGICAL.  C SEG    002AH       REL=UNIT
+?PR?ANL_DI_A?LOGICAL.  C SEG    002EH       REL=UNIT
+?PR?ANL_DI_DA?LOGICAL  C SEG    002CH       REL=UNIT
+?PR?CLR_A?LOGICAL . .  C SEG    0025H       REL=UNIT
+?PR?CPL_A?LOGICAL . .  C SEG    0027H       REL=UNIT
+?PR?ORL_A_DA?LOGICAL.  C SEG    0029H       REL=UNIT
+?PR?ORL_A_DI?LOGICAL.  C SEG    002BH       REL=UNIT
+?PR?ORL_A_RI?LOGICAL.  C SEG    002CH       REL=UNIT
+?PR?ORL_A_RN?LOGICAL.  C SEG    002AH       REL=UNIT
+?PR?ORL_DI_A?LOGICAL.  C SEG    002EH       REL=UNIT
+?PR?ORL_DI_DA?LOGICAL  C SEG    002CH       REL=UNIT
+?PR?RLC_A?LOGICAL . .  C SEG    002FH       REL=UNIT
+?PR?RL_A?LOGICAL. . .  C SEG    0027H       REL=UNIT
+?PR?RRC_A?LOGICAL . .  C SEG    002FH       REL=UNIT
+?PR?RR_A?LOGICAL. . .  C SEG    0027H       REL=UNIT
+?PR?SWAP_A?LOGICAL. .  C SEG    0027H       REL=UNIT
+?PR?XRL_A_DA?LOGICAL.  C SEG    0029H       REL=UNIT
+?PR?XRL_A_DI?LOGICAL.  C SEG    002BH       REL=UNIT
+?PR?XRL_A_RI?LOGICAL.  C SEG    002CH       REL=UNIT
+?PR?XRL_A_RN?LOGICAL.  C SEG    002AH       REL=UNIT
+?PR?XRL_DI_A?LOGICAL.  C SEG    002EH       REL=UNIT
+?PR?XRL_DI_DA?LOGICAL  C SEG    002CH       REL=UNIT
+?SC_0 . . . . . . . .  C ADDR   0000H   R   SEG=?CO?LOGICAL
+?SC_10. . . . . . . .  C ADDR   000AH   R   SEG=?CO?LOGICAL
+?SC_101 . . . . . . .  C ADDR   0065H   R   SEG=?CO?LOGICAL
+?SC_111 . . . . . . .  C ADDR   006FH   R   SEG=?CO?LOGICAL
+?SC_122 . . . . . . .  C ADDR   007AH   R   SEG=?CO?LOGICAL
+?SC_132 . . . . . . .  C ADDR   0084H   R   SEG=?CO?LOGICAL
+?SC_142 . . . . . . .  C ADDR   008EH   R   SEG=?CO?LOGICAL
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    28
+
+?SC_152 . . . . . . .  C ADDR   0098H   R   SEG=?CO?LOGICAL
+?SC_162 . . . . . . .  C ADDR   00A2H   R   SEG=?CO?LOGICAL
+?SC_172 . . . . . . .  C ADDR   00ACH   R   SEG=?CO?LOGICAL
+?SC_183 . . . . . . .  C ADDR   00B7H   R   SEG=?CO?LOGICAL
+?SC_190 . . . . . . .  C ADDR   00BEH   R   SEG=?CO?LOGICAL
+?SC_197 . . . . . . .  C ADDR   00C5H   R   SEG=?CO?LOGICAL
+?SC_20. . . . . . . .  C ADDR   0014H   R   SEG=?CO?LOGICAL
+?SC_203 . . . . . . .  C ADDR   00CBH   R   SEG=?CO?LOGICAL
+?SC_210 . . . . . . .  C ADDR   00D2H   R   SEG=?CO?LOGICAL
+?SC_216 . . . . . . .  C ADDR   00D8H   R   SEG=?CO?LOGICAL
+?SC_223 . . . . . . .  C ADDR   00DFH   R   SEG=?CO?LOGICAL
+?SC_30. . . . . . . .  C ADDR   001EH   R   SEG=?CO?LOGICAL
+?SC_40. . . . . . . .  C ADDR   0028H   R   SEG=?CO?LOGICAL
+?SC_50. . . . . . . .  C ADDR   0032H   R   SEG=?CO?LOGICAL
+?SC_61. . . . . . . .  C ADDR   003DH   R   SEG=?CO?LOGICAL
+?SC_71. . . . . . . .  C ADDR   0047H   R   SEG=?CO?LOGICAL
+?SC_81. . . . . . . .  C ADDR   0051H   R   SEG=?CO?LOGICAL
+?SC_91. . . . . . . .  C ADDR   005BH   R   SEG=?CO?LOGICAL
+?_PRINTF?BYTE . . . .  D ADDR   -----       EXT
+AC. . . . . . . . . .  B ADDR   00D0H.6 A   
+ACC . . . . . . . . .  D ADDR   00E0H   A   
+ANL_A_DA. . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_A_DA?LOGICAL
+ANL_A_DI. . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_A_DI?LOGICAL
+ANL_A_RI. . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_A_RI?LOGICAL
+ANL_A_RN. . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_A_RN?LOGICAL
+ANL_DI_A. . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_DI_A?LOGICAL
+ANL_DI_DA . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_DI_DA?LOGICAL
+B . . . . . . . . . .  D ADDR   00F0H   A   
+CLR_A . . . . . . . .  C ADDR   0000H   R   SEG=?PR?CLR_A?LOGICAL
+CPL_A . . . . . . . .  C ADDR   0000H   R   SEG=?PR?CPL_A?LOGICAL
+CP_RL2. . . . . . . .  B ADDR   00C8H.0 A   
+CY. . . . . . . . . .  B ADDR   00D0H.7 A   
+C_T2. . . . . . . . .  B ADDR   00C8H.1 A   
+DPH . . . . . . . . .  D ADDR   0083H   A   
+DPL . . . . . . . . .  D ADDR   0082H   A   
+EA. . . . . . . . . .  B ADDR   00A8H.7 A   
+ERROR . . . . . . . .  C ADDR   -----       EXT
+ES. . . . . . . . . .  B ADDR   00A8H.4 A   
+ET0 . . . . . . . . .  B ADDR   00A8H.1 A   
+ET1 . . . . . . . . .  B ADDR   00A8H.3 A   
+ET2 . . . . . . . . .  B ADDR   00A8H.5 A   
+EX0 . . . . . . . . .  B ADDR   00A8H.0 A   
+EX1 . . . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2 . . . . . . . .  B ADDR   00C8H.3 A   
+EXF2. . . . . . . . .  B ADDR   00C8H.6 A   
+F0. . . . . . . . . .  B ADDR   00D0H.5 A   
+IE. . . . . . . . . .  D ADDR   00A8H   A   
+IE0 . . . . . . . . .  B ADDR   0088H.1 A   
+IE1 . . . . . . . . .  B ADDR   0088H.3 A   
+INT0. . . . . . . . .  B ADDR   00B0H.2 A   
+INT1. . . . . . . . .  B ADDR   00B0H.3 A   
+IP. . . . . . . . . .  D ADDR   00B8H   A   
+IT0 . . . . . . . . .  B ADDR   0088H.0 A   
+IT1 . . . . . . . . .  B ADDR   0088H.2 A   
+LOGICAL . . . . . . .  N NUMB   -----       
+ORL_A_DA. . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_A_DA?LOGICAL
+ORL_A_DI. . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_A_DI?LOGICAL
+ORL_A_RI. . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_A_RI?LOGICAL
+ORL_A_RN. . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_A_RN?LOGICAL
+ORL_DI_A. . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_DI_A?LOGICAL
+ORL_DI_DA . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_DI_DA?LOGICAL
+OV. . . . . . . . . .  B ADDR   00D0H.2 A   
+P . . . . . . . . . .  B ADDR   00D0H.0 A   
+P0. . . . . . . . . .  D ADDR   0080H   A   
+P1. . . . . . . . . .  D ADDR   0090H   A   
+P2. . . . . . . . . .  D ADDR   00A0H   A   
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    29
+
+P3. . . . . . . . . .  D ADDR   00B0H   A   
+PCON. . . . . . . . .  D ADDR   0087H   A   
+PS. . . . . . . . . .  B ADDR   00B8H.4 A   
+PSW . . . . . . . . .  D ADDR   00D0H   A   
+PT0 . . . . . . . . .  B ADDR   00B8H.1 A   
+PT1 . . . . . . . . .  B ADDR   00B8H.3 A   
+PT2 . . . . . . . . .  B ADDR   00B8H.5 A   
+PX0 . . . . . . . . .  B ADDR   00B8H.0 A   
+PX1 . . . . . . . . .  B ADDR   00B8H.2 A   
+RB8 . . . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H. . . . . . . .  D ADDR   00CBH   A   
+RCAP2L. . . . . . . .  D ADDR   00CAH   A   
+RCLK. . . . . . . . .  B ADDR   00C8H.5 A   
+RD. . . . . . . . . .  B ADDR   00B0H.7 A   
+REN . . . . . . . . .  B ADDR   0098H.4 A   
+RI. . . . . . . . . .  B ADDR   0098H.0 A   
+RLC_A . . . . . . . .  C ADDR   0000H   R   SEG=?PR?RLC_A?LOGICAL
+RL_A. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?RL_A?LOGICAL
+RRC_A . . . . . . . .  C ADDR   0000H   R   SEG=?PR?RRC_A?LOGICAL
+RR_A. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?RR_A?LOGICAL
+RS0 . . . . . . . . .  B ADDR   00D0H.3 A   
+RS1 . . . . . . . . .  B ADDR   00D0H.4 A   
+RXD . . . . . . . . .  B ADDR   00B0H.0 A   
+SBUF. . . . . . . . .  D ADDR   0099H   A   
+SCON. . . . . . . . .  D ADDR   0098H   A   
+SM0 . . . . . . . . .  B ADDR   0098H.7 A   
+SM1 . . . . . . . . .  B ADDR   0098H.6 A   
+SM2 . . . . . . . . .  B ADDR   0098H.5 A   
+SP. . . . . . . . . .  D ADDR   0081H   A   
+SWAP_A. . . . . . . .  C ADDR   0000H   R   SEG=?PR?SWAP_A?LOGICAL
+T0. . . . . . . . . .  B ADDR   00B0H.4 A   
+T1. . . . . . . . . .  B ADDR   00B0H.5 A   
+T2. . . . . . . . . .  B ADDR   0090H.0 A   
+T2CON . . . . . . . .  D ADDR   00C8H   A   
+T2EX. . . . . . . . .  B ADDR   0090H.1 A   
+TB8 . . . . . . . . .  B ADDR   0098H.3 A   
+TCLK. . . . . . . . .  B ADDR   00C8H.4 A   
+TCON. . . . . . . . .  D ADDR   0088H   A   
+TF0 . . . . . . . . .  B ADDR   0088H.5 A   
+TF1 . . . . . . . . .  B ADDR   0088H.7 A   
+TF2 . . . . . . . . .  B ADDR   00C8H.7 A   
+TH0 . . . . . . . . .  D ADDR   008CH   A   
+TH1 . . . . . . . . .  D ADDR   008DH   A   
+TH2 . . . . . . . . .  D ADDR   00CDH   A   
+TI. . . . . . . . . .  B ADDR   0098H.1 A   
+TL0 . . . . . . . . .  D ADDR   008AH   A   
+TL1 . . . . . . . . .  D ADDR   008BH   A   
+TL2 . . . . . . . . .  D ADDR   00CCH   A   
+TMOD. . . . . . . . .  D ADDR   0089H   A   
+TR0 . . . . . . . . .  B ADDR   0088H.4 A   
+TR1 . . . . . . . . .  B ADDR   0088H.6 A   
+TR2 . . . . . . . . .  B ADDR   00C8H.2 A   
+TXD . . . . . . . . .  B ADDR   00B0H.1 A   
+WR. . . . . . . . . .  B ADDR   00B0H.6 A   
+XRL_A_DA. . . . . . .  C ADDR   0000H   R   SEG=?PR?XRL_A_DA?LOGICAL
+XRL_A_DI. . . . . . .  C ADDR   0000H   R   SEG=?PR?XRL_A_DI?LOGICAL
+XRL_A_RI. . . . . . .  C ADDR   0000H   R   SEG=?PR?XRL_A_RI?LOGICAL
+XRL_A_RN. . . . . . .  C ADDR   0000H   R   SEG=?PR?XRL_A_RN?LOGICAL
+XRL_DI_A. . . . . . .  C ADDR   0000H   R   SEG=?PR?XRL_DI_A?LOGICAL
+XRL_DI_DA . . . . . .  C ADDR   0000H   R   SEG=?PR?XRL_DI_DA?LOGICAL
+_PRINTF . . . . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
+A51 MACRO ASSEMBLER  LOGICAL                                                              07/21/2014 16:39:34 PAGE    30
+

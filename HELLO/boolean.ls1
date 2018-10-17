@@ -1,0 +1,1823 @@
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN boolean.OBJ
+ASSEMBLER INVOKED BY: C:\myprog\Keil\C51\BIN\A51.EXE boolean.src PR(.\boolean.ls1) EP DEBUG
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; .\boolean.SRC generated from: boolean.c
+                       2     ; COMPILER INVOKED BY:
+                       3     ;        C:\myprog\Keil\C51\BIN\C51.EXE boolean.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\b
+                             oolean.SRC)
+                       4     
+                       5     $nomod51 
+                       6     
+                       7     NAME    BOOLEAN
+                       8     
+  0080                 9     P0      DATA    080H
+  0090                10     P1      DATA    090H
+  00A0                11     P2      DATA    0A0H
+  00B0                12     P3      DATA    0B0H
+  00B4                13     T0      BIT     0B0H.4
+  00D6                14     AC      BIT     0D0H.6
+  00B5                15     T1      BIT     0B0H.5
+  0090                16     T2      BIT     090H.0
+  00AF                17     EA      BIT     0A8H.7
+  00A8                18     IE      DATA    0A8H
+  00CE                19     EXF2    BIT     0C8H.6
+  00B7                20     RD      BIT     0B0H.7
+  00AC                21     ES      BIT     0A8H.4
+  00B8                22     IP      DATA    0B8H
+  0098                23     RI      BIT     098H.0
+  00B2                24     INT0    BIT     0B0H.2
+  00D7                25     CY      BIT     0D0H.7
+  0099                26     TI      BIT     098H.1
+  00B3                27     INT1    BIT     0B0H.3
+  00CB                28     RCAP2H  DATA    0CBH
+  00BC                29     PS      BIT     0B8H.4
+  0081                30     SP      DATA    081H
+  0091                31     T2EX    BIT     090H.1
+  00D2                32     OV      BIT     0D0H.2
+  00CA                33     RCAP2L  DATA    0CAH
+  00C9                34     C_T2    BIT     0C8H.1
+  00B6                35     WR      BIT     0B0H.6
+  00CD                36     RCLK    BIT     0C8H.5
+  00CC                37     TCLK    BIT     0C8H.4
+  0099                38     SBUF    DATA    099H
+  0087                39     PCON    DATA    087H
+  0098                40     SCON    DATA    098H
+  0089                41     TMOD    DATA    089H
+  0088                42     TCON    DATA    088H
+  0089                43     IE0     BIT     088H.1
+  008B                44     IE1     BIT     088H.3
+  00F0                45     B       DATA    0F0H
+  00C8                46     CP_RL2  BIT     0C8H.0
+  00E0                47     ACC     DATA    0E0H
+  00A9                48     ET0     BIT     0A8H.1
+  00AB                49     ET1     BIT     0A8H.3
+  008D                50     TF0     BIT     088H.5
+  00AD                51     ET2     BIT     0A8H.5
+  008F                52     TF1     BIT     088H.7
+  00CF                53     TF2     BIT     0C8H.7
+  009A                54     RB8     BIT     098H.2
+  008C                55     TH0     DATA    08CH
+  00A8                56     EX0     BIT     0A8H.0
+  0088                57     IT0     BIT     088H.0
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     2
+
+  008D                58     TH1     DATA    08DH
+  009B                59     TB8     BIT     098H.3
+  00AA                60     EX1     BIT     0A8H.2
+  008A                61     IT1     BIT     088H.2
+  00CD                62     TH2     DATA    0CDH
+  00D0                63     P       BIT     0D0H.0
+  009F                64     SM0     BIT     098H.7
+  008A                65     TL0     DATA    08AH
+  009E                66     SM1     BIT     098H.6
+  008B                67     TL1     DATA    08BH
+  009D                68     SM2     BIT     098H.5
+  00CC                69     TL2     DATA    0CCH
+  00B9                70     PT0     BIT     0B8H.1
+  00BB                71     PT1     BIT     0B8H.3
+  00D3                72     RS0     BIT     0D0H.3
+  00BD                73     PT2     BIT     0B8H.5
+  008C                74     TR0     BIT     088H.4
+  00D4                75     RS1     BIT     0D0H.4
+  008E                76     TR1     BIT     088H.6
+  00CA                77     TR2     BIT     0C8H.2
+  00B8                78     PX0     BIT     0B8H.0
+  00BA                79     PX1     BIT     0B8H.2
+  0083                80     DPH     DATA    083H
+  0082                81     DPL     DATA    082H
+  00CB                82     EXEN2   BIT     0C8H.3
+  009C                83     REN     BIT     098H.4
+  00C8                84     T2CON   DATA    0C8H
+  00B0                85     RXD     BIT     0B0H.0
+  00B1                86     TXD     BIT     0B0H.1
+  00D5                87     F0      BIT     0D0H.5
+  00D0                88     PSW     DATA    0D0H
+                      89     ?PR?clr_c?BOOLEAN    SEGMENT CODE 
+                      90     ?PR?clr_bit?BOOLEAN  SEGMENT CODE 
+                      91     ?PR?setb_c?BOOLEAN   SEGMENT CODE 
+                      92     ?PR?setb_bit?BOOLEAN SEGMENT CODE 
+                      93     ?PR?cpl_c?BOOLEAN    SEGMENT CODE 
+                      94     ?PR?cpl_bit?BOOLEAN  SEGMENT CODE 
+                      95     ?PR?anl_c_bit?BOOLEAN                    SEGMENT CODE 
+                      96     ?PR?anl_c_nbit?BOOLEAN                   SEGMENT CODE 
+                      97     ?PR?orl_c_bit?BOOLEAN                    SEGMENT CODE 
+                      98     ?PR?orl_c_nbit?BOOLEAN                   SEGMENT CODE 
+                      99     ?PR?mov_c_bit?BOOLEAN                    SEGMENT CODE 
+                     100     ?PR?mov_bit_c?BOOLEAN                    SEGMENT CODE 
+                     101     ?PR?jc_c?BOOLEAN     SEGMENT CODE 
+                     102     ?PR?jnc_c?BOOLEAN    SEGMENT CODE 
+                     103     ?PR?jb_bit?BOOLEAN   SEGMENT CODE 
+                     104     ?PR?jnb_bit?BOOLEAN  SEGMENT CODE 
+                     105     ?PR?jbc_bit?BOOLEAN  SEGMENT CODE 
+                     106     ?CO?BOOLEAN          SEGMENT CODE 
+                     107             EXTRN   CODE (_printf)
+                     108             EXTRN   DATA (?_printf?BYTE)
+                     109             EXTRN   CODE (error)
+                     110             PUBLIC  jbc_bit
+                     111             PUBLIC  jnb_bit
+                     112             PUBLIC  jb_bit
+                     113             PUBLIC  jnc_c
+                     114             PUBLIC  jc_c
+                     115             PUBLIC  mov_bit_c
+                     116             PUBLIC  mov_c_bit
+                     117             PUBLIC  orl_c_nbit
+                     118             PUBLIC  orl_c_bit
+                     119             PUBLIC  anl_c_nbit
+                     120             PUBLIC  anl_c_bit
+                     121             PUBLIC  cpl_bit
+                     122             PUBLIC  cpl_c
+                     123             PUBLIC  setb_bit
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     3
+
+                     124             PUBLIC  setb_c
+                     125             PUBLIC  clr_bit
+                     126             PUBLIC  clr_c
+                     127     
+----                 128             RSEG  ?CO?BOOLEAN
+0000                 129     ?SC_0:
+0000 434C525F        130             DB  'C' ,'L' ,'R' ,'_' ,'C' ,00AH,000H
+0004 430A00                  
+                     131     
+0007                 132     ?SC_7:
+0007 434C525F        133             DB  'C' ,'L' ,'R' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+000B 4249540A                
+000F 00                      
+                     134     
+0010                 135     ?SC_16:
+0010 53455442        136             DB  'S' ,'E' ,'T' ,'B' ,'_' ,'C' ,00AH,000H
+0014 5F430A00                
+                     137     
+0018                 138     ?SC_24:
+0018 53455442        139             DB  'S' ,'E' ,'T' ,'B' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+001C 5F424954                
+0020 0A00                    
+                     140     
+0022                 141     ?SC_34:
+0022 43504C5F        142             DB  'C' ,'P' ,'L' ,'_' ,'C' ,00AH,000H
+0026 430A00                  
+                     143     
+0029                 144     ?SC_41:
+0029 43504C5F        145             DB  'C' ,'P' ,'L' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+002D 4249540A                
+0031 00                      
+                     146     
+0032                 147     ?SC_50:
+0032 414E4C5F        148             DB  'A' ,'N' ,'L' ,'_' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH
+0036 435F4249                
+003A 540A                    
+003C 00              149             DB  000H
+                     150     
+003D                 151     ?SC_61:
+003D 414E4C5F        152             DB  'A' ,'N' ,'L' ,'_' ,'C' ,'_' ,'N' ,'B' ,'I' ,'T' 
+0041 435F4E42                
+0045 4954                    
+0047 0A00            153             DB  00AH,000H
+                     154     
+0049                 155     ?SC_73:
+0049 4F524C5F        156             DB  'O' ,'R' ,'L' ,'_' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH
+004D 435F4249                
+0051 540A                    
+0053 00              157             DB  000H
+                     158     
+0054                 159     ?SC_84:
+0054 4F524C5F        160             DB  'O' ,'R' ,'L' ,'_' ,'C' ,'_' ,'N' ,'B' ,'I' ,'T' 
+0058 435F4E42                
+005C 4954                    
+005E 0A00            161             DB  00AH,000H
+                     162     
+0060                 163     ?SC_96:
+0060 4D4F565F        164             DB  'M' ,'O' ,'V' ,'_' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH
+0064 435F4249                
+0068 540A                    
+006A 00              165             DB  000H
+                     166     
+006B                 167     ?SC_107:
+006B 4D4F565F        168             DB  'M' ,'O' ,'V' ,'_' ,'B' ,'I' ,'T' ,'_' ,'C' ,00AH
+006F 4249545F                
+0073 430A                    
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     4
+
+0075 00              169             DB  000H
+                     170     
+0076                 171     ?SC_118:
+0076 4A435F43        172             DB  'J' ,'C' ,'_' ,'C' ,00AH,000H
+007A 0A00                    
+                     173     
+007C                 174     ?SC_124:
+007C 4A4E435F        175             DB  'J' ,'N' ,'C' ,'_' ,'C' ,00AH,000H
+0080 430A00                  
+                     176     
+0083                 177     ?SC_131:
+0083 4A425F42        178             DB  'J' ,'B' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+0087 49540A00                
+                     179     
+008B                 180     ?SC_139:
+008B 4A4E425F        181             DB  'J' ,'N' ,'B' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+008F 4249540A                
+0093 00                      
+                     182     
+0094                 183     ?SC_148:
+0094 4A42435F        184             DB  'J' ,'B' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+0098 4249540A                
+009C 00                      
+                     185     
+                     186     ; #include <REG52.H>
+                     187     ; #include <stdio.h> 
+                     188     ; #include "instruction.h"
+                     189     ; 
+                     190     ; void clr_c(void) {
+                     191     
+----                 192             RSEG  ?PR?clr_c?BOOLEAN
+0000                 193     clr_c:
+                     194             USING   0
+                     195                             ; SOURCE LINE # 5
+                     196     ;       printf("CLR_C\n");
+                     197                             ; SOURCE LINE # 6
+0000 7BFF            198             MOV     R3,#0FFH
+0002 7A00     F      199             MOV     R2,#HIGH (?SC_0)
+0004 7900     F      200             MOV     R1,#LOW (?SC_0)
+0006 120000   F      201             LCALL   _printf
+                     202     ;       #pragma ASM  
+                     203     ;       push psw
+0009 C0D0            204               push psw
+                     205     ;       push acc
+000B C0E0            206               push acc
+                     207     ;     mov  psw,#0H      
+000D 75D000          208               mov  psw,#0H  
+                     209     ;     setb rs0     
+0010 D2D3            210               setb rs0     
+                     211     ;       setb rs1        
+0012 D2D4            212               setb rs1      
+                     213     ;     #pragma ENDASM 
+                     214     ;       
+                     215     ;       #pragma ASM
+                     216     ;       setb C
+0014 D3              217               setb C
+                     218     ;       clr C
+0015 C3              219               clr C
+                     220     ;     #pragma ENDASM    
+                     221     ;       if (CY!=0x0) test_status = 0;
+                     222                             ; SOURCE LINE # 19
+0016 30D705          223             JNB     CY,?C0001
+0019 90007E          224             MOV     DPTR,#07EH
+001C E4              225             CLR     A
+001D F0              226             MOVX    @DPTR,A
+001E                 227     ?C0001:
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     5
+
+                     228     ;       
+                     229     ;       #pragma ASM 
+                     230     ;       pop acc
+001E D0E0            231               pop acc
+                     232     ;     pop psw   
+0020 D0D0            233               pop psw       
+                     234     ;     #pragma ENDASM
+                     235     ;     error();  
+                     236                             ; SOURCE LINE # 25
+0022 020000   F      237             LJMP    error
+                     238     ; END OF clr_c
+                     239     
+                     240     ; }
+                     241     ; 
+                     242     ; void clr_bit(void) {
+                     243     
+----                 244             RSEG  ?PR?clr_bit?BOOLEAN
+0000                 245     clr_bit:
+                     246             USING   0
+                     247                             ; SOURCE LINE # 28
+                     248     ;       printf("CLR_BIT\n");
+                     249                             ; SOURCE LINE # 29
+0000 7BFF            250             MOV     R3,#0FFH
+0002 7A00     F      251             MOV     R2,#HIGH (?SC_7)
+0004 7900     F      252             MOV     R1,#LOW (?SC_7)
+0006 120000   F      253             LCALL   _printf
+                     254     ;       #pragma ASM  
+                     255     ;       push psw
+0009 C0D0            256               push psw
+                     257     ;       push acc
+000B C0E0            258               push acc
+                     259     ;     mov  psw,#0H      
+000D 75D000          260               mov  psw,#0H  
+                     261     ;     setb rs0     
+0010 D2D3            262               setb rs0     
+                     263     ;       setb rs1        
+0012 D2D4            264               setb rs1      
+                     265     ;     #pragma ENDASM 
+                     266     ;       
+                     267     ;       #pragma ASM
+                     268     ;       mov 0x20,#0ffH
+0014 7520FF          269               mov 0x20,#0ffH
+                     270     ;       clr 0x7
+0017 C207            271               clr 0x7
+                     272     ;     #pragma ENDASM    
+                     273     ;       if (bit_data!=0x7f) test_status = 0;
+                     274                             ; SOURCE LINE # 42
+0019 7820            275             MOV     R0,#020H
+001B E6              276             MOV     A,@R0
+001C 647F            277             XRL     A,#07FH
+001E 6005            278             JZ      ?C0003
+0020 90007E          279             MOV     DPTR,#07EH
+0023 E4              280             CLR     A
+0024 F0              281             MOVX    @DPTR,A
+0025                 282     ?C0003:
+                     283     ;       
+                     284     ;       #pragma ASM 
+                     285     ;       pop acc
+0025 D0E0            286               pop acc
+                     287     ;     pop psw   
+0027 D0D0            288               pop psw       
+                     289     ;     #pragma ENDASM
+                     290     ;     error();  
+                     291                             ; SOURCE LINE # 48
+0029 020000   F      292             LJMP    error
+                     293     ; END OF clr_bit
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     6
+
+                     294     
+                     295     ; }
+                     296     ; 
+                     297     ; void setb_c(void) {
+                     298     
+----                 299             RSEG  ?PR?setb_c?BOOLEAN
+0000                 300     setb_c:
+                     301             USING   0
+                     302                             ; SOURCE LINE # 51
+                     303     ;       printf("SETB_C\n");
+                     304                             ; SOURCE LINE # 52
+0000 7BFF            305             MOV     R3,#0FFH
+0002 7A00     F      306             MOV     R2,#HIGH (?SC_16)
+0004 7900     F      307             MOV     R1,#LOW (?SC_16)
+0006 120000   F      308             LCALL   _printf
+                     309     ;       #pragma ASM  
+                     310     ;       push psw
+0009 C0D0            311               push psw
+                     312     ;       push acc
+000B C0E0            313               push acc
+                     314     ;     mov  psw,#0H      
+000D 75D000          315               mov  psw,#0H  
+                     316     ;     setb rs0     
+0010 D2D3            317               setb rs0     
+                     318     ;       setb rs1        
+0012 D2D4            319               setb rs1      
+                     320     ;     #pragma ENDASM 
+                     321     ;       
+                     322     ;       #pragma ASM
+                     323     ;       setb C
+0014 D3              324               setb C
+                     325     ;     #pragma ENDASM    
+                     326     ;       if (CY!=0x1) test_status = 0;
+                     327                             ; SOURCE LINE # 64
+0015 20D705          328             JB      CY,?C0005
+0018 90007E          329             MOV     DPTR,#07EH
+001B E4              330             CLR     A
+001C F0              331             MOVX    @DPTR,A
+001D                 332     ?C0005:
+                     333     ;       
+                     334     ;       #pragma ASM 
+                     335     ;       pop acc
+001D D0E0            336               pop acc
+                     337     ;     pop psw   
+001F D0D0            338               pop psw       
+                     339     ;     #pragma ENDASM
+                     340     ;     error();  
+                     341                             ; SOURCE LINE # 70
+0021 020000   F      342             LJMP    error
+                     343     ; END OF setb_c
+                     344     
+                     345     ; }
+                     346     ; 
+                     347     ; void setb_bit(void) {
+                     348     
+----                 349             RSEG  ?PR?setb_bit?BOOLEAN
+0000                 350     setb_bit:
+                     351             USING   0
+                     352                             ; SOURCE LINE # 73
+                     353     ;       printf("SETB_BIT\n");
+                     354                             ; SOURCE LINE # 74
+0000 7BFF            355             MOV     R3,#0FFH
+0002 7A00     F      356             MOV     R2,#HIGH (?SC_24)
+0004 7900     F      357             MOV     R1,#LOW (?SC_24)
+0006 120000   F      358             LCALL   _printf
+                     359     ;       #pragma ASM  
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     7
+
+                     360     ;       push psw
+0009 C0D0            361               push psw
+                     362     ;       push acc
+000B C0E0            363               push acc
+                     364     ;     mov  psw,#0H      
+000D 75D000          365               mov  psw,#0H  
+                     366     ;     setb rs0     
+0010 D2D3            367               setb rs0     
+                     368     ;       setb rs1        
+0012 D2D4            369               setb rs1      
+                     370     ;     #pragma ENDASM 
+                     371     ;       
+                     372     ;       #pragma ASM
+                     373     ;       mov 0x20,#0H
+0014 752000          374               mov 0x20,#0H
+                     375     ;       setb 0x6
+0017 D206            376               setb 0x6
+                     377     ;     #pragma ENDASM    
+                     378     ;       if (bit_data!=0x40) test_status = 0;
+                     379                             ; SOURCE LINE # 87
+0019 7820            380             MOV     R0,#020H
+001B E6              381             MOV     A,@R0
+001C 6440            382             XRL     A,#040H
+001E 6005            383             JZ      ?C0007
+0020 90007E          384             MOV     DPTR,#07EH
+0023 E4              385             CLR     A
+0024 F0              386             MOVX    @DPTR,A
+0025                 387     ?C0007:
+                     388     ;       
+                     389     ;       #pragma ASM 
+                     390     ;       pop acc
+0025 D0E0            391               pop acc
+                     392     ;     pop psw   
+0027 D0D0            393               pop psw       
+                     394     ;     #pragma ENDASM
+                     395     ;     error();  
+                     396                             ; SOURCE LINE # 93
+0029 020000   F      397             LJMP    error
+                     398     ; END OF setb_bit
+                     399     
+                     400     ; }
+                     401     ; 
+                     402     ; void cpl_c(void) {
+                     403     
+----                 404             RSEG  ?PR?cpl_c?BOOLEAN
+0000                 405     cpl_c:
+                     406             USING   0
+                     407                             ; SOURCE LINE # 96
+                     408     ;       printf("CPL_C\n");
+                     409                             ; SOURCE LINE # 97
+0000 7BFF            410             MOV     R3,#0FFH
+0002 7A00     F      411             MOV     R2,#HIGH (?SC_34)
+0004 7900     F      412             MOV     R1,#LOW (?SC_34)
+0006 120000   F      413             LCALL   _printf
+                     414     ;       #pragma ASM  
+                     415     ;       push psw
+0009 C0D0            416               push psw
+                     417     ;       push acc
+000B C0E0            418               push acc
+                     419     ;     mov  psw,#0H      
+000D 75D000          420               mov  psw,#0H  
+                     421     ;     setb rs0     
+0010 D2D3            422               setb rs0     
+                     423     ;       setb rs1        
+0012 D2D4            424               setb rs1      
+                     425     ;     #pragma ENDASM 
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     8
+
+                     426     ;       
+                     427     ;       #pragma ASM
+                     428     ;       clr C
+0014 C3              429               clr C
+                     430     ;       cpl C
+0015 B3              431               cpl C
+                     432     ;     #pragma ENDASM    
+                     433     ;       if (CY!=0x1) test_status = 0;
+                     434                             ; SOURCE LINE # 110
+0016 20D705          435             JB      CY,?C0009
+0019 90007E          436             MOV     DPTR,#07EH
+001C E4              437             CLR     A
+001D F0              438             MOVX    @DPTR,A
+001E                 439     ?C0009:
+                     440     ;       
+                     441     ;       #pragma ASM 
+                     442     ;       pop acc
+001E D0E0            443               pop acc
+                     444     ;     pop psw   
+0020 D0D0            445               pop psw       
+                     446     ;     #pragma ENDASM
+                     447     ;     error();  
+                     448                             ; SOURCE LINE # 116
+0022 020000   F      449             LJMP    error
+                     450     ; END OF cpl_c
+                     451     
+                     452     ; }
+                     453     ; 
+                     454     ; void cpl_bit(void) {
+                     455     
+----                 456             RSEG  ?PR?cpl_bit?BOOLEAN
+0000                 457     cpl_bit:
+                     458             USING   0
+                     459                             ; SOURCE LINE # 119
+                     460     ;       printf("CPL_BIT\n");
+                     461                             ; SOURCE LINE # 120
+0000 7BFF            462             MOV     R3,#0FFH
+0002 7A00     F      463             MOV     R2,#HIGH (?SC_41)
+0004 7900     F      464             MOV     R1,#LOW (?SC_41)
+0006 120000   F      465             LCALL   _printf
+                     466     ;       #pragma ASM  
+                     467     ;       push psw
+0009 C0D0            468               push psw
+                     469     ;       push acc
+000B C0E0            470               push acc
+                     471     ;     mov  psw,#0H      
+000D 75D000          472               mov  psw,#0H  
+                     473     ;     setb rs0     
+0010 D2D3            474               setb rs0     
+                     475     ;       setb rs1        
+0012 D2D4            476               setb rs1      
+                     477     ;     #pragma ENDASM 
+                     478     ;       
+                     479     ;       #pragma ASM
+                     480     ;       mov 0x20,#55H
+0014 752055          481               mov 0x20,#55H
+                     482     ;       cpl 0x7
+0017 B207            483               cpl 0x7
+                     484     ;     #pragma ENDASM    
+                     485     ;       if (bit_data!=0xd5) test_status = 0;
+                     486                             ; SOURCE LINE # 133
+0019 7820            487             MOV     R0,#020H
+001B E6              488             MOV     A,@R0
+001C 64D5            489             XRL     A,#0D5H
+001E 6005            490             JZ      ?C0011
+0020 90007E          491             MOV     DPTR,#07EH
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE     9
+
+0023 E4              492             CLR     A
+0024 F0              493             MOVX    @DPTR,A
+0025                 494     ?C0011:
+                     495     ;       
+                     496     ;       #pragma ASM 
+                     497     ;       pop acc
+0025 D0E0            498               pop acc
+                     499     ;     pop psw   
+0027 D0D0            500               pop psw       
+                     501     ;     #pragma ENDASM
+                     502     ;     error();  
+                     503                             ; SOURCE LINE # 139
+0029 020000   F      504             LJMP    error
+                     505     ; END OF cpl_bit
+                     506     
+                     507     ; }
+                     508     ; 
+                     509     ; void anl_c_bit(void) {
+                     510     
+----                 511             RSEG  ?PR?anl_c_bit?BOOLEAN
+0000                 512     anl_c_bit:
+                     513             USING   0
+                     514                             ; SOURCE LINE # 142
+                     515     ;       printf("ANL_C_BIT\n");
+                     516                             ; SOURCE LINE # 143
+0000 7BFF            517             MOV     R3,#0FFH
+0002 7A00     F      518             MOV     R2,#HIGH (?SC_50)
+0004 7900     F      519             MOV     R1,#LOW (?SC_50)
+0006 120000   F      520             LCALL   _printf
+                     521     ;       #pragma ASM  
+                     522     ;       push psw
+0009 C0D0            523               push psw
+                     524     ;       push acc
+000B C0E0            525               push acc
+                     526     ;     mov  psw,#0H      
+000D 75D000          527               mov  psw,#0H  
+                     528     ;     setb rs0     
+0010 D2D3            529               setb rs0     
+                     530     ;       setb rs1        
+0012 D2D4            531               setb rs1      
+                     532     ;     #pragma ENDASM 
+                     533     ;       
+                     534     ;       #pragma ASM
+                     535     ;       mov 0x20,#7fH
+0014 75207F          536               mov 0x20,#7fH
+                     537     ;       setb C
+0017 D3              538               setb C
+                     539     ;       anl C,0x7
+0018 8207            540               anl C,0x7
+                     541     ;     #pragma ENDASM    
+                     542     ;       if (CY!=0x0) test_status = 0;
+                     543                             ; SOURCE LINE # 157
+001A 30D705          544             JNB     CY,?C0013
+001D 90007E          545             MOV     DPTR,#07EH
+0020 E4              546             CLR     A
+0021 F0              547             MOVX    @DPTR,A
+0022                 548     ?C0013:
+                     549     ;       
+                     550     ;       #pragma ASM 
+                     551     ;       pop acc
+0022 D0E0            552               pop acc
+                     553     ;     pop psw   
+0024 D0D0            554               pop psw       
+                     555     ;     #pragma ENDASM
+                     556     ;     error();  
+                     557                             ; SOURCE LINE # 163
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    10
+
+0026 020000   F      558             LJMP    error
+                     559     ; END OF anl_c_bit
+                     560     
+                     561     ; }
+                     562     ; 
+                     563     ; void anl_c_nbit(void) {
+                     564     
+----                 565             RSEG  ?PR?anl_c_nbit?BOOLEAN
+0000                 566     anl_c_nbit:
+                     567             USING   0
+                     568                             ; SOURCE LINE # 166
+                     569     ;       printf("ANL_C_NBIT\n");
+                     570                             ; SOURCE LINE # 167
+0000 7BFF            571             MOV     R3,#0FFH
+0002 7A00     F      572             MOV     R2,#HIGH (?SC_61)
+0004 7900     F      573             MOV     R1,#LOW (?SC_61)
+0006 120000   F      574             LCALL   _printf
+                     575     ;       #pragma ASM  
+                     576     ;       push psw
+0009 C0D0            577               push psw
+                     578     ;       push acc
+000B C0E0            579               push acc
+                     580     ;     mov  psw,#0H      
+000D 75D000          581               mov  psw,#0H  
+                     582     ;     setb rs0     
+0010 D2D3            583               setb rs0     
+                     584     ;       setb rs1        
+0012 D2D4            585               setb rs1      
+                     586     ;     #pragma ENDASM 
+                     587     ;       
+                     588     ;       #pragma ASM
+                     589     ;       mov 0x20,#010H
+0014 752010          590               mov 0x20,#010H
+                     591     ;       setb C
+0017 D3              592               setb C
+                     593     ;       anl C,/0x4
+0018 B004            594               anl C,/0x4
+                     595     ;     #pragma ENDASM    
+                     596     ;       if (CY!=0x0) test_status = 0;
+                     597                             ; SOURCE LINE # 181
+001A 30D705          598             JNB     CY,?C0015
+001D 90007E          599             MOV     DPTR,#07EH
+0020 E4              600             CLR     A
+0021 F0              601             MOVX    @DPTR,A
+0022                 602     ?C0015:
+                     603     ;       
+                     604     ;       #pragma ASM 
+                     605     ;       pop acc
+0022 D0E0            606               pop acc
+                     607     ;     pop psw   
+0024 D0D0            608               pop psw       
+                     609     ;     #pragma ENDASM
+                     610     ;     error();  
+                     611                             ; SOURCE LINE # 187
+0026 020000   F      612             LJMP    error
+                     613     ; END OF anl_c_nbit
+                     614     
+                     615     ; }
+                     616     ; 
+                     617     ; void orl_c_bit(void) {
+                     618     
+----                 619             RSEG  ?PR?orl_c_bit?BOOLEAN
+0000                 620     orl_c_bit:
+                     621             USING   0
+                     622                             ; SOURCE LINE # 190
+                     623     ;       printf("ORL_C_BIT\n");
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    11
+
+                     624                             ; SOURCE LINE # 191
+0000 7BFF            625             MOV     R3,#0FFH
+0002 7A00     F      626             MOV     R2,#HIGH (?SC_73)
+0004 7900     F      627             MOV     R1,#LOW (?SC_73)
+0006 120000   F      628             LCALL   _printf
+                     629     ;       #pragma ASM  
+                     630     ;       push psw
+0009 C0D0            631               push psw
+                     632     ;       push acc
+000B C0E0            633               push acc
+                     634     ;     mov  psw,#0H      
+000D 75D000          635               mov  psw,#0H  
+                     636     ;     setb rs0     
+0010 D2D3            637               setb rs0     
+                     638     ;       setb rs1        
+0012 D2D4            639               setb rs1      
+                     640     ;     #pragma ENDASM 
+                     641     ;       
+                     642     ;       #pragma ASM
+                     643     ;       mov 0x20,#80H
+0014 752080          644               mov 0x20,#80H
+                     645     ;       clr C
+0017 C3              646               clr C
+                     647     ;       orl C,0x7
+0018 7207            648               orl C,0x7
+                     649     ;     #pragma ENDASM    
+                     650     ;       if (CY!=0x1) test_status = 0;
+                     651                             ; SOURCE LINE # 205
+001A 20D705          652             JB      CY,?C0017
+001D 90007E          653             MOV     DPTR,#07EH
+0020 E4              654             CLR     A
+0021 F0              655             MOVX    @DPTR,A
+0022                 656     ?C0017:
+                     657     ;       
+                     658     ;       #pragma ASM 
+                     659     ;       pop acc
+0022 D0E0            660               pop acc
+                     661     ;     pop psw   
+0024 D0D0            662               pop psw       
+                     663     ;     #pragma ENDASM
+                     664     ;     error();  
+                     665                             ; SOURCE LINE # 211
+0026 020000   F      666             LJMP    error
+                     667     ; END OF orl_c_bit
+                     668     
+                     669     ; }
+                     670     ; 
+                     671     ; void orl_c_nbit(void) {
+                     672     
+----                 673             RSEG  ?PR?orl_c_nbit?BOOLEAN
+0000                 674     orl_c_nbit:
+                     675             USING   0
+                     676                             ; SOURCE LINE # 214
+                     677     ;       printf("ORL_C_NBIT\n");
+                     678                             ; SOURCE LINE # 215
+0000 7BFF            679             MOV     R3,#0FFH
+0002 7A00     F      680             MOV     R2,#HIGH (?SC_84)
+0004 7900     F      681             MOV     R1,#LOW (?SC_84)
+0006 120000   F      682             LCALL   _printf
+                     683     ;       #pragma ASM  
+                     684     ;       push psw
+0009 C0D0            685               push psw
+                     686     ;       push acc
+000B C0E0            687               push acc
+                     688     ;     mov  psw,#0H      
+000D 75D000          689               mov  psw,#0H  
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    12
+
+                     690     ;     setb rs0     
+0010 D2D3            691               setb rs0     
+                     692     ;       setb rs1        
+0012 D2D4            693               setb rs1      
+                     694     ;     #pragma ENDASM 
+                     695     ;       
+                     696     ;       #pragma ASM
+                     697     ;       mov 0x20,#0efH
+0014 7520EF          698               mov 0x20,#0efH
+                     699     ;       clr C
+0017 C3              700               clr C
+                     701     ;       orl C,/0x4
+0018 A004            702               orl C,/0x4
+                     703     ;     #pragma ENDASM    
+                     704     ;       if (CY!=0x1) test_status = 0;
+                     705                             ; SOURCE LINE # 229
+001A 20D705          706             JB      CY,?C0019
+001D 90007E          707             MOV     DPTR,#07EH
+0020 E4              708             CLR     A
+0021 F0              709             MOVX    @DPTR,A
+0022                 710     ?C0019:
+                     711     ;       
+                     712     ;       #pragma ASM 
+                     713     ;       pop acc
+0022 D0E0            714               pop acc
+                     715     ;     pop psw   
+0024 D0D0            716               pop psw       
+                     717     ;     #pragma ENDASM
+                     718     ;     error();  
+                     719                             ; SOURCE LINE # 235
+0026 020000   F      720             LJMP    error
+                     721     ; END OF orl_c_nbit
+                     722     
+                     723     ; }
+                     724     ; 
+                     725     ; void mov_c_bit(void) {
+                     726     
+----                 727             RSEG  ?PR?mov_c_bit?BOOLEAN
+0000                 728     mov_c_bit:
+                     729             USING   0
+                     730                             ; SOURCE LINE # 238
+                     731     ;       printf("MOV_C_BIT\n");
+                     732                             ; SOURCE LINE # 239
+0000 7BFF            733             MOV     R3,#0FFH
+0002 7A00     F      734             MOV     R2,#HIGH (?SC_96)
+0004 7900     F      735             MOV     R1,#LOW (?SC_96)
+0006 120000   F      736             LCALL   _printf
+                     737     ;       #pragma ASM  
+                     738     ;       push psw
+0009 C0D0            739               push psw
+                     740     ;       push acc
+000B C0E0            741               push acc
+                     742     ;     mov  psw,#0H      
+000D 75D000          743               mov  psw,#0H  
+                     744     ;     setb rs0     
+0010 D2D3            745               setb rs0     
+                     746     ;       setb rs1        
+0012 D2D4            747               setb rs1      
+                     748     ;     #pragma ENDASM 
+                     749     ;       
+                     750     ;       #pragma ASM
+                     751     ;       mov 0x20,#080H
+0014 752080          752               mov 0x20,#080H
+                     753     ;       clr C
+0017 C3              754               clr C
+                     755     ;       mov C,0x7
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    13
+
+0018 A207            756               mov C,0x7
+                     757     ;     #pragma ENDASM    
+                     758     ;       if (CY!=0x1) test_status = 0;
+                     759                             ; SOURCE LINE # 253
+001A 20D705          760             JB      CY,?C0021
+001D 90007E          761             MOV     DPTR,#07EH
+0020 E4              762             CLR     A
+0021 F0              763             MOVX    @DPTR,A
+0022                 764     ?C0021:
+                     765     ;       
+                     766     ;       #pragma ASM 
+                     767     ;       pop acc
+0022 D0E0            768               pop acc
+                     769     ;     pop psw   
+0024 D0D0            770               pop psw       
+                     771     ;     #pragma ENDASM
+                     772     ;     error();  
+                     773                             ; SOURCE LINE # 259
+0026 020000   F      774             LJMP    error
+                     775     ; END OF mov_c_bit
+                     776     
+                     777     ; }
+                     778     ; 
+                     779     ; void mov_bit_c(void) {
+                     780     
+----                 781             RSEG  ?PR?mov_bit_c?BOOLEAN
+0000                 782     mov_bit_c:
+                     783             USING   0
+                     784                             ; SOURCE LINE # 262
+                     785     ;       printf("MOV_BIT_C\n");
+                     786                             ; SOURCE LINE # 263
+0000 7BFF            787             MOV     R3,#0FFH
+0002 7A00     F      788             MOV     R2,#HIGH (?SC_107)
+0004 7900     F      789             MOV     R1,#LOW (?SC_107)
+0006 120000   F      790             LCALL   _printf
+                     791     ;       #pragma ASM  
+                     792     ;       push psw
+0009 C0D0            793               push psw
+                     794     ;       push acc
+000B C0E0            795               push acc
+                     796     ;     mov  psw,#0H      
+000D 75D000          797               mov  psw,#0H  
+                     798     ;     setb rs0     
+0010 D2D3            799               setb rs0     
+                     800     ;       setb rs1        
+0012 D2D4            801               setb rs1      
+                     802     ;     #pragma ENDASM 
+                     803     ;       
+                     804     ;       #pragma ASM
+                     805     ;       mov 0x20,#000H
+0014 752000          806               mov 0x20,#000H
+                     807     ;       setb C
+0017 D3              808               setb C
+                     809     ;       mov 0x4,C
+0018 9204            810               mov 0x4,C
+                     811     ;     #pragma ENDASM    
+                     812     ;       if (bit_data!=0x10) test_status = 0;
+                     813                             ; SOURCE LINE # 277
+001A 7820            814             MOV     R0,#020H
+001C E6              815             MOV     A,@R0
+001D 6410            816             XRL     A,#010H
+001F 6005            817             JZ      ?C0023
+0021 90007E          818             MOV     DPTR,#07EH
+0024 E4              819             CLR     A
+0025 F0              820             MOVX    @DPTR,A
+0026                 821     ?C0023:
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    14
+
+                     822     ;       
+                     823     ;       #pragma ASM 
+                     824     ;       pop acc
+0026 D0E0            825               pop acc
+                     826     ;     pop psw   
+0028 D0D0            827               pop psw       
+                     828     ;     #pragma ENDASM
+                     829     ;     error();  
+                     830                             ; SOURCE LINE # 283
+002A 020000   F      831             LJMP    error
+                     832     ; END OF mov_bit_c
+                     833     
+                     834     ; }
+                     835     ; 
+                     836     ; void jc_c(void) {
+                     837     
+----                 838             RSEG  ?PR?jc_c?BOOLEAN
+0000                 839     jc_c:
+                     840             USING   0
+                     841                             ; SOURCE LINE # 286
+                     842     ;       printf("JC_C\n");
+                     843                             ; SOURCE LINE # 287
+0000 7BFF            844             MOV     R3,#0FFH
+0002 7A00     F      845             MOV     R2,#HIGH (?SC_118)
+0004 7900     F      846             MOV     R1,#LOW (?SC_118)
+0006 120000   F      847             LCALL   _printf
+                     848     ;       #pragma ASM  
+                     849     ;       push psw
+0009 C0D0            850               push psw
+                     851     ;       push acc
+000B C0E0            852               push acc
+                     853     ;     mov  psw,#0H      
+000D 75D000          854               mov  psw,#0H  
+                     855     ;     setb rs0     
+0010 D2D3            856               setb rs0     
+                     857     ;       setb rs1        
+0012 D2D4            858               setb rs1      
+                     859     ;     #pragma ENDASM 
+                     860     ;       
+                     861     ;       #pragma ASM
+                     862     ;       clr C
+0014 C3              863               clr C
+                     864     ;       JC  ERROR0_JC_C
+0015 4006            865               JC  ERROR0_JC_C
+                     866     ;       cpl C
+0017 B3              867               cpl C
+                     868     ;       JC  RIGHT0_JC_C
+0018 4008            869               JC  RIGHT0_JC_C
+                     870     ;       nop
+001A 00              871               nop
+                     872     ;       nop
+001B 00              873               nop
+                     874     ;       nop
+001C 00              875               nop
+                     876     ; ERROR0_JC_C: clr A
+001D E4              877               ERROR0_JC_C: clr A
+                     878     ;     SJMP EXIT0_JC_C
+001E 8008            879               SJMP EXIT0_JC_C
+                     880     ;     nop
+0020 00              881               nop
+                     882     ;     nop
+0021 00              883               nop
+                     884     ; RIGHT0_JC_C: mov A,#0ffH
+0022 74FF            885               RIGHT0_JC_C: mov A,#0ffH
+                     886     ;     SJMP EXIT0_JC_C
+0024 8002            887               SJMP EXIT0_JC_C
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    15
+
+                     888     ;     nop
+0026 00              889               nop
+                     890     ;     nop
+0027 00              891               nop
+                     892     ; EXIT0_JC_C: nop       
+0028 00              893               EXIT0_JC_C: nop       
+                     894     ;     #pragma ENDASM    
+                     895     ;       if (ACC!=0xff) test_status = 0;
+                     896                             ; SOURCE LINE # 314
+0029 F4              897             CPL     A
+002A 6005            898             JZ      ?C0025
+002C 90007E          899             MOV     DPTR,#07EH
+002F E4              900             CLR     A
+0030 F0              901             MOVX    @DPTR,A
+0031                 902     ?C0025:
+                     903     ;       
+                     904     ;       #pragma ASM
+                     905     ;     sjmp NOW_JC_C
+0031 8010            906               sjmp NOW_JC_C
+                     907     ;       nop
+0033 00              908               nop
+                     909     ;       nop
+0034 00              910               nop
+                     911     ;       nop
+0035 00              912               nop
+                     913     ; ERROR1_JC_C: clr A
+0036 E4              914               ERROR1_JC_C: clr A
+                     915     ;     SJMP EXIT1_JC_C
+0037 8012            916               SJMP EXIT1_JC_C
+                     917     ;     nop
+0039 00              918               nop
+                     919     ;     nop
+003A 00              920               nop
+                     921     ; RIGHT1_JC_C: mov A,#0ffH
+003B 74FF            922               RIGHT1_JC_C: mov A,#0ffH
+                     923     ;     SJMP EXIT1_JC_C
+003D 800C            924               SJMP EXIT1_JC_C
+                     925     ;     nop
+003F 00              926               nop
+                     927     ;     nop       
+0040 00              928               nop   
+                     929     ;       nop
+0041 00              930               nop
+                     931     ;       nop
+0042 00              932               nop
+                     933     ; NOW_JC_C:     clr C
+0043 C3              934               NOW_JC_C:     clr C
+                     935     ;       JC  ERROR1_JC_C
+0044 40F0            936               JC  ERROR1_JC_C
+                     937     ;       cpl C
+0046 B3              938               cpl C
+                     939     ;       JC  RIGHT1_JC_C
+0047 40F2            940               JC  RIGHT1_JC_C
+                     941     ;       nop
+0049 00              942               nop
+                     943     ;       nop
+004A 00              944               nop
+                     945     ; EXIT1_JC_C: nop       
+004B 00              946               EXIT1_JC_C: nop       
+                     947     ;     #pragma ENDASM    
+                     948     ;       if (ACC!=0xff) test_status = 0; 
+                     949                             ; SOURCE LINE # 339
+004C F4              950             CPL     A
+004D 6005            951             JZ      ?C0026
+004F 90007E          952             MOV     DPTR,#07EH
+0052 E4              953             CLR     A
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    16
+
+0053 F0              954             MOVX    @DPTR,A
+0054                 955     ?C0026:
+                     956     ;       
+                     957     ;       #pragma ASM 
+                     958     ;       pop acc
+0054 D0E0            959               pop acc
+                     960     ;     pop psw   
+0056 D0D0            961               pop psw       
+                     962     ;     #pragma ENDASM
+                     963     ;     error();  
+                     964                             ; SOURCE LINE # 345
+0058 020000   F      965             LJMP    error
+                     966     ; END OF jc_c
+                     967     
+                     968     ; }
+                     969     ; 
+                     970     ; void jnc_c(void) {
+                     971     
+----                 972             RSEG  ?PR?jnc_c?BOOLEAN
+0000                 973     jnc_c:
+                     974             USING   0
+                     975                             ; SOURCE LINE # 348
+                     976     ;       printf("JNC_C\n");
+                     977                             ; SOURCE LINE # 349
+0000 7BFF            978             MOV     R3,#0FFH
+0002 7A00     F      979             MOV     R2,#HIGH (?SC_124)
+0004 7900     F      980             MOV     R1,#LOW (?SC_124)
+0006 120000   F      981             LCALL   _printf
+                     982     ;       #pragma ASM  
+                     983     ;       push psw
+0009 C0D0            984               push psw
+                     985     ;       push acc
+000B C0E0            986               push acc
+                     987     ;     mov  psw,#0H      
+000D 75D000          988               mov  psw,#0H  
+                     989     ;     setb rs0     
+0010 D2D3            990               setb rs0     
+                     991     ;       setb rs1        
+0012 D2D4            992               setb rs1      
+                     993     ;     #pragma ENDASM 
+                     994     ;       
+                     995     ;       #pragma ASM
+                     996     ;       setb C
+0014 D3              997               setb C
+                     998     ;       JNC  ERROR0_JNC_C
+0015 5006            999               JNC  ERROR0_JNC_C
+                    1000     ;       cpl C
+0017 B3             1001               cpl C
+                    1002     ;       JNC  RIGHT0_JNC_C
+0018 5008           1003               JNC  RIGHT0_JNC_C
+                    1004     ;       nop
+001A 00             1005               nop
+                    1006     ;       nop
+001B 00             1007               nop
+                    1008     ;       nop
+001C 00             1009               nop
+                    1010     ; ERROR0_JNC_C: clr A
+001D E4             1011               ERROR0_JNC_C: clr A
+                    1012     ;     SJMP EXIT0_JNC_C
+001E 8008           1013               SJMP EXIT0_JNC_C
+                    1014     ;     nop
+0020 00             1015               nop
+                    1016     ;     nop
+0021 00             1017               nop
+                    1018     ; RIGHT0_JNC_C: mov A,#0ffH
+0022 74FF           1019               RIGHT0_JNC_C: mov A,#0ffH
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    17
+
+                    1020     ;     SJMP EXIT0_JNC_C
+0024 8002           1021               SJMP EXIT0_JNC_C
+                    1022     ;     nop
+0026 00             1023               nop
+                    1024     ;     nop
+0027 00             1025               nop
+                    1026     ; EXIT0_JNC_C: nop      
+0028 00             1027               EXIT0_JNC_C: nop      
+                    1028     ;     #pragma ENDASM    
+                    1029     ;       if (ACC!=0xff) test_status = 0;
+                    1030                             ; SOURCE LINE # 376
+0029 F4             1031             CPL     A
+002A 6005           1032             JZ      ?C0028
+002C 90007E         1033             MOV     DPTR,#07EH
+002F E4             1034             CLR     A
+0030 F0             1035             MOVX    @DPTR,A
+0031                1036     ?C0028:
+                    1037     ;       
+                    1038     ;       #pragma ASM
+                    1039     ;     sjmp NOW_JNC_C
+0031 8010           1040               sjmp NOW_JNC_C
+                    1041     ;       nop
+0033 00             1042               nop
+                    1043     ;       nop
+0034 00             1044               nop
+                    1045     ;       nop
+0035 00             1046               nop
+                    1047     ; ERROR1_JNC_C: clr A
+0036 E4             1048               ERROR1_JNC_C: clr A
+                    1049     ;     SJMP EXIT1_JNC_C
+0037 8012           1050               SJMP EXIT1_JNC_C
+                    1051     ;     nop
+0039 00             1052               nop
+                    1053     ;     nop
+003A 00             1054               nop
+                    1055     ; RIGHT1_JNC_C: mov A,#0ffH
+003B 74FF           1056               RIGHT1_JNC_C: mov A,#0ffH
+                    1057     ;     SJMP EXIT1_JNC_C
+003D 800C           1058               SJMP EXIT1_JNC_C
+                    1059     ;     nop
+003F 00             1060               nop
+                    1061     ;     nop       
+0040 00             1062               nop   
+                    1063     ;       nop
+0041 00             1064               nop
+                    1065     ;       nop
+0042 00             1066               nop
+                    1067     ; NOW_JNC_C:    setb C
+0043 D3             1068               NOW_JNC_C:    setb C
+                    1069     ;       JNC  ERROR1_JNC_C
+0044 50F0           1070               JNC  ERROR1_JNC_C
+                    1071     ;       cpl C
+0046 B3             1072               cpl C
+                    1073     ;       JNC  RIGHT1_JNC_C
+0047 50F2           1074               JNC  RIGHT1_JNC_C
+                    1075     ;       nop
+0049 00             1076               nop
+                    1077     ;       nop
+004A 00             1078               nop
+                    1079     ; EXIT1_JNC_C: nop      
+004B 00             1080               EXIT1_JNC_C: nop      
+                    1081     ;     #pragma ENDASM    
+                    1082     ;       if (ACC!=0xff) test_status = 0; 
+                    1083                             ; SOURCE LINE # 401
+004C F4             1084             CPL     A
+004D 6005           1085             JZ      ?C0029
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    18
+
+004F 90007E         1086             MOV     DPTR,#07EH
+0052 E4             1087             CLR     A
+0053 F0             1088             MOVX    @DPTR,A
+0054                1089     ?C0029:
+                    1090     ;       
+                    1091     ;       #pragma ASM 
+                    1092     ;       pop acc
+0054 D0E0           1093               pop acc
+                    1094     ;     pop psw   
+0056 D0D0           1095               pop psw       
+                    1096     ;     #pragma ENDASM
+                    1097     ;     error();  
+                    1098                             ; SOURCE LINE # 407
+0058 020000   F     1099             LJMP    error
+                    1100     ; END OF jnc_c
+                    1101     
+                    1102     ; }
+                    1103     ; 
+                    1104     ; void jb_bit(void) {
+                    1105     
+----                1106             RSEG  ?PR?jb_bit?BOOLEAN
+0000                1107     jb_bit:
+                    1108             USING   0
+                    1109                             ; SOURCE LINE # 410
+                    1110     ;       printf("JB_BIT\n");
+                    1111                             ; SOURCE LINE # 411
+0000 7BFF           1112             MOV     R3,#0FFH
+0002 7A00     F     1113             MOV     R2,#HIGH (?SC_131)
+0004 7900     F     1114             MOV     R1,#LOW (?SC_131)
+0006 120000   F     1115             LCALL   _printf
+                    1116     ;       #pragma ASM  
+                    1117     ;       push psw
+0009 C0D0           1118               push psw
+                    1119     ;       push acc
+000B C0E0           1120               push acc
+                    1121     ;     mov  psw,#0H      
+000D 75D000         1122               mov  psw,#0H  
+                    1123     ;     setb rs0     
+0010 D2D3           1124               setb rs0     
+                    1125     ;       setb rs1        
+0012 D2D4           1126               setb rs1      
+                    1127     ;     #pragma ENDASM 
+                    1128     ;       
+                    1129     ;       #pragma ASM
+                    1130     ;       mov 0x20,#0f7H
+0014 7520F7         1131               mov 0x20,#0f7H
+                    1132     ;       jb  0x3,ERROR0_JB_BIT
+0017 200308         1133               jb  0x3,ERROR0_JB_BIT
+                    1134     ;       cpl 0x3
+001A B203           1135               cpl 0x3
+                    1136     ;       jb  0x3,RIGHT0_JB_BIT
+001C 200308         1137               jb  0x3,RIGHT0_JB_BIT
+                    1138     ;       nop
+001F 00             1139               nop
+                    1140     ;       nop
+0020 00             1141               nop
+                    1142     ;       nop
+0021 00             1143               nop
+                    1144     ; ERROR0_JB_BIT: clr A
+0022 E4             1145               ERROR0_JB_BIT: clr A
+                    1146     ;     SJMP EXIT0_JB_BIT
+0023 8008           1147               SJMP EXIT0_JB_BIT
+                    1148     ;     nop
+0025 00             1149               nop
+                    1150     ;     nop
+0026 00             1151               nop
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    19
+
+                    1152     ; RIGHT0_JB_BIT: mov A,#0ffH
+0027 74FF           1153               RIGHT0_JB_BIT: mov A,#0ffH
+                    1154     ;     SJMP EXIT0_JB_BIT
+0029 8002           1155               SJMP EXIT0_JB_BIT
+                    1156     ;     nop
+002B 00             1157               nop
+                    1158     ;     nop
+002C 00             1159               nop
+                    1160     ; EXIT0_JB_BIT: nop     
+002D 00             1161               EXIT0_JB_BIT: nop     
+                    1162     ;     #pragma ENDASM    
+                    1163     ;       if (ACC!=0xff) test_status = 0;
+                    1164                             ; SOURCE LINE # 438
+002E F4             1165             CPL     A
+002F 6005           1166             JZ      ?C0031
+0031 90007E         1167             MOV     DPTR,#07EH
+0034 E4             1168             CLR     A
+0035 F0             1169             MOVX    @DPTR,A
+0036                1170     ?C0031:
+                    1171     ;       
+                    1172     ;       #pragma ASM
+                    1173     ;     sjmp NOW_JB_BIT
+0036 8010           1174               sjmp NOW_JB_BIT
+                    1175     ;       nop
+0038 00             1176               nop
+                    1177     ;       nop
+0039 00             1178               nop
+                    1179     ;       nop
+003A 00             1180               nop
+                    1181     ; ERROR1_JB_BIT: clr A
+003B E4             1182               ERROR1_JB_BIT: clr A
+                    1183     ;     SJMP EXIT1_JB_BIT
+003C 8017           1184               SJMP EXIT1_JB_BIT
+                    1185     ;     nop
+003E 00             1186               nop
+                    1187     ;     nop
+003F 00             1188               nop
+                    1189     ; RIGHT1_JB_BIT: mov A,#0ffH
+0040 74FF           1190               RIGHT1_JB_BIT: mov A,#0ffH
+                    1191     ;     SJMP EXIT1_JB_BIT
+0042 8011           1192               SJMP EXIT1_JB_BIT
+                    1193     ;     nop
+0044 00             1194               nop
+                    1195     ;     nop       
+0045 00             1196               nop   
+                    1197     ;       nop
+0046 00             1198               nop
+                    1199     ;       nop
+0047 00             1200               nop
+                    1201     ; NOW_JB_BIT:   mov 0x20,#0f7H
+0048 7520F7         1202               NOW_JB_BIT:   mov 0x20,#0f7H
+                    1203     ;       jb  0x3,ERROR1_JB_BIT
+004B 2003ED         1204               jb  0x3,ERROR1_JB_BIT
+                    1205     ;       cpl 0x3
+004E B203           1206               cpl 0x3
+                    1207     ;       jb  0x3,RIGHT1_JB_BIT
+0050 2003ED         1208               jb  0x3,RIGHT1_JB_BIT
+                    1209     ;       nop
+0053 00             1210               nop
+                    1211     ;       nop
+0054 00             1212               nop
+                    1213     ; EXIT1_JB_BIT: nop     
+0055 00             1214               EXIT1_JB_BIT: nop     
+                    1215     ;     #pragma ENDASM    
+                    1216     ;       if (ACC!=0xff) test_status = 0; 
+                    1217                             ; SOURCE LINE # 463
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    20
+
+0056 F4             1218             CPL     A
+0057 6005           1219             JZ      ?C0032
+0059 90007E         1220             MOV     DPTR,#07EH
+005C E4             1221             CLR     A
+005D F0             1222             MOVX    @DPTR,A
+005E                1223     ?C0032:
+                    1224     ;       
+                    1225     ;       #pragma ASM 
+                    1226     ;       pop acc
+005E D0E0           1227               pop acc
+                    1228     ;     pop psw   
+0060 D0D0           1229               pop psw       
+                    1230     ;     #pragma ENDASM
+                    1231     ;     error();  
+                    1232                             ; SOURCE LINE # 469
+0062 020000   F     1233             LJMP    error
+                    1234     ; END OF jb_bit
+                    1235     
+                    1236     ; }
+                    1237     ; 
+                    1238     ; void jnb_bit(void) {
+                    1239     
+----                1240             RSEG  ?PR?jnb_bit?BOOLEAN
+0000                1241     jnb_bit:
+                    1242             USING   0
+                    1243                             ; SOURCE LINE # 472
+                    1244     ;       printf("JNB_BIT\n");
+                    1245                             ; SOURCE LINE # 473
+0000 7BFF           1246             MOV     R3,#0FFH
+0002 7A00     F     1247             MOV     R2,#HIGH (?SC_139)
+0004 7900     F     1248             MOV     R1,#LOW (?SC_139)
+0006 120000   F     1249             LCALL   _printf
+                    1250     ;       #pragma ASM  
+                    1251     ;       push psw
+0009 C0D0           1252               push psw
+                    1253     ;       push acc
+000B C0E0           1254               push acc
+                    1255     ;     mov  psw,#0H      
+000D 75D000         1256               mov  psw,#0H  
+                    1257     ;     setb rs0     
+0010 D2D3           1258               setb rs0     
+                    1259     ;       setb rs1        
+0012 D2D4           1260               setb rs1      
+                    1261     ;     #pragma ENDASM 
+                    1262     ;       
+                    1263     ;       #pragma ASM
+                    1264     ;       mov 0x20,#010H
+0014 752010         1265               mov 0x20,#010H
+                    1266     ;       jnb  0x4,ERROR0_JNB_BIT
+0017 300408         1267               jnb  0x4,ERROR0_JNB_BIT
+                    1268     ;       cpl 0x4
+001A B204           1269               cpl 0x4
+                    1270     ;       jnb  0x4,RIGHT0_JNB_BIT
+001C 300408         1271               jnb  0x4,RIGHT0_JNB_BIT
+                    1272     ;       nop
+001F 00             1273               nop
+                    1274     ;       nop
+0020 00             1275               nop
+                    1276     ;       nop
+0021 00             1277               nop
+                    1278     ; ERROR0_JNB_BIT: clr A
+0022 E4             1279               ERROR0_JNB_BIT: clr A
+                    1280     ;     SJMP EXIT0_JNB_BIT
+0023 8008           1281               SJMP EXIT0_JNB_BIT
+                    1282     ;     nop
+0025 00             1283               nop
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    21
+
+                    1284     ;     nop
+0026 00             1285               nop
+                    1286     ; RIGHT0_JNB_BIT: mov A,#0ffH
+0027 74FF           1287               RIGHT0_JNB_BIT: mov A,#0ffH
+                    1288     ;     SJMP EXIT0_JNB_BIT
+0029 8002           1289               SJMP EXIT0_JNB_BIT
+                    1290     ;     nop
+002B 00             1291               nop
+                    1292     ;     nop
+002C 00             1293               nop
+                    1294     ; EXIT0_JNB_BIT: nop    
+002D 00             1295               EXIT0_JNB_BIT: nop    
+                    1296     ;     #pragma ENDASM    
+                    1297     ;       if (ACC!=0xff) test_status = 0;
+                    1298                             ; SOURCE LINE # 500
+002E F4             1299             CPL     A
+002F 6005           1300             JZ      ?C0034
+0031 90007E         1301             MOV     DPTR,#07EH
+0034 E4             1302             CLR     A
+0035 F0             1303             MOVX    @DPTR,A
+0036                1304     ?C0034:
+                    1305     ;       
+                    1306     ;       #pragma ASM
+                    1307     ;     sjmp NOW_JNB_BIT
+0036 8010           1308               sjmp NOW_JNB_BIT
+                    1309     ;       nop
+0038 00             1310               nop
+                    1311     ;       nop
+0039 00             1312               nop
+                    1313     ;       nop
+003A 00             1314               nop
+                    1315     ; ERROR1_JNB_BIT: clr A
+003B E4             1316               ERROR1_JNB_BIT: clr A
+                    1317     ;     SJMP EXIT1_JNB_BIT
+003C 8017           1318               SJMP EXIT1_JNB_BIT
+                    1319     ;     nop
+003E 00             1320               nop
+                    1321     ;     nop
+003F 00             1322               nop
+                    1323     ; RIGHT1_JNB_BIT: mov A,#0ffH
+0040 74FF           1324               RIGHT1_JNB_BIT: mov A,#0ffH
+                    1325     ;     SJMP EXIT1_JNB_BIT
+0042 8011           1326               SJMP EXIT1_JNB_BIT
+                    1327     ;     nop
+0044 00             1328               nop
+                    1329     ;     nop       
+0045 00             1330               nop   
+                    1331     ;       nop
+0046 00             1332               nop
+                    1333     ;       nop
+0047 00             1334               nop
+                    1335     ; NOW_JNB_BIT: mov 0x20,#010H
+0048 752010         1336               NOW_JNB_BIT: mov 0x20,#010H
+                    1337     ;       jnb  0x4,ERROR1_JNB_BIT
+004B 3004ED         1338               jnb  0x4,ERROR1_JNB_BIT
+                    1339     ;       cpl 0x4
+004E B204           1340               cpl 0x4
+                    1341     ;       jnb  0x4,RIGHT1_JNB_BIT
+0050 3004ED         1342               jnb  0x4,RIGHT1_JNB_BIT
+                    1343     ;       nop
+0053 00             1344               nop
+                    1345     ;       nop
+0054 00             1346               nop
+                    1347     ; EXIT1_JNB_BIT: nop    
+0055 00             1348               EXIT1_JNB_BIT: nop    
+                    1349     ;     #pragma ENDASM    
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    22
+
+                    1350     ;       if (ACC!=0xff) test_status = 0; 
+                    1351                             ; SOURCE LINE # 525
+0056 F4             1352             CPL     A
+0057 6005           1353             JZ      ?C0035
+0059 90007E         1354             MOV     DPTR,#07EH
+005C E4             1355             CLR     A
+005D F0             1356             MOVX    @DPTR,A
+005E                1357     ?C0035:
+                    1358     ;       
+                    1359     ;       #pragma ASM 
+                    1360     ;       pop acc
+005E D0E0           1361               pop acc
+                    1362     ;     pop psw   
+0060 D0D0           1363               pop psw       
+                    1364     ;     #pragma ENDASM
+                    1365     ;     error();  
+                    1366                             ; SOURCE LINE # 531
+0062 020000   F     1367             LJMP    error
+                    1368     ; END OF jnb_bit
+                    1369     
+                    1370     ; }
+                    1371     ; 
+                    1372     ; void jbc_bit(void) {
+                    1373     
+----                1374             RSEG  ?PR?jbc_bit?BOOLEAN
+0000                1375     jbc_bit:
+                    1376             USING   0
+                    1377                             ; SOURCE LINE # 534
+                    1378     ;       printf("JBC_BIT\n");
+                    1379                             ; SOURCE LINE # 535
+0000 7BFF           1380             MOV     R3,#0FFH
+0002 7A00     F     1381             MOV     R2,#HIGH (?SC_148)
+0004 7900     F     1382             MOV     R1,#LOW (?SC_148)
+0006 120000   F     1383             LCALL   _printf
+                    1384     ;       #pragma ASM  
+                    1385     ;       push psw
+0009 C0D0           1386               push psw
+                    1387     ;       push acc
+000B C0E0           1388               push acc
+                    1389     ;     mov  psw,#0H      
+000D 75D000         1390               mov  psw,#0H  
+                    1391     ;     setb rs0     
+0010 D2D3           1392               setb rs0     
+                    1393     ;       setb rs1        
+0012 D2D4           1394               setb rs1      
+                    1395     ;     #pragma ENDASM 
+                    1396     ;       
+                    1397     ;       #pragma ASM
+                    1398     ;       mov 0x20,#0f7H
+0014 7520F7         1399               mov 0x20,#0f7H
+                    1400     ;       jbc  0x3,ERROR0_JBC_BIT
+0017 100308         1401               jbc  0x3,ERROR0_JBC_BIT
+                    1402     ;       cpl 0x3
+001A B203           1403               cpl 0x3
+                    1404     ;       jbc  0x3,RIGHT0_JBC_BIT
+001C 100308         1405               jbc  0x3,RIGHT0_JBC_BIT
+                    1406     ;       nop
+001F 00             1407               nop
+                    1408     ;       nop
+0020 00             1409               nop
+                    1410     ;       nop
+0021 00             1411               nop
+                    1412     ; ERROR0_JBC_BIT: clr A
+0022 E4             1413               ERROR0_JBC_BIT: clr A
+                    1414     ;     SJMP EXIT0_JBC_BIT
+0023 8008           1415               SJMP EXIT0_JBC_BIT
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    23
+
+                    1416     ;     nop
+0025 00             1417               nop
+                    1418     ;     nop
+0026 00             1419               nop
+                    1420     ; RIGHT0_JBC_BIT: mov A,#0ffH
+0027 74FF           1421               RIGHT0_JBC_BIT: mov A,#0ffH
+                    1422     ;     SJMP EXIT0_JBC_BIT
+0029 8002           1423               SJMP EXIT0_JBC_BIT
+                    1424     ;     nop
+002B 00             1425               nop
+                    1426     ;     nop
+002C 00             1427               nop
+                    1428     ; EXIT0_JBC_BIT: nop    
+002D 00             1429               EXIT0_JBC_BIT: nop    
+                    1430     ;     #pragma ENDASM    
+                    1431     ;       if (ACC!=0xff) test_status = 0;
+                    1432                             ; SOURCE LINE # 562
+002E F4             1433             CPL     A
+002F 6005           1434             JZ      ?C0037
+0031 90007E         1435             MOV     DPTR,#07EH
+0034 E4             1436             CLR     A
+0035 F0             1437             MOVX    @DPTR,A
+0036                1438     ?C0037:
+                    1439     ;       if (bit_data!=0xf7) test_status = 0;
+                    1440                             ; SOURCE LINE # 563
+0036 7820           1441             MOV     R0,#020H
+0038 E6             1442             MOV     A,@R0
+0039 64F7           1443             XRL     A,#0F7H
+003B 6005           1444             JZ      ?C0038
+003D 90007E         1445             MOV     DPTR,#07EH
+0040 E4             1446             CLR     A
+0041 F0             1447             MOVX    @DPTR,A
+0042                1448     ?C0038:
+                    1449     ;       
+                    1450     ;       #pragma ASM
+                    1451     ;     sjmp NOW_JBC_BIT
+0042 8010           1452               sjmp NOW_JBC_BIT
+                    1453     ;       nop
+0044 00             1454               nop
+                    1455     ;       nop
+0045 00             1456               nop
+                    1457     ;       nop
+0046 00             1458               nop
+                    1459     ; ERROR1_JBC_BIT: clr A
+0047 E4             1460               ERROR1_JBC_BIT: clr A
+                    1461     ;     SJMP EXIT1_JBC_BIT
+0048 8017           1462               SJMP EXIT1_JBC_BIT
+                    1463     ;     nop
+004A 00             1464               nop
+                    1465     ;     nop
+004B 00             1466               nop
+                    1467     ; RIGHT1_JBC_BIT: mov A,#0ffH
+004C 74FF           1468               RIGHT1_JBC_BIT: mov A,#0ffH
+                    1469     ;     SJMP EXIT1_JBC_BIT
+004E 8011           1470               SJMP EXIT1_JBC_BIT
+                    1471     ;     nop
+0050 00             1472               nop
+                    1473     ;     nop       
+0051 00             1474               nop   
+                    1475     ;       nop
+0052 00             1476               nop
+                    1477     ;       nop
+0053 00             1478               nop
+                    1479     ; NOW_JBC_BIT: mov 0x20,#0f7H
+0054 7520F7         1480               NOW_JBC_BIT: mov 0x20,#0f7H
+                    1481     ;       jbc  0x3,ERROR1_JBC_BIT
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    24
+
+0057 1003ED         1482               jbc  0x3,ERROR1_JBC_BIT
+                    1483     ;       cpl 0x3
+005A B203           1484               cpl 0x3
+                    1485     ;       jbc  0x3,RIGHT1_JBC_BIT
+005C 1003ED         1486               jbc  0x3,RIGHT1_JBC_BIT
+                    1487     ;       nop
+005F 00             1488               nop
+                    1489     ;       nop
+0060 00             1490               nop
+                    1491     ; EXIT1_JBC_BIT: nop    
+0061 00             1492               EXIT1_JBC_BIT: nop    
+                    1493     ;     #pragma ENDASM    
+                    1494     ;       if (ACC!=0xff) test_status = 0; 
+                    1495                             ; SOURCE LINE # 588
+0062 F4             1496             CPL     A
+0063 6005           1497             JZ      ?C0039
+0065 90007E         1498             MOV     DPTR,#07EH
+0068 E4             1499             CLR     A
+0069 F0             1500             MOVX    @DPTR,A
+006A                1501     ?C0039:
+                    1502     ;       if (bit_data!=0xf7) test_status = 0;
+                    1503                             ; SOURCE LINE # 589
+006A 7820           1504             MOV     R0,#020H
+006C E6             1505             MOV     A,@R0
+006D 64F7           1506             XRL     A,#0F7H
+006F 6005           1507             JZ      ?C0040
+0071 90007E         1508             MOV     DPTR,#07EH
+0074 E4             1509             CLR     A
+0075 F0             1510             MOVX    @DPTR,A
+0076                1511     ?C0040:
+                    1512     ;       
+                    1513     ;       #pragma ASM 
+                    1514     ;       pop acc
+0076 D0E0           1515               pop acc
+                    1516     ;     pop psw   
+0078 D0D0           1517               pop psw       
+                    1518     ;     #pragma ENDASM
+                    1519     ;     error();  
+                    1520                             ; SOURCE LINE # 595
+007A 020000   F     1521             LJMP    error
+                    1522     ; END OF jbc_bit
+                    1523     
+                    1524             END
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    25
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                 T Y P E  V A L U E   ATTRIBUTES
+
+?C0001 . . . . . . . .  C ADDR   001EH   R   SEG=?PR?CLR_C?BOOLEAN
+?C0003 . . . . . . . .  C ADDR   0025H   R   SEG=?PR?CLR_BIT?BOOLEAN
+?C0005 . . . . . . . .  C ADDR   001DH   R   SEG=?PR?SETB_C?BOOLEAN
+?C0007 . . . . . . . .  C ADDR   0025H   R   SEG=?PR?SETB_BIT?BOOLEAN
+?C0009 . . . . . . . .  C ADDR   001EH   R   SEG=?PR?CPL_C?BOOLEAN
+?C0011 . . . . . . . .  C ADDR   0025H   R   SEG=?PR?CPL_BIT?BOOLEAN
+?C0013 . . . . . . . .  C ADDR   0022H   R   SEG=?PR?ANL_C_BIT?BOOLEAN
+?C0015 . . . . . . . .  C ADDR   0022H   R   SEG=?PR?ANL_C_NBIT?BOOLEAN
+?C0017 . . . . . . . .  C ADDR   0022H   R   SEG=?PR?ORL_C_BIT?BOOLEAN
+?C0019 . . . . . . . .  C ADDR   0022H   R   SEG=?PR?ORL_C_NBIT?BOOLEAN
+?C0021 . . . . . . . .  C ADDR   0022H   R   SEG=?PR?MOV_C_BIT?BOOLEAN
+?C0023 . . . . . . . .  C ADDR   0026H   R   SEG=?PR?MOV_BIT_C?BOOLEAN
+?C0025 . . . . . . . .  C ADDR   0031H   R   SEG=?PR?JC_C?BOOLEAN
+?C0026 . . . . . . . .  C ADDR   0054H   R   SEG=?PR?JC_C?BOOLEAN
+?C0028 . . . . . . . .  C ADDR   0031H   R   SEG=?PR?JNC_C?BOOLEAN
+?C0029 . . . . . . . .  C ADDR   0054H   R   SEG=?PR?JNC_C?BOOLEAN
+?C0031 . . . . . . . .  C ADDR   0036H   R   SEG=?PR?JB_BIT?BOOLEAN
+?C0032 . . . . . . . .  C ADDR   005EH   R   SEG=?PR?JB_BIT?BOOLEAN
+?C0034 . . . . . . . .  C ADDR   0036H   R   SEG=?PR?JNB_BIT?BOOLEAN
+?C0035 . . . . . . . .  C ADDR   005EH   R   SEG=?PR?JNB_BIT?BOOLEAN
+?C0037 . . . . . . . .  C ADDR   0036H   R   SEG=?PR?JBC_BIT?BOOLEAN
+?C0038 . . . . . . . .  C ADDR   0042H   R   SEG=?PR?JBC_BIT?BOOLEAN
+?C0039 . . . . . . . .  C ADDR   006AH   R   SEG=?PR?JBC_BIT?BOOLEAN
+?C0040 . . . . . . . .  C ADDR   0076H   R   SEG=?PR?JBC_BIT?BOOLEAN
+?CO?BOOLEAN. . . . . .  C SEG    009DH       REL=UNIT
+?PR?ANL_C_BIT?BOOLEAN.  C SEG    0029H       REL=UNIT
+?PR?ANL_C_NBIT?BOOLEAN  C SEG    0029H       REL=UNIT
+?PR?CLR_BIT?BOOLEAN. .  C SEG    002CH       REL=UNIT
+?PR?CLR_C?BOOLEAN. . .  C SEG    0025H       REL=UNIT
+?PR?CPL_BIT?BOOLEAN. .  C SEG    002CH       REL=UNIT
+?PR?CPL_C?BOOLEAN. . .  C SEG    0025H       REL=UNIT
+?PR?JBC_BIT?BOOLEAN. .  C SEG    007DH       REL=UNIT
+?PR?JB_BIT?BOOLEAN . .  C SEG    0065H       REL=UNIT
+?PR?JC_C?BOOLEAN . . .  C SEG    005BH       REL=UNIT
+?PR?JNB_BIT?BOOLEAN. .  C SEG    0065H       REL=UNIT
+?PR?JNC_C?BOOLEAN. . .  C SEG    005BH       REL=UNIT
+?PR?MOV_BIT_C?BOOLEAN.  C SEG    002DH       REL=UNIT
+?PR?MOV_C_BIT?BOOLEAN.  C SEG    0029H       REL=UNIT
+?PR?ORL_C_BIT?BOOLEAN.  C SEG    0029H       REL=UNIT
+?PR?ORL_C_NBIT?BOOLEAN  C SEG    0029H       REL=UNIT
+?PR?SETB_BIT?BOOLEAN .  C SEG    002CH       REL=UNIT
+?PR?SETB_C?BOOLEAN . .  C SEG    0024H       REL=UNIT
+?SC_0. . . . . . . . .  C ADDR   0000H   R   SEG=?CO?BOOLEAN
+?SC_107. . . . . . . .  C ADDR   006BH   R   SEG=?CO?BOOLEAN
+?SC_118. . . . . . . .  C ADDR   0076H   R   SEG=?CO?BOOLEAN
+?SC_124. . . . . . . .  C ADDR   007CH   R   SEG=?CO?BOOLEAN
+?SC_131. . . . . . . .  C ADDR   0083H   R   SEG=?CO?BOOLEAN
+?SC_139. . . . . . . .  C ADDR   008BH   R   SEG=?CO?BOOLEAN
+?SC_148. . . . . . . .  C ADDR   0094H   R   SEG=?CO?BOOLEAN
+?SC_16 . . . . . . . .  C ADDR   0010H   R   SEG=?CO?BOOLEAN
+?SC_24 . . . . . . . .  C ADDR   0018H   R   SEG=?CO?BOOLEAN
+?SC_34 . . . . . . . .  C ADDR   0022H   R   SEG=?CO?BOOLEAN
+?SC_41 . . . . . . . .  C ADDR   0029H   R   SEG=?CO?BOOLEAN
+?SC_50 . . . . . . . .  C ADDR   0032H   R   SEG=?CO?BOOLEAN
+?SC_61 . . . . . . . .  C ADDR   003DH   R   SEG=?CO?BOOLEAN
+?SC_7. . . . . . . . .  C ADDR   0007H   R   SEG=?CO?BOOLEAN
+?SC_73 . . . . . . . .  C ADDR   0049H   R   SEG=?CO?BOOLEAN
+?SC_84 . . . . . . . .  C ADDR   0054H   R   SEG=?CO?BOOLEAN
+?SC_96 . . . . . . . .  C ADDR   0060H   R   SEG=?CO?BOOLEAN
+?_PRINTF?BYTE. . . . .  D ADDR   -----       EXT
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    26
+
+AC . . . . . . . . . .  B ADDR   00D0H.6 A   
+ACC. . . . . . . . . .  D ADDR   00E0H   A   
+ANL_C_BIT. . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_C_BIT?BOOLEAN
+ANL_C_NBIT . . . . . .  C ADDR   0000H   R   SEG=?PR?ANL_C_NBIT?BOOLEAN
+B. . . . . . . . . . .  D ADDR   00F0H   A   
+BOOLEAN. . . . . . . .  N NUMB   -----       
+CLR_BIT. . . . . . . .  C ADDR   0000H   R   SEG=?PR?CLR_BIT?BOOLEAN
+CLR_C. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?CLR_C?BOOLEAN
+CPL_BIT. . . . . . . .  C ADDR   0000H   R   SEG=?PR?CPL_BIT?BOOLEAN
+CPL_C. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?CPL_C?BOOLEAN
+CP_RL2 . . . . . . . .  B ADDR   00C8H.0 A   
+CY . . . . . . . . . .  B ADDR   00D0H.7 A   
+C_T2 . . . . . . . . .  B ADDR   00C8H.1 A   
+DPH. . . . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . . . .  D ADDR   0082H   A   
+EA . . . . . . . . . .  B ADDR   00A8H.7 A   
+ERROR. . . . . . . . .  C ADDR   -----       EXT
+ERROR0_JBC_BIT . . . .  C ADDR   0022H   R   SEG=?PR?JBC_BIT?BOOLEAN
+ERROR0_JB_BIT. . . . .  C ADDR   0022H   R   SEG=?PR?JB_BIT?BOOLEAN
+ERROR0_JC_C. . . . . .  C ADDR   001DH   R   SEG=?PR?JC_C?BOOLEAN
+ERROR0_JNB_BIT . . . .  C ADDR   0022H   R   SEG=?PR?JNB_BIT?BOOLEAN
+ERROR0_JNC_C . . . . .  C ADDR   001DH   R   SEG=?PR?JNC_C?BOOLEAN
+ERROR1_JBC_BIT . . . .  C ADDR   0047H   R   SEG=?PR?JBC_BIT?BOOLEAN
+ERROR1_JB_BIT. . . . .  C ADDR   003BH   R   SEG=?PR?JB_BIT?BOOLEAN
+ERROR1_JC_C. . . . . .  C ADDR   0036H   R   SEG=?PR?JC_C?BOOLEAN
+ERROR1_JNB_BIT . . . .  C ADDR   003BH   R   SEG=?PR?JNB_BIT?BOOLEAN
+ERROR1_JNC_C . . . . .  C ADDR   0036H   R   SEG=?PR?JNC_C?BOOLEAN
+ES . . . . . . . . . .  B ADDR   00A8H.4 A   
+ET0. . . . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . . . .  B ADDR   00A8H.3 A   
+ET2. . . . . . . . . .  B ADDR   00A8H.5 A   
+EX0. . . . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2. . . . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . . . .  B ADDR   00C8H.6 A   
+EXIT0_JBC_BIT. . . . .  C ADDR   002DH   R   SEG=?PR?JBC_BIT?BOOLEAN
+EXIT0_JB_BIT . . . . .  C ADDR   002DH   R   SEG=?PR?JB_BIT?BOOLEAN
+EXIT0_JC_C . . . . . .  C ADDR   0028H   R   SEG=?PR?JC_C?BOOLEAN
+EXIT0_JNB_BIT. . . . .  C ADDR   002DH   R   SEG=?PR?JNB_BIT?BOOLEAN
+EXIT0_JNC_C. . . . . .  C ADDR   0028H   R   SEG=?PR?JNC_C?BOOLEAN
+EXIT1_JBC_BIT. . . . .  C ADDR   0061H   R   SEG=?PR?JBC_BIT?BOOLEAN
+EXIT1_JB_BIT . . . . .  C ADDR   0055H   R   SEG=?PR?JB_BIT?BOOLEAN
+EXIT1_JC_C . . . . . .  C ADDR   004BH   R   SEG=?PR?JC_C?BOOLEAN
+EXIT1_JNB_BIT. . . . .  C ADDR   0055H   R   SEG=?PR?JNB_BIT?BOOLEAN
+EXIT1_JNC_C. . . . . .  C ADDR   004BH   R   SEG=?PR?JNC_C?BOOLEAN
+F0 . . . . . . . . . .  B ADDR   00D0H.5 A   
+IE . . . . . . . . . .  D ADDR   00A8H   A   
+IE0. . . . . . . . . .  B ADDR   0088H.1 A   
+IE1. . . . . . . . . .  B ADDR   0088H.3 A   
+INT0 . . . . . . . . .  B ADDR   00B0H.2 A   
+INT1 . . . . . . . . .  B ADDR   00B0H.3 A   
+IP . . . . . . . . . .  D ADDR   00B8H   A   
+IT0. . . . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . . . .  B ADDR   0088H.2 A   
+JBC_BIT. . . . . . . .  C ADDR   0000H   R   SEG=?PR?JBC_BIT?BOOLEAN
+JB_BIT . . . . . . . .  C ADDR   0000H   R   SEG=?PR?JB_BIT?BOOLEAN
+JC_C . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?JC_C?BOOLEAN
+JNB_BIT. . . . . . . .  C ADDR   0000H   R   SEG=?PR?JNB_BIT?BOOLEAN
+JNC_C. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?JNC_C?BOOLEAN
+MOV_BIT_C. . . . . . .  C ADDR   0000H   R   SEG=?PR?MOV_BIT_C?BOOLEAN
+MOV_C_BIT. . . . . . .  C ADDR   0000H   R   SEG=?PR?MOV_C_BIT?BOOLEAN
+NOW_JBC_BIT. . . . . .  C ADDR   0054H   R   SEG=?PR?JBC_BIT?BOOLEAN
+NOW_JB_BIT . . . . . .  C ADDR   0048H   R   SEG=?PR?JB_BIT?BOOLEAN
+NOW_JC_C . . . . . . .  C ADDR   0043H   R   SEG=?PR?JC_C?BOOLEAN
+NOW_JNB_BIT. . . . . .  C ADDR   0048H   R   SEG=?PR?JNB_BIT?BOOLEAN
+NOW_JNC_C. . . . . . .  C ADDR   0043H   R   SEG=?PR?JNC_C?BOOLEAN
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    27
+
+ORL_C_BIT. . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_C_BIT?BOOLEAN
+ORL_C_NBIT . . . . . .  C ADDR   0000H   R   SEG=?PR?ORL_C_NBIT?BOOLEAN
+OV . . . . . . . . . .  B ADDR   00D0H.2 A   
+P. . . . . . . . . . .  B ADDR   00D0H.0 A   
+P0 . . . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . . . .  D ADDR   00B0H   A   
+PCON . . . . . . . . .  D ADDR   0087H   A   
+PS . . . . . . . . . .  B ADDR   00B8H.4 A   
+PSW. . . . . . . . . .  D ADDR   00D0H   A   
+PT0. . . . . . . . . .  B ADDR   00B8H.1 A   
+PT1. . . . . . . . . .  B ADDR   00B8H.3 A   
+PT2. . . . . . . . . .  B ADDR   00B8H.5 A   
+PX0. . . . . . . . . .  B ADDR   00B8H.0 A   
+PX1. . . . . . . . . .  B ADDR   00B8H.2 A   
+RB8. . . . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H . . . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . . . .  B ADDR   00C8H.5 A   
+RD . . . . . . . . . .  B ADDR   00B0H.7 A   
+REN. . . . . . . . . .  B ADDR   0098H.4 A   
+RI . . . . . . . . . .  B ADDR   0098H.0 A   
+RIGHT0_JBC_BIT . . . .  C ADDR   0027H   R   SEG=?PR?JBC_BIT?BOOLEAN
+RIGHT0_JB_BIT. . . . .  C ADDR   0027H   R   SEG=?PR?JB_BIT?BOOLEAN
+RIGHT0_JC_C. . . . . .  C ADDR   0022H   R   SEG=?PR?JC_C?BOOLEAN
+RIGHT0_JNB_BIT . . . .  C ADDR   0027H   R   SEG=?PR?JNB_BIT?BOOLEAN
+RIGHT0_JNC_C . . . . .  C ADDR   0022H   R   SEG=?PR?JNC_C?BOOLEAN
+RIGHT1_JBC_BIT . . . .  C ADDR   004CH   R   SEG=?PR?JBC_BIT?BOOLEAN
+RIGHT1_JB_BIT. . . . .  C ADDR   0040H   R   SEG=?PR?JB_BIT?BOOLEAN
+RIGHT1_JC_C. . . . . .  C ADDR   003BH   R   SEG=?PR?JC_C?BOOLEAN
+RIGHT1_JNB_BIT . . . .  C ADDR   0040H   R   SEG=?PR?JNB_BIT?BOOLEAN
+RIGHT1_JNC_C . . . . .  C ADDR   003BH   R   SEG=?PR?JNC_C?BOOLEAN
+RS0. . . . . . . . . .  B ADDR   00D0H.3 A   
+RS1. . . . . . . . . .  B ADDR   00D0H.4 A   
+RXD. . . . . . . . . .  B ADDR   00B0H.0 A   
+SBUF . . . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . . . .  D ADDR   0098H   A   
+SETB_BIT . . . . . . .  C ADDR   0000H   R   SEG=?PR?SETB_BIT?BOOLEAN
+SETB_C . . . . . . . .  C ADDR   0000H   R   SEG=?PR?SETB_C?BOOLEAN
+SM0. . . . . . . . . .  B ADDR   0098H.7 A   
+SM1. . . . . . . . . .  B ADDR   0098H.6 A   
+SM2. . . . . . . . . .  B ADDR   0098H.5 A   
+SP . . . . . . . . . .  D ADDR   0081H   A   
+T0 . . . . . . . . . .  B ADDR   00B0H.4 A   
+T1 . . . . . . . . . .  B ADDR   00B0H.5 A   
+T2 . . . . . . . . . .  B ADDR   0090H.0 A   
+T2CON. . . . . . . . .  D ADDR   00C8H   A   
+T2EX . . . . . . . . .  B ADDR   0090H.1 A   
+TB8. . . . . . . . . .  B ADDR   0098H.3 A   
+TCLK . . . . . . . . .  B ADDR   00C8H.4 A   
+TCON . . . . . . . . .  D ADDR   0088H   A   
+TF0. . . . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . . . .  B ADDR   0088H.7 A   
+TF2. . . . . . . . . .  B ADDR   00C8H.7 A   
+TH0. . . . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . . . .  D ADDR   008DH   A   
+TH2. . . . . . . . . .  D ADDR   00CDH   A   
+TI . . . . . . . . . .  B ADDR   0098H.1 A   
+TL0. . . . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . . . .  D ADDR   008BH   A   
+TL2. . . . . . . . . .  D ADDR   00CCH   A   
+TMOD . . . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . . . .  B ADDR   0088H.6 A   
+TR2. . . . . . . . . .  B ADDR   00C8H.2 A   
+A51 MACRO ASSEMBLER  BOOLEAN                                                              07/21/2014 16:39:34 PAGE    28
+
+TXD. . . . . . . . . .  B ADDR   00B0H.1 A   
+WR . . . . . . . . . .  B ADDR   00B0H.6 A   
+_PRINTF. . . . . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

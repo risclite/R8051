@@ -1,0 +1,58 @@
+C51 COMPILER V9.52.0.0   HELLO                                                             07/21/2014 16:39:33 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE HELLO
+OBJECT MODULE PLACED IN HELLO.OBJ
+COMPILER INVOKED BY: C:\myprog\Keil\C51\BIN\C51.EXE HELLO.C BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          /*------------------------------------------------------------------------------
+   2          HELLO.C
+   3          
+   4          Copyright 1995-2005 Keil Software, Inc.
+   5          ------------------------------------------------------------------------------*/
+   6          
+   7          #include <REG52.H>                /* special function register declarations   */
+   8                                            /* for the intended 8051 derivative         */
+   9          
+  10          #include <stdio.h>                /* prototype declarations for I/O functions */
+  11          
+  12          #include "instruction.h"
+  13          
+  14          
+  15          /*------------------------------------------------
+  16          The main C function.  Program execution starts
+  17          here after stack initialization.
+  18          ------------------------------------------------*/
+  19          void main (void) {
+  20   1        test_status = 1;
+  21   1        
+  22   1        instruction_test_all();
+  23   1        
+  24   1        
+  25   1        if (test_status) {
+  26   2          printf("Test success!\n");
+  27   2        }else{
+  28   2          printf("Test failed!\n");
+  29   2        }
+  30   1        printf("Test finished!\n");
+  31   1        kill_self = 1;
+  32   1        while (1);
+  33   1      }
+  34          
+  35          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     47    ----
+   CONSTANT SIZE    =     45    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

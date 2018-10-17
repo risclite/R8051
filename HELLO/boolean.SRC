@@ -1,0 +1,1524 @@
+; .\boolean.SRC generated from: boolean.c
+; COMPILER INVOKED BY:
+;        C:\myprog\Keil\C51\BIN\C51.EXE boolean.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\boolean.SRC)
+
+$NOMOD51
+
+NAME	BOOLEAN
+
+P0	DATA	080H
+P1	DATA	090H
+P2	DATA	0A0H
+P3	DATA	0B0H
+T0	BIT	0B0H.4
+AC	BIT	0D0H.6
+T1	BIT	0B0H.5
+T2	BIT	090H.0
+EA	BIT	0A8H.7
+IE	DATA	0A8H
+EXF2	BIT	0C8H.6
+RD	BIT	0B0H.7
+ES	BIT	0A8H.4
+IP	DATA	0B8H
+RI	BIT	098H.0
+INT0	BIT	0B0H.2
+CY	BIT	0D0H.7
+TI	BIT	098H.1
+INT1	BIT	0B0H.3
+RCAP2H	DATA	0CBH
+PS	BIT	0B8H.4
+SP	DATA	081H
+T2EX	BIT	090H.1
+OV	BIT	0D0H.2
+RCAP2L	DATA	0CAH
+C_T2	BIT	0C8H.1
+WR	BIT	0B0H.6
+RCLK	BIT	0C8H.5
+TCLK	BIT	0C8H.4
+SBUF	DATA	099H
+PCON	DATA	087H
+SCON	DATA	098H
+TMOD	DATA	089H
+TCON	DATA	088H
+IE0	BIT	088H.1
+IE1	BIT	088H.3
+B	DATA	0F0H
+CP_RL2	BIT	0C8H.0
+ACC	DATA	0E0H
+ET0	BIT	0A8H.1
+ET1	BIT	0A8H.3
+TF0	BIT	088H.5
+ET2	BIT	0A8H.5
+TF1	BIT	088H.7
+TF2	BIT	0C8H.7
+RB8	BIT	098H.2
+TH0	DATA	08CH
+EX0	BIT	0A8H.0
+IT0	BIT	088H.0
+TH1	DATA	08DH
+TB8	BIT	098H.3
+EX1	BIT	0A8H.2
+IT1	BIT	088H.2
+TH2	DATA	0CDH
+P	BIT	0D0H.0
+SM0	BIT	098H.7
+TL0	DATA	08AH
+SM1	BIT	098H.6
+TL1	DATA	08BH
+SM2	BIT	098H.5
+TL2	DATA	0CCH
+PT0	BIT	0B8H.1
+PT1	BIT	0B8H.3
+RS0	BIT	0D0H.3
+PT2	BIT	0B8H.5
+TR0	BIT	088H.4
+RS1	BIT	0D0H.4
+TR1	BIT	088H.6
+TR2	BIT	0C8H.2
+PX0	BIT	0B8H.0
+PX1	BIT	0B8H.2
+DPH	DATA	083H
+DPL	DATA	082H
+EXEN2	BIT	0C8H.3
+REN	BIT	098H.4
+T2CON	DATA	0C8H
+RXD	BIT	0B0H.0
+TXD	BIT	0B0H.1
+F0	BIT	0D0H.5
+PSW	DATA	0D0H
+?PR?clr_c?BOOLEAN    SEGMENT CODE 
+?PR?clr_bit?BOOLEAN  SEGMENT CODE 
+?PR?setb_c?BOOLEAN   SEGMENT CODE 
+?PR?setb_bit?BOOLEAN SEGMENT CODE 
+?PR?cpl_c?BOOLEAN    SEGMENT CODE 
+?PR?cpl_bit?BOOLEAN  SEGMENT CODE 
+?PR?anl_c_bit?BOOLEAN                    SEGMENT CODE 
+?PR?anl_c_nbit?BOOLEAN                   SEGMENT CODE 
+?PR?orl_c_bit?BOOLEAN                    SEGMENT CODE 
+?PR?orl_c_nbit?BOOLEAN                   SEGMENT CODE 
+?PR?mov_c_bit?BOOLEAN                    SEGMENT CODE 
+?PR?mov_bit_c?BOOLEAN                    SEGMENT CODE 
+?PR?jc_c?BOOLEAN     SEGMENT CODE 
+?PR?jnc_c?BOOLEAN    SEGMENT CODE 
+?PR?jb_bit?BOOLEAN   SEGMENT CODE 
+?PR?jnb_bit?BOOLEAN  SEGMENT CODE 
+?PR?jbc_bit?BOOLEAN  SEGMENT CODE 
+?CO?BOOLEAN          SEGMENT CODE 
+	EXTRN	CODE (_printf)
+	EXTRN	DATA (?_printf?BYTE)
+	EXTRN	CODE (error)
+	PUBLIC	jbc_bit
+	PUBLIC	jnb_bit
+	PUBLIC	jb_bit
+	PUBLIC	jnc_c
+	PUBLIC	jc_c
+	PUBLIC	mov_bit_c
+	PUBLIC	mov_c_bit
+	PUBLIC	orl_c_nbit
+	PUBLIC	orl_c_bit
+	PUBLIC	anl_c_nbit
+	PUBLIC	anl_c_bit
+	PUBLIC	cpl_bit
+	PUBLIC	cpl_c
+	PUBLIC	setb_bit
+	PUBLIC	setb_c
+	PUBLIC	clr_bit
+	PUBLIC	clr_c
+
+	RSEG  ?CO?BOOLEAN
+?SC_0:
+	DB  'C' ,'L' ,'R' ,'_' ,'C' ,00AH,000H
+
+?SC_7:
+	DB  'C' ,'L' ,'R' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+
+?SC_16:
+	DB  'S' ,'E' ,'T' ,'B' ,'_' ,'C' ,00AH,000H
+
+?SC_24:
+	DB  'S' ,'E' ,'T' ,'B' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+
+?SC_34:
+	DB  'C' ,'P' ,'L' ,'_' ,'C' ,00AH,000H
+
+?SC_41:
+	DB  'C' ,'P' ,'L' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+
+?SC_50:
+	DB  'A' ,'N' ,'L' ,'_' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH
+	DB  000H
+
+?SC_61:
+	DB  'A' ,'N' ,'L' ,'_' ,'C' ,'_' ,'N' ,'B' ,'I' ,'T' 
+	DB  00AH,000H
+
+?SC_73:
+	DB  'O' ,'R' ,'L' ,'_' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH
+	DB  000H
+
+?SC_84:
+	DB  'O' ,'R' ,'L' ,'_' ,'C' ,'_' ,'N' ,'B' ,'I' ,'T' 
+	DB  00AH,000H
+
+?SC_96:
+	DB  'M' ,'O' ,'V' ,'_' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH
+	DB  000H
+
+?SC_107:
+	DB  'M' ,'O' ,'V' ,'_' ,'B' ,'I' ,'T' ,'_' ,'C' ,00AH
+	DB  000H
+
+?SC_118:
+	DB  'J' ,'C' ,'_' ,'C' ,00AH,000H
+
+?SC_124:
+	DB  'J' ,'N' ,'C' ,'_' ,'C' ,00AH,000H
+
+?SC_131:
+	DB  'J' ,'B' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+
+?SC_139:
+	DB  'J' ,'N' ,'B' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+
+?SC_148:
+	DB  'J' ,'B' ,'C' ,'_' ,'B' ,'I' ,'T' ,00AH,000H
+
+; #include <REG52.H>
+; #include <stdio.h> 
+; #include "instruction.h"
+; 
+; void clr_c(void) {
+
+	RSEG  ?PR?clr_c?BOOLEAN
+clr_c:
+	USING	0
+			; SOURCE LINE # 5
+; 	printf("CLR_C\n");
+			; SOURCE LINE # 6
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_0)
+	MOV  	R1,#LOW (?SC_0)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	setb C
+	  setb C
+; 	clr C
+	  clr C
+;     #pragma ENDASM	
+; 	if (CY!=0x0) test_status = 0;
+			; SOURCE LINE # 19
+	JNB  	CY,?C0001
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0001:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 25
+	LJMP 	error
+; END OF clr_c
+
+; }
+; 
+; void clr_bit(void) {
+
+	RSEG  ?PR?clr_bit?BOOLEAN
+clr_bit:
+	USING	0
+			; SOURCE LINE # 28
+; 	printf("CLR_BIT\n");
+			; SOURCE LINE # 29
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_7)
+	MOV  	R1,#LOW (?SC_7)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#0ffH
+	  mov 0x20,#0ffH
+; 	clr 0x7
+	  clr 0x7
+;     #pragma ENDASM	
+; 	if (bit_data!=0x7f) test_status = 0;
+			; SOURCE LINE # 42
+	MOV  	R0,#020H
+	MOV  	A,@R0
+	XRL  	A,#07FH
+	JZ   	?C0003
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0003:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 48
+	LJMP 	error
+; END OF clr_bit
+
+; }
+; 
+; void setb_c(void) {
+
+	RSEG  ?PR?setb_c?BOOLEAN
+setb_c:
+	USING	0
+			; SOURCE LINE # 51
+; 	printf("SETB_C\n");
+			; SOURCE LINE # 52
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_16)
+	MOV  	R1,#LOW (?SC_16)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	setb C
+	  setb C
+;     #pragma ENDASM	
+; 	if (CY!=0x1) test_status = 0;
+			; SOURCE LINE # 64
+	JB   	CY,?C0005
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0005:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 70
+	LJMP 	error
+; END OF setb_c
+
+; }
+; 
+; void setb_bit(void) {
+
+	RSEG  ?PR?setb_bit?BOOLEAN
+setb_bit:
+	USING	0
+			; SOURCE LINE # 73
+; 	printf("SETB_BIT\n");
+			; SOURCE LINE # 74
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_24)
+	MOV  	R1,#LOW (?SC_24)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#0H
+	  mov 0x20,#0H
+; 	setb 0x6
+	  setb 0x6
+;     #pragma ENDASM	
+; 	if (bit_data!=0x40) test_status = 0;
+			; SOURCE LINE # 87
+	MOV  	R0,#020H
+	MOV  	A,@R0
+	XRL  	A,#040H
+	JZ   	?C0007
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0007:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 93
+	LJMP 	error
+; END OF setb_bit
+
+; }
+; 
+; void cpl_c(void) {
+
+	RSEG  ?PR?cpl_c?BOOLEAN
+cpl_c:
+	USING	0
+			; SOURCE LINE # 96
+; 	printf("CPL_C\n");
+			; SOURCE LINE # 97
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_34)
+	MOV  	R1,#LOW (?SC_34)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	clr C
+	  clr C
+; 	cpl C
+	  cpl C
+;     #pragma ENDASM	
+; 	if (CY!=0x1) test_status = 0;
+			; SOURCE LINE # 110
+	JB   	CY,?C0009
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0009:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 116
+	LJMP 	error
+; END OF cpl_c
+
+; }
+; 
+; void cpl_bit(void) {
+
+	RSEG  ?PR?cpl_bit?BOOLEAN
+cpl_bit:
+	USING	0
+			; SOURCE LINE # 119
+; 	printf("CPL_BIT\n");
+			; SOURCE LINE # 120
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_41)
+	MOV  	R1,#LOW (?SC_41)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#55H
+	  mov 0x20,#55H
+; 	cpl 0x7
+	  cpl 0x7
+;     #pragma ENDASM	
+; 	if (bit_data!=0xd5) test_status = 0;
+			; SOURCE LINE # 133
+	MOV  	R0,#020H
+	MOV  	A,@R0
+	XRL  	A,#0D5H
+	JZ   	?C0011
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0011:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 139
+	LJMP 	error
+; END OF cpl_bit
+
+; }
+; 
+; void anl_c_bit(void) {
+
+	RSEG  ?PR?anl_c_bit?BOOLEAN
+anl_c_bit:
+	USING	0
+			; SOURCE LINE # 142
+; 	printf("ANL_C_BIT\n");
+			; SOURCE LINE # 143
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_50)
+	MOV  	R1,#LOW (?SC_50)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#7fH
+	  mov 0x20,#7fH
+; 	setb C
+	  setb C
+; 	anl C,0x7
+	  anl C,0x7
+;     #pragma ENDASM	
+; 	if (CY!=0x0) test_status = 0;
+			; SOURCE LINE # 157
+	JNB  	CY,?C0013
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0013:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 163
+	LJMP 	error
+; END OF anl_c_bit
+
+; }
+; 
+; void anl_c_nbit(void) {
+
+	RSEG  ?PR?anl_c_nbit?BOOLEAN
+anl_c_nbit:
+	USING	0
+			; SOURCE LINE # 166
+; 	printf("ANL_C_NBIT\n");
+			; SOURCE LINE # 167
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_61)
+	MOV  	R1,#LOW (?SC_61)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#010H
+	  mov 0x20,#010H
+; 	setb C
+	  setb C
+; 	anl C,/0x4
+	  anl C,/0x4
+;     #pragma ENDASM	
+; 	if (CY!=0x0) test_status = 0;
+			; SOURCE LINE # 181
+	JNB  	CY,?C0015
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0015:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 187
+	LJMP 	error
+; END OF anl_c_nbit
+
+; }
+; 
+; void orl_c_bit(void) {
+
+	RSEG  ?PR?orl_c_bit?BOOLEAN
+orl_c_bit:
+	USING	0
+			; SOURCE LINE # 190
+; 	printf("ORL_C_BIT\n");
+			; SOURCE LINE # 191
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_73)
+	MOV  	R1,#LOW (?SC_73)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#80H
+	  mov 0x20,#80H
+; 	clr C
+	  clr C
+; 	orl C,0x7
+	  orl C,0x7
+;     #pragma ENDASM	
+; 	if (CY!=0x1) test_status = 0;
+			; SOURCE LINE # 205
+	JB   	CY,?C0017
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0017:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 211
+	LJMP 	error
+; END OF orl_c_bit
+
+; }
+; 
+; void orl_c_nbit(void) {
+
+	RSEG  ?PR?orl_c_nbit?BOOLEAN
+orl_c_nbit:
+	USING	0
+			; SOURCE LINE # 214
+; 	printf("ORL_C_NBIT\n");
+			; SOURCE LINE # 215
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_84)
+	MOV  	R1,#LOW (?SC_84)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#0efH
+	  mov 0x20,#0efH
+; 	clr C
+	  clr C
+; 	orl C,/0x4
+	  orl C,/0x4
+;     #pragma ENDASM	
+; 	if (CY!=0x1) test_status = 0;
+			; SOURCE LINE # 229
+	JB   	CY,?C0019
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0019:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 235
+	LJMP 	error
+; END OF orl_c_nbit
+
+; }
+; 
+; void mov_c_bit(void) {
+
+	RSEG  ?PR?mov_c_bit?BOOLEAN
+mov_c_bit:
+	USING	0
+			; SOURCE LINE # 238
+; 	printf("MOV_C_BIT\n");
+			; SOURCE LINE # 239
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_96)
+	MOV  	R1,#LOW (?SC_96)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#080H
+	  mov 0x20,#080H
+; 	clr C
+	  clr C
+; 	mov C,0x7
+	  mov C,0x7
+;     #pragma ENDASM	
+; 	if (CY!=0x1) test_status = 0;
+			; SOURCE LINE # 253
+	JB   	CY,?C0021
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0021:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 259
+	LJMP 	error
+; END OF mov_c_bit
+
+; }
+; 
+; void mov_bit_c(void) {
+
+	RSEG  ?PR?mov_bit_c?BOOLEAN
+mov_bit_c:
+	USING	0
+			; SOURCE LINE # 262
+; 	printf("MOV_BIT_C\n");
+			; SOURCE LINE # 263
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_107)
+	MOV  	R1,#LOW (?SC_107)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#000H
+	  mov 0x20,#000H
+; 	setb C
+	  setb C
+; 	mov 0x4,C
+	  mov 0x4,C
+;     #pragma ENDASM	
+; 	if (bit_data!=0x10) test_status = 0;
+			; SOURCE LINE # 277
+	MOV  	R0,#020H
+	MOV  	A,@R0
+	XRL  	A,#010H
+	JZ   	?C0023
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0023:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 283
+	LJMP 	error
+; END OF mov_bit_c
+
+; }
+; 
+; void jc_c(void) {
+
+	RSEG  ?PR?jc_c?BOOLEAN
+jc_c:
+	USING	0
+			; SOURCE LINE # 286
+; 	printf("JC_C\n");
+			; SOURCE LINE # 287
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_118)
+	MOV  	R1,#LOW (?SC_118)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	clr C
+	  clr C
+; 	JC  ERROR0_JC_C
+	  JC  ERROR0_JC_C
+; 	cpl C
+	  cpl C
+; 	JC  RIGHT0_JC_C
+	  JC  RIGHT0_JC_C
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR0_JC_C: clr A
+	  ERROR0_JC_C: clr A
+;     SJMP EXIT0_JC_C
+	  SJMP EXIT0_JC_C
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT0_JC_C: mov A,#0ffH
+	  RIGHT0_JC_C: mov A,#0ffH
+;     SJMP EXIT0_JC_C
+	  SJMP EXIT0_JC_C
+;     nop
+	  nop
+;     nop
+	  nop
+; EXIT0_JC_C: nop	
+	  EXIT0_JC_C: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;
+			; SOURCE LINE # 314
+	CPL  	A
+	JZ   	?C0025
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0025:
+; 	
+; 	#pragma ASM
+;     sjmp NOW_JC_C
+	  sjmp NOW_JC_C
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR1_JC_C: clr A
+	  ERROR1_JC_C: clr A
+;     SJMP EXIT1_JC_C
+	  SJMP EXIT1_JC_C
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT1_JC_C: mov A,#0ffH
+	  RIGHT1_JC_C: mov A,#0ffH
+;     SJMP EXIT1_JC_C
+	  SJMP EXIT1_JC_C
+;     nop
+	  nop
+;     nop	
+	  nop	
+; 	nop
+	  nop
+; 	nop
+	  nop
+; NOW_JC_C:	clr C
+	  NOW_JC_C:	clr C
+; 	JC  ERROR1_JC_C
+	  JC  ERROR1_JC_C
+; 	cpl C
+	  cpl C
+; 	JC  RIGHT1_JC_C
+	  JC  RIGHT1_JC_C
+; 	nop
+	  nop
+; 	nop
+	  nop
+; EXIT1_JC_C: nop	
+	  EXIT1_JC_C: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;	
+			; SOURCE LINE # 339
+	CPL  	A
+	JZ   	?C0026
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0026:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 345
+	LJMP 	error
+; END OF jc_c
+
+; }
+; 
+; void jnc_c(void) {
+
+	RSEG  ?PR?jnc_c?BOOLEAN
+jnc_c:
+	USING	0
+			; SOURCE LINE # 348
+; 	printf("JNC_C\n");
+			; SOURCE LINE # 349
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_124)
+	MOV  	R1,#LOW (?SC_124)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	setb C
+	  setb C
+; 	JNC  ERROR0_JNC_C
+	  JNC  ERROR0_JNC_C
+; 	cpl C
+	  cpl C
+; 	JNC  RIGHT0_JNC_C
+	  JNC  RIGHT0_JNC_C
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR0_JNC_C: clr A
+	  ERROR0_JNC_C: clr A
+;     SJMP EXIT0_JNC_C
+	  SJMP EXIT0_JNC_C
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT0_JNC_C: mov A,#0ffH
+	  RIGHT0_JNC_C: mov A,#0ffH
+;     SJMP EXIT0_JNC_C
+	  SJMP EXIT0_JNC_C
+;     nop
+	  nop
+;     nop
+	  nop
+; EXIT0_JNC_C: nop	
+	  EXIT0_JNC_C: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;
+			; SOURCE LINE # 376
+	CPL  	A
+	JZ   	?C0028
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0028:
+; 	
+; 	#pragma ASM
+;     sjmp NOW_JNC_C
+	  sjmp NOW_JNC_C
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR1_JNC_C: clr A
+	  ERROR1_JNC_C: clr A
+;     SJMP EXIT1_JNC_C
+	  SJMP EXIT1_JNC_C
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT1_JNC_C: mov A,#0ffH
+	  RIGHT1_JNC_C: mov A,#0ffH
+;     SJMP EXIT1_JNC_C
+	  SJMP EXIT1_JNC_C
+;     nop
+	  nop
+;     nop	
+	  nop	
+; 	nop
+	  nop
+; 	nop
+	  nop
+; NOW_JNC_C:	setb C
+	  NOW_JNC_C:	setb C
+; 	JNC  ERROR1_JNC_C
+	  JNC  ERROR1_JNC_C
+; 	cpl C
+	  cpl C
+; 	JNC  RIGHT1_JNC_C
+	  JNC  RIGHT1_JNC_C
+; 	nop
+	  nop
+; 	nop
+	  nop
+; EXIT1_JNC_C: nop	
+	  EXIT1_JNC_C: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;	
+			; SOURCE LINE # 401
+	CPL  	A
+	JZ   	?C0029
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0029:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 407
+	LJMP 	error
+; END OF jnc_c
+
+; }
+; 
+; void jb_bit(void) {
+
+	RSEG  ?PR?jb_bit?BOOLEAN
+jb_bit:
+	USING	0
+			; SOURCE LINE # 410
+; 	printf("JB_BIT\n");
+			; SOURCE LINE # 411
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_131)
+	MOV  	R1,#LOW (?SC_131)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#0f7H
+	  mov 0x20,#0f7H
+; 	jb  0x3,ERROR0_JB_BIT
+	  jb  0x3,ERROR0_JB_BIT
+; 	cpl 0x3
+	  cpl 0x3
+; 	jb  0x3,RIGHT0_JB_BIT
+	  jb  0x3,RIGHT0_JB_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR0_JB_BIT: clr A
+	  ERROR0_JB_BIT: clr A
+;     SJMP EXIT0_JB_BIT
+	  SJMP EXIT0_JB_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT0_JB_BIT: mov A,#0ffH
+	  RIGHT0_JB_BIT: mov A,#0ffH
+;     SJMP EXIT0_JB_BIT
+	  SJMP EXIT0_JB_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; EXIT0_JB_BIT: nop	
+	  EXIT0_JB_BIT: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;
+			; SOURCE LINE # 438
+	CPL  	A
+	JZ   	?C0031
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0031:
+; 	
+; 	#pragma ASM
+;     sjmp NOW_JB_BIT
+	  sjmp NOW_JB_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR1_JB_BIT: clr A
+	  ERROR1_JB_BIT: clr A
+;     SJMP EXIT1_JB_BIT
+	  SJMP EXIT1_JB_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT1_JB_BIT: mov A,#0ffH
+	  RIGHT1_JB_BIT: mov A,#0ffH
+;     SJMP EXIT1_JB_BIT
+	  SJMP EXIT1_JB_BIT
+;     nop
+	  nop
+;     nop	
+	  nop	
+; 	nop
+	  nop
+; 	nop
+	  nop
+; NOW_JB_BIT:	mov 0x20,#0f7H
+	  NOW_JB_BIT:	mov 0x20,#0f7H
+; 	jb  0x3,ERROR1_JB_BIT
+	  jb  0x3,ERROR1_JB_BIT
+; 	cpl 0x3
+	  cpl 0x3
+; 	jb  0x3,RIGHT1_JB_BIT
+	  jb  0x3,RIGHT1_JB_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; EXIT1_JB_BIT: nop	
+	  EXIT1_JB_BIT: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;	
+			; SOURCE LINE # 463
+	CPL  	A
+	JZ   	?C0032
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0032:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 469
+	LJMP 	error
+; END OF jb_bit
+
+; }
+; 
+; void jnb_bit(void) {
+
+	RSEG  ?PR?jnb_bit?BOOLEAN
+jnb_bit:
+	USING	0
+			; SOURCE LINE # 472
+; 	printf("JNB_BIT\n");
+			; SOURCE LINE # 473
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_139)
+	MOV  	R1,#LOW (?SC_139)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#010H
+	  mov 0x20,#010H
+; 	jnb  0x4,ERROR0_JNB_BIT
+	  jnb  0x4,ERROR0_JNB_BIT
+; 	cpl 0x4
+	  cpl 0x4
+; 	jnb  0x4,RIGHT0_JNB_BIT
+	  jnb  0x4,RIGHT0_JNB_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR0_JNB_BIT: clr A
+	  ERROR0_JNB_BIT: clr A
+;     SJMP EXIT0_JNB_BIT
+	  SJMP EXIT0_JNB_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT0_JNB_BIT: mov A,#0ffH
+	  RIGHT0_JNB_BIT: mov A,#0ffH
+;     SJMP EXIT0_JNB_BIT
+	  SJMP EXIT0_JNB_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; EXIT0_JNB_BIT: nop	
+	  EXIT0_JNB_BIT: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;
+			; SOURCE LINE # 500
+	CPL  	A
+	JZ   	?C0034
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0034:
+; 	
+; 	#pragma ASM
+;     sjmp NOW_JNB_BIT
+	  sjmp NOW_JNB_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR1_JNB_BIT: clr A
+	  ERROR1_JNB_BIT: clr A
+;     SJMP EXIT1_JNB_BIT
+	  SJMP EXIT1_JNB_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT1_JNB_BIT: mov A,#0ffH
+	  RIGHT1_JNB_BIT: mov A,#0ffH
+;     SJMP EXIT1_JNB_BIT
+	  SJMP EXIT1_JNB_BIT
+;     nop
+	  nop
+;     nop	
+	  nop	
+; 	nop
+	  nop
+; 	nop
+	  nop
+; NOW_JNB_BIT: mov 0x20,#010H
+	  NOW_JNB_BIT: mov 0x20,#010H
+; 	jnb  0x4,ERROR1_JNB_BIT
+	  jnb  0x4,ERROR1_JNB_BIT
+; 	cpl 0x4
+	  cpl 0x4
+; 	jnb  0x4,RIGHT1_JNB_BIT
+	  jnb  0x4,RIGHT1_JNB_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; EXIT1_JNB_BIT: nop	
+	  EXIT1_JNB_BIT: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;	
+			; SOURCE LINE # 525
+	CPL  	A
+	JZ   	?C0035
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0035:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 531
+	LJMP 	error
+; END OF jnb_bit
+
+; }
+; 
+; void jbc_bit(void) {
+
+	RSEG  ?PR?jbc_bit?BOOLEAN
+jbc_bit:
+	USING	0
+			; SOURCE LINE # 534
+; 	printf("JBC_BIT\n");
+			; SOURCE LINE # 535
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_148)
+	MOV  	R1,#LOW (?SC_148)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;     mov  psw,#0H	
+	  mov  psw,#0H	
+;     setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;     #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x20,#0f7H
+	  mov 0x20,#0f7H
+; 	jbc  0x3,ERROR0_JBC_BIT
+	  jbc  0x3,ERROR0_JBC_BIT
+; 	cpl 0x3
+	  cpl 0x3
+; 	jbc  0x3,RIGHT0_JBC_BIT
+	  jbc  0x3,RIGHT0_JBC_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR0_JBC_BIT: clr A
+	  ERROR0_JBC_BIT: clr A
+;     SJMP EXIT0_JBC_BIT
+	  SJMP EXIT0_JBC_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT0_JBC_BIT: mov A,#0ffH
+	  RIGHT0_JBC_BIT: mov A,#0ffH
+;     SJMP EXIT0_JBC_BIT
+	  SJMP EXIT0_JBC_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; EXIT0_JBC_BIT: nop	
+	  EXIT0_JBC_BIT: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;
+			; SOURCE LINE # 562
+	CPL  	A
+	JZ   	?C0037
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0037:
+; 	if (bit_data!=0xf7) test_status = 0;
+			; SOURCE LINE # 563
+	MOV  	R0,#020H
+	MOV  	A,@R0
+	XRL  	A,#0F7H
+	JZ   	?C0038
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0038:
+; 	
+; 	#pragma ASM
+;     sjmp NOW_JBC_BIT
+	  sjmp NOW_JBC_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; 	nop
+	  nop
+; ERROR1_JBC_BIT: clr A
+	  ERROR1_JBC_BIT: clr A
+;     SJMP EXIT1_JBC_BIT
+	  SJMP EXIT1_JBC_BIT
+;     nop
+	  nop
+;     nop
+	  nop
+; RIGHT1_JBC_BIT: mov A,#0ffH
+	  RIGHT1_JBC_BIT: mov A,#0ffH
+;     SJMP EXIT1_JBC_BIT
+	  SJMP EXIT1_JBC_BIT
+;     nop
+	  nop
+;     nop	
+	  nop	
+; 	nop
+	  nop
+; 	nop
+	  nop
+; NOW_JBC_BIT: mov 0x20,#0f7H
+	  NOW_JBC_BIT: mov 0x20,#0f7H
+; 	jbc  0x3,ERROR1_JBC_BIT
+	  jbc  0x3,ERROR1_JBC_BIT
+; 	cpl 0x3
+	  cpl 0x3
+; 	jbc  0x3,RIGHT1_JBC_BIT
+	  jbc  0x3,RIGHT1_JBC_BIT
+; 	nop
+	  nop
+; 	nop
+	  nop
+; EXIT1_JBC_BIT: nop	
+	  EXIT1_JBC_BIT: nop	
+;     #pragma ENDASM	
+; 	if (ACC!=0xff) test_status = 0;	
+			; SOURCE LINE # 588
+	CPL  	A
+	JZ   	?C0039
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0039:
+; 	if (bit_data!=0xf7) test_status = 0;
+			; SOURCE LINE # 589
+	MOV  	R0,#020H
+	MOV  	A,@R0
+	XRL  	A,#0F7H
+	JZ   	?C0040
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0040:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;     pop psw	
+	  pop psw	
+;     #pragma ENDASM
+;     error();  
+			; SOURCE LINE # 595
+	LJMP 	error
+; END OF jbc_bit
+
+	END

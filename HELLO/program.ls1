@@ -1,0 +1,1570 @@
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN program.OBJ
+ASSEMBLER INVOKED BY: C:\myprog\Keil\C51\BIN\A51.EXE program.src PR(.\program.ls1) EP DEBUG
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; .\program.SRC generated from: program.c
+                       2     ; COMPILER INVOKED BY:
+                       3     ;        C:\myprog\Keil\C51\BIN\C51.EXE program.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\p
+                             rogram.SRC)
+                       4     
+                       5     $nomod51 
+                       6     
+                       7     NAME    PROGRAM
+                       8     
+  0080                 9     P0      DATA    080H
+  0090                10     P1      DATA    090H
+  00A0                11     P2      DATA    0A0H
+  00B0                12     P3      DATA    0B0H
+  00B4                13     T0      BIT     0B0H.4
+  00D6                14     AC      BIT     0D0H.6
+  00B5                15     T1      BIT     0B0H.5
+  0090                16     T2      BIT     090H.0
+  00AF                17     EA      BIT     0A8H.7
+  00A8                18     IE      DATA    0A8H
+  00CE                19     EXF2    BIT     0C8H.6
+  00B7                20     RD      BIT     0B0H.7
+  00AC                21     ES      BIT     0A8H.4
+  00B8                22     IP      DATA    0B8H
+  0098                23     RI      BIT     098H.0
+  00B2                24     INT0    BIT     0B0H.2
+  00D7                25     CY      BIT     0D0H.7
+  0099                26     TI      BIT     098H.1
+  00B3                27     INT1    BIT     0B0H.3
+  00CB                28     RCAP2H  DATA    0CBH
+  00BC                29     PS      BIT     0B8H.4
+  0081                30     SP      DATA    081H
+  0091                31     T2EX    BIT     090H.1
+  00D2                32     OV      BIT     0D0H.2
+  00CA                33     RCAP2L  DATA    0CAH
+  00C9                34     C_T2    BIT     0C8H.1
+  00B6                35     WR      BIT     0B0H.6
+  00CD                36     RCLK    BIT     0C8H.5
+  00CC                37     TCLK    BIT     0C8H.4
+  0099                38     SBUF    DATA    099H
+  0087                39     PCON    DATA    087H
+  0098                40     SCON    DATA    098H
+  0089                41     TMOD    DATA    089H
+  0088                42     TCON    DATA    088H
+  0089                43     IE0     BIT     088H.1
+  008B                44     IE1     BIT     088H.3
+  00F0                45     B       DATA    0F0H
+  00C8                46     CP_RL2  BIT     0C8H.0
+  00E0                47     ACC     DATA    0E0H
+  00A9                48     ET0     BIT     0A8H.1
+  00AB                49     ET1     BIT     0A8H.3
+  008D                50     TF0     BIT     088H.5
+  00AD                51     ET2     BIT     0A8H.5
+  008F                52     TF1     BIT     088H.7
+  00CF                53     TF2     BIT     0C8H.7
+  009A                54     RB8     BIT     098H.2
+  008C                55     TH0     DATA    08CH
+  00A8                56     EX0     BIT     0A8H.0
+  0088                57     IT0     BIT     088H.0
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     2
+
+  008D                58     TH1     DATA    08DH
+  009B                59     TB8     BIT     098H.3
+  00AA                60     EX1     BIT     0A8H.2
+  008A                61     IT1     BIT     088H.2
+  00CD                62     TH2     DATA    0CDH
+  00D0                63     P       BIT     0D0H.0
+  009F                64     SM0     BIT     098H.7
+  008A                65     TL0     DATA    08AH
+  009E                66     SM1     BIT     098H.6
+  008B                67     TL1     DATA    08BH
+  009D                68     SM2     BIT     098H.5
+  00CC                69     TL2     DATA    0CCH
+  00B9                70     PT0     BIT     0B8H.1
+  00BB                71     PT1     BIT     0B8H.3
+  00D3                72     RS0     BIT     0D0H.3
+  00BD                73     PT2     BIT     0B8H.5
+  008C                74     TR0     BIT     088H.4
+  00D4                75     RS1     BIT     0D0H.4
+  008E                76     TR1     BIT     088H.6
+  00CA                77     TR2     BIT     0C8H.2
+  00B8                78     PX0     BIT     0B8H.0
+  00BA                79     PX1     BIT     0B8H.2
+  0083                80     DPH     DATA    083H
+  0082                81     DPL     DATA    082H
+  00CB                82     EXEN2   BIT     0C8H.3
+  009C                83     REN     BIT     098H.4
+  00C8                84     T2CON   DATA    0C8H
+  00B0                85     RXD     BIT     0B0H.0
+  00B1                86     TXD     BIT     0B0H.1
+  00D5                87     F0      BIT     0D0H.5
+  00D0                88     PSW     DATA    0D0H
+                      89     ?PR?acall_func?PROGRAM                   SEGMENT CODE 
+                      90     ?PR?lcall_func?PROGRAM                   SEGMENT CODE 
+                      91     ?PR?ret_func?PROGRAM SEGMENT CODE 
+                      92     ?PR?reti_func?PROGRAM                    SEGMENT CODE 
+                      93     ?PR?ajmp_func?PROGRAM                    SEGMENT CODE 
+                      94     ?PR?sjmp_func?PROGRAM                    SEGMENT CODE 
+                      95     ?PR?jmp_func?PROGRAM SEGMENT CODE 
+                      96     ?PR?jz_func?PROGRAM  SEGMENT CODE 
+                      97     ?PR?jnz_func?PROGRAM SEGMENT CODE 
+                      98     ?PR?cjne_a_di_rel?PROGRAM                SEGMENT CODE 
+                      99     ?PR?cjne_a_da_rel?PROGRAM                SEGMENT CODE 
+                     100     ?PR?cjne_rn_da_rel?PROGRAM               SEGMENT CODE 
+                     101     ?PR?cjne_ri_da_rel?PROGRAM               SEGMENT CODE 
+                     102     ?PR?djnz_rn_rel?PROGRAM                  SEGMENT CODE 
+                     103     ?PR?djnz_di_rel?PROGRAM                  SEGMENT CODE 
+                     104     ?CO?PROGRAM          SEGMENT CODE 
+                     105             EXTRN   CODE (_printf)
+                     106             EXTRN   DATA (?_printf?BYTE)
+                     107             EXTRN   CODE (error)
+                     108             PUBLIC  djnz_di_rel
+                     109             PUBLIC  djnz_rn_rel
+                     110             PUBLIC  cjne_ri_da_rel
+                     111             PUBLIC  cjne_rn_da_rel
+                     112             PUBLIC  cjne_a_da_rel
+                     113             PUBLIC  cjne_a_di_rel
+                     114             PUBLIC  jnz_func
+                     115             PUBLIC  jz_func
+                     116             PUBLIC  jmp_func
+                     117             PUBLIC  sjmp_func
+                     118             PUBLIC  ajmp_func
+                     119             PUBLIC  reti_func
+                     120             PUBLIC  ret_func
+                     121             PUBLIC  lcall_func
+                     122             PUBLIC  acall_func
+                     123     
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     3
+
+----                 124             RSEG  ?CO?PROGRAM
+0000                 125     ?SC_0:
+0000 4143414C        126             DB  'A' ,'C' ,'A' ,'L' ,'L' ,'_' ,'F' ,'U' ,'N' ,'C' 
+0004 4C5F4655                
+0008 4E43                    
+000A 0A00            127             DB  00AH,000H
+                     128     
+000C                 129     ?SC_12:
+000C 4C43414C        130             DB  'L' ,'C' ,'A' ,'L' ,'L' ,'_' ,'F' ,'U' ,'N' ,'C' 
+0010 4C5F4655                
+0014 4E43                    
+0016 0A00            131             DB  00AH,000H
+                     132     
+0018                 133     ?SC_24:
+0018 5245545F        134             DB  'R' ,'E' ,'T' ,'_' ,'F' ,'U' ,'N' ,'C' ,00AH,000H
+001C 46554E43                
+0020 0A00                    
+                     135     
+0022                 136     ?SC_34:
+0022 52455449        137             DB  'R' ,'E' ,'T' ,'I' ,'_' ,'F' ,'U' ,'N' ,'C' ,00AH
+0026 5F46554E                
+002A 430A                    
+002C 00              138             DB  000H
+                     139     
+002D                 140     ?SC_45:
+002D 414A4D50        141             DB  'A' ,'J' ,'M' ,'P' ,'_' ,'F' ,'U' ,'N' ,'C' ,00AH
+0031 5F46554E                
+0035 430A                    
+0037 00              142             DB  000H
+                     143     
+0038                 144     ?SC_56:
+0038 534A4D50        145             DB  'S' ,'J' ,'M' ,'P' ,'_' ,'F' ,'U' ,'N' ,'C' ,00AH
+003C 5F46554E                
+0040 430A                    
+0042 00              146             DB  000H
+                     147     
+0043                 148     ?SC_67:
+0043 4A4D505F        149             DB  'J' ,'M' ,'P' ,'_' ,'F' ,'U' ,'N' ,'C' ,00AH,000H
+0047 46554E43                
+004B 0A00                    
+                     150     
+004D                 151     ?SC_77:
+004D 4A5A5F46        152             DB  'J' ,'Z' ,'_' ,'F' ,'U' ,'N' ,'C' ,00AH,000H
+0051 554E430A                
+0055 00                      
+                     153     
+0056                 154     ?SC_86:
+0056 4A4E5A5F        155             DB  'J' ,'N' ,'Z' ,'_' ,'F' ,'U' ,'N' ,'C' ,00AH,000H
+005A 46554E43                
+005E 0A00                    
+                     156     
+0060                 157     ?SC_96:
+0060 434A4E45        158             DB  'C' ,'J' ,'N' ,'E' ,'_' ,'A' ,'_' ,'D' ,'I' ,'_' 
+0064 5F415F44                
+0068 495F                    
+006A 52454C0A        159             DB  'R' ,'E' ,'L' ,00AH,000H
+006E 00                      
+                     160     
+006F                 161     ?SC_111:
+006F 434A4E45        162             DB  'C' ,'J' ,'N' ,'E' ,'_' ,'A' ,'_' ,'D' ,'A' ,'_' 
+0073 5F415F44                
+0077 415F                    
+0079 52454C0A        163             DB  'R' ,'E' ,'L' ,00AH,000H
+007D 00                      
+                     164     
+007E                 165     ?SC_126:
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     4
+
+007E 434A4E45        166             DB  'C' ,'J' ,'N' ,'E' ,'_' ,'R' ,'N' ,'_' ,'D' ,'A' 
+0082 5F524E5F                
+0086 4441                    
+0088 5F52454C        167             DB  '_' ,'R' ,'E' ,'L' ,00AH,000H
+008C 0A00                    
+                     168     
+008E                 169     ?SC_142:
+008E 434A4E45        170             DB  'C' ,'J' ,'N' ,'E' ,'_' ,'R' ,'I' ,'_' ,'D' ,'A' 
+0092 5F52495F                
+0096 4441                    
+0098 5F52454C        171             DB  '_' ,'R' ,'E' ,'L' ,00AH,000H
+009C 0A00                    
+                     172     
+009E                 173     ?SC_158:
+009E 444A4E5A        174             DB  'D' ,'J' ,'N' ,'Z' ,'_' ,'R' ,'N' ,'_' ,'R' ,'E' 
+00A2 5F524E5F                
+00A6 5245                    
+00A8 4C0A00          175             DB  'L' ,00AH,000H
+                     176     
+00AB                 177     ?SC_171:
+00AB 444A4E5A        178             DB  'D' ,'J' ,'N' ,'Z' ,'_' ,'D' ,'I' ,'_' ,'R' ,'E' 
+00AF 5F44495F                
+00B3 5245                    
+00B5 4C0A00          179             DB  'L' ,00AH,000H
+                     180     
+                     181     ; #include <REG52.H>
+                     182     ; #include <stdio.h> 
+                     183     ; #include "instruction.h"
+                     184     ; 
+                     185     ; void acall_func(void) {
+                     186     
+----                 187             RSEG  ?PR?acall_func?PROGRAM
+0000                 188     acall_func:
+                     189             USING   0
+                     190                             ; SOURCE LINE # 5
+                     191     ;       printf("ACALL_FUNC\n");
+                     192                             ; SOURCE LINE # 6
+0000 7BFF            193             MOV     R3,#0FFH
+0002 7A00     F      194             MOV     R2,#HIGH (?SC_0)
+0004 7900     F      195             MOV     R1,#LOW (?SC_0)
+0006 120000   F      196             LCALL   _printf
+                     197     ;       #pragma ASM  
+                     198     ;       push psw
+0009 C0D0            199               push psw
+                     200     ;       push acc
+000B C0E0            201               push acc
+                     202     ;     mov  psw,#0H      
+000D 75D000          203               mov  psw,#0H  
+                     204     ;     setb rs0     
+0010 D2D3            205               setb rs0     
+                     206     ;       setb rs1        
+0012 D2D4            207               setb rs1      
+                     208     ;     #pragma ENDASM 
+                     209     ;       
+                     210     ;       #pragma ASM
+                     211     ;       mov A,SP
+0014 E581            212               mov A,SP
+                     213     ;       acall JUMP_ACALL
+0016 1100     F      214               acall JUMP_ACALL
+                     215     ;       jmp EXIT_ACALL
+0018 800B            216               jmp EXIT_ACALL
+                     217     ;       nop
+001A 00              218               nop
+                     219     ;       nop
+001B 00              220               nop
+                     221     ;       nop
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     5
+
+001C 00              222               nop
+                     223     ; JUMP_ACALL:   inc A
+001D 04              224               JUMP_ACALL:   inc A
+                     225     ;     inc A
+001E 04              226               inc A
+                     227     ;       mov B,SP
+001F 8581F0          228               mov B,SP
+                     229     ;       ret
+0022 22              230               ret
+                     231     ;       nop
+0023 00              232               nop
+                     233     ;       nop
+0024 00              234               nop
+                     235     ; EXIT_ACALL: nop
+0025 00              236               EXIT_ACALL: nop
+                     237     ;     #pragma ENDASM    
+                     238     ;       if (ACC!=B) test_status = 0;
+                     239                             ; SOURCE LINE # 30
+0026 65F0            240             XRL     A,B
+0028 6005            241             JZ      ?C0001
+002A 90007E          242             MOV     DPTR,#07EH
+002D E4              243             CLR     A
+002E F0              244             MOVX    @DPTR,A
+002F                 245     ?C0001:
+                     246     ;       if (SP!=(B-2)) test_status=0;   
+                     247                             ; SOURCE LINE # 31
+002F E5F0            248             MOV     A,B
+0031 24FE            249             ADD     A,#0FEH
+0033 6581            250             XRL     A,SP
+0035 6005            251             JZ      ?C0002
+0037 90007E          252             MOV     DPTR,#07EH
+003A E4              253             CLR     A
+003B F0              254             MOVX    @DPTR,A
+003C                 255     ?C0002:
+                     256     ;       
+                     257     ;       #pragma ASM 
+                     258     ;       pop acc
+003C D0E0            259               pop acc
+                     260     ;     pop psw   
+003E D0D0            261               pop psw       
+                     262     ;     #pragma ENDASM
+                     263     ;     error();  
+                     264                             ; SOURCE LINE # 37
+0040 020000   F      265             LJMP    error
+                     266     ; END OF acall_func
+                     267     
+                     268     ; }
+                     269     ; 
+                     270     ; void lcall_func(void) {
+                     271     
+----                 272             RSEG  ?PR?lcall_func?PROGRAM
+0000                 273     lcall_func:
+                     274             USING   0
+                     275                             ; SOURCE LINE # 40
+                     276     ;       printf("LCALL_FUNC\n");
+                     277                             ; SOURCE LINE # 41
+0000 7BFF            278             MOV     R3,#0FFH
+0002 7A00     F      279             MOV     R2,#HIGH (?SC_12)
+0004 7900     F      280             MOV     R1,#LOW (?SC_12)
+0006 120000   F      281             LCALL   _printf
+                     282     ;       #pragma ASM  
+                     283     ;       push psw
+0009 C0D0            284               push psw
+                     285     ;       push acc
+000B C0E0            286               push acc
+                     287     ;     mov  psw,#0H      
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     6
+
+000D 75D000          288               mov  psw,#0H  
+                     289     ;     setb rs0     
+0010 D2D3            290               setb rs0     
+                     291     ;       setb rs1        
+0012 D2D4            292               setb rs1      
+                     293     ;     #pragma ENDASM 
+                     294     ;       
+                     295     ;       #pragma ASM
+                     296     ;       mov A,SP
+0014 E581            297               mov A,SP
+                     298     ;       lcall JUMP_LCALL
+0016 120000   F      299               lcall JUMP_LCALL
+                     300     ;       jmp EXIT_LCALL
+0019 800B            301               jmp EXIT_LCALL
+                     302     ;       nop
+001B 00              303               nop
+                     304     ;       nop
+001C 00              305               nop
+                     306     ;       nop
+001D 00              307               nop
+                     308     ; JUMP_LCALL:   inc A
+001E 04              309               JUMP_LCALL:   inc A
+                     310     ;     inc A
+001F 04              311               inc A
+                     312     ;       mov B,SP
+0020 8581F0          313               mov B,SP
+                     314     ;       ret
+0023 22              315               ret
+                     316     ;       nop
+0024 00              317               nop
+                     318     ;       nop
+0025 00              319               nop
+                     320     ; EXIT_LCALL: nop
+0026 00              321               EXIT_LCALL: nop
+                     322     ;     #pragma ENDASM    
+                     323     ;       if (ACC!=B) test_status = 0;
+                     324                             ; SOURCE LINE # 65
+0027 65F0            325             XRL     A,B
+0029 6005            326             JZ      ?C0004
+002B 90007E          327             MOV     DPTR,#07EH
+002E E4              328             CLR     A
+002F F0              329             MOVX    @DPTR,A
+0030                 330     ?C0004:
+                     331     ;       if (SP!=(B-2)) test_status=0;
+                     332                             ; SOURCE LINE # 66
+0030 E5F0            333             MOV     A,B
+0032 24FE            334             ADD     A,#0FEH
+0034 6581            335             XRL     A,SP
+0036 6005            336             JZ      ?C0005
+0038 90007E          337             MOV     DPTR,#07EH
+003B E4              338             CLR     A
+003C F0              339             MOVX    @DPTR,A
+003D                 340     ?C0005:
+                     341     ;       
+                     342     ;       #pragma ASM 
+                     343     ;       pop acc
+003D D0E0            344               pop acc
+                     345     ;     pop psw   
+003F D0D0            346               pop psw       
+                     347     ;     #pragma ENDASM
+                     348     ;     error();  
+                     349                             ; SOURCE LINE # 72
+0041 020000   F      350             LJMP    error
+                     351     ; END OF lcall_func
+                     352     
+                     353     ; }
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     7
+
+                     354     ; 
+                     355     ; 
+                     356     ; void ret_func(void) {
+                     357     
+----                 358             RSEG  ?PR?ret_func?PROGRAM
+0000                 359     ret_func:
+                     360             USING   0
+                     361                             ; SOURCE LINE # 76
+                     362     ;       printf("RET_FUNC\n");
+                     363                             ; SOURCE LINE # 77
+0000 7BFF            364             MOV     R3,#0FFH
+0002 7A00     F      365             MOV     R2,#HIGH (?SC_24)
+0004 7900     F      366             MOV     R1,#LOW (?SC_24)
+0006 120000   F      367             LCALL   _printf
+                     368     ;       #pragma ASM  
+                     369     ;       push psw
+0009 C0D0            370               push psw
+                     371     ;       push acc
+000B C0E0            372               push acc
+                     373     ;     mov  psw,#0H      
+000D 75D000          374               mov  psw,#0H  
+                     375     ;     setb rs0     
+0010 D2D3            376               setb rs0     
+                     377     ;       setb rs1        
+0012 D2D4            378               setb rs1      
+                     379     ;     #pragma ENDASM 
+                     380     ;       
+                     381     ;       #pragma ASM
+                     382     ;       lcall JUMP_RET
+0014 120000   F      383               lcall JUMP_RET
+                     384     ;       mov B,SP
+0017 8581F0          385               mov B,SP
+                     386     ;       inc B
+001A 05F0            387               inc B
+                     388     ;       inc B
+001C 05F0            389               inc B
+                     390     ;       jmp EXIT_RET
+001E 8008            391               jmp EXIT_RET
+                     392     ;       nop
+0020 00              393               nop
+                     394     ;       nop
+0021 00              395               nop
+                     396     ;       nop
+0022 00              397               nop
+                     398     ; JUMP_RET:     mov A,SP
+0023 E581            399               JUMP_RET:     mov A,SP
+                     400     ;       ret
+0025 22              401               ret
+                     402     ;       nop
+0026 00              403               nop
+                     404     ;       nop
+0027 00              405               nop
+                     406     ; EXIT_RET: nop
+0028 00              407               EXIT_RET: nop
+                     408     ;     #pragma ENDASM    
+                     409     ;       if (ACC!=B) test_status = 0;
+                     410                             ; SOURCE LINE # 101
+0029 65F0            411             XRL     A,B
+002B 6005            412             JZ      ?C0007
+002D 90007E          413             MOV     DPTR,#07EH
+0030 E4              414             CLR     A
+0031 F0              415             MOVX    @DPTR,A
+0032                 416     ?C0007:
+                     417     ;       
+                     418     ;       #pragma ASM 
+                     419     ;       pop acc
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     8
+
+0032 D0E0            420               pop acc
+                     421     ;     pop psw   
+0034 D0D0            422               pop psw       
+                     423     ;     #pragma ENDASM
+                     424     ;     error();  
+                     425                             ; SOURCE LINE # 107
+0036 020000   F      426             LJMP    error
+                     427     ; END OF ret_func
+                     428     
+                     429     ; }
+                     430     ; 
+                     431     ; void reti_func(void) {
+                     432     
+----                 433             RSEG  ?PR?reti_func?PROGRAM
+0000                 434     reti_func:
+                     435             USING   0
+                     436                             ; SOURCE LINE # 110
+                     437     ;       printf("RETI_FUNC\n");
+                     438                             ; SOURCE LINE # 111
+0000 7BFF            439             MOV     R3,#0FFH
+0002 7A00     F      440             MOV     R2,#HIGH (?SC_34)
+0004 7900     F      441             MOV     R1,#LOW (?SC_34)
+0006 120000   F      442             LCALL   _printf
+                     443     ;       #pragma ASM  
+                     444     ;       push psw
+0009 C0D0            445               push psw
+                     446     ;       push acc
+000B C0E0            447               push acc
+                     448     ;     mov  psw,#0H      
+000D 75D000          449               mov  psw,#0H  
+                     450     ;     setb rs0     
+0010 D2D3            451               setb rs0     
+                     452     ;       setb rs1        
+0012 D2D4            453               setb rs1      
+                     454     ;     #pragma ENDASM 
+                     455     ;       
+                     456     ;       #pragma ASM
+                     457     ;       lcall JUMP_RETI
+0014 120000   F      458               lcall JUMP_RETI
+                     459     ;       mov B,SP
+0017 8581F0          460               mov B,SP
+                     461     ;       inc B
+001A 05F0            462               inc B
+                     463     ;       inc B
+001C 05F0            464               inc B
+                     465     ;       jmp EXIT_RETI
+001E 8008            466               jmp EXIT_RETI
+                     467     ;       nop
+0020 00              468               nop
+                     469     ;       nop
+0021 00              470               nop
+                     471     ;       nop
+0022 00              472               nop
+                     473     ; JUMP_RETI:    mov A,SP
+0023 E581            474               JUMP_RETI:    mov A,SP
+                     475     ;       reti
+0025 32              476               reti
+                     477     ;       nop
+0026 00              478               nop
+                     479     ;       nop
+0027 00              480               nop
+                     481     ; EXIT_RETI: nop
+0028 00              482               EXIT_RETI: nop
+                     483     ;     #pragma ENDASM    
+                     484     ;       if (ACC!=B) test_status = 0;
+                     485                             ; SOURCE LINE # 135
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE     9
+
+0029 65F0            486             XRL     A,B
+002B 6005            487             JZ      ?C0009
+002D 90007E          488             MOV     DPTR,#07EH
+0030 E4              489             CLR     A
+0031 F0              490             MOVX    @DPTR,A
+0032                 491     ?C0009:
+                     492     ;       
+                     493     ;       #pragma ASM 
+                     494     ;       pop acc
+0032 D0E0            495               pop acc
+                     496     ;     pop psw   
+0034 D0D0            497               pop psw       
+                     498     ;     #pragma ENDASM
+                     499     ;     error();  
+                     500                             ; SOURCE LINE # 141
+0036 020000   F      501             LJMP    error
+                     502     ; END OF reti_func
+                     503     
+                     504     ; }
+                     505     ; 
+                     506     ; void ajmp_func(void) {
+                     507     
+----                 508             RSEG  ?PR?ajmp_func?PROGRAM
+0000                 509     ajmp_func:
+                     510             USING   0
+                     511                             ; SOURCE LINE # 144
+                     512     ;       printf("AJMP_FUNC\n");
+                     513                             ; SOURCE LINE # 145
+0000 7BFF            514             MOV     R3,#0FFH
+0002 7A00     F      515             MOV     R2,#HIGH (?SC_45)
+0004 7900     F      516             MOV     R1,#LOW (?SC_45)
+0006 120000   F      517             LCALL   _printf
+                     518     ;       #pragma ASM  
+                     519     ;       push psw
+0009 C0D0            520               push psw
+                     521     ;       push acc
+000B C0E0            522               push acc
+                     523     ;     mov  psw,#0H      
+000D 75D000          524               mov  psw,#0H  
+                     525     ;     setb rs0     
+0010 D2D3            526               setb rs0     
+                     527     ;       setb rs1        
+0012 D2D4            528               setb rs1      
+                     529     ;     #pragma ENDASM 
+                     530     ;       
+                     531     ;       #pragma ASM
+                     532     ;       clr A
+0014 E4              533               clr A
+                     534     ;       ajmp EXIT_AJMP
+0015 0100     F      535               ajmp EXIT_AJMP
+                     536     ;       mov A,#0ffH
+0017 74FF            537               mov A,#0ffH
+                     538     ; EXIT_AJMP: nop
+0019 00              539               EXIT_AJMP: nop
+                     540     ;     #pragma ENDASM    
+                     541     ;       if (ACC!=0) test_status = 0;
+                     542                             ; SOURCE LINE # 160
+001A 6005            543             JZ      ?C0011
+001C 90007E          544             MOV     DPTR,#07EH
+001F E4              545             CLR     A
+0020 F0              546             MOVX    @DPTR,A
+0021                 547     ?C0011:
+                     548     ;       
+                     549     ;       #pragma ASM 
+                     550     ;       pop acc
+0021 D0E0            551               pop acc
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    10
+
+                     552     ;     pop psw   
+0023 D0D0            553               pop psw       
+                     554     ;     #pragma ENDASM
+                     555     ;     error();  
+                     556                             ; SOURCE LINE # 166
+0025 020000   F      557             LJMP    error
+                     558     ; END OF ajmp_func
+                     559     
+                     560     ; }
+                     561     ; void sjmp_func(void) {
+                     562     
+----                 563             RSEG  ?PR?sjmp_func?PROGRAM
+0000                 564     sjmp_func:
+                     565             USING   0
+                     566                             ; SOURCE LINE # 168
+                     567     ;       printf("SJMP_FUNC\n");
+                     568                             ; SOURCE LINE # 169
+0000 7BFF            569             MOV     R3,#0FFH
+0002 7A00     F      570             MOV     R2,#HIGH (?SC_56)
+0004 7900     F      571             MOV     R1,#LOW (?SC_56)
+0006 120000   F      572             LCALL   _printf
+                     573     ;       #pragma ASM  
+                     574     ;       push psw
+0009 C0D0            575               push psw
+                     576     ;       push acc
+000B C0E0            577               push acc
+                     578     ;     mov  psw,#0H      
+000D 75D000          579               mov  psw,#0H  
+                     580     ;     setb rs0     
+0010 D2D3            581               setb rs0     
+                     582     ;       setb rs1        
+0012 D2D4            583               setb rs1      
+                     584     ;     #pragma ENDASM 
+                     585     ;       
+                     586     ;       #pragma ASM
+                     587     ;       clr A
+0014 E4              588               clr A
+                     589     ;       sjmp EXIT_SJMP
+0015 8002            590               sjmp EXIT_SJMP
+                     591     ;       mov A,#0ffH
+0017 74FF            592               mov A,#0ffH
+                     593     ; EXIT_SJMP: nop
+0019 00              594               EXIT_SJMP: nop
+                     595     ;     #pragma ENDASM    
+                     596     ;       if (ACC!=0) test_status = 0;
+                     597                             ; SOURCE LINE # 184
+001A 6005            598             JZ      ?C0013
+001C 90007E          599             MOV     DPTR,#07EH
+001F E4              600             CLR     A
+0020 F0              601             MOVX    @DPTR,A
+0021                 602     ?C0013:
+                     603     ;       
+                     604     ;       #pragma ASM 
+                     605     ;       pop acc
+0021 D0E0            606               pop acc
+                     607     ;     pop psw   
+0023 D0D0            608               pop psw       
+                     609     ;     #pragma ENDASM
+                     610     ;     error();  
+                     611                             ; SOURCE LINE # 190
+0025 020000   F      612             LJMP    error
+                     613     ; END OF sjmp_func
+                     614     
+                     615     ; }
+                     616     ; 
+                     617     ; void jmp_func(void) {
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    11
+
+                     618     
+----                 619             RSEG  ?PR?jmp_func?PROGRAM
+0000                 620     jmp_func:
+                     621             USING   0
+                     622                             ; SOURCE LINE # 193
+                     623     ;       printf("JMP_FUNC\n");
+                     624                             ; SOURCE LINE # 194
+0000 7BFF            625             MOV     R3,#0FFH
+0002 7A00     F      626             MOV     R2,#HIGH (?SC_67)
+0004 7900     F      627             MOV     R1,#LOW (?SC_67)
+0006 120000   F      628             LCALL   _printf
+                     629     ;       #pragma ASM  
+                     630     ;       push psw
+0009 C0D0            631               push psw
+                     632     ;       push acc
+000B C0E0            633               push acc
+                     634     ;     mov  psw,#0H      
+000D 75D000          635               mov  psw,#0H  
+                     636     ;     setb rs0     
+0010 D2D3            637               setb rs0     
+                     638     ;       setb rs1        
+0012 D2D4            639               setb rs1      
+                     640     ;     #pragma ENDASM 
+                     641     ;       
+                     642     ;       #pragma ASM
+                     643     ;       mov B,#00H
+0014 75F000          644               mov B,#00H
+                     645     ;       mov DPTR,#EXIT_JMP
+0017 900000   F      646               mov DPTR,#EXIT_JMP
+                     647     ;       inc DPTR
+001A A3              648               inc DPTR
+                     649     ;       mov A,#0ffH
+001B 74FF            650               mov A,#0ffH
+                     651     ;       jmp @A+DPTR
+001D 73              652               jmp @A+DPTR
+                     653     ;       mov A,#0ffH
+001E 74FF            654               mov A,#0ffH
+                     655     ; EXIT_JMP: nop
+0020 00              656               EXIT_JMP: nop
+                     657     ;     #pragma ENDASM    
+                     658     ;       if (B!=0) test_status = 0;
+                     659                             ; SOURCE LINE # 212
+0021 E5F0            660             MOV     A,B
+0023 6005            661             JZ      ?C0015
+0025 90007E          662             MOV     DPTR,#07EH
+0028 E4              663             CLR     A
+0029 F0              664             MOVX    @DPTR,A
+002A                 665     ?C0015:
+                     666     ;       
+                     667     ;       #pragma ASM 
+                     668     ;       pop acc
+002A D0E0            669               pop acc
+                     670     ;     pop psw   
+002C D0D0            671               pop psw       
+                     672     ;     #pragma ENDASM
+                     673     ;     error();  
+                     674                             ; SOURCE LINE # 218
+002E 020000   F      675             LJMP    error
+                     676     ; END OF jmp_func
+                     677     
+                     678     ; }
+                     679     ; 
+                     680     ; void jz_func(void) {
+                     681     
+----                 682             RSEG  ?PR?jz_func?PROGRAM
+0000                 683     jz_func:
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    12
+
+                     684             USING   0
+                     685                             ; SOURCE LINE # 221
+                     686     ;       printf("JZ_FUNC\n");
+                     687                             ; SOURCE LINE # 222
+0000 7BFF            688             MOV     R3,#0FFH
+0002 7A00     F      689             MOV     R2,#HIGH (?SC_77)
+0004 7900     F      690             MOV     R1,#LOW (?SC_77)
+0006 120000   F      691             LCALL   _printf
+                     692     ;       #pragma ASM  
+                     693     ;       push psw
+0009 C0D0            694               push psw
+                     695     ;       push acc
+000B C0E0            696               push acc
+                     697     ;     mov  psw,#0H      
+000D 75D000          698               mov  psw,#0H  
+                     699     ;     setb rs0     
+0010 D2D3            700               setb rs0     
+                     701     ;       setb rs1        
+0012 D2D4            702               setb rs1      
+                     703     ;     #pragma ENDASM 
+                     704     ;       
+                     705     ;       #pragma ASM
+                     706     ;       mov B,#0H
+0014 75F000          707               mov B,#0H
+                     708     ;       mov A,#0ffH
+0017 74FF            709               mov A,#0ffH
+                     710     ;       jz EXIT_JZ
+0019 600D            711               jz EXIT_JZ
+                     712     ;       mov B,#0ffH
+001B 75F0FF          713               mov B,#0ffH
+                     714     ;       clr A
+001E E4              715               clr A
+                     716     ;       JZ EXIT_JZ
+001F 6007            717               JZ EXIT_JZ
+                     718     ;       nop
+0021 00              719               nop
+                     720     ;       nop
+0022 00              721               nop
+                     722     ;       mov B,#0H
+0023 75F000          723               mov B,#0H
+                     724     ;       nop
+0026 00              725               nop
+                     726     ;       nop
+0027 00              727               nop
+                     728     ; EXIT_JZ: nop
+0028 00              729               EXIT_JZ: nop
+                     730     ;     #pragma ENDASM    
+                     731     ;       if (B!=0xff) test_status = 0;
+                     732                             ; SOURCE LINE # 245
+0029 E5F0            733             MOV     A,B
+002B F4              734             CPL     A
+002C 6005            735             JZ      ?C0017
+002E 90007E          736             MOV     DPTR,#07EH
+0031 E4              737             CLR     A
+0032 F0              738             MOVX    @DPTR,A
+0033                 739     ?C0017:
+                     740     ;       
+                     741     ;       #pragma ASM 
+                     742     ;       pop acc
+0033 D0E0            743               pop acc
+                     744     ;     pop psw   
+0035 D0D0            745               pop psw       
+                     746     ;     #pragma ENDASM
+                     747     ;     error();  
+                     748                             ; SOURCE LINE # 251
+0037 020000   F      749             LJMP    error
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    13
+
+                     750     ; END OF jz_func
+                     751     
+                     752     ; }
+                     753     ; 
+                     754     ; void jnz_func(void) {
+                     755     
+----                 756             RSEG  ?PR?jnz_func?PROGRAM
+0000                 757     jnz_func:
+                     758             USING   0
+                     759                             ; SOURCE LINE # 254
+                     760     ;       printf("JNZ_FUNC\n");
+                     761                             ; SOURCE LINE # 255
+0000 7BFF            762             MOV     R3,#0FFH
+0002 7A00     F      763             MOV     R2,#HIGH (?SC_86)
+0004 7900     F      764             MOV     R1,#LOW (?SC_86)
+0006 120000   F      765             LCALL   _printf
+                     766     ;       #pragma ASM  
+                     767     ;       push psw
+0009 C0D0            768               push psw
+                     769     ;       push acc
+000B C0E0            770               push acc
+                     771     ;     mov  psw,#0H      
+000D 75D000          772               mov  psw,#0H  
+                     773     ;     setb rs0     
+0010 D2D3            774               setb rs0     
+                     775     ;       setb rs1        
+0012 D2D4            776               setb rs1      
+                     777     ;     #pragma ENDASM 
+                     778     ;       
+                     779     ;       #pragma ASM
+                     780     ;       mov B,#0H
+0014 75F000          781               mov B,#0H
+                     782     ;       mov A,#0H
+0017 7400            783               mov A,#0H
+                     784     ;       jnz EXIT_JNZ
+0019 700D            785               jnz EXIT_JNZ
+                     786     ;       mov B,#0ffH
+001B 75F0FF          787               mov B,#0ffH
+                     788     ;       inc A
+001E 04              789               inc A
+                     790     ;       JNZ EXIT_JNZ
+001F 7007            791               JNZ EXIT_JNZ
+                     792     ;       nop
+0021 00              793               nop
+                     794     ;       nop
+0022 00              795               nop
+                     796     ;       mov B,#0H
+0023 75F000          797               mov B,#0H
+                     798     ;       nop
+0026 00              799               nop
+                     800     ;       nop
+0027 00              801               nop
+                     802     ; EXIT_JNZ: nop
+0028 00              803               EXIT_JNZ: nop
+                     804     ;     #pragma ENDASM    
+                     805     ;       if (B!=0xff) test_status = 0;
+                     806                             ; SOURCE LINE # 278
+0029 E5F0            807             MOV     A,B
+002B F4              808             CPL     A
+002C 6005            809             JZ      ?C0019
+002E 90007E          810             MOV     DPTR,#07EH
+0031 E4              811             CLR     A
+0032 F0              812             MOVX    @DPTR,A
+0033                 813     ?C0019:
+                     814     ;       
+                     815     ;       #pragma ASM 
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    14
+
+                     816     ;       pop acc
+0033 D0E0            817               pop acc
+                     818     ;     pop psw   
+0035 D0D0            819               pop psw       
+                     820     ;     #pragma ENDASM
+                     821     ;     error();  
+                     822                             ; SOURCE LINE # 284
+0037 020000   F      823             LJMP    error
+                     824     ; END OF jnz_func
+                     825     
+                     826     ; }
+                     827     ; 
+                     828     ; void cjne_a_di_rel(void) {
+                     829     
+----                 830             RSEG  ?PR?cjne_a_di_rel?PROGRAM
+0000                 831     cjne_a_di_rel:
+                     832             USING   0
+                     833                             ; SOURCE LINE # 287
+                     834     ;       printf("CJNE_A_DI_REL\n");
+                     835                             ; SOURCE LINE # 288
+0000 7BFF            836             MOV     R3,#0FFH
+0002 7A00     F      837             MOV     R2,#HIGH (?SC_96)
+0004 7900     F      838             MOV     R1,#LOW (?SC_96)
+0006 120000   F      839             LCALL   _printf
+                     840     ;       #pragma ASM  
+                     841     ;       push psw
+0009 C0D0            842               push psw
+                     843     ;       push acc
+000B C0E0            844               push acc
+                     845     ;     mov  psw,#0H      
+000D 75D000          846               mov  psw,#0H  
+                     847     ;     setb rs0     
+0010 D2D3            848               setb rs0     
+                     849     ;       setb rs1        
+0012 D2D4            850               setb rs1      
+                     851     ;     #pragma ENDASM 
+                     852     ;       
+                     853     ;       #pragma ASM
+                     854     ;       mov B,#0H
+0014 75F000          855               mov B,#0H
+                     856     ;     mov A,#0H
+0017 7400            857               mov A,#0H
+                     858     ;       mov 0x20,#0H
+0019 752000          859               mov 0x20,#0H
+                     860     ;       cjne A,0x20,EXIT_CJNE_A_DI_REL
+001C B5200E          861               cjne A,0x20,EXIT_CJNE_A_DI_REL
+                     862     ;       nop
+001F 00              863               nop
+                     864     ;       mov B,#0ffH
+0020 75F0FF          865               mov B,#0ffH
+                     866     ;       inc 0x20
+0023 0520            867               inc 0x20
+                     868     ;       cjne A,0x20,EXIT_CJNE_A_DI_REL
+0025 B52005          869               cjne A,0x20,EXIT_CJNE_A_DI_REL
+                     870     ;       nop
+0028 00              871               nop
+                     872     ;       mov B,#0H
+0029 75F000          873               mov B,#0H
+                     874     ;       nop
+002C 00              875               nop
+                     876     ; EXIT_CJNE_A_DI_REL: nop
+002D 00              877               EXIT_CJNE_A_DI_REL: nop
+                     878     ;     #pragma ENDASM    
+                     879     ;       if (B!=0xff) test_status = 0;
+                     880                             ; SOURCE LINE # 311
+002E E5F0            881             MOV     A,B
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    15
+
+0030 F4              882             CPL     A
+0031 6005            883             JZ      ?C0021
+0033 90007E          884             MOV     DPTR,#07EH
+0036 E4              885             CLR     A
+0037 F0              886             MOVX    @DPTR,A
+0038                 887     ?C0021:
+                     888     ;     if (CY!=0x1) test_status = 0;
+                     889                             ; SOURCE LINE # 312
+0038 20D705          890             JB      CY,?C0022
+003B 90007E          891             MOV     DPTR,#07EH
+003E E4              892             CLR     A
+003F F0              893             MOVX    @DPTR,A
+0040                 894     ?C0022:
+                     895     ;       
+                     896     ;       #pragma ASM 
+                     897     ;       pop acc
+0040 D0E0            898               pop acc
+                     899     ;     pop psw   
+0042 D0D0            900               pop psw       
+                     901     ;     #pragma ENDASM
+                     902     ;     error();  
+                     903                             ; SOURCE LINE # 318
+0044 020000   F      904             LJMP    error
+                     905     ; END OF cjne_a_di_rel
+                     906     
+                     907     ; }
+                     908     ; 
+                     909     ; void cjne_a_da_rel(void) {
+                     910     
+----                 911             RSEG  ?PR?cjne_a_da_rel?PROGRAM
+0000                 912     cjne_a_da_rel:
+                     913             USING   0
+                     914                             ; SOURCE LINE # 321
+                     915     ;       printf("CJNE_A_DA_REL\n");
+                     916                             ; SOURCE LINE # 322
+0000 7BFF            917             MOV     R3,#0FFH
+0002 7A00     F      918             MOV     R2,#HIGH (?SC_111)
+0004 7900     F      919             MOV     R1,#LOW (?SC_111)
+0006 120000   F      920             LCALL   _printf
+                     921     ;       #pragma ASM  
+                     922     ;       push psw
+0009 C0D0            923               push psw
+                     924     ;       push acc
+000B C0E0            925               push acc
+                     926     ;     mov  psw,#0H      
+000D 75D000          927               mov  psw,#0H  
+                     928     ;     setb rs0     
+0010 D2D3            929               setb rs0     
+                     930     ;       setb rs1        
+0012 D2D4            931               setb rs1      
+                     932     ;     #pragma ENDASM 
+                     933     ;       
+                     934     ;       #pragma ASM
+                     935     ;       mov B,#0H
+0014 75F000          936               mov B,#0H
+                     937     ;     mov A,#035H
+0017 7435            938               mov A,#035H
+                     939     ;       cjne A,#035H,EXIT_CJNE_A_DA_REL
+0019 B4350C          940               cjne A,#035H,EXIT_CJNE_A_DA_REL
+                     941     ;       nop
+001C 00              942               nop
+                     943     ;       mov B,#0ffH
+001D 75F0FF          944               mov B,#0ffH
+                     945     ;       cjne A,#036H,EXIT_CJNE_A_DA_REL
+0020 B43605          946               cjne A,#036H,EXIT_CJNE_A_DA_REL
+                     947     ;       nop
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    16
+
+0023 00              948               nop
+                     949     ;       mov B,#0H
+0024 75F000          950               mov B,#0H
+                     951     ;       nop
+0027 00              952               nop
+                     953     ; EXIT_CJNE_A_DA_REL: nop
+0028 00              954               EXIT_CJNE_A_DA_REL: nop
+                     955     ;     #pragma ENDASM    
+                     956     ;       if (B!=0xff) test_status = 0;
+                     957                             ; SOURCE LINE # 343
+0029 E5F0            958             MOV     A,B
+002B F4              959             CPL     A
+002C 6005            960             JZ      ?C0024
+002E 90007E          961             MOV     DPTR,#07EH
+0031 E4              962             CLR     A
+0032 F0              963             MOVX    @DPTR,A
+0033                 964     ?C0024:
+                     965     ;     if (CY!=0x1) test_status = 0;
+                     966                             ; SOURCE LINE # 344
+0033 20D705          967             JB      CY,?C0025
+0036 90007E          968             MOV     DPTR,#07EH
+0039 E4              969             CLR     A
+003A F0              970             MOVX    @DPTR,A
+003B                 971     ?C0025:
+                     972     ;       
+                     973     ;       #pragma ASM 
+                     974     ;       pop acc
+003B D0E0            975               pop acc
+                     976     ;     pop psw   
+003D D0D0            977               pop psw       
+                     978     ;     #pragma ENDASM
+                     979     ;     error();  
+                     980                             ; SOURCE LINE # 350
+003F 020000   F      981             LJMP    error
+                     982     ; END OF cjne_a_da_rel
+                     983     
+                     984     ; }
+                     985     ; 
+                     986     ; void cjne_rn_da_rel(void) {
+                     987     
+----                 988             RSEG  ?PR?cjne_rn_da_rel?PROGRAM
+0000                 989     cjne_rn_da_rel:
+                     990             USING   0
+                     991                             ; SOURCE LINE # 353
+                     992     ;       printf("CJNE_RN_DA_REL\n");
+                     993                             ; SOURCE LINE # 354
+0000 7BFF            994             MOV     R3,#0FFH
+0002 7A00     F      995             MOV     R2,#HIGH (?SC_126)
+0004 7900     F      996             MOV     R1,#LOW (?SC_126)
+0006 120000   F      997             LCALL   _printf
+                     998     ;       #pragma ASM  
+                     999     ;       push psw
+0009 C0D0           1000               push psw
+                    1001     ;       push acc
+000B C0E0           1002               push acc
+                    1003     ;     mov  psw,#0H      
+000D 75D000         1004               mov  psw,#0H  
+                    1005     ;     setb rs0     
+0010 D2D3           1006               setb rs0     
+                    1007     ;       setb rs1        
+0012 D2D4           1008               setb rs1      
+                    1009     ;     #pragma ENDASM 
+                    1010     ;       
+                    1011     ;       #pragma ASM
+                    1012     ;       mov B,#0H
+0014 75F000         1013               mov B,#0H
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    17
+
+                    1014     ;     mov R7,#035H
+0017 7F35           1015               mov R7,#035H
+                    1016     ;       cjne R7,#035H,EXIT_CJNE_RN_DA_REL
+0019 BF350C         1017               cjne R7,#035H,EXIT_CJNE_RN_DA_REL
+                    1018     ;       nop
+001C 00             1019               nop
+                    1020     ;       mov B,#0ffH
+001D 75F0FF         1021               mov B,#0ffH
+                    1022     ;       cjne R7,#036H,EXIT_CJNE_RN_DA_REL
+0020 BF3605         1023               cjne R7,#036H,EXIT_CJNE_RN_DA_REL
+                    1024     ;       nop
+0023 00             1025               nop
+                    1026     ;       mov B,#0H
+0024 75F000         1027               mov B,#0H
+                    1028     ;       nop
+0027 00             1029               nop
+                    1030     ; EXIT_CJNE_RN_DA_REL: nop
+0028 00             1031               EXIT_CJNE_RN_DA_REL: nop
+                    1032     ;     #pragma ENDASM    
+                    1033     ;       if (B!=0xff) test_status = 0;
+                    1034                             ; SOURCE LINE # 375
+0029 E5F0           1035             MOV     A,B
+002B F4             1036             CPL     A
+002C 6005           1037             JZ      ?C0027
+002E 90007E         1038             MOV     DPTR,#07EH
+0031 E4             1039             CLR     A
+0032 F0             1040             MOVX    @DPTR,A
+0033                1041     ?C0027:
+                    1042     ;     if (CY!=0x1) test_status = 0;
+                    1043                             ; SOURCE LINE # 376
+0033 20D705         1044             JB      CY,?C0028
+0036 90007E         1045             MOV     DPTR,#07EH
+0039 E4             1046             CLR     A
+003A F0             1047             MOVX    @DPTR,A
+003B                1048     ?C0028:
+                    1049     ;       
+                    1050     ;       #pragma ASM 
+                    1051     ;       pop acc
+003B D0E0           1052               pop acc
+                    1053     ;     pop psw   
+003D D0D0           1054               pop psw       
+                    1055     ;     #pragma ENDASM
+                    1056     ;     error();  
+                    1057                             ; SOURCE LINE # 382
+003F 020000   F     1058             LJMP    error
+                    1059     ; END OF cjne_rn_da_rel
+                    1060     
+                    1061     ; }
+                    1062     ; 
+                    1063     ; void cjne_ri_da_rel(void) {
+                    1064     
+----                1065             RSEG  ?PR?cjne_ri_da_rel?PROGRAM
+0000                1066     cjne_ri_da_rel:
+                    1067             USING   0
+                    1068                             ; SOURCE LINE # 385
+                    1069     ;       printf("CJNE_RI_DA_REL\n");
+                    1070                             ; SOURCE LINE # 386
+0000 7BFF           1071             MOV     R3,#0FFH
+0002 7A00     F     1072             MOV     R2,#HIGH (?SC_142)
+0004 7900     F     1073             MOV     R1,#LOW (?SC_142)
+0006 120000   F     1074             LCALL   _printf
+                    1075     ;       #pragma ASM  
+                    1076     ;       push psw
+0009 C0D0           1077               push psw
+                    1078     ;       push acc
+000B C0E0           1079               push acc
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    18
+
+                    1080     ;     mov  psw,#0H      
+000D 75D000         1081               mov  psw,#0H  
+                    1082     ;     setb rs0     
+0010 D2D3           1083               setb rs0     
+                    1084     ;       setb rs1        
+0012 D2D4           1085               setb rs1      
+                    1086     ;     #pragma ENDASM 
+                    1087     ;       
+                    1088     ;       #pragma ASM
+                    1089     ;       mov B,#0H
+0014 75F000         1090               mov B,#0H
+                    1091     ;     mov R7,#035H
+0017 7F35           1092               mov R7,#035H
+                    1093     ;       mov R1,#01fH
+0019 791F           1094               mov R1,#01fH
+                    1095     ;       cjne @R1,#035H,EXIT_CJNE_RI_DA_REL
+001B B7350C         1096               cjne @R1,#035H,EXIT_CJNE_RI_DA_REL
+                    1097     ;       nop
+001E 00             1098               nop
+                    1099     ;       mov B,#0ffH
+001F 75F0FF         1100               mov B,#0ffH
+                    1101     ;       cjne @R1,#036H,EXIT_CJNE_RI_DA_REL
+0022 B73605         1102               cjne @R1,#036H,EXIT_CJNE_RI_DA_REL
+                    1103     ;       nop
+0025 00             1104               nop
+                    1105     ;       mov B,#0H
+0026 75F000         1106               mov B,#0H
+                    1107     ;       nop
+0029 00             1108               nop
+                    1109     ; EXIT_CJNE_RI_DA_REL: nop
+002A 00             1110               EXIT_CJNE_RI_DA_REL: nop
+                    1111     ;     #pragma ENDASM    
+                    1112     ;       if (B!=0xff) test_status = 0;
+                    1113                             ; SOURCE LINE # 408
+002B E5F0           1114             MOV     A,B
+002D F4             1115             CPL     A
+002E 6005           1116             JZ      ?C0030
+0030 90007E         1117             MOV     DPTR,#07EH
+0033 E4             1118             CLR     A
+0034 F0             1119             MOVX    @DPTR,A
+0035                1120     ?C0030:
+                    1121     ;     if (CY!=0x1) test_status = 0;
+                    1122                             ; SOURCE LINE # 409
+0035 20D705         1123             JB      CY,?C0031
+0038 90007E         1124             MOV     DPTR,#07EH
+003B E4             1125             CLR     A
+003C F0             1126             MOVX    @DPTR,A
+003D                1127     ?C0031:
+                    1128     ;       
+                    1129     ;       #pragma ASM 
+                    1130     ;       pop acc
+003D D0E0           1131               pop acc
+                    1132     ;     pop psw   
+003F D0D0           1133               pop psw       
+                    1134     ;     #pragma ENDASM
+                    1135     ;     error();  
+                    1136                             ; SOURCE LINE # 415
+0041 020000   F     1137             LJMP    error
+                    1138     ; END OF cjne_ri_da_rel
+                    1139     
+                    1140     ; }
+                    1141     ; 
+                    1142     ; void djnz_rn_rel(void) {
+                    1143     
+----                1144             RSEG  ?PR?djnz_rn_rel?PROGRAM
+0000                1145     djnz_rn_rel:
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    19
+
+                    1146             USING   0
+                    1147                             ; SOURCE LINE # 418
+                    1148     ;       printf("DJNZ_RN_REL\n");
+                    1149                             ; SOURCE LINE # 419
+0000 7BFF           1150             MOV     R3,#0FFH
+0002 7A00     F     1151             MOV     R2,#HIGH (?SC_158)
+0004 7900     F     1152             MOV     R1,#LOW (?SC_158)
+0006 120000   F     1153             LCALL   _printf
+                    1154     ;       #pragma ASM  
+                    1155     ;       push psw
+0009 C0D0           1156               push psw
+                    1157     ;       push acc
+000B C0E0           1158               push acc
+                    1159     ;     mov  psw,#0H      
+000D 75D000         1160               mov  psw,#0H  
+                    1161     ;     setb rs0     
+0010 D2D3           1162               setb rs0     
+                    1163     ;       setb rs1        
+0012 D2D4           1164               setb rs1      
+                    1165     ;     #pragma ENDASM 
+                    1166     ;       
+                    1167     ;       #pragma ASM
+                    1168     ;       mov B,#0H
+0014 75F000         1169               mov B,#0H
+                    1170     ;     mov R7,#01H
+0017 7F01           1171               mov R7,#01H
+                    1172     ;     djnz R7,EXIT_DJNZ_RN_REL
+0019 DF0A           1173               djnz R7,EXIT_DJNZ_RN_REL
+                    1174     ;     mov B,#0ffH
+001B 75F0FF         1175               mov B,#0ffH
+                    1176     ;     djnz R7,EXIT_DJNZ_RN_REL
+001E DF05           1177               djnz R7,EXIT_DJNZ_RN_REL
+                    1178     ;     nop
+0020 00             1179               nop
+                    1180     ;     mov B,#0H 
+0021 75F000         1181               mov B,#0H     
+                    1182     ;       nop
+0024 00             1183               nop
+                    1184     ; EXIT_DJNZ_RN_REL: nop
+0025 00             1185               EXIT_DJNZ_RN_REL: nop
+                    1186     ;     #pragma ENDASM    
+                    1187     ;       if (B!=0xff) test_status = 0;
+                    1188                             ; SOURCE LINE # 439
+0026 E5F0           1189             MOV     A,B
+0028 F4             1190             CPL     A
+0029 6005           1191             JZ      ?C0033
+002B 90007E         1192             MOV     DPTR,#07EH
+002E E4             1193             CLR     A
+002F F0             1194             MOVX    @DPTR,A
+0030                1195     ?C0033:
+                    1196     ;     if (R(3,7)!=0xff) test_status = 0;
+                    1197                             ; SOURCE LINE # 440
+0030 781F           1198             MOV     R0,#01FH
+0032 E6             1199             MOV     A,@R0
+0033 F4             1200             CPL     A
+0034 6005           1201             JZ      ?C0034
+0036 90007E         1202             MOV     DPTR,#07EH
+0039 E4             1203             CLR     A
+003A F0             1204             MOVX    @DPTR,A
+003B                1205     ?C0034:
+                    1206     ;       
+                    1207     ;       #pragma ASM 
+                    1208     ;       pop acc
+003B D0E0           1209               pop acc
+                    1210     ;     pop psw   
+003D D0D0           1211               pop psw       
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    20
+
+                    1212     ;     #pragma ENDASM
+                    1213     ;     error();  
+                    1214                             ; SOURCE LINE # 446
+003F 020000   F     1215             LJMP    error
+                    1216     ; END OF djnz_rn_rel
+                    1217     
+                    1218     ; }
+                    1219     ; 
+                    1220     ; void djnz_di_rel(void) {
+                    1221     
+----                1222             RSEG  ?PR?djnz_di_rel?PROGRAM
+0000                1223     djnz_di_rel:
+                    1224             USING   0
+                    1225                             ; SOURCE LINE # 449
+                    1226     ;       printf("DJNZ_DI_REL\n");
+                    1227                             ; SOURCE LINE # 450
+0000 7BFF           1228             MOV     R3,#0FFH
+0002 7A00     F     1229             MOV     R2,#HIGH (?SC_171)
+0004 7900     F     1230             MOV     R1,#LOW (?SC_171)
+0006 120000   F     1231             LCALL   _printf
+                    1232     ;       #pragma ASM  
+                    1233     ;       push psw
+0009 C0D0           1234               push psw
+                    1235     ;       push acc
+000B C0E0           1236               push acc
+                    1237     ;     mov  psw,#0H      
+000D 75D000         1238               mov  psw,#0H  
+                    1239     ;     setb rs0     
+0010 D2D3           1240               setb rs0     
+                    1241     ;       setb rs1        
+0012 D2D4           1242               setb rs1      
+                    1243     ;     #pragma ENDASM 
+                    1244     ;       
+                    1245     ;       #pragma ASM
+                    1246     ;       mov B,#0H
+0014 75F000         1247               mov B,#0H
+                    1248     ;     mov R7,#01H
+0017 7F01           1249               mov R7,#01H
+                    1250     ;     djnz 0x1f,EXIT_DJNZ_DI_REL
+0019 D51F0B         1251               djnz 0x1f,EXIT_DJNZ_DI_REL
+                    1252     ;     mov B,#0ffH
+001C 75F0FF         1253               mov B,#0ffH
+                    1254     ;     djnz 0x1f,EXIT_DJNZ_DI_REL
+001F D51F05         1255               djnz 0x1f,EXIT_DJNZ_DI_REL
+                    1256     ;     nop
+0022 00             1257               nop
+                    1258     ;     mov B,#0H 
+0023 75F000         1259               mov B,#0H     
+                    1260     ;       nop
+0026 00             1261               nop
+                    1262     ; EXIT_DJNZ_DI_REL: nop
+0027 00             1263               EXIT_DJNZ_DI_REL: nop
+                    1264     ;     #pragma ENDASM    
+                    1265     ;       if (B!=0xff) test_status = 0;
+                    1266                             ; SOURCE LINE # 470
+0028 E5F0           1267             MOV     A,B
+002A F4             1268             CPL     A
+002B 6005           1269             JZ      ?C0036
+002D 90007E         1270             MOV     DPTR,#07EH
+0030 E4             1271             CLR     A
+0031 F0             1272             MOVX    @DPTR,A
+0032                1273     ?C0036:
+                    1274     ;     if (R(3,7)!=0xff) test_status = 0;
+                    1275                             ; SOURCE LINE # 471
+0032 781F           1276             MOV     R0,#01FH
+0034 E6             1277             MOV     A,@R0
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    21
+
+0035 F4             1278             CPL     A
+0036 6005           1279             JZ      ?C0037
+0038 90007E         1280             MOV     DPTR,#07EH
+003B E4             1281             CLR     A
+003C F0             1282             MOVX    @DPTR,A
+003D                1283     ?C0037:
+                    1284     ;       
+                    1285     ;       #pragma ASM 
+                    1286     ;       pop acc
+003D D0E0           1287               pop acc
+                    1288     ;     pop psw   
+003F D0D0           1289               pop psw       
+                    1290     ;     #pragma ENDASM
+                    1291     ;     error();  
+                    1292                             ; SOURCE LINE # 477
+0041 020000   F     1293             LJMP    error
+                    1294     ; END OF djnz_di_rel
+                    1295     
+                    1296             END
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    22
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                     T Y P E  V A L U E   ATTRIBUTES
+
+?C0001 . . . . . . . . . .  C ADDR   002FH   R   SEG=?PR?ACALL_FUNC?PROGRAM
+?C0002 . . . . . . . . . .  C ADDR   003CH   R   SEG=?PR?ACALL_FUNC?PROGRAM
+?C0004 . . . . . . . . . .  C ADDR   0030H   R   SEG=?PR?LCALL_FUNC?PROGRAM
+?C0005 . . . . . . . . . .  C ADDR   003DH   R   SEG=?PR?LCALL_FUNC?PROGRAM
+?C0007 . . . . . . . . . .  C ADDR   0032H   R   SEG=?PR?RET_FUNC?PROGRAM
+?C0009 . . . . . . . . . .  C ADDR   0032H   R   SEG=?PR?RETI_FUNC?PROGRAM
+?C0011 . . . . . . . . . .  C ADDR   0021H   R   SEG=?PR?AJMP_FUNC?PROGRAM
+?C0013 . . . . . . . . . .  C ADDR   0021H   R   SEG=?PR?SJMP_FUNC?PROGRAM
+?C0015 . . . . . . . . . .  C ADDR   002AH   R   SEG=?PR?JMP_FUNC?PROGRAM
+?C0017 . . . . . . . . . .  C ADDR   0033H   R   SEG=?PR?JZ_FUNC?PROGRAM
+?C0019 . . . . . . . . . .  C ADDR   0033H   R   SEG=?PR?JNZ_FUNC?PROGRAM
+?C0021 . . . . . . . . . .  C ADDR   0038H   R   SEG=?PR?CJNE_A_DI_REL?PROGRAM
+?C0022 . . . . . . . . . .  C ADDR   0040H   R   SEG=?PR?CJNE_A_DI_REL?PROGRAM
+?C0024 . . . . . . . . . .  C ADDR   0033H   R   SEG=?PR?CJNE_A_DA_REL?PROGRAM
+?C0025 . . . . . . . . . .  C ADDR   003BH   R   SEG=?PR?CJNE_A_DA_REL?PROGRAM
+?C0027 . . . . . . . . . .  C ADDR   0033H   R   SEG=?PR?CJNE_RN_DA_REL?PROGRAM
+?C0028 . . . . . . . . . .  C ADDR   003BH   R   SEG=?PR?CJNE_RN_DA_REL?PROGRAM
+?C0030 . . . . . . . . . .  C ADDR   0035H   R   SEG=?PR?CJNE_RI_DA_REL?PROGRAM
+?C0031 . . . . . . . . . .  C ADDR   003DH   R   SEG=?PR?CJNE_RI_DA_REL?PROGRAM
+?C0033 . . . . . . . . . .  C ADDR   0030H   R   SEG=?PR?DJNZ_RN_REL?PROGRAM
+?C0034 . . . . . . . . . .  C ADDR   003BH   R   SEG=?PR?DJNZ_RN_REL?PROGRAM
+?C0036 . . . . . . . . . .  C ADDR   0032H   R   SEG=?PR?DJNZ_DI_REL?PROGRAM
+?C0037 . . . . . . . . . .  C ADDR   003DH   R   SEG=?PR?DJNZ_DI_REL?PROGRAM
+?CO?PROGRAM. . . . . . . .  C SEG    00B8H       REL=UNIT
+?PR?ACALL_FUNC?PROGRAM . .  C SEG    0043H       REL=UNIT
+?PR?AJMP_FUNC?PROGRAM. . .  C SEG    0028H       REL=UNIT
+?PR?CJNE_A_DA_REL?PROGRAM.  C SEG    0042H       REL=UNIT
+?PR?CJNE_A_DI_REL?PROGRAM.  C SEG    0047H       REL=UNIT
+?PR?CJNE_RI_DA_REL?PROGRAM  C SEG    0044H       REL=UNIT
+?PR?CJNE_RN_DA_REL?PROGRAM  C SEG    0042H       REL=UNIT
+?PR?DJNZ_DI_REL?PROGRAM. .  C SEG    0044H       REL=UNIT
+?PR?DJNZ_RN_REL?PROGRAM. .  C SEG    0042H       REL=UNIT
+?PR?JMP_FUNC?PROGRAM . . .  C SEG    0031H       REL=UNIT
+?PR?JNZ_FUNC?PROGRAM . . .  C SEG    003AH       REL=UNIT
+?PR?JZ_FUNC?PROGRAM. . . .  C SEG    003AH       REL=UNIT
+?PR?LCALL_FUNC?PROGRAM . .  C SEG    0044H       REL=UNIT
+?PR?RETI_FUNC?PROGRAM. . .  C SEG    0039H       REL=UNIT
+?PR?RET_FUNC?PROGRAM . . .  C SEG    0039H       REL=UNIT
+?PR?SJMP_FUNC?PROGRAM. . .  C SEG    0028H       REL=UNIT
+?SC_0. . . . . . . . . . .  C ADDR   0000H   R   SEG=?CO?PROGRAM
+?SC_111. . . . . . . . . .  C ADDR   006FH   R   SEG=?CO?PROGRAM
+?SC_12 . . . . . . . . . .  C ADDR   000CH   R   SEG=?CO?PROGRAM
+?SC_126. . . . . . . . . .  C ADDR   007EH   R   SEG=?CO?PROGRAM
+?SC_142. . . . . . . . . .  C ADDR   008EH   R   SEG=?CO?PROGRAM
+?SC_158. . . . . . . . . .  C ADDR   009EH   R   SEG=?CO?PROGRAM
+?SC_171. . . . . . . . . .  C ADDR   00ABH   R   SEG=?CO?PROGRAM
+?SC_24 . . . . . . . . . .  C ADDR   0018H   R   SEG=?CO?PROGRAM
+?SC_34 . . . . . . . . . .  C ADDR   0022H   R   SEG=?CO?PROGRAM
+?SC_45 . . . . . . . . . .  C ADDR   002DH   R   SEG=?CO?PROGRAM
+?SC_56 . . . . . . . . . .  C ADDR   0038H   R   SEG=?CO?PROGRAM
+?SC_67 . . . . . . . . . .  C ADDR   0043H   R   SEG=?CO?PROGRAM
+?SC_77 . . . . . . . . . .  C ADDR   004DH   R   SEG=?CO?PROGRAM
+?SC_86 . . . . . . . . . .  C ADDR   0056H   R   SEG=?CO?PROGRAM
+?SC_96 . . . . . . . . . .  C ADDR   0060H   R   SEG=?CO?PROGRAM
+?_PRINTF?BYTE. . . . . . .  D ADDR   -----       EXT
+AC . . . . . . . . . . . .  B ADDR   00D0H.6 A   
+ACALL_FUNC . . . . . . . .  C ADDR   0000H   R   SEG=?PR?ACALL_FUNC?PROGRAM
+ACC. . . . . . . . . . . .  D ADDR   00E0H   A   
+AJMP_FUNC. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?AJMP_FUNC?PROGRAM
+B. . . . . . . . . . . . .  D ADDR   00F0H   A   
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    23
+
+CJNE_A_DA_REL. . . . . . .  C ADDR   0000H   R   SEG=?PR?CJNE_A_DA_REL?PROGRAM
+CJNE_A_DI_REL. . . . . . .  C ADDR   0000H   R   SEG=?PR?CJNE_A_DI_REL?PROGRAM
+CJNE_RI_DA_REL . . . . . .  C ADDR   0000H   R   SEG=?PR?CJNE_RI_DA_REL?PROGRAM
+CJNE_RN_DA_REL . . . . . .  C ADDR   0000H   R   SEG=?PR?CJNE_RN_DA_REL?PROGRAM
+CP_RL2 . . . . . . . . . .  B ADDR   00C8H.0 A   
+CY . . . . . . . . . . . .  B ADDR   00D0H.7 A   
+C_T2 . . . . . . . . . . .  B ADDR   00C8H.1 A   
+DJNZ_DI_REL. . . . . . . .  C ADDR   0000H   R   SEG=?PR?DJNZ_DI_REL?PROGRAM
+DJNZ_RN_REL. . . . . . . .  C ADDR   0000H   R   SEG=?PR?DJNZ_RN_REL?PROGRAM
+DPH. . . . . . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . . . . . .  D ADDR   0082H   A   
+EA . . . . . . . . . . . .  B ADDR   00A8H.7 A   
+ERROR. . . . . . . . . . .  C ADDR   -----       EXT
+ES . . . . . . . . . . . .  B ADDR   00A8H.4 A   
+ET0. . . . . . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . . . . . .  B ADDR   00A8H.3 A   
+ET2. . . . . . . . . . . .  B ADDR   00A8H.5 A   
+EX0. . . . . . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2. . . . . . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . . . . . .  B ADDR   00C8H.6 A   
+EXIT_ACALL . . . . . . . .  C ADDR   0025H   R   SEG=?PR?ACALL_FUNC?PROGRAM
+EXIT_AJMP. . . . . . . . .  C ADDR   0019H   R   SEG=?PR?AJMP_FUNC?PROGRAM
+EXIT_CJNE_A_DA_REL . . . .  C ADDR   0028H   R   SEG=?PR?CJNE_A_DA_REL?PROGRAM
+EXIT_CJNE_A_DI_REL . . . .  C ADDR   002DH   R   SEG=?PR?CJNE_A_DI_REL?PROGRAM
+EXIT_CJNE_RI_DA_REL. . . .  C ADDR   002AH   R   SEG=?PR?CJNE_RI_DA_REL?PROGRAM
+EXIT_CJNE_RN_DA_REL. . . .  C ADDR   0028H   R   SEG=?PR?CJNE_RN_DA_REL?PROGRAM
+EXIT_DJNZ_DI_REL . . . . .  C ADDR   0027H   R   SEG=?PR?DJNZ_DI_REL?PROGRAM
+EXIT_DJNZ_RN_REL . . . . .  C ADDR   0025H   R   SEG=?PR?DJNZ_RN_REL?PROGRAM
+EXIT_JMP . . . . . . . . .  C ADDR   0020H   R   SEG=?PR?JMP_FUNC?PROGRAM
+EXIT_JNZ . . . . . . . . .  C ADDR   0028H   R   SEG=?PR?JNZ_FUNC?PROGRAM
+EXIT_JZ. . . . . . . . . .  C ADDR   0028H   R   SEG=?PR?JZ_FUNC?PROGRAM
+EXIT_LCALL . . . . . . . .  C ADDR   0026H   R   SEG=?PR?LCALL_FUNC?PROGRAM
+EXIT_RET . . . . . . . . .  C ADDR   0028H   R   SEG=?PR?RET_FUNC?PROGRAM
+EXIT_RETI. . . . . . . . .  C ADDR   0028H   R   SEG=?PR?RETI_FUNC?PROGRAM
+EXIT_SJMP. . . . . . . . .  C ADDR   0019H   R   SEG=?PR?SJMP_FUNC?PROGRAM
+F0 . . . . . . . . . . . .  B ADDR   00D0H.5 A   
+IE . . . . . . . . . . . .  D ADDR   00A8H   A   
+IE0. . . . . . . . . . . .  B ADDR   0088H.1 A   
+IE1. . . . . . . . . . . .  B ADDR   0088H.3 A   
+INT0 . . . . . . . . . . .  B ADDR   00B0H.2 A   
+INT1 . . . . . . . . . . .  B ADDR   00B0H.3 A   
+IP . . . . . . . . . . . .  D ADDR   00B8H   A   
+IT0. . . . . . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . . . . . .  B ADDR   0088H.2 A   
+JMP_FUNC . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?JMP_FUNC?PROGRAM
+JNZ_FUNC . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?JNZ_FUNC?PROGRAM
+JUMP_ACALL . . . . . . . .  C ADDR   001DH   R   SEG=?PR?ACALL_FUNC?PROGRAM
+JUMP_LCALL . . . . . . . .  C ADDR   001EH   R   SEG=?PR?LCALL_FUNC?PROGRAM
+JUMP_RET . . . . . . . . .  C ADDR   0023H   R   SEG=?PR?RET_FUNC?PROGRAM
+JUMP_RETI. . . . . . . . .  C ADDR   0023H   R   SEG=?PR?RETI_FUNC?PROGRAM
+JZ_FUNC. . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?JZ_FUNC?PROGRAM
+LCALL_FUNC . . . . . . . .  C ADDR   0000H   R   SEG=?PR?LCALL_FUNC?PROGRAM
+OV . . . . . . . . . . . .  B ADDR   00D0H.2 A   
+P. . . . . . . . . . . . .  B ADDR   00D0H.0 A   
+P0 . . . . . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . . . . . .  D ADDR   00B0H   A   
+PCON . . . . . . . . . . .  D ADDR   0087H   A   
+PROGRAM. . . . . . . . . .  N NUMB   -----       
+PS . . . . . . . . . . . .  B ADDR   00B8H.4 A   
+PSW. . . . . . . . . . . .  D ADDR   00D0H   A   
+PT0. . . . . . . . . . . .  B ADDR   00B8H.1 A   
+PT1. . . . . . . . . . . .  B ADDR   00B8H.3 A   
+PT2. . . . . . . . . . . .  B ADDR   00B8H.5 A   
+A51 MACRO ASSEMBLER  PROGRAM                                                              07/21/2014 16:39:34 PAGE    24
+
+PX0. . . . . . . . . . . .  B ADDR   00B8H.0 A   
+PX1. . . . . . . . . . . .  B ADDR   00B8H.2 A   
+RB8. . . . . . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H . . . . . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . . . . . .  B ADDR   00C8H.5 A   
+RD . . . . . . . . . . . .  B ADDR   00B0H.7 A   
+REN. . . . . . . . . . . .  B ADDR   0098H.4 A   
+RETI_FUNC. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?RETI_FUNC?PROGRAM
+RET_FUNC . . . . . . . . .  C ADDR   0000H   R   SEG=?PR?RET_FUNC?PROGRAM
+RI . . . . . . . . . . . .  B ADDR   0098H.0 A   
+RS0. . . . . . . . . . . .  B ADDR   00D0H.3 A   
+RS1. . . . . . . . . . . .  B ADDR   00D0H.4 A   
+RXD. . . . . . . . . . . .  B ADDR   00B0H.0 A   
+SBUF . . . . . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . . . . . .  D ADDR   0098H   A   
+SJMP_FUNC. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?SJMP_FUNC?PROGRAM
+SM0. . . . . . . . . . . .  B ADDR   0098H.7 A   
+SM1. . . . . . . . . . . .  B ADDR   0098H.6 A   
+SM2. . . . . . . . . . . .  B ADDR   0098H.5 A   
+SP . . . . . . . . . . . .  D ADDR   0081H   A   
+T0 . . . . . . . . . . . .  B ADDR   00B0H.4 A   
+T1 . . . . . . . . . . . .  B ADDR   00B0H.5 A   
+T2 . . . . . . . . . . . .  B ADDR   0090H.0 A   
+T2CON. . . . . . . . . . .  D ADDR   00C8H   A   
+T2EX . . . . . . . . . . .  B ADDR   0090H.1 A   
+TB8. . . . . . . . . . . .  B ADDR   0098H.3 A   
+TCLK . . . . . . . . . . .  B ADDR   00C8H.4 A   
+TCON . . . . . . . . . . .  D ADDR   0088H   A   
+TF0. . . . . . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . . . . . .  B ADDR   0088H.7 A   
+TF2. . . . . . . . . . . .  B ADDR   00C8H.7 A   
+TH0. . . . . . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . . . . . .  D ADDR   008DH   A   
+TH2. . . . . . . . . . . .  D ADDR   00CDH   A   
+TI . . . . . . . . . . . .  B ADDR   0098H.1 A   
+TL0. . . . . . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . . . . . .  D ADDR   008BH   A   
+TL2. . . . . . . . . . . .  D ADDR   00CCH   A   
+TMOD . . . . . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . . . . . .  B ADDR   0088H.6 A   
+TR2. . . . . . . . . . . .  B ADDR   00C8H.2 A   
+TXD. . . . . . . . . . . .  B ADDR   00B0H.1 A   
+WR . . . . . . . . . . . .  B ADDR   00B0H.6 A   
+_PRINTF. . . . . . . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

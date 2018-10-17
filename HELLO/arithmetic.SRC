@@ -1,0 +1,3842 @@
+; .\arithmetic.SRC generated from: arithmetic.c
+; COMPILER INVOKED BY:
+;        C:\myprog\Keil\C51\BIN\C51.EXE arithmetic.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\arithmetic.SRC)
+
+$NOMOD51
+
+NAME	ARITHMETIC
+
+P0	DATA	080H
+P1	DATA	090H
+P2	DATA	0A0H
+P3	DATA	0B0H
+T0	BIT	0B0H.4
+AC	BIT	0D0H.6
+T1	BIT	0B0H.5
+T2	BIT	090H.0
+EA	BIT	0A8H.7
+IE	DATA	0A8H
+EXF2	BIT	0C8H.6
+RD	BIT	0B0H.7
+ES	BIT	0A8H.4
+IP	DATA	0B8H
+RI	BIT	098H.0
+INT0	BIT	0B0H.2
+CY	BIT	0D0H.7
+TI	BIT	098H.1
+INT1	BIT	0B0H.3
+RCAP2H	DATA	0CBH
+PS	BIT	0B8H.4
+SP	DATA	081H
+T2EX	BIT	090H.1
+OV	BIT	0D0H.2
+RCAP2L	DATA	0CAH
+C_T2	BIT	0C8H.1
+WR	BIT	0B0H.6
+RCLK	BIT	0C8H.5
+TCLK	BIT	0C8H.4
+SBUF	DATA	099H
+PCON	DATA	087H
+SCON	DATA	098H
+TMOD	DATA	089H
+TCON	DATA	088H
+IE0	BIT	088H.1
+IE1	BIT	088H.3
+B	DATA	0F0H
+CP_RL2	BIT	0C8H.0
+ACC	DATA	0E0H
+ET0	BIT	0A8H.1
+ET1	BIT	0A8H.3
+TF0	BIT	088H.5
+ET2	BIT	0A8H.5
+TF1	BIT	088H.7
+TF2	BIT	0C8H.7
+RB8	BIT	098H.2
+TH0	DATA	08CH
+EX0	BIT	0A8H.0
+IT0	BIT	088H.0
+TH1	DATA	08DH
+TB8	BIT	098H.3
+EX1	BIT	0A8H.2
+IT1	BIT	088H.2
+TH2	DATA	0CDH
+P	BIT	0D0H.0
+SM0	BIT	098H.7
+TL0	DATA	08AH
+SM1	BIT	098H.6
+TL1	DATA	08BH
+SM2	BIT	098H.5
+TL2	DATA	0CCH
+PT0	BIT	0B8H.1
+PT1	BIT	0B8H.3
+RS0	BIT	0D0H.3
+PT2	BIT	0B8H.5
+TR0	BIT	088H.4
+RS1	BIT	0D0H.4
+TR1	BIT	088H.6
+TR2	BIT	0C8H.2
+PX0	BIT	0B8H.0
+PX1	BIT	0B8H.2
+DPH	DATA	083H
+DPL	DATA	082H
+EXEN2	BIT	0C8H.3
+REN	BIT	098H.4
+T2CON	DATA	0C8H
+RXD	BIT	0B0H.0
+TXD	BIT	0B0H.1
+F0	BIT	0D0H.5
+PSW	DATA	0D0H
+?PR?add_a_rn?ARITHMETIC                  SEGMENT CODE 
+?PR?add_a_di?ARITHMETIC                  SEGMENT CODE 
+?PR?add_a_ri?ARITHMETIC                  SEGMENT CODE 
+?PR?add_a_da?ARITHMETIC                  SEGMENT CODE 
+?PR?addc_a_rn?ARITHMETIC                 SEGMENT CODE 
+?PR?addc_a_di?ARITHMETIC                 SEGMENT CODE 
+?PR?addc_a_ri?ARITHMETIC                 SEGMENT CODE 
+?PR?addc_a_da?ARITHMETIC                 SEGMENT CODE 
+?PR?subb_a_rn?ARITHMETIC                 SEGMENT CODE 
+?PR?subb_a_di?ARITHMETIC                 SEGMENT CODE 
+?PR?subb_a_ri?ARITHMETIC                 SEGMENT CODE 
+?PR?subb_a_da?ARITHMETIC                 SEGMENT CODE 
+?PR?inc_a?ARITHMETIC SEGMENT CODE 
+?PR?inc_rn?ARITHMETIC                    SEGMENT CODE 
+?PR?inc_di?ARITHMETIC                    SEGMENT CODE 
+?PR?inc_ri?ARITHMETIC                    SEGMENT CODE 
+?PR?inc_dp?ARITHMETIC                    SEGMENT CODE 
+?PR?dec_a?ARITHMETIC SEGMENT CODE 
+?PR?dec_rn?ARITHMETIC                    SEGMENT CODE 
+?PR?dec_di?ARITHMETIC                    SEGMENT CODE 
+?PR?dec_ri?ARITHMETIC                    SEGMENT CODE 
+?PR?mult?ARITHMETIC  SEGMENT CODE 
+?PR?divide?ARITHMETIC                    SEGMENT CODE 
+?PR?da_a?ARITHMETIC  SEGMENT CODE 
+?CO?ARITHMETIC       SEGMENT CODE 
+	EXTRN	CODE (_printf)
+	EXTRN	DATA (?_printf?BYTE)
+	EXTRN	CODE (error)
+	PUBLIC	da_a
+	PUBLIC	divide
+	PUBLIC	mult
+	PUBLIC	dec_ri
+	PUBLIC	dec_di
+	PUBLIC	dec_rn
+	PUBLIC	dec_a
+	PUBLIC	inc_dp
+	PUBLIC	inc_ri
+	PUBLIC	inc_di
+	PUBLIC	inc_rn
+	PUBLIC	inc_a
+	PUBLIC	subb_a_da
+	PUBLIC	subb_a_ri
+	PUBLIC	subb_a_di
+	PUBLIC	subb_a_rn
+	PUBLIC	addc_a_da
+	PUBLIC	addc_a_ri
+	PUBLIC	addc_a_di
+	PUBLIC	addc_a_rn
+	PUBLIC	add_a_da
+	PUBLIC	add_a_ri
+	PUBLIC	add_a_di
+	PUBLIC	add_a_rn
+
+	RSEG  ?CO?ARITHMETIC
+?SC_0:
+	DB  'A' ,'D' ,'D' ,'_' ,'A' ,'_' ,'R' ,'N' ,00AH,000H
+
+?SC_10:
+	DB  'A' ,'D' ,'D' ,'_' ,'A' ,'_' ,'D' ,'I' ,00AH,000H
+
+?SC_20:
+	DB  'A' ,'D' ,'D' ,'_' ,'A' ,'_' ,'R' ,'I' ,00AH,000H
+
+?SC_30:
+	DB  'A' ,'D' ,'D' ,'_' ,'A' ,'_' ,'D' ,'A' ,00AH,000H
+
+?SC_40:
+	DB  'A' ,'D' ,'D' ,'C' ,'_' ,'A' ,'_' ,'R' ,'N' ,00AH
+	DB  000H
+
+?SC_51:
+	DB  'A' ,'D' ,'D' ,'C' ,'_' ,'A' ,'_' ,'D' ,'I' ,00AH
+	DB  000H
+
+?SC_62:
+	DB  'A' ,'D' ,'D' ,'C' ,'_' ,'A' ,'_' ,'R' ,'I' ,00AH
+	DB  000H
+
+?SC_73:
+	DB  'A' ,'D' ,'D' ,'C' ,'_' ,'A' ,'_' ,'D' ,'A' ,00AH
+	DB  000H
+
+?SC_84:
+	DB  'S' ,'U' ,'B' ,'B' ,'_' ,'A' ,'_' ,'R' ,'N' ,00AH
+	DB  000H
+
+?SC_95:
+	DB  'S' ,'U' ,'B' ,'B' ,'_' ,'A' ,'_' ,'D' ,'I' ,00AH
+	DB  000H
+
+?SC_106:
+	DB  'S' ,'U' ,'B' ,'B' ,'_' ,'A' ,'_' ,'R' ,'I' ,00AH
+	DB  000H
+
+?SC_117:
+	DB  'S' ,'U' ,'B' ,'B' ,'_' ,'A' ,'_' ,'D' ,'A' ,00AH
+	DB  000H
+
+?SC_128:
+	DB  'I' ,'N' ,'C' ,'_' ,'A' ,00AH,000H
+
+?SC_135:
+	DB  'I' ,'N' ,'C' ,'_' ,'R' ,'N' ,00AH,000H
+
+?SC_143:
+	DB  'I' ,'N' ,'C' ,'_' ,'D' ,'I' ,00AH,000H
+
+?SC_151:
+	DB  'I' ,'N' ,'C' ,'_' ,'R' ,'I' ,00AH,000H
+
+?SC_159:
+	DB  'I' ,'N' ,'C' ,'_' ,'D' ,'P' ,00AH,000H
+
+?SC_167:
+	DB  'D' ,'E' ,'C' ,'_' ,'A' ,00AH,000H
+
+?SC_174:
+	DB  'D' ,'E' ,'C' ,'_' ,'R' ,'N' ,00AH,000H
+
+?SC_182:
+	DB  'D' ,'E' ,'C' ,'_' ,'D' ,'I' ,00AH,000H
+
+?SC_190:
+	DB  'D' ,'E' ,'C' ,'_' ,'R' ,'I' ,00AH,000H
+
+?SC_198:
+	DB  'M' ,'U' ,'L' ,'T' ,00AH,000H
+
+?SC_204:
+	DB  'D' ,'I' ,'V' ,'I' ,'D' ,'E' ,00AH,000H
+
+?SC_212:
+	DB  'D' ,'A' ,00AH,000H
+
+; #include <REG52.H>
+; #include <stdio.h> 
+; #include "instruction.h"
+; 
+; void add_a_rn(void) {
+
+	RSEG  ?PR?add_a_rn?ARITHMETIC
+add_a_rn:
+	USING	0
+			; SOURCE LINE # 5
+; 	printf("ADD_A_RN\n");
+			; SOURCE LINE # 6
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_0)
+	MOV  	R1,#LOW (?SC_0)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	mov R0,#0fH
+	  mov R0,#0fH
+; 	add A,R0
+	  add A,R0
+;   #pragma ENDASM	
+; 	if (ACC!=0x10) test_status = 0;
+			; SOURCE LINE # 20
+	XRL  	A,#010H
+	JZ   	?C0001
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0001:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 21
+	JB   	AC,?C0002
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0002:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 22
+	JNB  	OV,?C0003
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0003:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 23
+	JNB  	CY,?C0004
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0004:
+; 	AC = 0;
+			; SOURCE LINE # 24
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	mov R1,#40H
+	  mov R1,#40H
+; 	add A,R1
+	  add A,R1
+; 	#pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 31
+	XRL  	A,#080H
+	JZ   	?C0005
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0005:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 32
+	JNB  	AC,?C0006
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0006:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 33
+	JB   	OV,?C0007
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0007:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 34
+	JNB  	CY,?C0008
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0008:
+; 	OV = 0;
+			; SOURCE LINE # 35
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	mov R2,#81H
+	  mov R2,#81H
+; 	add A,R2
+	  add A,R2
+;   #pragma ENDASM
+; 	if (ACC!=0x01) test_status = 0;
+			; SOURCE LINE # 43
+	XRL  	A,#01H
+	JZ   	?C0009
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0009:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 44
+	JNB  	AC,?C0010
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0010:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 45
+	JB   	OV,?C0011
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0011:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 46
+	JB   	CY,?C0012
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0012:
+; 	OV = 0;
+			; SOURCE LINE # 47
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 48
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	mov R3,#0C2H
+	  mov R3,#0C2H
+; 	add A,R3
+	  add A,R3
+;   #pragma ENDASM
+; 	if (ACC!=0x82) test_status = 0;
+			; SOURCE LINE # 55
+	XRL  	A,#082H
+	JZ   	?C0013
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0013:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 56
+	JNB  	AC,?C0014
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0014:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 57
+	JNB  	OV,?C0015
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0015:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 58
+	JB   	CY,?C0016
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0016:
+; 	CY = 0;	
+			; SOURCE LINE # 59
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM 	
+; 	error();
+			; SOURCE LINE # 65
+	LJMP 	error
+; END OF add_a_rn
+
+; }
+; 
+; void add_a_di(void) {
+
+	RSEG  ?PR?add_a_di?ARITHMETIC
+add_a_di:
+	USING	0
+			; SOURCE LINE # 68
+; 	printf("ADD_A_DI\n");
+			; SOURCE LINE # 69
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_10)
+	MOV  	R1,#LOW (?SC_10)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	mov R0,#0fH
+	  mov R0,#0fH
+; 	add A,0x18
+	  add A,0x18
+;   #pragma ENDASM	
+; 	if (ACC!=0x10) test_status = 0;
+			; SOURCE LINE # 83
+	XRL  	A,#010H
+	JZ   	?C0018
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0018:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 84
+	JB   	AC,?C0019
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0019:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 85
+	JNB  	OV,?C0020
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0020:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 86
+	JNB  	CY,?C0021
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0021:
+; 	AC = 0;
+			; SOURCE LINE # 87
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	mov R1,#40H
+	  mov R1,#40H
+; 	add A,0x19
+	  add A,0x19
+; 	#pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 94
+	XRL  	A,#080H
+	JZ   	?C0022
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0022:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 95
+	JNB  	AC,?C0023
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0023:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 96
+	JB   	OV,?C0024
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0024:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 97
+	JNB  	CY,?C0025
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0025:
+; 	OV = 0;
+			; SOURCE LINE # 98
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	mov R2,#81H
+	  mov R2,#81H
+; 	add A,0x1a
+	  add A,0x1a
+;   #pragma ENDASM
+; 	if (ACC!=0x01) test_status = 0;
+			; SOURCE LINE # 106
+	XRL  	A,#01H
+	JZ   	?C0026
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0026:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 107
+	JNB  	AC,?C0027
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0027:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 108
+	JB   	OV,?C0028
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0028:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 109
+	JB   	CY,?C0029
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0029:
+; 	OV = 0;
+			; SOURCE LINE # 110
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 111
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	mov R3,#0C2H
+	  mov R3,#0C2H
+; 	add A,0x1b
+	  add A,0x1b
+;   #pragma ENDASM
+; 	if (ACC!=0x82) test_status = 0;
+			; SOURCE LINE # 118
+	XRL  	A,#082H
+	JZ   	?C0030
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0030:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 119
+	JNB  	AC,?C0031
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0031:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 120
+	JNB  	OV,?C0032
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0032:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 121
+	JB   	CY,?C0033
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0033:
+; 	CY = 0;	
+			; SOURCE LINE # 122
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM 
+;   error();	
+			; SOURCE LINE # 128
+	LJMP 	error
+; END OF add_a_di
+
+; }
+; 
+; void add_a_ri(void) {
+
+	RSEG  ?PR?add_a_ri?ARITHMETIC
+add_a_ri:
+	USING	0
+			; SOURCE LINE # 131
+; 	printf("ADD_A_RI\n");
+			; SOURCE LINE # 132
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_20)
+	MOV  	R1,#LOW (?SC_20)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	mov R2,#0fH
+	  mov R2,#0fH
+; 	mov R0,#1aH
+	  mov R0,#1aH
+; 	add A,@R0
+	  add A,@R0
+;   #pragma ENDASM	
+; 	if (ACC!=0x10) test_status = 0;
+			; SOURCE LINE # 147
+	XRL  	A,#010H
+	JZ   	?C0035
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0035:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 148
+	JB   	AC,?C0036
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0036:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 149
+	JNB  	OV,?C0037
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0037:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 150
+	JNB  	CY,?C0038
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0038:
+; 	AC = 0;
+			; SOURCE LINE # 151
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	mov R2,#40H
+	  mov R2,#40H
+; 	mov R0,#1aH
+	  mov R0,#1aH
+; 	add A,@R0
+	  add A,@R0
+; 	#pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 159
+	XRL  	A,#080H
+	JZ   	?C0039
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0039:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 160
+	JNB  	AC,?C0040
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0040:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 161
+	JB   	OV,?C0041
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0041:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 162
+	JNB  	CY,?C0042
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0042:
+; 	OV = 0;
+			; SOURCE LINE # 163
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	mov R3,#81H
+	  mov R3,#81H
+; 	mov R1,#1bH
+	  mov R1,#1bH
+; 	add A,@R1
+	  add A,@R1
+;   #pragma ENDASM
+; 	if (ACC!=0x01) test_status = 0;
+			; SOURCE LINE # 172
+	XRL  	A,#01H
+	JZ   	?C0043
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0043:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 173
+	JNB  	AC,?C0044
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0044:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 174
+	JB   	OV,?C0045
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0045:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 175
+	JB   	CY,?C0046
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0046:
+; 	OV = 0;
+			; SOURCE LINE # 176
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 177
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	mov R3,#0C2H
+	  mov R3,#0C2H
+; 	mov R1,#1bH
+	  mov R1,#1bH
+; 	add A,@R1
+	  add A,@R1
+;   #pragma ENDASM
+; 	if (ACC!=0x82) test_status = 0;
+			; SOURCE LINE # 185
+	XRL  	A,#082H
+	JZ   	?C0047
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0047:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 186
+	JNB  	AC,?C0048
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0048:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 187
+	JNB  	OV,?C0049
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0049:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 188
+	JB   	CY,?C0050
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0050:
+; 	CY = 0;	
+			; SOURCE LINE # 189
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error(); 	
+			; SOURCE LINE # 195
+	LJMP 	error
+; END OF add_a_ri
+
+; }
+; 
+; void add_a_da(void) {
+
+	RSEG  ?PR?add_a_da?ARITHMETIC
+add_a_da:
+	USING	0
+			; SOURCE LINE # 198
+; 	printf("ADD_A_DA\n");
+			; SOURCE LINE # 199
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_30)
+	MOV  	R1,#LOW (?SC_30)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	add A,#0fH
+	  add A,#0fH
+;   #pragma ENDASM	
+; 	if (ACC!=0x10) test_status = 0;
+			; SOURCE LINE # 212
+	XRL  	A,#010H
+	JZ   	?C0052
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0052:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 213
+	JB   	AC,?C0053
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0053:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 214
+	JNB  	OV,?C0054
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0054:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 215
+	JNB  	CY,?C0055
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0055:
+; 	AC = 0;
+			; SOURCE LINE # 216
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	add A,#40H
+	  add A,#40H
+; 	#pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 222
+	XRL  	A,#080H
+	JZ   	?C0056
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0056:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 223
+	JNB  	AC,?C0057
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0057:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 224
+	JB   	OV,?C0058
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0058:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 225
+	JNB  	CY,?C0059
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0059:
+; 	OV = 0;
+			; SOURCE LINE # 226
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	add A,#81H
+	  add A,#81H
+;   #pragma ENDASM
+; 	if (ACC!=0x01) test_status = 0;
+			; SOURCE LINE # 233
+	XRL  	A,#01H
+	JZ   	?C0060
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0060:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 234
+	JNB  	AC,?C0061
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0061:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 235
+	JB   	OV,?C0062
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0062:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 236
+	JB   	CY,?C0063
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0063:
+; 	OV = 0;
+			; SOURCE LINE # 237
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 238
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	add A,#0C2H
+	  add A,#0C2H
+;   #pragma ENDASM
+; 	if (ACC!=0x82) test_status = 0;
+			; SOURCE LINE # 244
+	XRL  	A,#082H
+	JZ   	?C0064
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0064:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 245
+	JNB  	AC,?C0065
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0065:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 246
+	JNB  	OV,?C0066
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0066:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 247
+	JB   	CY,?C0067
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0067:
+; 	CY = 0;	
+			; SOURCE LINE # 248
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error(); 	
+			; SOURCE LINE # 254
+	LJMP 	error
+; END OF add_a_da
+
+; }
+; 
+; void addc_a_rn(void) {
+
+	RSEG  ?PR?addc_a_rn?ARITHMETIC
+addc_a_rn:
+	USING	0
+			; SOURCE LINE # 257
+; 	printf("ADDC_A_RN\n");
+			; SOURCE LINE # 258
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_40)
+	MOV  	R1,#LOW (?SC_40)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	mov R0,#0fH
+	  mov R0,#0fH
+; 	setb C
+	  setb C
+; 	addc A,R0
+	  addc A,R0
+;   #pragma ENDASM	
+; 	if (ACC!=0x11) test_status = 0;
+			; SOURCE LINE # 273
+	XRL  	A,#011H
+	JZ   	?C0069
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0069:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 274
+	JB   	AC,?C0070
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0070:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 275
+	JNB  	OV,?C0071
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0071:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 276
+	JNB  	CY,?C0072
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0072:
+; 	AC = 0;
+			; SOURCE LINE # 277
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	mov R1,#40H
+	  mov R1,#40H
+; 	setb C
+	  setb C
+; 	addc A,R1
+	  addc A,R1
+; 	#pragma ENDASM
+; 	if (ACC!=0x81) test_status = 0;
+			; SOURCE LINE # 285
+	XRL  	A,#081H
+	JZ   	?C0073
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0073:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 286
+	JNB  	AC,?C0074
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0074:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 287
+	JB   	OV,?C0075
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0075:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 288
+	JNB  	CY,?C0076
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0076:
+; 	OV = 0;
+			; SOURCE LINE # 289
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	mov R2,#81H
+	  mov R2,#81H
+; 	setb C
+	  setb C
+; 	addc A,R2
+	  addc A,R2
+;   #pragma ENDASM
+; 	if (ACC!=0x02) test_status = 0;
+			; SOURCE LINE # 298
+	XRL  	A,#02H
+	JZ   	?C0077
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0077:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 299
+	JNB  	AC,?C0078
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0078:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 300
+	JB   	OV,?C0079
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0079:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 301
+	JB   	CY,?C0080
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0080:
+; 	OV = 0;
+			; SOURCE LINE # 302
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 303
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	mov R3,#0C2H
+	  mov R3,#0C2H
+; 	setb C
+	  setb C
+; 	addc A,R3
+	  addc A,R3
+;   #pragma ENDASM
+; 	if (ACC!=0x83) test_status = 0;
+			; SOURCE LINE # 311
+	XRL  	A,#083H
+	JZ   	?C0081
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0081:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 312
+	JNB  	AC,?C0082
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0082:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 313
+	JNB  	OV,?C0083
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0083:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 314
+	JB   	CY,?C0084
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0084:
+; 	CY = 0;	
+			; SOURCE LINE # 315
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error(); 	
+			; SOURCE LINE # 321
+	LJMP 	error
+; END OF addc_a_rn
+
+; }
+; 
+; void addc_a_di(void) {
+
+	RSEG  ?PR?addc_a_di?ARITHMETIC
+addc_a_di:
+	USING	0
+			; SOURCE LINE # 324
+; 	printf("ADDC_A_DI\n");
+			; SOURCE LINE # 325
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_51)
+	MOV  	R1,#LOW (?SC_51)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	mov R0,#0fH
+	  mov R0,#0fH
+; 	setb C
+	  setb C
+; 	addc A,0x18
+	  addc A,0x18
+;   #pragma ENDASM	
+; 	if (ACC!=0x11) test_status = 0;
+			; SOURCE LINE # 340
+	XRL  	A,#011H
+	JZ   	?C0086
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0086:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 341
+	JB   	AC,?C0087
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0087:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 342
+	JNB  	OV,?C0088
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0088:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 343
+	JNB  	CY,?C0089
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0089:
+; 	AC = 0;
+			; SOURCE LINE # 344
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	mov R1,#40H
+	  mov R1,#40H
+; 	setb C
+	  setb C
+; 	addc A,0x19
+	  addc A,0x19
+; 	#pragma ENDASM
+; 	if (ACC!=0x81) test_status = 0;
+			; SOURCE LINE # 352
+	XRL  	A,#081H
+	JZ   	?C0090
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0090:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 353
+	JNB  	AC,?C0091
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0091:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 354
+	JB   	OV,?C0092
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0092:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 355
+	JNB  	CY,?C0093
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0093:
+; 	OV = 0;
+			; SOURCE LINE # 356
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	mov R2,#81H
+	  mov R2,#81H
+; 	setb C
+	  setb C
+; 	addc A,0x1a
+	  addc A,0x1a
+;   #pragma ENDASM
+; 	if (ACC!=0x02) test_status = 0;
+			; SOURCE LINE # 365
+	XRL  	A,#02H
+	JZ   	?C0094
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0094:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 366
+	JNB  	AC,?C0095
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0095:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 367
+	JB   	OV,?C0096
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0096:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 368
+	JB   	CY,?C0097
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0097:
+; 	OV = 0;
+			; SOURCE LINE # 369
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 370
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	mov R3,#0C2H
+	  mov R3,#0C2H
+; 	setb C
+	  setb C
+; 	addc A,0x1b
+	  addc A,0x1b
+;   #pragma ENDASM
+; 	if (ACC!=0x83) test_status = 0;
+			; SOURCE LINE # 378
+	XRL  	A,#083H
+	JZ   	?C0098
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0098:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 379
+	JNB  	AC,?C0099
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0099:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 380
+	JNB  	OV,?C0100
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0100:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 381
+	JB   	CY,?C0101
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0101:
+; 	CY = 0;	
+			; SOURCE LINE # 382
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM 
+;   error();  
+			; SOURCE LINE # 388
+	LJMP 	error
+; END OF addc_a_di
+
+; }
+; 
+; void addc_a_ri(void) {
+
+	RSEG  ?PR?addc_a_ri?ARITHMETIC
+addc_a_ri:
+	USING	0
+			; SOURCE LINE # 391
+; 	printf("ADDC_A_RI\n");
+			; SOURCE LINE # 392
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_62)
+	MOV  	R1,#LOW (?SC_62)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	mov R2,#0fH
+	  mov R2,#0fH
+; 	mov R0,#1aH
+	  mov R0,#1aH
+; 	setb C
+	  setb C
+; 	addc A,@R0
+	  addc A,@R0
+;   #pragma ENDASM	
+; 	if (ACC!=0x11) test_status = 0;
+			; SOURCE LINE # 408
+	XRL  	A,#011H
+	JZ   	?C0103
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0103:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 409
+	JB   	AC,?C0104
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0104:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 410
+	JNB  	OV,?C0105
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0105:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 411
+	JNB  	CY,?C0106
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0106:
+; 	AC = 0;
+			; SOURCE LINE # 412
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	mov R2,#40H
+	  mov R2,#40H
+; 	mov R0,#1aH
+	  mov R0,#1aH
+; 	setb C
+	  setb C
+; 	addc A,@R0
+	  addc A,@R0
+; 	#pragma ENDASM
+; 	if (ACC!=0x81) test_status = 0;
+			; SOURCE LINE # 421
+	XRL  	A,#081H
+	JZ   	?C0107
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0107:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 422
+	JNB  	AC,?C0108
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0108:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 423
+	JB   	OV,?C0109
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0109:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 424
+	JNB  	CY,?C0110
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0110:
+; 	OV = 0;
+			; SOURCE LINE # 425
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	mov R3,#81H
+	  mov R3,#81H
+; 	mov R1,#1bH
+	  mov R1,#1bH
+; 	setb C
+	  setb C
+; 	addc A,@R1
+	  addc A,@R1
+;   #pragma ENDASM
+; 	if (ACC!=0x02) test_status = 0;
+			; SOURCE LINE # 435
+	XRL  	A,#02H
+	JZ   	?C0111
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0111:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 436
+	JNB  	AC,?C0112
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0112:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 437
+	JB   	OV,?C0113
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0113:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 438
+	JB   	CY,?C0114
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0114:
+; 	OV = 0;
+			; SOURCE LINE # 439
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 440
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	mov R3,#0C2H
+	  mov R3,#0C2H
+; 	mov R1,#1bH
+	  mov R1,#1bH
+; 	setb C
+	  setb C
+; 	addc A,@R1
+	  addc A,@R1
+;   #pragma ENDASM
+; 	if (ACC!=0x83) test_status = 0;
+			; SOURCE LINE # 449
+	XRL  	A,#083H
+	JZ   	?C0115
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0115:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 450
+	JNB  	AC,?C0116
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0116:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 451
+	JNB  	OV,?C0117
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0117:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 452
+	JB   	CY,?C0118
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0118:
+; 	CY = 0;	
+			; SOURCE LINE # 453
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 459
+	LJMP 	error
+; END OF addc_a_ri
+
+; }
+; 
+; void addc_a_da(void) {
+
+	RSEG  ?PR?addc_a_da?ARITHMETIC
+addc_a_da:
+	USING	0
+			; SOURCE LINE # 462
+; 	printf("ADDC_A_DA\n");	
+			; SOURCE LINE # 463
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_73)
+	MOV  	R1,#LOW (?SC_73)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#01H
+	  mov acc,#01H
+; 	setb C
+	  setb C
+; 	addc A,#0fH
+	  addc A,#0fH
+;   #pragma ENDASM	
+; 	if (ACC!=0x11) test_status = 0;
+			; SOURCE LINE # 477
+	XRL  	A,#011H
+	JZ   	?C0120
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0120:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 478
+	JB   	AC,?C0121
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0121:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 479
+	JNB  	OV,?C0122
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0122:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 480
+	JNB  	CY,?C0123
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0123:
+; 	AC = 0;
+			; SOURCE LINE # 481
+	CLR  	AC
+; 		
+; 	#pragma ASM
+; 	mov acc,#40H
+	  mov acc,#40H
+; 	setb C
+	  setb C
+; 	addc A,#40H
+	  addc A,#40H
+; 	#pragma ENDASM
+; 	if (ACC!=0x81) test_status = 0;
+			; SOURCE LINE # 488
+	XRL  	A,#081H
+	JZ   	?C0124
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0124:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 489
+	JNB  	AC,?C0125
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0125:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 490
+	JB   	OV,?C0126
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0126:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 491
+	JNB  	CY,?C0127
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0127:
+; 	OV = 0;
+			; SOURCE LINE # 492
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#80H
+	  mov acc,#80H
+; 	setb C
+	  setb C
+; 	addc A,#81H
+	  addc A,#81H
+;   #pragma ENDASM
+; 	if (ACC!=0x02) test_status = 0;
+			; SOURCE LINE # 500
+	XRL  	A,#02H
+	JZ   	?C0128
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0128:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 501
+	JNB  	AC,?C0129
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0129:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 502
+	JB   	OV,?C0130
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0130:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 503
+	JB   	CY,?C0131
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0131:
+; 	OV = 0;
+			; SOURCE LINE # 504
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 505
+	CLR  	CY
+; 	
+; 	#pragma ASM
+;   mov acc,#0C0H
+	  mov acc,#0C0H
+; 	setb C
+	  setb C
+; 	addc A,#0C2H
+	  addc A,#0C2H
+;   #pragma ENDASM
+; 	if (ACC!=0x83) test_status = 0;
+			; SOURCE LINE # 512
+	XRL  	A,#083H
+	JZ   	?C0132
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0132:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 513
+	JNB  	AC,?C0133
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0133:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 514
+	JNB  	OV,?C0134
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0134:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 515
+	JB   	CY,?C0135
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0135:
+; 	CY = 0;	
+			; SOURCE LINE # 516
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 522
+	LJMP 	error
+; END OF addc_a_da
+
+; }
+; 
+; void subb_a_rn(void) {
+
+	RSEG  ?PR?subb_a_rn?ARITHMETIC
+subb_a_rn:
+	USING	0
+			; SOURCE LINE # 525
+; 	printf("SUBB_A_RN\n");
+			; SOURCE LINE # 526
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_84)
+	MOV  	R1,#LOW (?SC_84)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#10H
+	  mov acc,#10H
+; 	mov R0,#0eH
+	  mov R0,#0eH
+; 	setb C
+	  setb C
+; 	subb A,R0
+	  subb A,R0
+;   #pragma ENDASM	
+; 	if (ACC!=0x1) test_status = 0;
+			; SOURCE LINE # 541
+	XRL  	A,#01H
+	JZ   	?C0137
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0137:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 542
+	JB   	AC,?C0138
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0138:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 543
+	JNB  	OV,?C0139
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0139:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 544
+	JNB  	CY,?C0140
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0140:
+; 	AC = 0;
+			; SOURCE LINE # 545
+	CLR  	AC
+; 	
+; 	#pragma ASM
+; 	mov acc,#80H
+	  mov acc,#80H
+; 	mov R1,#3fH
+	  mov R1,#3fH
+; 	setb C
+	  setb C
+; 	subb A,R1
+	  subb A,R1
+; 	#pragma ENDASM
+; 	if (ACC!=0x40) test_status = 0;
+			; SOURCE LINE # 553
+	XRL  	A,#040H
+	JZ   	?C0141
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0141:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 554
+	JB   	AC,?C0142
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0142:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 555
+	JB   	OV,?C0143
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0143:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 556
+	JNB  	CY,?C0144
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0144:
+; 	OV = 0;
+			; SOURCE LINE # 557
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#01H
+	  mov acc,#01H
+; 	mov R2,#80H
+	  mov R2,#80H
+; 	setb C
+	  setb C
+; 	subb A,R2
+	  subb A,R2
+;   #pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 566
+	XRL  	A,#080H
+	JZ   	?C0145
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0145:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 567
+	JNB  	AC,?C0146
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0146:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 568
+	JB   	OV,?C0147
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0147:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 569
+	JB   	CY,?C0148
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0148:
+; 	OV = 0;
+			; SOURCE LINE # 570
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 571
+	CLR  	CY
+; 
+; 	#pragma ASM
+;   mov acc,#82H
+	  mov acc,#82H
+; 	mov R3,#0C1H
+	  mov R3,#0C1H
+; 	setb C
+	  setb C
+; 	subb A,R3
+	  subb A,R3
+;   #pragma ENDASM
+; 	if (ACC!=0xC0) test_status = 0;
+			; SOURCE LINE # 579
+	XRL  	A,#0C0H
+	JZ   	?C0149
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0149:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 580
+	JNB  	AC,?C0150
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0150:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 581
+	JNB  	OV,?C0151
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0151:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 582
+	JB   	CY,?C0152
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0152:
+; 	CY = 0;	
+			; SOURCE LINE # 583
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 589
+	LJMP 	error
+; END OF subb_a_rn
+
+; }
+; 
+; void subb_a_di(void) {
+
+	RSEG  ?PR?subb_a_di?ARITHMETIC
+subb_a_di:
+	USING	0
+			; SOURCE LINE # 592
+; 	printf("SUBB_A_DI\n");
+			; SOURCE LINE # 593
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_95)
+	MOV  	R1,#LOW (?SC_95)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#10H
+	  mov acc,#10H
+; 	mov R0,#0eH
+	  mov R0,#0eH
+; 	setb C
+	  setb C
+; 	subb A,0x18
+	  subb A,0x18
+;   #pragma ENDASM	
+; 	if (ACC!=0x1) test_status = 0;
+			; SOURCE LINE # 608
+	XRL  	A,#01H
+	JZ   	?C0154
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0154:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 609
+	JB   	AC,?C0155
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0155:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 610
+	JNB  	OV,?C0156
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0156:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 611
+	JNB  	CY,?C0157
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0157:
+; 	AC = 0;
+			; SOURCE LINE # 612
+	CLR  	AC
+; 	
+; 	#pragma ASM
+; 	mov acc,#80H
+	  mov acc,#80H
+; 	mov R1,#3fH
+	  mov R1,#3fH
+; 	setb C
+	  setb C
+; 	subb A,0x19
+	  subb A,0x19
+; 	#pragma ENDASM
+; 	if (ACC!=0x40) test_status = 0;
+			; SOURCE LINE # 620
+	XRL  	A,#040H
+	JZ   	?C0158
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0158:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 621
+	JB   	AC,?C0159
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0159:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 622
+	JB   	OV,?C0160
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0160:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 623
+	JNB  	CY,?C0161
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0161:
+; 	OV = 0;
+			; SOURCE LINE # 624
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#01H
+	  mov acc,#01H
+; 	mov R2,#80H
+	  mov R2,#80H
+; 	setb C
+	  setb C
+; 	subb A,0x1a
+	  subb A,0x1a
+;   #pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 633
+	XRL  	A,#080H
+	JZ   	?C0162
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0162:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 634
+	JNB  	AC,?C0163
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0163:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 635
+	JB   	OV,?C0164
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0164:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 636
+	JB   	CY,?C0165
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0165:
+; 	OV = 0;
+			; SOURCE LINE # 637
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 638
+	CLR  	CY
+; 
+; 	#pragma ASM
+;   mov acc,#82H
+	  mov acc,#82H
+; 	mov R3,#0C1H
+	  mov R3,#0C1H
+; 	setb C
+	  setb C
+; 	subb A,0x1b
+	  subb A,0x1b
+;   #pragma ENDASM
+; 	if (ACC!=0xC0) test_status = 0;
+			; SOURCE LINE # 646
+	XRL  	A,#0C0H
+	JZ   	?C0166
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0166:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 647
+	JNB  	AC,?C0167
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0167:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 648
+	JNB  	OV,?C0168
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0168:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 649
+	JB   	CY,?C0169
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0169:
+; 	CY = 0;	
+			; SOURCE LINE # 650
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 656
+	LJMP 	error
+; END OF subb_a_di
+
+; }
+; 
+; void subb_a_ri(void) {
+
+	RSEG  ?PR?subb_a_ri?ARITHMETIC
+subb_a_ri:
+	USING	0
+			; SOURCE LINE # 659
+; 	printf("SUBB_A_RI\n");
+			; SOURCE LINE # 660
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_106)
+	MOV  	R1,#LOW (?SC_106)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#10H
+	  mov acc,#10H
+; 	mov R2,#0eH
+	  mov R2,#0eH
+; 	setb C
+	  setb C
+; 	mov R0,#1aH
+	  mov R0,#1aH
+; 	subb A,@R0
+	  subb A,@R0
+;   #pragma ENDASM	
+; 	if (ACC!=0x1) test_status = 0;
+			; SOURCE LINE # 676
+	XRL  	A,#01H
+	JZ   	?C0171
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0171:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 677
+	JB   	AC,?C0172
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0172:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 678
+	JNB  	OV,?C0173
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0173:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 679
+	JNB  	CY,?C0174
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0174:
+; 	AC = 0;
+			; SOURCE LINE # 680
+	CLR  	AC
+; 	
+; 	#pragma ASM
+; 	mov acc,#80H
+	  mov acc,#80H
+; 	mov R2,#3fH
+	  mov R2,#3fH
+; 	setb C
+	  setb C
+; 	mov R0,#1aH
+	  mov R0,#1aH
+; 	subb A,@R0
+	  subb A,@R0
+; 	#pragma ENDASM
+; 	if (ACC!=0x40) test_status = 0;
+			; SOURCE LINE # 689
+	XRL  	A,#040H
+	JZ   	?C0175
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0175:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 690
+	JB   	AC,?C0176
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0176:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 691
+	JB   	OV,?C0177
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0177:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 692
+	JNB  	CY,?C0178
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0178:
+; 	OV = 0;
+			; SOURCE LINE # 693
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#01H
+	  mov acc,#01H
+; 	mov R3,#80H
+	  mov R3,#80H
+; 	setb C
+	  setb C
+; 	mov R1,#1bH
+	  mov R1,#1bH
+; 	subb A,@R1
+	  subb A,@R1
+;   #pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 703
+	XRL  	A,#080H
+	JZ   	?C0179
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0179:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 704
+	JNB  	AC,?C0180
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0180:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 705
+	JB   	OV,?C0181
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0181:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 706
+	JB   	CY,?C0182
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0182:
+; 	OV = 0;
+			; SOURCE LINE # 707
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 708
+	CLR  	CY
+; 
+; 	#pragma ASM
+;   mov acc,#82H
+	  mov acc,#82H
+; 	mov R3,#0C1H
+	  mov R3,#0C1H
+; 	setb C
+	  setb C
+; 	mov R1,#1bH
+	  mov R1,#1bH
+; 	subb A,@R1
+	  subb A,@R1
+;   #pragma ENDASM
+; 	if (ACC!=0xC0) test_status = 0;
+			; SOURCE LINE # 717
+	XRL  	A,#0C0H
+	JZ   	?C0183
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0183:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 718
+	JNB  	AC,?C0184
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0184:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 719
+	JNB  	OV,?C0185
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0185:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 720
+	JB   	CY,?C0186
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0186:
+; 	CY = 0;	
+			; SOURCE LINE # 721
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 727
+	LJMP 	error
+; END OF subb_a_ri
+
+; }
+; 
+; void subb_a_da(void) {
+
+	RSEG  ?PR?subb_a_da?ARITHMETIC
+subb_a_da:
+	USING	0
+			; SOURCE LINE # 730
+; 	printf("SUBB_A_DA\n");
+			; SOURCE LINE # 731
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_117)
+	MOV  	R1,#LOW (?SC_117)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#10H
+	  mov acc,#10H
+; 	setb C
+	  setb C
+; 	subb A,#0eH
+	  subb A,#0eH
+;   #pragma ENDASM	
+; 	if (ACC!=0x1) test_status = 0;
+			; SOURCE LINE # 745
+	XRL  	A,#01H
+	JZ   	?C0188
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0188:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 746
+	JB   	AC,?C0189
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0189:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 747
+	JNB  	OV,?C0190
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0190:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 748
+	JNB  	CY,?C0191
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0191:
+; 	AC = 0;
+			; SOURCE LINE # 749
+	CLR  	AC
+; 	
+; 	#pragma ASM
+; 	mov acc,#80H
+	  mov acc,#80H
+; 	setb C
+	  setb C
+; 	subb A,#3fH
+	  subb A,#3fH
+; 	#pragma ENDASM
+; 	if (ACC!=0x40) test_status = 0;
+			; SOURCE LINE # 756
+	XRL  	A,#040H
+	JZ   	?C0192
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0192:
+; 	if (AC!=1) test_status = 0;
+			; SOURCE LINE # 757
+	JB   	AC,?C0193
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0193:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 758
+	JB   	OV,?C0194
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0194:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 759
+	JNB  	CY,?C0195
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0195:
+; 	OV = 0;
+			; SOURCE LINE # 760
+	CLR  	OV
+; 
+; 	
+; 	#pragma ASM
+;   mov acc,#01H
+	  mov acc,#01H
+; 	setb C
+	  setb C
+; 	subb A,#80H
+	  subb A,#80H
+;   #pragma ENDASM
+; 	if (ACC!=0x80) test_status = 0;
+			; SOURCE LINE # 768
+	XRL  	A,#080H
+	JZ   	?C0196
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0196:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 769
+	JNB  	AC,?C0197
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0197:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 770
+	JB   	OV,?C0198
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0198:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 771
+	JB   	CY,?C0199
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0199:
+; 	OV = 0;
+			; SOURCE LINE # 772
+	CLR  	OV
+; 	CY = 0;
+			; SOURCE LINE # 773
+	CLR  	CY
+; 
+; 	#pragma ASM
+;   mov acc,#82H
+	  mov acc,#82H
+; 	setb C
+	  setb C
+; 	subb A,#0C1H
+	  subb A,#0C1H
+;   #pragma ENDASM
+; 	if (ACC!=0xC0) test_status = 0;
+			; SOURCE LINE # 780
+	XRL  	A,#0C0H
+	JZ   	?C0200
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0200:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 781
+	JNB  	AC,?C0201
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0201:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 782
+	JNB  	OV,?C0202
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0202:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 783
+	JB   	CY,?C0203
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0203:
+; 	CY = 0;	
+			; SOURCE LINE # 784
+	CLR  	CY
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 790
+	LJMP 	error
+; END OF subb_a_da
+
+; }
+; 
+; 
+; void inc_a(void) {
+
+	RSEG  ?PR?inc_a?ARITHMETIC
+inc_a:
+	USING	0
+			; SOURCE LINE # 794
+; 	printf("INC_A\n");
+			; SOURCE LINE # 795
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_128)
+	MOV  	R1,#LOW (?SC_128)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#0a5H
+	  mov acc,#0a5H
+; 	inc A
+	  inc A
+;   #pragma ENDASM	
+; 	if (ACC!=0xa6) test_status = 0;
+			; SOURCE LINE # 808
+	XRL  	A,#0A6H
+	JZ   	?C0205
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0205:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 809
+	JNB  	AC,?C0206
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0206:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 810
+	JNB  	OV,?C0207
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0207:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 811
+	JNB  	CY,?C0208
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0208:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 818
+	LJMP 	error
+; END OF inc_a
+
+; }
+; 
+; void inc_rn(void) {
+
+	RSEG  ?PR?inc_rn?ARITHMETIC
+inc_rn:
+	USING	0
+			; SOURCE LINE # 821
+; 	printf("INC_RN\n");
+			; SOURCE LINE # 822
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_135)
+	MOV  	R1,#LOW (?SC_135)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x1b,#0a5H
+	  mov 0x1b,#0a5H
+; 	inc R3
+	  inc R3
+;   #pragma ENDASM	
+; 	if (R(3,3)!=0xa6) test_status = 0;
+			; SOURCE LINE # 835
+	MOV  	R0,#01BH
+	MOV  	A,@R0
+	XRL  	A,#0A6H
+	JZ   	?C0210
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0210:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 836
+	JNB  	AC,?C0211
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0211:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 837
+	JNB  	OV,?C0212
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0212:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 838
+	JNB  	CY,?C0213
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0213:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 845
+	LJMP 	error
+; END OF inc_rn
+
+; }
+; 
+; void inc_di(void) {
+
+	RSEG  ?PR?inc_di?ARITHMETIC
+inc_di:
+	USING	0
+			; SOURCE LINE # 848
+; 	printf("INC_DI\n");
+			; SOURCE LINE # 849
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_143)
+	MOV  	R1,#LOW (?SC_143)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x1c,#0a5H
+	  mov 0x1c,#0a5H
+; 	inc 0x1c
+	  inc 0x1c
+;   #pragma ENDASM	
+; 	if (R(3,4)!=0xa6) test_status = 0;
+			; SOURCE LINE # 862
+	MOV  	R0,#01CH
+	MOV  	A,@R0
+	XRL  	A,#0A6H
+	JZ   	?C0215
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0215:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 863
+	JNB  	AC,?C0216
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0216:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 864
+	JNB  	OV,?C0217
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0217:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 865
+	JNB  	CY,?C0218
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0218:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 872
+	LJMP 	error
+; END OF inc_di
+
+; }
+; 
+; void inc_ri(void) {
+
+	RSEG  ?PR?inc_ri?ARITHMETIC
+inc_ri:
+	USING	0
+			; SOURCE LINE # 875
+; 	printf("INC_RI\n");
+			; SOURCE LINE # 876
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_151)
+	MOV  	R1,#LOW (?SC_151)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x1c,#0a5H
+	  mov 0x1c,#0a5H
+; 	mov R1,#1cH
+	  mov R1,#1cH
+; 	inc @R1
+	  inc @R1
+;   #pragma ENDASM	
+; 	if (R(3,4)!=0xa6) test_status = 0;
+			; SOURCE LINE # 890
+	MOV  	R0,#01CH
+	MOV  	A,@R0
+	XRL  	A,#0A6H
+	JZ   	?C0220
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0220:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 891
+	JNB  	AC,?C0221
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0221:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 892
+	JNB  	OV,?C0222
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0222:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 893
+	JNB  	CY,?C0223
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0223:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 900
+	LJMP 	error
+; END OF inc_ri
+
+; }
+; 
+; 
+; void inc_dp(void) {
+
+	RSEG  ?PR?inc_dp?ARITHMETIC
+inc_dp:
+	USING	0
+			; SOURCE LINE # 904
+; 	printf("INC_DP\n");
+			; SOURCE LINE # 905
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_159)
+	MOV  	R1,#LOW (?SC_159)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov DPTR,#1234H
+	  mov DPTR,#1234H
+; 	inc DPTR
+	  inc DPTR
+;   #pragma ENDASM	
+; 	if (DPL!=0x35) test_status = 0;
+			; SOURCE LINE # 918
+	MOV  	A,DPL
+	XRL  	A,#035H
+	JZ   	?C0225
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0225:
+; 	if (DPH!=0x12) test_status = 0;
+			; SOURCE LINE # 919
+	MOV  	A,DPH
+	XRL  	A,#012H
+	JZ   	?C0226
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0226:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 920
+	JNB  	AC,?C0227
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0227:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 921
+	JNB  	OV,?C0228
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0228:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 922
+	JNB  	CY,?C0229
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0229:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 929
+	LJMP 	error
+; END OF inc_dp
+
+; }
+; 
+; 
+; void dec_a(void) {
+
+	RSEG  ?PR?dec_a?ARITHMETIC
+dec_a:
+	USING	0
+			; SOURCE LINE # 933
+; 	printf("DEC_A\n");
+			; SOURCE LINE # 934
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_167)
+	MOV  	R1,#LOW (?SC_167)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#0a5H
+	  mov acc,#0a5H
+; 	dec A
+	  dec A
+;   #pragma ENDASM	
+; 	if (ACC!=0xa4) test_status = 0;
+			; SOURCE LINE # 947
+	XRL  	A,#0A4H
+	JZ   	?C0231
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0231:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 948
+	JNB  	AC,?C0232
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0232:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 949
+	JNB  	OV,?C0233
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0233:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 950
+	JNB  	CY,?C0234
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0234:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 957
+	LJMP 	error
+; END OF dec_a
+
+; }
+; 
+; void dec_rn(void) {
+
+	RSEG  ?PR?dec_rn?ARITHMETIC
+dec_rn:
+	USING	0
+			; SOURCE LINE # 960
+; 	printf("DEC_RN\n");
+			; SOURCE LINE # 961
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_174)
+	MOV  	R1,#LOW (?SC_174)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x1b,#0a5H
+	  mov 0x1b,#0a5H
+; 	dec R3
+	  dec R3
+;   #pragma ENDASM	
+; 	if (R(3,3)!=0xa4) test_status = 0;
+			; SOURCE LINE # 974
+	MOV  	R0,#01BH
+	MOV  	A,@R0
+	XRL  	A,#0A4H
+	JZ   	?C0236
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0236:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 975
+	JNB  	AC,?C0237
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0237:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 976
+	JNB  	OV,?C0238
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0238:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 977
+	JNB  	CY,?C0239
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0239:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 984
+	LJMP 	error
+; END OF dec_rn
+
+; }
+; 
+; void dec_di(void) {
+
+	RSEG  ?PR?dec_di?ARITHMETIC
+dec_di:
+	USING	0
+			; SOURCE LINE # 987
+; 	printf("DEC_DI\n");
+			; SOURCE LINE # 988
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_182)
+	MOV  	R1,#LOW (?SC_182)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x1c,#0a5H
+	  mov 0x1c,#0a5H
+; 	dec 0x1c
+	  dec 0x1c
+;   #pragma ENDASM	
+; 	if (R(3,4)!=0xa4) test_status = 0;
+			; SOURCE LINE # 1001
+	MOV  	R0,#01CH
+	MOV  	A,@R0
+	XRL  	A,#0A4H
+	JZ   	?C0241
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0241:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1002
+	JNB  	AC,?C0242
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0242:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 1003
+	JNB  	OV,?C0243
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0243:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 1004
+	JNB  	CY,?C0244
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0244:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM 	
+;   error();
+			; SOURCE LINE # 1011
+	LJMP 	error
+; END OF dec_di
+
+; }
+; 
+; void dec_ri(void) {
+
+	RSEG  ?PR?dec_ri?ARITHMETIC
+dec_ri:
+	USING	0
+			; SOURCE LINE # 1014
+; 	printf("DEC_RI\n");
+			; SOURCE LINE # 1015
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_190)
+	MOV  	R1,#LOW (?SC_190)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov 0x1c,#0a5H
+	  mov 0x1c,#0a5H
+; 	mov R1,#1cH
+	  mov R1,#1cH
+; 	dec @R1
+	  dec @R1
+;   #pragma ENDASM	
+; 	if (R(3,4)!=0xa4) test_status = 0;
+			; SOURCE LINE # 1029
+	MOV  	R0,#01CH
+	MOV  	A,@R0
+	XRL  	A,#0A4H
+	JZ   	?C0246
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0246:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1030
+	JNB  	AC,?C0247
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0247:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 1031
+	JNB  	OV,?C0248
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0248:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 1032
+	JNB  	CY,?C0249
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0249:
+; 
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 1039
+	LJMP 	error
+; END OF dec_ri
+
+; }
+; 
+; void mult(void) {
+
+	RSEG  ?PR?mult?ARITHMETIC
+mult:
+	USING	0
+			; SOURCE LINE # 1042
+; 	printf("MULT\n");
+			; SOURCE LINE # 1043
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_198)
+	MOV  	R1,#LOW (?SC_198)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	setb C
+	  setb C
+; 	mov acc,#08H
+	  mov acc,#08H
+; 	mov 0xf0,#03H
+	  mov 0xf0,#03H
+; 	mul AB
+	  mul AB
+;   #pragma ENDASM	
+; 	if (ACC!=0x18) test_status = 0;
+			; SOURCE LINE # 1058
+	XRL  	A,#018H
+	JZ   	?C0251
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0251:
+; 	if (B!=0x0) test_status = 0;
+			; SOURCE LINE # 1059
+	MOV  	A,B
+	JZ   	?C0252
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0252:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1060
+	JNB  	AC,?C0253
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0253:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 1061
+	JNB  	OV,?C0254
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0254:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 1062
+	JNB  	CY,?C0255
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0255:
+; 
+; 	#pragma ASM
+; 	setb C
+	  setb C
+; 	mov acc,#0a8H
+	  mov acc,#0a8H
+; 	mov 0xf0,#0efH
+	  mov 0xf0,#0efH
+; 	mul AB
+	  mul AB
+;   #pragma ENDASM	
+; 	if (ACC!=0xd8) test_status = 0;
+			; SOURCE LINE # 1070
+	XRL  	A,#0D8H
+	JZ   	?C0256
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0256:
+; 	if (B!=0x9c) test_status = 0;
+			; SOURCE LINE # 1071
+	MOV  	A,B
+	XRL  	A,#09CH
+	JZ   	?C0257
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0257:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1072
+	JNB  	AC,?C0258
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0258:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 1073
+	JB   	OV,?C0259
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0259:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 1074
+	JNB  	CY,?C0260
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0260:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 1080
+	LJMP 	error
+; END OF mult
+
+; }
+; 
+; void divide(void) {
+
+	RSEG  ?PR?divide?ARITHMETIC
+divide:
+	USING	0
+			; SOURCE LINE # 1083
+; 	printf("DIVIDE\n");
+			; SOURCE LINE # 1084
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_204)
+	MOV  	R1,#LOW (?SC_204)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	setb C
+	  setb C
+; 	setb OV
+	  setb OV
+; 	mov acc,#0fbH
+	  mov acc,#0fbH
+; 	mov 0xf0,#12H
+	  mov 0xf0,#12H
+; 	div AB
+	  div AB
+;   #pragma ENDASM	
+; 	if (ACC!=0xd) test_status = 0;
+			; SOURCE LINE # 1100
+	XRL  	A,#0DH
+	JZ   	?C0262
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0262:
+; 	if (B!=0x11) test_status = 0;
+			; SOURCE LINE # 1101
+	MOV  	A,B
+	XRL  	A,#011H
+	JZ   	?C0263
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0263:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1102
+	JNB  	AC,?C0264
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0264:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 1103
+	JNB  	OV,?C0265
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0265:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 1104
+	JNB  	CY,?C0266
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0266:
+; 
+; 	#pragma ASM
+; 	setb C
+	  setb C
+; 	mov acc,#0a8H
+	  mov acc,#0a8H
+; 	mov 0xf0,#0H
+	  mov 0xf0,#0H
+; 	div AB
+	  div AB
+;   #pragma ENDASM	
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1112
+	JNB  	AC,?C0267
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0267:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 1113
+	JB   	OV,?C0268
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0268:
+; 	if (CY!=0) test_status = 0;
+			; SOURCE LINE # 1114
+	JNB  	CY,?C0269
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0269:
+; 	
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 1120
+	LJMP 	error
+; END OF divide
+
+; }
+; 
+; void da_a(void) {
+
+	RSEG  ?PR?da_a?ARITHMETIC
+da_a:
+	USING	0
+			; SOURCE LINE # 1123
+; 	printf("DA\n");
+			; SOURCE LINE # 1124
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_212)
+	MOV  	R1,#LOW (?SC_212)
+	LCALL	_printf
+; 	#pragma ASM  
+; 	push psw
+	  push psw
+; 	push acc
+	  push acc
+;   mov  psw,#0H	
+	  mov  psw,#0H	
+;   setb rs0     
+	  setb rs0     
+; 	setb rs1	
+	  setb rs1	
+;   #pragma ENDASM 
+; 	
+; 	#pragma ASM
+; 	mov acc,#56H
+	  mov acc,#56H
+; 	mov R3,#67H
+	  mov R3,#67H
+; 	setb AC
+	  setb AC
+; 	setb C
+	  setb C
+; 	addc A,R3
+	  addc A,R3
+; 	da A
+	  da A
+;   #pragma ENDASM	
+; 	if (ACC!=0x24) test_status = 0;
+			; SOURCE LINE # 1141
+	XRL  	A,#024H
+	JZ   	?C0271
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0271:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1142
+	JNB  	AC,?C0272
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0272:
+; 	if (OV!=1) test_status = 0;
+			; SOURCE LINE # 1143
+	JB   	OV,?C0273
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0273:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 1144
+	JB   	CY,?C0274
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0274:
+; 
+; 	#pragma ASM
+; 	mov acc,#30H
+	  mov acc,#30H
+; 	add A,#99H
+	  add A,#99H
+; 	da A
+	  da A
+;   #pragma ENDASM	
+; 	if (ACC!=0x29) test_status = 0;
+			; SOURCE LINE # 1151
+	XRL  	A,#029H
+	JZ   	?C0275
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0275:
+; 	if (AC!=0) test_status = 0;
+			; SOURCE LINE # 1152
+	JNB  	AC,?C0276
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0276:
+; 	if (OV!=0) test_status = 0;
+			; SOURCE LINE # 1153
+	JNB  	OV,?C0277
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0277:
+; 	if (CY!=1) test_status = 0;
+			; SOURCE LINE # 1154
+	JB   	CY,?C0278
+	MOV  	DPTR,#07EH
+	CLR  	A
+	MOVX 	@DPTR,A
+?C0278:
+; 
+; 
+; 	#pragma ASM 
+; 	pop acc
+	  pop acc
+;   pop psw	
+	  pop psw	
+;   #pragma ENDASM
+;   error();  
+			; SOURCE LINE # 1161
+	LJMP 	error
+; END OF da_a
+
+	END

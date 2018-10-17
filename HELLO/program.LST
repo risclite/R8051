@@ -1,0 +1,518 @@
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE PROGRAM
+NO OBJECT MODULE REQUESTED
+COMPILER INVOKED BY: C:\myprog\Keil\C51\BIN\C51.EXE program.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\program.SRC)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include <stdio.h> 
+   3          #include "instruction.h"
+   4          
+   5          void acall_func(void) {
+   6   1        printf("ACALL_FUNC\n");
+   7   1        #pragma ASM  
+   8   1        push psw
+   9   1        push acc
+  10   1          mov  psw,#0H  
+  11   1          setb rs0     
+  12   1        setb rs1  
+  13   1          #pragma ENDASM 
+  14   1        
+  15   1        #pragma ASM
+  16   1        mov A,SP
+  17   1        acall JUMP_ACALL
+  18   1        jmp EXIT_ACALL
+  19   1        nop
+  20   1        nop
+  21   1        nop
+  22   1      JUMP_ACALL: inc A
+  23   1          inc A
+  24   1        mov B,SP
+  25   1        ret
+  26   1        nop
+  27   1        nop
+  28   1      EXIT_ACALL: nop
+  29   1          #pragma ENDASM  
+  30   1        if (ACC!=B) test_status = 0;
+  31   1        if (SP!=(B-2)) test_status=0; 
+  32   1        
+  33   1        #pragma ASM 
+  34   1        pop acc
+  35   1          pop psw 
+  36   1          #pragma ENDASM
+  37   1          error();  
+  38   1      }
+  39          
+  40          void lcall_func(void) {
+  41   1        printf("LCALL_FUNC\n");
+  42   1        #pragma ASM  
+  43   1        push psw
+  44   1        push acc
+  45   1          mov  psw,#0H  
+  46   1          setb rs0     
+  47   1        setb rs1  
+  48   1          #pragma ENDASM 
+  49   1        
+  50   1        #pragma ASM
+  51   1        mov A,SP
+  52   1        lcall JUMP_LCALL
+  53   1        jmp EXIT_LCALL
+  54   1        nop
+  55   1        nop
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 2   
+
+  56   1        nop
+  57   1      JUMP_LCALL: inc A
+  58   1          inc A
+  59   1        mov B,SP
+  60   1        ret
+  61   1        nop
+  62   1        nop
+  63   1      EXIT_LCALL: nop
+  64   1          #pragma ENDASM  
+  65   1        if (ACC!=B) test_status = 0;
+  66   1        if (SP!=(B-2)) test_status=0;
+  67   1        
+  68   1        #pragma ASM 
+  69   1        pop acc
+  70   1          pop psw 
+  71   1          #pragma ENDASM
+  72   1          error();  
+  73   1      }
+  74          
+  75          
+  76          void ret_func(void) {
+  77   1        printf("RET_FUNC\n");
+  78   1        #pragma ASM  
+  79   1        push psw
+  80   1        push acc
+  81   1          mov  psw,#0H  
+  82   1          setb rs0     
+  83   1        setb rs1  
+  84   1          #pragma ENDASM 
+  85   1        
+  86   1        #pragma ASM
+  87   1        lcall JUMP_RET
+  88   1        mov B,SP
+  89   1        inc B
+  90   1        inc B
+  91   1        jmp EXIT_RET
+  92   1        nop
+  93   1        nop
+  94   1        nop
+  95   1      JUMP_RET: mov A,SP
+  96   1        ret
+  97   1        nop
+  98   1        nop
+  99   1      EXIT_RET: nop
+ 100   1          #pragma ENDASM  
+ 101   1        if (ACC!=B) test_status = 0;
+ 102   1        
+ 103   1        #pragma ASM 
+ 104   1        pop acc
+ 105   1          pop psw 
+ 106   1          #pragma ENDASM
+ 107   1          error();  
+ 108   1      }
+ 109          
+ 110          void reti_func(void) {
+ 111   1        printf("RETI_FUNC\n");
+ 112   1        #pragma ASM  
+ 113   1        push psw
+ 114   1        push acc
+ 115   1          mov  psw,#0H  
+ 116   1          setb rs0     
+ 117   1        setb rs1  
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 3   
+
+ 118   1          #pragma ENDASM 
+ 119   1        
+ 120   1        #pragma ASM
+ 121   1        lcall JUMP_RETI
+ 122   1        mov B,SP
+ 123   1        inc B
+ 124   1        inc B
+ 125   1        jmp EXIT_RETI
+ 126   1        nop
+ 127   1        nop
+ 128   1        nop
+ 129   1      JUMP_RETI:  mov A,SP
+ 130   1        reti
+ 131   1        nop
+ 132   1        nop
+ 133   1      EXIT_RETI: nop
+ 134   1          #pragma ENDASM  
+ 135   1        if (ACC!=B) test_status = 0;
+ 136   1        
+ 137   1        #pragma ASM 
+ 138   1        pop acc
+ 139   1          pop psw 
+ 140   1          #pragma ENDASM
+ 141   1          error();  
+ 142   1      }
+ 143          
+ 144          void ajmp_func(void) {
+ 145   1        printf("AJMP_FUNC\n");
+ 146   1        #pragma ASM  
+ 147   1        push psw
+ 148   1        push acc
+ 149   1          mov  psw,#0H  
+ 150   1          setb rs0     
+ 151   1        setb rs1  
+ 152   1          #pragma ENDASM 
+ 153   1        
+ 154   1        #pragma ASM
+ 155   1        clr A
+ 156   1        ajmp EXIT_AJMP
+ 157   1        mov A,#0ffH
+ 158   1      EXIT_AJMP: nop
+ 159   1          #pragma ENDASM  
+ 160   1        if (ACC!=0) test_status = 0;
+ 161   1        
+ 162   1        #pragma ASM 
+ 163   1        pop acc
+ 164   1          pop psw 
+ 165   1          #pragma ENDASM
+ 166   1          error();  
+ 167   1      }
+ 168          void sjmp_func(void) {
+ 169   1        printf("SJMP_FUNC\n");
+ 170   1        #pragma ASM  
+ 171   1        push psw
+ 172   1        push acc
+ 173   1          mov  psw,#0H  
+ 174   1          setb rs0     
+ 175   1        setb rs1  
+ 176   1          #pragma ENDASM 
+ 177   1        
+ 178   1        #pragma ASM
+ 179   1        clr A
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 4   
+
+ 180   1        sjmp EXIT_SJMP
+ 181   1        mov A,#0ffH
+ 182   1      EXIT_SJMP: nop
+ 183   1          #pragma ENDASM  
+ 184   1        if (ACC!=0) test_status = 0;
+ 185   1        
+ 186   1        #pragma ASM 
+ 187   1        pop acc
+ 188   1          pop psw 
+ 189   1          #pragma ENDASM
+ 190   1          error();  
+ 191   1      }
+ 192          
+ 193          void jmp_func(void) {
+ 194   1        printf("JMP_FUNC\n");
+ 195   1        #pragma ASM  
+ 196   1        push psw
+ 197   1        push acc
+ 198   1          mov  psw,#0H  
+ 199   1          setb rs0     
+ 200   1        setb rs1  
+ 201   1          #pragma ENDASM 
+ 202   1        
+ 203   1        #pragma ASM
+ 204   1        mov B,#00H
+ 205   1        mov DPTR,#EXIT_JMP
+ 206   1        inc DPTR
+ 207   1        mov A,#0ffH
+ 208   1        jmp @A+DPTR
+ 209   1        mov A,#0ffH
+ 210   1      EXIT_JMP: nop
+ 211   1          #pragma ENDASM  
+ 212   1        if (B!=0) test_status = 0;
+ 213   1        
+ 214   1        #pragma ASM 
+ 215   1        pop acc
+ 216   1          pop psw 
+ 217   1          #pragma ENDASM
+ 218   1          error();  
+ 219   1      }
+ 220          
+ 221          void jz_func(void) {
+ 222   1        printf("JZ_FUNC\n");
+ 223   1        #pragma ASM  
+ 224   1        push psw
+ 225   1        push acc
+ 226   1          mov  psw,#0H  
+ 227   1          setb rs0     
+ 228   1        setb rs1  
+ 229   1          #pragma ENDASM 
+ 230   1        
+ 231   1        #pragma ASM
+ 232   1        mov B,#0H
+ 233   1        mov A,#0ffH
+ 234   1        jz EXIT_JZ
+ 235   1        mov B,#0ffH
+ 236   1        clr A
+ 237   1        JZ EXIT_JZ
+ 238   1        nop
+ 239   1        nop
+ 240   1        mov B,#0H
+ 241   1        nop
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 5   
+
+ 242   1        nop
+ 243   1      EXIT_JZ: nop
+ 244   1          #pragma ENDASM  
+ 245   1        if (B!=0xff) test_status = 0;
+ 246   1        
+ 247   1        #pragma ASM 
+ 248   1        pop acc
+ 249   1          pop psw 
+ 250   1          #pragma ENDASM
+ 251   1          error();  
+ 252   1      }
+ 253          
+ 254          void jnz_func(void) {
+ 255   1        printf("JNZ_FUNC\n");
+ 256   1        #pragma ASM  
+ 257   1        push psw
+ 258   1        push acc
+ 259   1          mov  psw,#0H  
+ 260   1          setb rs0     
+ 261   1        setb rs1  
+ 262   1          #pragma ENDASM 
+ 263   1        
+ 264   1        #pragma ASM
+ 265   1        mov B,#0H
+ 266   1        mov A,#0H
+ 267   1        jnz EXIT_JNZ
+ 268   1        mov B,#0ffH
+ 269   1        inc A
+ 270   1        JNZ EXIT_JNZ
+ 271   1        nop
+ 272   1        nop
+ 273   1        mov B,#0H
+ 274   1        nop
+ 275   1        nop
+ 276   1      EXIT_JNZ: nop
+ 277   1          #pragma ENDASM  
+ 278   1        if (B!=0xff) test_status = 0;
+ 279   1        
+ 280   1        #pragma ASM 
+ 281   1        pop acc
+ 282   1          pop psw 
+ 283   1          #pragma ENDASM
+ 284   1          error();  
+ 285   1      }
+ 286          
+ 287          void cjne_a_di_rel(void) {
+ 288   1        printf("CJNE_A_DI_REL\n");
+ 289   1        #pragma ASM  
+ 290   1        push psw
+ 291   1        push acc
+ 292   1          mov  psw,#0H  
+ 293   1          setb rs0     
+ 294   1        setb rs1  
+ 295   1          #pragma ENDASM 
+ 296   1        
+ 297   1        #pragma ASM
+ 298   1        mov B,#0H
+ 299   1          mov A,#0H
+ 300   1        mov 0x20,#0H
+ 301   1        cjne A,0x20,EXIT_CJNE_A_DI_REL
+ 302   1        nop
+ 303   1        mov B,#0ffH
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 6   
+
+ 304   1        inc 0x20
+ 305   1        cjne A,0x20,EXIT_CJNE_A_DI_REL
+ 306   1        nop
+ 307   1        mov B,#0H
+ 308   1        nop
+ 309   1      EXIT_CJNE_A_DI_REL: nop
+ 310   1          #pragma ENDASM  
+ 311   1        if (B!=0xff) test_status = 0;
+ 312   1          if (CY!=0x1) test_status = 0;
+ 313   1        
+ 314   1        #pragma ASM 
+ 315   1        pop acc
+ 316   1          pop psw 
+ 317   1          #pragma ENDASM
+ 318   1          error();  
+ 319   1      }
+ 320          
+ 321          void cjne_a_da_rel(void) {
+ 322   1        printf("CJNE_A_DA_REL\n");
+ 323   1        #pragma ASM  
+ 324   1        push psw
+ 325   1        push acc
+ 326   1          mov  psw,#0H  
+ 327   1          setb rs0     
+ 328   1        setb rs1  
+ 329   1          #pragma ENDASM 
+ 330   1        
+ 331   1        #pragma ASM
+ 332   1        mov B,#0H
+ 333   1          mov A,#035H
+ 334   1        cjne A,#035H,EXIT_CJNE_A_DA_REL
+ 335   1        nop
+ 336   1        mov B,#0ffH
+ 337   1        cjne A,#036H,EXIT_CJNE_A_DA_REL
+ 338   1        nop
+ 339   1        mov B,#0H
+ 340   1        nop
+ 341   1      EXIT_CJNE_A_DA_REL: nop
+ 342   1          #pragma ENDASM  
+ 343   1        if (B!=0xff) test_status = 0;
+ 344   1          if (CY!=0x1) test_status = 0;
+ 345   1        
+ 346   1        #pragma ASM 
+ 347   1        pop acc
+ 348   1          pop psw 
+ 349   1          #pragma ENDASM
+ 350   1          error();  
+ 351   1      }
+ 352          
+ 353          void cjne_rn_da_rel(void) {
+ 354   1        printf("CJNE_RN_DA_REL\n");
+ 355   1        #pragma ASM  
+ 356   1        push psw
+ 357   1        push acc
+ 358   1          mov  psw,#0H  
+ 359   1          setb rs0     
+ 360   1        setb rs1  
+ 361   1          #pragma ENDASM 
+ 362   1        
+ 363   1        #pragma ASM
+ 364   1        mov B,#0H
+ 365   1          mov R7,#035H
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 7   
+
+ 366   1        cjne R7,#035H,EXIT_CJNE_RN_DA_REL
+ 367   1        nop
+ 368   1        mov B,#0ffH
+ 369   1        cjne R7,#036H,EXIT_CJNE_RN_DA_REL
+ 370   1        nop
+ 371   1        mov B,#0H
+ 372   1        nop
+ 373   1      EXIT_CJNE_RN_DA_REL: nop
+ 374   1          #pragma ENDASM  
+ 375   1        if (B!=0xff) test_status = 0;
+ 376   1          if (CY!=0x1) test_status = 0;
+ 377   1        
+ 378   1        #pragma ASM 
+ 379   1        pop acc
+ 380   1          pop psw 
+ 381   1          #pragma ENDASM
+ 382   1          error();  
+ 383   1      }
+ 384          
+ 385          void cjne_ri_da_rel(void) {
+ 386   1        printf("CJNE_RI_DA_REL\n");
+ 387   1        #pragma ASM  
+ 388   1        push psw
+ 389   1        push acc
+ 390   1          mov  psw,#0H  
+ 391   1          setb rs0     
+ 392   1        setb rs1  
+ 393   1          #pragma ENDASM 
+ 394   1        
+ 395   1        #pragma ASM
+ 396   1        mov B,#0H
+ 397   1          mov R7,#035H
+ 398   1        mov R1,#01fH
+ 399   1        cjne @R1,#035H,EXIT_CJNE_RI_DA_REL
+ 400   1        nop
+ 401   1        mov B,#0ffH
+ 402   1        cjne @R1,#036H,EXIT_CJNE_RI_DA_REL
+ 403   1        nop
+ 404   1        mov B,#0H
+ 405   1        nop
+ 406   1      EXIT_CJNE_RI_DA_REL: nop
+ 407   1          #pragma ENDASM  
+ 408   1        if (B!=0xff) test_status = 0;
+ 409   1          if (CY!=0x1) test_status = 0;
+ 410   1        
+ 411   1        #pragma ASM 
+ 412   1        pop acc
+ 413   1          pop psw 
+ 414   1          #pragma ENDASM
+ 415   1          error();  
+ 416   1      }
+ 417          
+ 418          void djnz_rn_rel(void) {
+ 419   1        printf("DJNZ_RN_REL\n");
+ 420   1        #pragma ASM  
+ 421   1        push psw
+ 422   1        push acc
+ 423   1          mov  psw,#0H  
+ 424   1          setb rs0     
+ 425   1        setb rs1  
+ 426   1          #pragma ENDASM 
+ 427   1        
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 8   
+
+ 428   1        #pragma ASM
+ 429   1        mov B,#0H
+ 430   1          mov R7,#01H
+ 431   1          djnz R7,EXIT_DJNZ_RN_REL
+ 432   1          mov B,#0ffH
+ 433   1          djnz R7,EXIT_DJNZ_RN_REL
+ 434   1          nop
+ 435   1          mov B,#0H 
+ 436   1        nop
+ 437   1      EXIT_DJNZ_RN_REL: nop
+ 438   1          #pragma ENDASM  
+ 439   1        if (B!=0xff) test_status = 0;
+ 440   1          if (R(3,7)!=0xff) test_status = 0;
+ 441   1        
+ 442   1        #pragma ASM 
+ 443   1        pop acc
+ 444   1          pop psw 
+ 445   1          #pragma ENDASM
+ 446   1          error();  
+ 447   1      }
+ 448          
+ 449          void djnz_di_rel(void) {
+ 450   1        printf("DJNZ_DI_REL\n");
+ 451   1        #pragma ASM  
+ 452   1        push psw
+ 453   1        push acc
+ 454   1          mov  psw,#0H  
+ 455   1          setb rs0     
+ 456   1        setb rs1  
+ 457   1          #pragma ENDASM 
+ 458   1        
+ 459   1        #pragma ASM
+ 460   1        mov B,#0H
+ 461   1          mov R7,#01H
+ 462   1          djnz 0x1f,EXIT_DJNZ_DI_REL
+ 463   1          mov B,#0ffH
+ 464   1          djnz 0x1f,EXIT_DJNZ_DI_REL
+ 465   1          nop
+ 466   1          mov B,#0H 
+ 467   1        nop
+ 468   1      EXIT_DJNZ_DI_REL: nop
+ 469   1          #pragma ENDASM  
+ 470   1        if (B!=0xff) test_status = 0;
+ 471   1          if (R(3,7)!=0xff) test_status = 0;
+ 472   1        
+ 473   1        #pragma ASM 
+ 474   1        pop acc
+ 475   1          pop psw 
+ 476   1          #pragma ENDASM
+ 477   1          error();  
+ 478   1      }
+ 479          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1170    ----
+   CONSTANT SIZE    =    184    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.52.0.0   PROGRAM                                                           07/21/2014 16:39:33 PAGE 9   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

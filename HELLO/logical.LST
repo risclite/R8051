@@ -1,0 +1,636 @@
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE LOGICAL
+NO OBJECT MODULE REQUESTED
+COMPILER INVOKED BY: C:\myprog\Keil\C51\BIN\C51.EXE logical.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\logical.SRC)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include <stdio.h> 
+   3          #include "instruction.h"
+   4          
+   5          void anl_a_rn(void) {
+   6   1        printf("ANL_A_RN\n");
+   7   1        #pragma ASM  
+   8   1        push psw
+   9   1        push acc
+  10   1          mov  psw,#0H  
+  11   1          setb rs0     
+  12   1        setb rs1  
+  13   1          #pragma ENDASM 
+  14   1        
+  15   1        #pragma ASM
+  16   1        mov acc,#0a5H
+  17   1        mov R0,#0f0H
+  18   1        anl A,R0
+  19   1        #pragma ENDASM  
+  20   1        if (ACC!=0xa0) test_status = 0;
+  21   1        
+  22   1        #pragma ASM 
+  23   1        pop acc
+  24   1        pop psw 
+  25   1        #pragma ENDASM
+  26   1        error();  
+  27   1      }
+  28          
+  29          void anl_a_di(void) {
+  30   1        printf("ANL_A_DI\n");
+  31   1        #pragma ASM  
+  32   1        push psw
+  33   1        push acc
+  34   1          mov  psw,#0H  
+  35   1          setb rs0     
+  36   1        setb rs1  
+  37   1          #pragma ENDASM 
+  38   1        
+  39   1        #pragma ASM
+  40   1        mov acc,#0a5H
+  41   1        mov R3,#0fH
+  42   1        anl A,0x1b
+  43   1        #pragma ENDASM  
+  44   1        if (ACC!=0x5) test_status = 0;
+  45   1        
+  46   1        #pragma ASM 
+  47   1        pop acc
+  48   1          pop psw 
+  49   1          #pragma ENDASM
+  50   1          error();  
+  51   1      }
+  52          
+  53          void anl_a_ri(void) {
+  54   1        printf("ANL_A_RI\n");
+  55   1        #pragma ASM  
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 2   
+
+  56   1        push psw
+  57   1        push acc
+  58   1          mov  psw,#0H  
+  59   1          setb rs0     
+  60   1        setb rs1  
+  61   1          #pragma ENDASM 
+  62   1        
+  63   1        #pragma ASM
+  64   1        mov acc,#0a5H
+  65   1        mov R3,#0f0H
+  66   1        mov R1,#0x1b
+  67   1        anl A,@R1
+  68   1          #pragma ENDASM  
+  69   1        if (ACC!=0xa0) test_status = 0;
+  70   1        
+  71   1        #pragma ASM 
+  72   1        pop acc
+  73   1          pop psw 
+  74   1          #pragma ENDASM
+  75   1          error();  
+  76   1      }
+  77          
+  78          void anl_a_da(void) {
+  79   1        printf("ANL_A_DA\n");
+  80   1        #pragma ASM  
+  81   1        push psw
+  82   1        push acc
+  83   1          mov  psw,#0H  
+  84   1          setb rs0     
+  85   1        setb rs1  
+  86   1          #pragma ENDASM 
+  87   1        
+  88   1        #pragma ASM
+  89   1        mov acc,#0a5H
+  90   1        anl A,#0fH
+  91   1          #pragma ENDASM  
+  92   1        if (ACC!=0x5) test_status = 0;
+  93   1        
+  94   1        #pragma ASM 
+  95   1        pop acc
+  96   1          pop psw 
+  97   1          #pragma ENDASM
+  98   1          error();  
+  99   1      }
+ 100          
+ 101          void anl_di_a(void) {
+ 102   1        printf("ANL_DI_A\n");
+ 103   1        #pragma ASM  
+ 104   1        push psw
+ 105   1        push acc
+ 106   1          mov  psw,#0H  
+ 107   1          setb rs0     
+ 108   1        setb rs1  
+ 109   1          #pragma ENDASM 
+ 110   1        
+ 111   1        #pragma ASM
+ 112   1        mov acc,#0a5H
+ 113   1        mov R3,#0fH
+ 114   1        anl 0x1b,A
+ 115   1          #pragma ENDASM  
+ 116   1        if (R(3,3)!=0x5) test_status = 0;
+ 117   1        
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 3   
+
+ 118   1        #pragma ASM 
+ 119   1        pop acc
+ 120   1          pop psw 
+ 121   1          #pragma ENDASM
+ 122   1          error();  
+ 123   1      }
+ 124          
+ 125          void anl_di_da(void) {
+ 126   1        printf("ANL_DI_DA\n");
+ 127   1        #pragma ASM  
+ 128   1        push psw
+ 129   1        push acc
+ 130   1          mov  psw,#0H  
+ 131   1          setb rs0     
+ 132   1        setb rs1  
+ 133   1          #pragma ENDASM 
+ 134   1        
+ 135   1        #pragma ASM
+ 136   1        mov R3,#0f0H
+ 137   1        anl 0x1b,#0a5H
+ 138   1        #pragma ENDASM  
+ 139   1        if (R(3,3)!=0xa0) test_status = 0;
+ 140   1        
+ 141   1        #pragma ASM 
+ 142   1        pop acc
+ 143   1          pop psw 
+ 144   1          #pragma ENDASM
+ 145   1          error();  
+ 146   1      }
+ 147          
+ 148          void orl_a_rn(void) {
+ 149   1        printf("ORL_A_RN\n");
+ 150   1        #pragma ASM  
+ 151   1        push psw
+ 152   1        push acc
+ 153   1          mov  psw,#0H  
+ 154   1          setb rs0     
+ 155   1        setb rs1  
+ 156   1          #pragma ENDASM 
+ 157   1        
+ 158   1        #pragma ASM
+ 159   1        mov acc,#0a5H
+ 160   1        mov R0,#0f0H
+ 161   1        orl A,R0
+ 162   1          #pragma ENDASM  
+ 163   1        if (ACC!=0xf5) test_status = 0;
+ 164   1        
+ 165   1        #pragma ASM 
+ 166   1        pop acc
+ 167   1          pop psw 
+ 168   1          #pragma ENDASM
+ 169   1          error();  
+ 170   1      }
+ 171          
+ 172          void orl_a_di(void) {
+ 173   1        printf("ORL_A_DI\n");
+ 174   1        #pragma ASM  
+ 175   1        push psw
+ 176   1        push acc
+ 177   1          mov  psw,#0H  
+ 178   1          setb rs0     
+ 179   1        setb rs1  
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 4   
+
+ 180   1          #pragma ENDASM 
+ 181   1        
+ 182   1        #pragma ASM
+ 183   1        mov acc,#0a5H
+ 184   1        mov R3,#0fH
+ 185   1        orl A,0x1b
+ 186   1          #pragma ENDASM  
+ 187   1        if (ACC!=0xaf) test_status = 0;
+ 188   1        
+ 189   1        #pragma ASM 
+ 190   1        pop acc
+ 191   1          pop psw 
+ 192   1          #pragma ENDASM
+ 193   1          error();  
+ 194   1      }
+ 195          
+ 196          void orl_a_ri(void) {
+ 197   1        printf("ORL_A_RI\n");
+ 198   1        #pragma ASM  
+ 199   1        push psw
+ 200   1        push acc
+ 201   1          mov  psw,#0H  
+ 202   1          setb rs0     
+ 203   1        setb rs1  
+ 204   1          #pragma ENDASM 
+ 205   1        
+ 206   1        #pragma ASM
+ 207   1        mov acc,#0a5H
+ 208   1        mov R3,#0f0H
+ 209   1        mov R1,#0x1b
+ 210   1        orl A,@R1
+ 211   1          #pragma ENDASM  
+ 212   1        if (ACC!=0xf5) test_status = 0;
+ 213   1        
+ 214   1        #pragma ASM 
+ 215   1        pop acc
+ 216   1          pop psw 
+ 217   1          #pragma ENDASM
+ 218   1          error();  
+ 219   1      }
+ 220          
+ 221          void orl_a_da(void) {
+ 222   1        printf("ORL_A_DA\n");
+ 223   1        #pragma ASM  
+ 224   1        push psw
+ 225   1        push acc
+ 226   1          mov  psw,#0H  
+ 227   1          setb rs0     
+ 228   1        setb rs1  
+ 229   1          #pragma ENDASM 
+ 230   1        
+ 231   1        #pragma ASM
+ 232   1        mov acc,#0a5H
+ 233   1        orl A,#0fH
+ 234   1          #pragma ENDASM  
+ 235   1        if (ACC!=0xaf) test_status = 0;
+ 236   1        
+ 237   1        #pragma ASM 
+ 238   1        pop acc
+ 239   1          pop psw 
+ 240   1          #pragma ENDASM 
+ 241   1          error();  
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 5   
+
+ 242   1      }
+ 243          
+ 244          void orl_di_a(void) {
+ 245   1        printf("ORL_DI_A\n");
+ 246   1        #pragma ASM  
+ 247   1        push psw
+ 248   1        push acc
+ 249   1          mov  psw,#0H  
+ 250   1          setb rs0     
+ 251   1        setb rs1  
+ 252   1          #pragma ENDASM 
+ 253   1        
+ 254   1        #pragma ASM
+ 255   1        mov acc,#0a5H
+ 256   1        mov R3,#0fH
+ 257   1        orl 0x1b,A
+ 258   1          #pragma ENDASM  
+ 259   1        if (R(3,3)!=0xaf) test_status = 0;
+ 260   1        
+ 261   1        #pragma ASM 
+ 262   1        pop acc
+ 263   1          pop psw 
+ 264   1          #pragma ENDASM 
+ 265   1          error();  
+ 266   1      }
+ 267          
+ 268          void orl_di_da(void) {
+ 269   1        printf("ORL_DI_DA\n");
+ 270   1        #pragma ASM  
+ 271   1        push psw
+ 272   1        push acc
+ 273   1          mov  psw,#0H  
+ 274   1          setb rs0     
+ 275   1        setb rs1  
+ 276   1          #pragma ENDASM 
+ 277   1        
+ 278   1        #pragma ASM
+ 279   1        mov R3,#0f0H
+ 280   1        orl 0x1b,#0a5H
+ 281   1          #pragma ENDASM  
+ 282   1        if (R(3,3)!=0xf5) test_status = 0;
+ 283   1        
+ 284   1        #pragma ASM 
+ 285   1        pop acc
+ 286   1          pop psw 
+ 287   1          #pragma ENDASM
+ 288   1          error();  
+ 289   1      }
+ 290          
+ 291          void xrl_a_rn(void) {
+ 292   1        printf("XRL_A_RN\n");
+ 293   1        #pragma ASM  
+ 294   1        push psw
+ 295   1        push acc
+ 296   1          mov  psw,#0H  
+ 297   1          setb rs0     
+ 298   1        setb rs1  
+ 299   1          #pragma ENDASM 
+ 300   1        
+ 301   1        #pragma ASM
+ 302   1        mov acc,#0a5H
+ 303   1        mov R0,#0f0H
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 6   
+
+ 304   1        xrl A,R0
+ 305   1        #pragma ENDASM  
+ 306   1        if (ACC!=0x55) test_status = 0;
+ 307   1        
+ 308   1        #pragma ASM 
+ 309   1        pop acc
+ 310   1        pop psw 
+ 311   1        #pragma ENDASM
+ 312   1        error();  
+ 313   1      }
+ 314          
+ 315          void xrl_a_di(void) {
+ 316   1        printf("XRL_A_DI\n");
+ 317   1        #pragma ASM  
+ 318   1        push psw
+ 319   1        push acc
+ 320   1          mov  psw,#0H  
+ 321   1          setb rs0     
+ 322   1        setb rs1  
+ 323   1          #pragma ENDASM 
+ 324   1        
+ 325   1        #pragma ASM
+ 326   1        mov acc,#0a5H
+ 327   1        mov R3,#0fH
+ 328   1        xrl A,0x1b
+ 329   1        #pragma ENDASM  
+ 330   1        if (ACC!=0xaa) test_status = 0;
+ 331   1        
+ 332   1        #pragma ASM 
+ 333   1        pop acc
+ 334   1          pop psw 
+ 335   1          #pragma ENDASM
+ 336   1          error();  
+ 337   1      }
+ 338          
+ 339          void xrl_a_ri(void) {
+ 340   1        printf("XRL_A_RI\n");
+ 341   1        #pragma ASM  
+ 342   1        push psw
+ 343   1        push acc
+ 344   1          mov  psw,#0H  
+ 345   1          setb rs0     
+ 346   1        setb rs1  
+ 347   1          #pragma ENDASM 
+ 348   1        
+ 349   1        #pragma ASM
+ 350   1        mov acc,#0a5H
+ 351   1        mov R3,#0f0H
+ 352   1        mov R1,#0x1b
+ 353   1        xrl A,@R1
+ 354   1          #pragma ENDASM  
+ 355   1        if (ACC!=0x55) test_status = 0;
+ 356   1        
+ 357   1        #pragma ASM 
+ 358   1        pop acc
+ 359   1          pop psw 
+ 360   1          #pragma ENDASM
+ 361   1          error();  
+ 362   1      }
+ 363          
+ 364          void xrl_a_da(void) {
+ 365   1        printf("XRL_A_DA\n");
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 7   
+
+ 366   1        #pragma ASM  
+ 367   1        push psw
+ 368   1        push acc
+ 369   1          mov  psw,#0H  
+ 370   1          setb rs0     
+ 371   1        setb rs1  
+ 372   1          #pragma ENDASM 
+ 373   1        
+ 374   1        #pragma ASM
+ 375   1        mov acc,#0a5H
+ 376   1        xrl A,#0fH
+ 377   1          #pragma ENDASM  
+ 378   1        if (ACC!=0xaa) test_status = 0;
+ 379   1        
+ 380   1        #pragma ASM 
+ 381   1        pop acc
+ 382   1          pop psw 
+ 383   1          #pragma ENDASM
+ 384   1          error();  
+ 385   1      }
+ 386          
+ 387          void xrl_di_a(void) {
+ 388   1        printf("XRL_DI_A\n");
+ 389   1        #pragma ASM  
+ 390   1        push psw
+ 391   1        push acc
+ 392   1          mov  psw,#0H  
+ 393   1          setb rs0     
+ 394   1        setb rs1  
+ 395   1          #pragma ENDASM 
+ 396   1        
+ 397   1        #pragma ASM
+ 398   1        mov acc,#0a5H
+ 399   1        mov R3,#0fH
+ 400   1        xrl 0x1b,A
+ 401   1          #pragma ENDASM  
+ 402   1        if (R(3,3)!=0xaa) test_status = 0;
+ 403   1        
+ 404   1        #pragma ASM 
+ 405   1        pop acc
+ 406   1          pop psw 
+ 407   1          #pragma ENDASM
+ 408   1          error();  
+ 409   1      }
+ 410          
+ 411          void xrl_di_da(void) {
+ 412   1        printf("XRL_DI_DA\n");
+ 413   1        #pragma ASM  
+ 414   1        push psw
+ 415   1        push acc
+ 416   1          mov  psw,#0H  
+ 417   1          setb rs0     
+ 418   1        setb rs1  
+ 419   1          #pragma ENDASM 
+ 420   1        
+ 421   1        #pragma ASM
+ 422   1        mov R3,#0f0H
+ 423   1        xrl 0x1b,#0a5H
+ 424   1        #pragma ENDASM  
+ 425   1        if (R(3,3)!=0x55) test_status = 0;
+ 426   1        
+ 427   1        #pragma ASM 
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 8   
+
+ 428   1        pop acc
+ 429   1          pop psw 
+ 430   1          #pragma ENDASM
+ 431   1          error();  
+ 432   1      }
+ 433          
+ 434          void clr_a(void) {
+ 435   1        printf("CLR_A\n");
+ 436   1        #pragma ASM  
+ 437   1        push psw
+ 438   1        push acc
+ 439   1          mov  psw,#0H  
+ 440   1          setb rs0     
+ 441   1        setb rs1  
+ 442   1          #pragma ENDASM 
+ 443   1        
+ 444   1        #pragma ASM
+ 445   1        mov A,#0ffH
+ 446   1        clr A
+ 447   1        #pragma ENDASM  
+ 448   1        if (ACC!=0x0) test_status = 0;
+ 449   1        
+ 450   1        #pragma ASM 
+ 451   1        pop acc
+ 452   1          pop psw 
+ 453   1          #pragma ENDASM
+ 454   1          error();  
+ 455   1      }
+ 456          
+ 457          void cpl_a(void) {
+ 458   1        printf("CPL_A\n");
+ 459   1        #pragma ASM  
+ 460   1        push psw
+ 461   1        push acc
+ 462   1          mov  psw,#0H  
+ 463   1          setb rs0     
+ 464   1        setb rs1  
+ 465   1          #pragma ENDASM 
+ 466   1        
+ 467   1        #pragma ASM
+ 468   1        mov A,#0a5H
+ 469   1        cpl A
+ 470   1        #pragma ENDASM  
+ 471   1        if (ACC!=0x5a) test_status = 0;
+ 472   1        
+ 473   1        #pragma ASM 
+ 474   1        pop acc
+ 475   1          pop psw 
+ 476   1          #pragma ENDASM
+ 477   1          error();  
+ 478   1      }
+ 479          
+ 480          void rl_a(void) {
+ 481   1        printf("RL_A\n");
+ 482   1        #pragma ASM  
+ 483   1        push psw
+ 484   1        push acc
+ 485   1          mov  psw,#0H  
+ 486   1          setb rs0     
+ 487   1        setb rs1  
+ 488   1          #pragma ENDASM 
+ 489   1        
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 9   
+
+ 490   1        #pragma ASM
+ 491   1        mov A,#0a0H
+ 492   1        rl A
+ 493   1        #pragma ENDASM  
+ 494   1        if (ACC!=0x41) test_status = 0;
+ 495   1        
+ 496   1        #pragma ASM 
+ 497   1        pop acc
+ 498   1          pop psw 
+ 499   1          #pragma ENDASM
+ 500   1          error();  
+ 501   1      }
+ 502          
+ 503          void rlc_a(void) {
+ 504   1        printf("RLC_A\n");
+ 505   1        #pragma ASM  
+ 506   1        push psw
+ 507   1        push acc
+ 508   1          mov  psw,#0H  
+ 509   1          setb rs0     
+ 510   1        setb rs1  
+ 511   1          #pragma ENDASM 
+ 512   1        
+ 513   1        #pragma ASM
+ 514   1        mov A,#0a0H
+ 515   1        rlc A
+ 516   1        #pragma ENDASM  
+ 517   1        if (ACC!=0x40) test_status = 0;
+ 518   1        if (CY!=1) test_status = 0;
+ 519   1        
+ 520   1        #pragma ASM 
+ 521   1        pop acc
+ 522   1          pop psw 
+ 523   1          #pragma ENDASM
+ 524   1          error();  
+ 525   1      }
+ 526          
+ 527          void rr_a(void) {
+ 528   1        printf("RR_A\n");
+ 529   1        #pragma ASM  
+ 530   1        push psw
+ 531   1        push acc
+ 532   1          mov  psw,#0H  
+ 533   1          setb rs0     
+ 534   1        setb rs1  
+ 535   1          #pragma ENDASM 
+ 536   1        
+ 537   1        #pragma ASM
+ 538   1        mov A,#0e1H
+ 539   1        rr A
+ 540   1        #pragma ENDASM  
+ 541   1        if (ACC!=0xf0) test_status = 0;
+ 542   1        
+ 543   1        #pragma ASM 
+ 544   1        pop acc
+ 545   1          pop psw 
+ 546   1          #pragma ENDASM
+ 547   1          error();  
+ 548   1      }
+ 549          
+ 550          void rrc_a(void) {
+ 551   1        printf("RRC_A\n");
+C51 COMPILER V9.52.0.0   LOGICAL                                                           07/21/2014 16:39:34 PAGE 10  
+
+ 552   1        #pragma ASM  
+ 553   1        push psw
+ 554   1        push acc
+ 555   1          mov  psw,#0H  
+ 556   1          setb rs0     
+ 557   1        setb rs1  
+ 558   1          #pragma ENDASM 
+ 559   1        
+ 560   1        #pragma ASM
+ 561   1        mov A,#0e1H
+ 562   1        rrc A
+ 563   1        #pragma ENDASM  
+ 564   1        if (ACC!=0x70) test_status = 0;
+ 565   1        if (CY!=1) test_status = 0;
+ 566   1        
+ 567   1        #pragma ASM 
+ 568   1        pop acc
+ 569   1          pop psw 
+ 570   1          #pragma ENDASM
+ 571   1          error();  
+ 572   1      }
+ 573          
+ 574          void swap_a(void) {
+ 575   1        printf("SWAP_A\n");
+ 576   1        #pragma ASM  
+ 577   1        push psw
+ 578   1        push acc
+ 579   1          mov  psw,#0H  
+ 580   1          setb rs0     
+ 581   1        setb rs1  
+ 582   1          #pragma ENDASM 
+ 583   1        
+ 584   1        #pragma ASM
+ 585   1        mov A,#037H
+ 586   1        swap A
+ 587   1        #pragma ENDASM  
+ 588   1        if (ACC!=0x73) test_status = 0;
+ 589   1        
+ 590   1        #pragma ASM 
+ 591   1        pop acc
+ 592   1          pop psw 
+ 593   1          #pragma ENDASM
+ 594   1          error();  
+ 595   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1277    ----
+   CONSTANT SIZE    =    231    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

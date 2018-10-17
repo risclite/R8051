@@ -1,0 +1,1223 @@
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE ARITHMETIC
+NO OBJECT MODULE REQUESTED
+COMPILER INVOKED BY: C:\myprog\Keil\C51\BIN\C51.EXE arithmetic.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\arithmetic.SRC)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include <stdio.h> 
+   3          #include "instruction.h"
+   4          
+   5          void add_a_rn(void) {
+   6   1        printf("ADD_A_RN\n");
+   7   1        #pragma ASM  
+   8   1        push psw
+   9   1        push acc
+  10   1        mov  psw,#0H  
+  11   1        setb rs0     
+  12   1        setb rs1  
+  13   1        #pragma ENDASM 
+  14   1        
+  15   1        #pragma ASM
+  16   1        mov acc,#01H
+  17   1        mov R0,#0fH
+  18   1        add A,R0
+  19   1        #pragma ENDASM  
+  20   1        if (ACC!=0x10) test_status = 0;
+  21   1        if (AC!=1) test_status = 0;
+  22   1        if (OV!=0) test_status = 0;
+  23   1        if (CY!=0) test_status = 0;
+  24   1        AC = 0;
+  25   1          
+  26   1        #pragma ASM
+  27   1        mov acc,#40H
+  28   1        mov R1,#40H
+  29   1        add A,R1
+  30   1        #pragma ENDASM
+  31   1        if (ACC!=0x80) test_status = 0;
+  32   1        if (AC!=0) test_status = 0;
+  33   1        if (OV!=1) test_status = 0;
+  34   1        if (CY!=0) test_status = 0;
+  35   1        OV = 0;
+  36   1      
+  37   1        
+  38   1        #pragma ASM
+  39   1        mov acc,#80H
+  40   1        mov R2,#81H
+  41   1        add A,R2
+  42   1        #pragma ENDASM
+  43   1        if (ACC!=0x01) test_status = 0;
+  44   1        if (AC!=0) test_status = 0;
+  45   1        if (OV!=1) test_status = 0;
+  46   1        if (CY!=1) test_status = 0;
+  47   1        OV = 0;
+  48   1        CY = 0;
+  49   1        
+  50   1        #pragma ASM
+  51   1        mov acc,#0C0H
+  52   1        mov R3,#0C2H
+  53   1        add A,R3
+  54   1        #pragma ENDASM
+  55   1        if (ACC!=0x82) test_status = 0;
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 2   
+
+  56   1        if (AC!=0) test_status = 0;
+  57   1        if (OV!=0) test_status = 0;
+  58   1        if (CY!=1) test_status = 0;
+  59   1        CY = 0; 
+  60   1        
+  61   1        #pragma ASM 
+  62   1        pop acc
+  63   1        pop psw 
+  64   1        #pragma ENDASM  
+  65   1        error();
+  66   1      }
+  67          
+  68          void add_a_di(void) {
+  69   1        printf("ADD_A_DI\n");
+  70   1        #pragma ASM  
+  71   1        push psw
+  72   1        push acc
+  73   1        mov  psw,#0H  
+  74   1        setb rs0     
+  75   1        setb rs1  
+  76   1        #pragma ENDASM 
+  77   1        
+  78   1        #pragma ASM
+  79   1        mov acc,#01H
+  80   1        mov R0,#0fH
+  81   1        add A,0x18
+  82   1        #pragma ENDASM  
+  83   1        if (ACC!=0x10) test_status = 0;
+  84   1        if (AC!=1) test_status = 0;
+  85   1        if (OV!=0) test_status = 0;
+  86   1        if (CY!=0) test_status = 0;
+  87   1        AC = 0;
+  88   1          
+  89   1        #pragma ASM
+  90   1        mov acc,#40H
+  91   1        mov R1,#40H
+  92   1        add A,0x19
+  93   1        #pragma ENDASM
+  94   1        if (ACC!=0x80) test_status = 0;
+  95   1        if (AC!=0) test_status = 0;
+  96   1        if (OV!=1) test_status = 0;
+  97   1        if (CY!=0) test_status = 0;
+  98   1        OV = 0;
+  99   1      
+ 100   1        
+ 101   1        #pragma ASM
+ 102   1        mov acc,#80H
+ 103   1        mov R2,#81H
+ 104   1        add A,0x1a
+ 105   1        #pragma ENDASM
+ 106   1        if (ACC!=0x01) test_status = 0;
+ 107   1        if (AC!=0) test_status = 0;
+ 108   1        if (OV!=1) test_status = 0;
+ 109   1        if (CY!=1) test_status = 0;
+ 110   1        OV = 0;
+ 111   1        CY = 0;
+ 112   1        
+ 113   1        #pragma ASM
+ 114   1        mov acc,#0C0H
+ 115   1        mov R3,#0C2H
+ 116   1        add A,0x1b
+ 117   1        #pragma ENDASM
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 3   
+
+ 118   1        if (ACC!=0x82) test_status = 0;
+ 119   1        if (AC!=0) test_status = 0;
+ 120   1        if (OV!=0) test_status = 0;
+ 121   1        if (CY!=1) test_status = 0;
+ 122   1        CY = 0; 
+ 123   1        
+ 124   1        #pragma ASM 
+ 125   1        pop acc
+ 126   1        pop psw 
+ 127   1        #pragma ENDASM 
+ 128   1        error();  
+ 129   1      }
+ 130          
+ 131          void add_a_ri(void) {
+ 132   1        printf("ADD_A_RI\n");
+ 133   1        #pragma ASM  
+ 134   1        push psw
+ 135   1        push acc
+ 136   1        mov  psw,#0H  
+ 137   1        setb rs0     
+ 138   1        setb rs1  
+ 139   1        #pragma ENDASM 
+ 140   1        
+ 141   1        #pragma ASM
+ 142   1        mov acc,#01H
+ 143   1        mov R2,#0fH
+ 144   1        mov R0,#1aH
+ 145   1        add A,@R0
+ 146   1        #pragma ENDASM  
+ 147   1        if (ACC!=0x10) test_status = 0;
+ 148   1        if (AC!=1) test_status = 0;
+ 149   1        if (OV!=0) test_status = 0;
+ 150   1        if (CY!=0) test_status = 0;
+ 151   1        AC = 0;
+ 152   1          
+ 153   1        #pragma ASM
+ 154   1        mov acc,#40H
+ 155   1        mov R2,#40H
+ 156   1        mov R0,#1aH
+ 157   1        add A,@R0
+ 158   1        #pragma ENDASM
+ 159   1        if (ACC!=0x80) test_status = 0;
+ 160   1        if (AC!=0) test_status = 0;
+ 161   1        if (OV!=1) test_status = 0;
+ 162   1        if (CY!=0) test_status = 0;
+ 163   1        OV = 0;
+ 164   1      
+ 165   1        
+ 166   1        #pragma ASM
+ 167   1        mov acc,#80H
+ 168   1        mov R3,#81H
+ 169   1        mov R1,#1bH
+ 170   1        add A,@R1
+ 171   1        #pragma ENDASM
+ 172   1        if (ACC!=0x01) test_status = 0;
+ 173   1        if (AC!=0) test_status = 0;
+ 174   1        if (OV!=1) test_status = 0;
+ 175   1        if (CY!=1) test_status = 0;
+ 176   1        OV = 0;
+ 177   1        CY = 0;
+ 178   1        
+ 179   1        #pragma ASM
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 4   
+
+ 180   1        mov acc,#0C0H
+ 181   1        mov R3,#0C2H
+ 182   1        mov R1,#1bH
+ 183   1        add A,@R1
+ 184   1        #pragma ENDASM
+ 185   1        if (ACC!=0x82) test_status = 0;
+ 186   1        if (AC!=0) test_status = 0;
+ 187   1        if (OV!=0) test_status = 0;
+ 188   1        if (CY!=1) test_status = 0;
+ 189   1        CY = 0; 
+ 190   1        
+ 191   1        #pragma ASM 
+ 192   1        pop acc
+ 193   1        pop psw 
+ 194   1        #pragma ENDASM
+ 195   1        error();  
+ 196   1      }
+ 197          
+ 198          void add_a_da(void) {
+ 199   1        printf("ADD_A_DA\n");
+ 200   1        #pragma ASM  
+ 201   1        push psw
+ 202   1        push acc
+ 203   1        mov  psw,#0H  
+ 204   1        setb rs0     
+ 205   1        setb rs1  
+ 206   1        #pragma ENDASM 
+ 207   1        
+ 208   1        #pragma ASM
+ 209   1        mov acc,#01H
+ 210   1        add A,#0fH
+ 211   1        #pragma ENDASM  
+ 212   1        if (ACC!=0x10) test_status = 0;
+ 213   1        if (AC!=1) test_status = 0;
+ 214   1        if (OV!=0) test_status = 0;
+ 215   1        if (CY!=0) test_status = 0;
+ 216   1        AC = 0;
+ 217   1          
+ 218   1        #pragma ASM
+ 219   1        mov acc,#40H
+ 220   1        add A,#40H
+ 221   1        #pragma ENDASM
+ 222   1        if (ACC!=0x80) test_status = 0;
+ 223   1        if (AC!=0) test_status = 0;
+ 224   1        if (OV!=1) test_status = 0;
+ 225   1        if (CY!=0) test_status = 0;
+ 226   1        OV = 0;
+ 227   1      
+ 228   1        
+ 229   1        #pragma ASM
+ 230   1        mov acc,#80H
+ 231   1        add A,#81H
+ 232   1        #pragma ENDASM
+ 233   1        if (ACC!=0x01) test_status = 0;
+ 234   1        if (AC!=0) test_status = 0;
+ 235   1        if (OV!=1) test_status = 0;
+ 236   1        if (CY!=1) test_status = 0;
+ 237   1        OV = 0;
+ 238   1        CY = 0;
+ 239   1        
+ 240   1        #pragma ASM
+ 241   1        mov acc,#0C0H
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 5   
+
+ 242   1        add A,#0C2H
+ 243   1        #pragma ENDASM
+ 244   1        if (ACC!=0x82) test_status = 0;
+ 245   1        if (AC!=0) test_status = 0;
+ 246   1        if (OV!=0) test_status = 0;
+ 247   1        if (CY!=1) test_status = 0;
+ 248   1        CY = 0; 
+ 249   1        
+ 250   1        #pragma ASM 
+ 251   1        pop acc
+ 252   1        pop psw 
+ 253   1        #pragma ENDASM
+ 254   1        error();  
+ 255   1      }
+ 256          
+ 257          void addc_a_rn(void) {
+ 258   1        printf("ADDC_A_RN\n");
+ 259   1        #pragma ASM  
+ 260   1        push psw
+ 261   1        push acc
+ 262   1        mov  psw,#0H  
+ 263   1        setb rs0     
+ 264   1        setb rs1  
+ 265   1        #pragma ENDASM 
+ 266   1        
+ 267   1        #pragma ASM
+ 268   1        mov acc,#01H
+ 269   1        mov R0,#0fH
+ 270   1        setb C
+ 271   1        addc A,R0
+ 272   1        #pragma ENDASM  
+ 273   1        if (ACC!=0x11) test_status = 0;
+ 274   1        if (AC!=1) test_status = 0;
+ 275   1        if (OV!=0) test_status = 0;
+ 276   1        if (CY!=0) test_status = 0;
+ 277   1        AC = 0;
+ 278   1          
+ 279   1        #pragma ASM
+ 280   1        mov acc,#40H
+ 281   1        mov R1,#40H
+ 282   1        setb C
+ 283   1        addc A,R1
+ 284   1        #pragma ENDASM
+ 285   1        if (ACC!=0x81) test_status = 0;
+ 286   1        if (AC!=0) test_status = 0;
+ 287   1        if (OV!=1) test_status = 0;
+ 288   1        if (CY!=0) test_status = 0;
+ 289   1        OV = 0;
+ 290   1      
+ 291   1        
+ 292   1        #pragma ASM
+ 293   1        mov acc,#80H
+ 294   1        mov R2,#81H
+ 295   1        setb C
+ 296   1        addc A,R2
+ 297   1        #pragma ENDASM
+ 298   1        if (ACC!=0x02) test_status = 0;
+ 299   1        if (AC!=0) test_status = 0;
+ 300   1        if (OV!=1) test_status = 0;
+ 301   1        if (CY!=1) test_status = 0;
+ 302   1        OV = 0;
+ 303   1        CY = 0;
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 6   
+
+ 304   1        
+ 305   1        #pragma ASM
+ 306   1        mov acc,#0C0H
+ 307   1        mov R3,#0C2H
+ 308   1        setb C
+ 309   1        addc A,R3
+ 310   1        #pragma ENDASM
+ 311   1        if (ACC!=0x83) test_status = 0;
+ 312   1        if (AC!=0) test_status = 0;
+ 313   1        if (OV!=0) test_status = 0;
+ 314   1        if (CY!=1) test_status = 0;
+ 315   1        CY = 0; 
+ 316   1        
+ 317   1        #pragma ASM 
+ 318   1        pop acc
+ 319   1        pop psw 
+ 320   1        #pragma ENDASM
+ 321   1        error();  
+ 322   1      }
+ 323          
+ 324          void addc_a_di(void) {
+ 325   1        printf("ADDC_A_DI\n");
+ 326   1        #pragma ASM  
+ 327   1        push psw
+ 328   1        push acc
+ 329   1        mov  psw,#0H  
+ 330   1        setb rs0     
+ 331   1        setb rs1  
+ 332   1        #pragma ENDASM 
+ 333   1        
+ 334   1        #pragma ASM
+ 335   1        mov acc,#01H
+ 336   1        mov R0,#0fH
+ 337   1        setb C
+ 338   1        addc A,0x18
+ 339   1        #pragma ENDASM  
+ 340   1        if (ACC!=0x11) test_status = 0;
+ 341   1        if (AC!=1) test_status = 0;
+ 342   1        if (OV!=0) test_status = 0;
+ 343   1        if (CY!=0) test_status = 0;
+ 344   1        AC = 0;
+ 345   1          
+ 346   1        #pragma ASM
+ 347   1        mov acc,#40H
+ 348   1        mov R1,#40H
+ 349   1        setb C
+ 350   1        addc A,0x19
+ 351   1        #pragma ENDASM
+ 352   1        if (ACC!=0x81) test_status = 0;
+ 353   1        if (AC!=0) test_status = 0;
+ 354   1        if (OV!=1) test_status = 0;
+ 355   1        if (CY!=0) test_status = 0;
+ 356   1        OV = 0;
+ 357   1      
+ 358   1        
+ 359   1        #pragma ASM
+ 360   1        mov acc,#80H
+ 361   1        mov R2,#81H
+ 362   1        setb C
+ 363   1        addc A,0x1a
+ 364   1        #pragma ENDASM
+ 365   1        if (ACC!=0x02) test_status = 0;
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 7   
+
+ 366   1        if (AC!=0) test_status = 0;
+ 367   1        if (OV!=1) test_status = 0;
+ 368   1        if (CY!=1) test_status = 0;
+ 369   1        OV = 0;
+ 370   1        CY = 0;
+ 371   1        
+ 372   1        #pragma ASM
+ 373   1        mov acc,#0C0H
+ 374   1        mov R3,#0C2H
+ 375   1        setb C
+ 376   1        addc A,0x1b
+ 377   1        #pragma ENDASM
+ 378   1        if (ACC!=0x83) test_status = 0;
+ 379   1        if (AC!=0) test_status = 0;
+ 380   1        if (OV!=0) test_status = 0;
+ 381   1        if (CY!=1) test_status = 0;
+ 382   1        CY = 0; 
+ 383   1        
+ 384   1        #pragma ASM 
+ 385   1        pop acc
+ 386   1        pop psw 
+ 387   1        #pragma ENDASM 
+ 388   1        error();  
+ 389   1      }
+ 390          
+ 391          void addc_a_ri(void) {
+ 392   1        printf("ADDC_A_RI\n");
+ 393   1        #pragma ASM  
+ 394   1        push psw
+ 395   1        push acc
+ 396   1        mov  psw,#0H  
+ 397   1        setb rs0     
+ 398   1        setb rs1  
+ 399   1        #pragma ENDASM 
+ 400   1        
+ 401   1        #pragma ASM
+ 402   1        mov acc,#01H
+ 403   1        mov R2,#0fH
+ 404   1        mov R0,#1aH
+ 405   1        setb C
+ 406   1        addc A,@R0
+ 407   1        #pragma ENDASM  
+ 408   1        if (ACC!=0x11) test_status = 0;
+ 409   1        if (AC!=1) test_status = 0;
+ 410   1        if (OV!=0) test_status = 0;
+ 411   1        if (CY!=0) test_status = 0;
+ 412   1        AC = 0;
+ 413   1          
+ 414   1        #pragma ASM
+ 415   1        mov acc,#40H
+ 416   1        mov R2,#40H
+ 417   1        mov R0,#1aH
+ 418   1        setb C
+ 419   1        addc A,@R0
+ 420   1        #pragma ENDASM
+ 421   1        if (ACC!=0x81) test_status = 0;
+ 422   1        if (AC!=0) test_status = 0;
+ 423   1        if (OV!=1) test_status = 0;
+ 424   1        if (CY!=0) test_status = 0;
+ 425   1        OV = 0;
+ 426   1      
+ 427   1        
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 8   
+
+ 428   1        #pragma ASM
+ 429   1        mov acc,#80H
+ 430   1        mov R3,#81H
+ 431   1        mov R1,#1bH
+ 432   1        setb C
+ 433   1        addc A,@R1
+ 434   1        #pragma ENDASM
+ 435   1        if (ACC!=0x02) test_status = 0;
+ 436   1        if (AC!=0) test_status = 0;
+ 437   1        if (OV!=1) test_status = 0;
+ 438   1        if (CY!=1) test_status = 0;
+ 439   1        OV = 0;
+ 440   1        CY = 0;
+ 441   1        
+ 442   1        #pragma ASM
+ 443   1        mov acc,#0C0H
+ 444   1        mov R3,#0C2H
+ 445   1        mov R1,#1bH
+ 446   1        setb C
+ 447   1        addc A,@R1
+ 448   1        #pragma ENDASM
+ 449   1        if (ACC!=0x83) test_status = 0;
+ 450   1        if (AC!=0) test_status = 0;
+ 451   1        if (OV!=0) test_status = 0;
+ 452   1        if (CY!=1) test_status = 0;
+ 453   1        CY = 0; 
+ 454   1        
+ 455   1        #pragma ASM 
+ 456   1        pop acc
+ 457   1        pop psw 
+ 458   1        #pragma ENDASM
+ 459   1        error();  
+ 460   1      }
+ 461          
+ 462          void addc_a_da(void) {
+ 463   1        printf("ADDC_A_DA\n");  
+ 464   1        #pragma ASM  
+ 465   1        push psw
+ 466   1        push acc
+ 467   1        mov  psw,#0H  
+ 468   1        setb rs0     
+ 469   1        setb rs1  
+ 470   1        #pragma ENDASM 
+ 471   1        
+ 472   1        #pragma ASM
+ 473   1        mov acc,#01H
+ 474   1        setb C
+ 475   1        addc A,#0fH
+ 476   1        #pragma ENDASM  
+ 477   1        if (ACC!=0x11) test_status = 0;
+ 478   1        if (AC!=1) test_status = 0;
+ 479   1        if (OV!=0) test_status = 0;
+ 480   1        if (CY!=0) test_status = 0;
+ 481   1        AC = 0;
+ 482   1          
+ 483   1        #pragma ASM
+ 484   1        mov acc,#40H
+ 485   1        setb C
+ 486   1        addc A,#40H
+ 487   1        #pragma ENDASM
+ 488   1        if (ACC!=0x81) test_status = 0;
+ 489   1        if (AC!=0) test_status = 0;
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 9   
+
+ 490   1        if (OV!=1) test_status = 0;
+ 491   1        if (CY!=0) test_status = 0;
+ 492   1        OV = 0;
+ 493   1      
+ 494   1        
+ 495   1        #pragma ASM
+ 496   1        mov acc,#80H
+ 497   1        setb C
+ 498   1        addc A,#81H
+ 499   1        #pragma ENDASM
+ 500   1        if (ACC!=0x02) test_status = 0;
+ 501   1        if (AC!=0) test_status = 0;
+ 502   1        if (OV!=1) test_status = 0;
+ 503   1        if (CY!=1) test_status = 0;
+ 504   1        OV = 0;
+ 505   1        CY = 0;
+ 506   1        
+ 507   1        #pragma ASM
+ 508   1        mov acc,#0C0H
+ 509   1        setb C
+ 510   1        addc A,#0C2H
+ 511   1        #pragma ENDASM
+ 512   1        if (ACC!=0x83) test_status = 0;
+ 513   1        if (AC!=0) test_status = 0;
+ 514   1        if (OV!=0) test_status = 0;
+ 515   1        if (CY!=1) test_status = 0;
+ 516   1        CY = 0; 
+ 517   1        
+ 518   1        #pragma ASM 
+ 519   1        pop acc
+ 520   1        pop psw 
+ 521   1        #pragma ENDASM
+ 522   1        error();  
+ 523   1      }
+ 524          
+ 525          void subb_a_rn(void) {
+ 526   1        printf("SUBB_A_RN\n");
+ 527   1        #pragma ASM  
+ 528   1        push psw
+ 529   1        push acc
+ 530   1        mov  psw,#0H  
+ 531   1        setb rs0     
+ 532   1        setb rs1  
+ 533   1        #pragma ENDASM 
+ 534   1        
+ 535   1        #pragma ASM
+ 536   1        mov acc,#10H
+ 537   1        mov R0,#0eH
+ 538   1        setb C
+ 539   1        subb A,R0
+ 540   1        #pragma ENDASM  
+ 541   1        if (ACC!=0x1) test_status = 0;
+ 542   1        if (AC!=1) test_status = 0;
+ 543   1        if (OV!=0) test_status = 0;
+ 544   1        if (CY!=0) test_status = 0;
+ 545   1        AC = 0;
+ 546   1        
+ 547   1        #pragma ASM
+ 548   1        mov acc,#80H
+ 549   1        mov R1,#3fH
+ 550   1        setb C
+ 551   1        subb A,R1
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 10  
+
+ 552   1        #pragma ENDASM
+ 553   1        if (ACC!=0x40) test_status = 0;
+ 554   1        if (AC!=1) test_status = 0;
+ 555   1        if (OV!=1) test_status = 0;
+ 556   1        if (CY!=0) test_status = 0;
+ 557   1        OV = 0;
+ 558   1      
+ 559   1        
+ 560   1        #pragma ASM
+ 561   1        mov acc,#01H
+ 562   1        mov R2,#80H
+ 563   1        setb C
+ 564   1        subb A,R2
+ 565   1        #pragma ENDASM
+ 566   1        if (ACC!=0x80) test_status = 0;
+ 567   1        if (AC!=0) test_status = 0;
+ 568   1        if (OV!=1) test_status = 0;
+ 569   1        if (CY!=1) test_status = 0;
+ 570   1        OV = 0;
+ 571   1        CY = 0;
+ 572   1      
+ 573   1        #pragma ASM
+ 574   1        mov acc,#82H
+ 575   1        mov R3,#0C1H
+ 576   1        setb C
+ 577   1        subb A,R3
+ 578   1        #pragma ENDASM
+ 579   1        if (ACC!=0xC0) test_status = 0;
+ 580   1        if (AC!=0) test_status = 0;
+ 581   1        if (OV!=0) test_status = 0;
+ 582   1        if (CY!=1) test_status = 0;
+ 583   1        CY = 0; 
+ 584   1        
+ 585   1        #pragma ASM 
+ 586   1        pop acc
+ 587   1        pop psw 
+ 588   1        #pragma ENDASM
+ 589   1        error();  
+ 590   1      }
+ 591          
+ 592          void subb_a_di(void) {
+ 593   1        printf("SUBB_A_DI\n");
+ 594   1        #pragma ASM  
+ 595   1        push psw
+ 596   1        push acc
+ 597   1        mov  psw,#0H  
+ 598   1        setb rs0     
+ 599   1        setb rs1  
+ 600   1        #pragma ENDASM 
+ 601   1        
+ 602   1        #pragma ASM
+ 603   1        mov acc,#10H
+ 604   1        mov R0,#0eH
+ 605   1        setb C
+ 606   1        subb A,0x18
+ 607   1        #pragma ENDASM  
+ 608   1        if (ACC!=0x1) test_status = 0;
+ 609   1        if (AC!=1) test_status = 0;
+ 610   1        if (OV!=0) test_status = 0;
+ 611   1        if (CY!=0) test_status = 0;
+ 612   1        AC = 0;
+ 613   1        
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 11  
+
+ 614   1        #pragma ASM
+ 615   1        mov acc,#80H
+ 616   1        mov R1,#3fH
+ 617   1        setb C
+ 618   1        subb A,0x19
+ 619   1        #pragma ENDASM
+ 620   1        if (ACC!=0x40) test_status = 0;
+ 621   1        if (AC!=1) test_status = 0;
+ 622   1        if (OV!=1) test_status = 0;
+ 623   1        if (CY!=0) test_status = 0;
+ 624   1        OV = 0;
+ 625   1      
+ 626   1        
+ 627   1        #pragma ASM
+ 628   1        mov acc,#01H
+ 629   1        mov R2,#80H
+ 630   1        setb C
+ 631   1        subb A,0x1a
+ 632   1        #pragma ENDASM
+ 633   1        if (ACC!=0x80) test_status = 0;
+ 634   1        if (AC!=0) test_status = 0;
+ 635   1        if (OV!=1) test_status = 0;
+ 636   1        if (CY!=1) test_status = 0;
+ 637   1        OV = 0;
+ 638   1        CY = 0;
+ 639   1      
+ 640   1        #pragma ASM
+ 641   1        mov acc,#82H
+ 642   1        mov R3,#0C1H
+ 643   1        setb C
+ 644   1        subb A,0x1b
+ 645   1        #pragma ENDASM
+ 646   1        if (ACC!=0xC0) test_status = 0;
+ 647   1        if (AC!=0) test_status = 0;
+ 648   1        if (OV!=0) test_status = 0;
+ 649   1        if (CY!=1) test_status = 0;
+ 650   1        CY = 0; 
+ 651   1        
+ 652   1        #pragma ASM 
+ 653   1        pop acc
+ 654   1        pop psw 
+ 655   1        #pragma ENDASM
+ 656   1        error();  
+ 657   1      }
+ 658          
+ 659          void subb_a_ri(void) {
+ 660   1        printf("SUBB_A_RI\n");
+ 661   1        #pragma ASM  
+ 662   1        push psw
+ 663   1        push acc
+ 664   1        mov  psw,#0H  
+ 665   1        setb rs0     
+ 666   1        setb rs1  
+ 667   1        #pragma ENDASM 
+ 668   1        
+ 669   1        #pragma ASM
+ 670   1        mov acc,#10H
+ 671   1        mov R2,#0eH
+ 672   1        setb C
+ 673   1        mov R0,#1aH
+ 674   1        subb A,@R0
+ 675   1        #pragma ENDASM  
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 12  
+
+ 676   1        if (ACC!=0x1) test_status = 0;
+ 677   1        if (AC!=1) test_status = 0;
+ 678   1        if (OV!=0) test_status = 0;
+ 679   1        if (CY!=0) test_status = 0;
+ 680   1        AC = 0;
+ 681   1        
+ 682   1        #pragma ASM
+ 683   1        mov acc,#80H
+ 684   1        mov R2,#3fH
+ 685   1        setb C
+ 686   1        mov R0,#1aH
+ 687   1        subb A,@R0
+ 688   1        #pragma ENDASM
+ 689   1        if (ACC!=0x40) test_status = 0;
+ 690   1        if (AC!=1) test_status = 0;
+ 691   1        if (OV!=1) test_status = 0;
+ 692   1        if (CY!=0) test_status = 0;
+ 693   1        OV = 0;
+ 694   1      
+ 695   1        
+ 696   1        #pragma ASM
+ 697   1        mov acc,#01H
+ 698   1        mov R3,#80H
+ 699   1        setb C
+ 700   1        mov R1,#1bH
+ 701   1        subb A,@R1
+ 702   1        #pragma ENDASM
+ 703   1        if (ACC!=0x80) test_status = 0;
+ 704   1        if (AC!=0) test_status = 0;
+ 705   1        if (OV!=1) test_status = 0;
+ 706   1        if (CY!=1) test_status = 0;
+ 707   1        OV = 0;
+ 708   1        CY = 0;
+ 709   1      
+ 710   1        #pragma ASM
+ 711   1        mov acc,#82H
+ 712   1        mov R3,#0C1H
+ 713   1        setb C
+ 714   1        mov R1,#1bH
+ 715   1        subb A,@R1
+ 716   1        #pragma ENDASM
+ 717   1        if (ACC!=0xC0) test_status = 0;
+ 718   1        if (AC!=0) test_status = 0;
+ 719   1        if (OV!=0) test_status = 0;
+ 720   1        if (CY!=1) test_status = 0;
+ 721   1        CY = 0; 
+ 722   1        
+ 723   1        #pragma ASM 
+ 724   1        pop acc
+ 725   1        pop psw 
+ 726   1        #pragma ENDASM
+ 727   1        error();  
+ 728   1      }
+ 729          
+ 730          void subb_a_da(void) {
+ 731   1        printf("SUBB_A_DA\n");
+ 732   1        #pragma ASM  
+ 733   1        push psw
+ 734   1        push acc
+ 735   1        mov  psw,#0H  
+ 736   1        setb rs0     
+ 737   1        setb rs1  
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 13  
+
+ 738   1        #pragma ENDASM 
+ 739   1        
+ 740   1        #pragma ASM
+ 741   1        mov acc,#10H
+ 742   1        setb C
+ 743   1        subb A,#0eH
+ 744   1        #pragma ENDASM  
+ 745   1        if (ACC!=0x1) test_status = 0;
+ 746   1        if (AC!=1) test_status = 0;
+ 747   1        if (OV!=0) test_status = 0;
+ 748   1        if (CY!=0) test_status = 0;
+ 749   1        AC = 0;
+ 750   1        
+ 751   1        #pragma ASM
+ 752   1        mov acc,#80H
+ 753   1        setb C
+ 754   1        subb A,#3fH
+ 755   1        #pragma ENDASM
+ 756   1        if (ACC!=0x40) test_status = 0;
+ 757   1        if (AC!=1) test_status = 0;
+ 758   1        if (OV!=1) test_status = 0;
+ 759   1        if (CY!=0) test_status = 0;
+ 760   1        OV = 0;
+ 761   1      
+ 762   1        
+ 763   1        #pragma ASM
+ 764   1        mov acc,#01H
+ 765   1        setb C
+ 766   1        subb A,#80H
+ 767   1        #pragma ENDASM
+ 768   1        if (ACC!=0x80) test_status = 0;
+ 769   1        if (AC!=0) test_status = 0;
+ 770   1        if (OV!=1) test_status = 0;
+ 771   1        if (CY!=1) test_status = 0;
+ 772   1        OV = 0;
+ 773   1        CY = 0;
+ 774   1      
+ 775   1        #pragma ASM
+ 776   1        mov acc,#82H
+ 777   1        setb C
+ 778   1        subb A,#0C1H
+ 779   1        #pragma ENDASM
+ 780   1        if (ACC!=0xC0) test_status = 0;
+ 781   1        if (AC!=0) test_status = 0;
+ 782   1        if (OV!=0) test_status = 0;
+ 783   1        if (CY!=1) test_status = 0;
+ 784   1        CY = 0; 
+ 785   1        
+ 786   1        #pragma ASM 
+ 787   1        pop acc
+ 788   1        pop psw 
+ 789   1        #pragma ENDASM
+ 790   1        error();  
+ 791   1      }
+ 792          
+ 793          
+ 794          void inc_a(void) {
+ 795   1        printf("INC_A\n");
+ 796   1        #pragma ASM  
+ 797   1        push psw
+ 798   1        push acc
+ 799   1        mov  psw,#0H  
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 14  
+
+ 800   1        setb rs0     
+ 801   1        setb rs1  
+ 802   1        #pragma ENDASM 
+ 803   1        
+ 804   1        #pragma ASM
+ 805   1        mov acc,#0a5H
+ 806   1        inc A
+ 807   1        #pragma ENDASM  
+ 808   1        if (ACC!=0xa6) test_status = 0;
+ 809   1        if (AC!=0) test_status = 0;
+ 810   1        if (OV!=0) test_status = 0;
+ 811   1        if (CY!=0) test_status = 0;
+ 812   1      
+ 813   1        
+ 814   1        #pragma ASM 
+ 815   1        pop acc
+ 816   1        pop psw 
+ 817   1        #pragma ENDASM
+ 818   1        error();  
+ 819   1      }
+ 820          
+ 821          void inc_rn(void) {
+ 822   1        printf("INC_RN\n");
+ 823   1        #pragma ASM  
+ 824   1        push psw
+ 825   1        push acc
+ 826   1        mov  psw,#0H  
+ 827   1        setb rs0     
+ 828   1        setb rs1  
+ 829   1        #pragma ENDASM 
+ 830   1        
+ 831   1        #pragma ASM
+ 832   1        mov 0x1b,#0a5H
+ 833   1        inc R3
+ 834   1        #pragma ENDASM  
+ 835   1        if (R(3,3)!=0xa6) test_status = 0;
+ 836   1        if (AC!=0) test_status = 0;
+ 837   1        if (OV!=0) test_status = 0;
+ 838   1        if (CY!=0) test_status = 0;
+ 839   1      
+ 840   1        
+ 841   1        #pragma ASM 
+ 842   1        pop acc
+ 843   1        pop psw 
+ 844   1        #pragma ENDASM
+ 845   1        error();  
+ 846   1      }
+ 847          
+ 848          void inc_di(void) {
+ 849   1        printf("INC_DI\n");
+ 850   1        #pragma ASM  
+ 851   1        push psw
+ 852   1        push acc
+ 853   1        mov  psw,#0H  
+ 854   1        setb rs0     
+ 855   1        setb rs1  
+ 856   1        #pragma ENDASM 
+ 857   1        
+ 858   1        #pragma ASM
+ 859   1        mov 0x1c,#0a5H
+ 860   1        inc 0x1c
+ 861   1        #pragma ENDASM  
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 15  
+
+ 862   1        if (R(3,4)!=0xa6) test_status = 0;
+ 863   1        if (AC!=0) test_status = 0;
+ 864   1        if (OV!=0) test_status = 0;
+ 865   1        if (CY!=0) test_status = 0;
+ 866   1      
+ 867   1        
+ 868   1        #pragma ASM 
+ 869   1        pop acc
+ 870   1        pop psw 
+ 871   1        #pragma ENDASM
+ 872   1        error();  
+ 873   1      }
+ 874          
+ 875          void inc_ri(void) {
+ 876   1        printf("INC_RI\n");
+ 877   1        #pragma ASM  
+ 878   1        push psw
+ 879   1        push acc
+ 880   1        mov  psw,#0H  
+ 881   1        setb rs0     
+ 882   1        setb rs1  
+ 883   1        #pragma ENDASM 
+ 884   1        
+ 885   1        #pragma ASM
+ 886   1        mov 0x1c,#0a5H
+ 887   1        mov R1,#1cH
+ 888   1        inc @R1
+ 889   1        #pragma ENDASM  
+ 890   1        if (R(3,4)!=0xa6) test_status = 0;
+ 891   1        if (AC!=0) test_status = 0;
+ 892   1        if (OV!=0) test_status = 0;
+ 893   1        if (CY!=0) test_status = 0;
+ 894   1      
+ 895   1        
+ 896   1        #pragma ASM 
+ 897   1        pop acc
+ 898   1        pop psw 
+ 899   1        #pragma ENDASM
+ 900   1        error();  
+ 901   1      }
+ 902          
+ 903          
+ 904          void inc_dp(void) {
+ 905   1        printf("INC_DP\n");
+ 906   1        #pragma ASM  
+ 907   1        push psw
+ 908   1        push acc
+ 909   1        mov  psw,#0H  
+ 910   1        setb rs0     
+ 911   1        setb rs1  
+ 912   1        #pragma ENDASM 
+ 913   1        
+ 914   1        #pragma ASM
+ 915   1        mov DPTR,#1234H
+ 916   1        inc DPTR
+ 917   1        #pragma ENDASM  
+ 918   1        if (DPL!=0x35) test_status = 0;
+ 919   1        if (DPH!=0x12) test_status = 0;
+ 920   1        if (AC!=0) test_status = 0;
+ 921   1        if (OV!=0) test_status = 0;
+ 922   1        if (CY!=0) test_status = 0;
+ 923   1      
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 16  
+
+ 924   1        
+ 925   1        #pragma ASM 
+ 926   1        pop acc
+ 927   1        pop psw 
+ 928   1        #pragma ENDASM
+ 929   1        error();  
+ 930   1      }
+ 931          
+ 932          
+ 933          void dec_a(void) {
+ 934   1        printf("DEC_A\n");
+ 935   1        #pragma ASM  
+ 936   1        push psw
+ 937   1        push acc
+ 938   1        mov  psw,#0H  
+ 939   1        setb rs0     
+ 940   1        setb rs1  
+ 941   1        #pragma ENDASM 
+ 942   1        
+ 943   1        #pragma ASM
+ 944   1        mov acc,#0a5H
+ 945   1        dec A
+ 946   1        #pragma ENDASM  
+ 947   1        if (ACC!=0xa4) test_status = 0;
+ 948   1        if (AC!=0) test_status = 0;
+ 949   1        if (OV!=0) test_status = 0;
+ 950   1        if (CY!=0) test_status = 0;
+ 951   1      
+ 952   1        
+ 953   1        #pragma ASM 
+ 954   1        pop acc
+ 955   1        pop psw 
+ 956   1        #pragma ENDASM
+ 957   1        error();  
+ 958   1      }
+ 959          
+ 960          void dec_rn(void) {
+ 961   1        printf("DEC_RN\n");
+ 962   1        #pragma ASM  
+ 963   1        push psw
+ 964   1        push acc
+ 965   1        mov  psw,#0H  
+ 966   1        setb rs0     
+ 967   1        setb rs1  
+ 968   1        #pragma ENDASM 
+ 969   1        
+ 970   1        #pragma ASM
+ 971   1        mov 0x1b,#0a5H
+ 972   1        dec R3
+ 973   1        #pragma ENDASM  
+ 974   1        if (R(3,3)!=0xa4) test_status = 0;
+ 975   1        if (AC!=0) test_status = 0;
+ 976   1        if (OV!=0) test_status = 0;
+ 977   1        if (CY!=0) test_status = 0;
+ 978   1      
+ 979   1        
+ 980   1        #pragma ASM 
+ 981   1        pop acc
+ 982   1        pop psw 
+ 983   1        #pragma ENDASM
+ 984   1        error();  
+ 985   1      }
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 17  
+
+ 986          
+ 987          void dec_di(void) {
+ 988   1        printf("DEC_DI\n");
+ 989   1        #pragma ASM  
+ 990   1        push psw
+ 991   1        push acc
+ 992   1        mov  psw,#0H  
+ 993   1        setb rs0     
+ 994   1        setb rs1  
+ 995   1        #pragma ENDASM 
+ 996   1        
+ 997   1        #pragma ASM
+ 998   1        mov 0x1c,#0a5H
+ 999   1        dec 0x1c
+1000   1        #pragma ENDASM  
+1001   1        if (R(3,4)!=0xa4) test_status = 0;
+1002   1        if (AC!=0) test_status = 0;
+1003   1        if (OV!=0) test_status = 0;
+1004   1        if (CY!=0) test_status = 0;
+1005   1      
+1006   1        
+1007   1        #pragma ASM 
+1008   1        pop acc
+1009   1        pop psw 
+1010   1        #pragma ENDASM  
+1011   1        error();
+1012   1      }
+1013          
+1014          void dec_ri(void) {
+1015   1        printf("DEC_RI\n");
+1016   1        #pragma ASM  
+1017   1        push psw
+1018   1        push acc
+1019   1        mov  psw,#0H  
+1020   1        setb rs0     
+1021   1        setb rs1  
+1022   1        #pragma ENDASM 
+1023   1        
+1024   1        #pragma ASM
+1025   1        mov 0x1c,#0a5H
+1026   1        mov R1,#1cH
+1027   1        dec @R1
+1028   1        #pragma ENDASM  
+1029   1        if (R(3,4)!=0xa4) test_status = 0;
+1030   1        if (AC!=0) test_status = 0;
+1031   1        if (OV!=0) test_status = 0;
+1032   1        if (CY!=0) test_status = 0;
+1033   1      
+1034   1        
+1035   1        #pragma ASM 
+1036   1        pop acc
+1037   1        pop psw 
+1038   1        #pragma ENDASM
+1039   1        error();  
+1040   1      }
+1041          
+1042          void mult(void) {
+1043   1        printf("MULT\n");
+1044   1        #pragma ASM  
+1045   1        push psw
+1046   1        push acc
+1047   1        mov  psw,#0H  
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 18  
+
+1048   1        setb rs0     
+1049   1        setb rs1  
+1050   1        #pragma ENDASM 
+1051   1        
+1052   1        #pragma ASM
+1053   1        setb C
+1054   1        mov acc,#08H
+1055   1        mov 0xf0,#03H
+1056   1        mul AB
+1057   1        #pragma ENDASM  
+1058   1        if (ACC!=0x18) test_status = 0;
+1059   1        if (B!=0x0) test_status = 0;
+1060   1        if (AC!=0) test_status = 0;
+1061   1        if (OV!=0) test_status = 0;
+1062   1        if (CY!=0) test_status = 0;
+1063   1      
+1064   1        #pragma ASM
+1065   1        setb C
+1066   1        mov acc,#0a8H
+1067   1        mov 0xf0,#0efH
+1068   1        mul AB
+1069   1        #pragma ENDASM  
+1070   1        if (ACC!=0xd8) test_status = 0;
+1071   1        if (B!=0x9c) test_status = 0;
+1072   1        if (AC!=0) test_status = 0;
+1073   1        if (OV!=1) test_status = 0;
+1074   1        if (CY!=0) test_status = 0;
+1075   1        
+1076   1        #pragma ASM 
+1077   1        pop acc
+1078   1        pop psw 
+1079   1        #pragma ENDASM
+1080   1        error();  
+1081   1      }
+1082          
+1083          void divide(void) {
+1084   1        printf("DIVIDE\n");
+1085   1        #pragma ASM  
+1086   1        push psw
+1087   1        push acc
+1088   1        mov  psw,#0H  
+1089   1        setb rs0     
+1090   1        setb rs1  
+1091   1        #pragma ENDASM 
+1092   1        
+1093   1        #pragma ASM
+1094   1        setb C
+1095   1        setb OV
+1096   1        mov acc,#0fbH
+1097   1        mov 0xf0,#12H
+1098   1        div AB
+1099   1        #pragma ENDASM  
+1100   1        if (ACC!=0xd) test_status = 0;
+1101   1        if (B!=0x11) test_status = 0;
+1102   1        if (AC!=0) test_status = 0;
+1103   1        if (OV!=0) test_status = 0;
+1104   1        if (CY!=0) test_status = 0;
+1105   1      
+1106   1        #pragma ASM
+1107   1        setb C
+1108   1        mov acc,#0a8H
+1109   1        mov 0xf0,#0H
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 19  
+
+1110   1        div AB
+1111   1        #pragma ENDASM  
+1112   1        if (AC!=0) test_status = 0;
+1113   1        if (OV!=1) test_status = 0;
+1114   1        if (CY!=0) test_status = 0;
+1115   1        
+1116   1        #pragma ASM 
+1117   1        pop acc
+1118   1        pop psw 
+1119   1        #pragma ENDASM
+1120   1        error();  
+1121   1      }
+1122          
+1123          void da_a(void) {
+1124   1        printf("DA\n");
+1125   1        #pragma ASM  
+1126   1        push psw
+1127   1        push acc
+1128   1        mov  psw,#0H  
+1129   1        setb rs0     
+1130   1        setb rs1  
+1131   1        #pragma ENDASM 
+1132   1        
+1133   1        #pragma ASM
+1134   1        mov acc,#56H
+1135   1        mov R3,#67H
+1136   1        setb AC
+1137   1        setb C
+1138   1        addc A,R3
+1139   1        da A
+1140   1        #pragma ENDASM  
+1141   1        if (ACC!=0x24) test_status = 0;
+1142   1        if (AC!=0) test_status = 0;
+1143   1        if (OV!=1) test_status = 0;
+1144   1        if (CY!=1) test_status = 0;
+1145   1      
+1146   1        #pragma ASM
+1147   1        mov acc,#30H
+1148   1        add A,#99H
+1149   1        da A
+1150   1        #pragma ENDASM  
+1151   1        if (ACC!=0x29) test_status = 0;
+1152   1        if (AC!=0) test_status = 0;
+1153   1        if (OV!=0) test_status = 0;
+1154   1        if (CY!=1) test_status = 0;
+1155   1      
+1156   1      
+1157   1        #pragma ASM 
+1158   1        pop acc
+1159   1        pop psw 
+1160   1        #pragma ENDASM
+1161   1        error();  
+1162   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   3710    ----
+   CONSTANT SIZE    =    216    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.52.0.0   ARITHMETIC                                                        07/21/2014 16:39:34 PAGE 20  
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

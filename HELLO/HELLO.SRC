@@ -1,0 +1,158 @@
+; .\HELLO.SRC generated from: HELLO.C
+; COMPILER INVOKED BY:
+;        C:\myprog\Keil\C51\BIN\C51.EXE HELLO.C BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\HELLO.SRC)
+
+$NOMOD51
+
+NAME	HELLO
+
+P0	DATA	080H
+P1	DATA	090H
+P2	DATA	0A0H
+P3	DATA	0B0H
+T0	BIT	0B0H.4
+AC	BIT	0D0H.6
+T1	BIT	0B0H.5
+T2	BIT	090H.0
+EA	BIT	0A8H.7
+IE	DATA	0A8H
+EXF2	BIT	0C8H.6
+RD	BIT	0B0H.7
+ES	BIT	0A8H.4
+IP	DATA	0B8H
+RI	BIT	098H.0
+INT0	BIT	0B0H.2
+CY	BIT	0D0H.7
+TI	BIT	098H.1
+INT1	BIT	0B0H.3
+RCAP2H	DATA	0CBH
+PS	BIT	0B8H.4
+SP	DATA	081H
+T2EX	BIT	090H.1
+OV	BIT	0D0H.2
+RCAP2L	DATA	0CAH
+C_T2	BIT	0C8H.1
+WR	BIT	0B0H.6
+RCLK	BIT	0C8H.5
+TCLK	BIT	0C8H.4
+SBUF	DATA	099H
+PCON	DATA	087H
+SCON	DATA	098H
+TMOD	DATA	089H
+TCON	DATA	088H
+IE0	BIT	088H.1
+IE1	BIT	088H.3
+B	DATA	0F0H
+CP_RL2	BIT	0C8H.0
+ACC	DATA	0E0H
+ET0	BIT	0A8H.1
+ET1	BIT	0A8H.3
+TF0	BIT	088H.5
+ET2	BIT	0A8H.5
+TF1	BIT	088H.7
+TF2	BIT	0C8H.7
+RB8	BIT	098H.2
+TH0	DATA	08CH
+EX0	BIT	0A8H.0
+IT0	BIT	088H.0
+TH1	DATA	08DH
+TB8	BIT	098H.3
+EX1	BIT	0A8H.2
+IT1	BIT	088H.2
+TH2	DATA	0CDH
+P	BIT	0D0H.0
+SM0	BIT	098H.7
+TL0	DATA	08AH
+SM1	BIT	098H.6
+TL1	DATA	08BH
+SM2	BIT	098H.5
+TL2	DATA	0CCH
+PT0	BIT	0B8H.1
+PT1	BIT	0B8H.3
+RS0	BIT	0D0H.3
+PT2	BIT	0B8H.5
+TR0	BIT	088H.4
+RS1	BIT	0D0H.4
+TR1	BIT	088H.6
+TR2	BIT	0C8H.2
+PX0	BIT	0B8H.0
+PX1	BIT	0B8H.2
+DPH	DATA	083H
+DPL	DATA	082H
+EXEN2	BIT	0C8H.3
+REN	BIT	098H.4
+T2CON	DATA	0C8H
+RXD	BIT	0B0H.0
+TXD	BIT	0B0H.1
+F0	BIT	0D0H.5
+PSW	DATA	0D0H
+?PR?main?HELLO       SEGMENT CODE 
+?CO?HELLO            SEGMENT CODE 
+	EXTRN	CODE (_printf)
+	EXTRN	DATA (?_printf?BYTE)
+	EXTRN	CODE (?C_STARTUP)
+	PUBLIC	main
+
+	RSEG  ?CO?HELLO
+?SC_0:
+	DB  'H' ,'e' ,'l' ,'l' ,'o' ,' ' ,'W' ,'o' ,'r' ,'l' 
+	DB  'd' ,00AH,000H
+
+; /*------------------------------------------------------------------------------
+; HELLO.C
+; 
+; Copyright 1995-2005 Keil Software, Inc.
+; ------------------------------------------------------------------------------*/
+; 
+; #include <REG52.H>                /* special function register declarations   */
+;                                   /* for the intended 8051 derivative         */
+; 
+; #include <stdio.h>                /* prototype declarations for I/O functions */
+; 
+; typedef	volatile unsigned char  VUCHAR;
+; #define EE(N) *(VUCHAR xdata *)   (0x2000+N)
+; #define R(N)  *(VUCHAR data *) (0x0+N) 
+; 
+; /*------------------------------------------------
+; The main C function.  Program execution starts
+; here after stack initialization.
+; ------------------------------------------------*/
+; void main (void) {
+
+	RSEG  ?PR?main?HELLO
+main:
+	USING	0
+			; SOURCE LINE # 20
+; 	#pragma ASM
+;   //MOV sp,0x20	
+	  
+; 	//push acc
+	  
+?C0001:
+; 	#pragma ENDASM	
+; 	
+; 	
+; /*------------------------------------------------
+; Setup the serial port for 1200 baud at 16MHz.
+; ------------------------------------------------*/
+; 
+; 
+; /*------------------------------------------------
+; Note that an embedded program never exits (because
+; there is no operating system to return to).  It
+; must loop and execute forever.
+; ------------------------------------------------*/
+;   while (1) {
+			; SOURCE LINE # 37
+; 		printf ("Hello World\n");   /* Print "Hello World" */
+			; SOURCE LINE # 38
+	MOV  	R3,#0FFH
+	MOV  	R2,#HIGH (?SC_0)
+	MOV  	R1,#LOW (?SC_0)
+	LCALL	_printf
+;   }
+			; SOURCE LINE # 39
+	SJMP 	?C0001
+; END OF main
+
+	END

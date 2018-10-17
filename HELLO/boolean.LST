@@ -1,0 +1,637 @@
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE BOOLEAN
+NO OBJECT MODULE REQUESTED
+COMPILER INVOKED BY: C:\myprog\Keil\C51\BIN\C51.EXE boolean.c BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\boolean.SRC)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include <stdio.h> 
+   3          #include "instruction.h"
+   4          
+   5          void clr_c(void) {
+   6   1        printf("CLR_C\n");
+   7   1        #pragma ASM  
+   8   1        push psw
+   9   1        push acc
+  10   1          mov  psw,#0H  
+  11   1          setb rs0     
+  12   1        setb rs1  
+  13   1          #pragma ENDASM 
+  14   1        
+  15   1        #pragma ASM
+  16   1        setb C
+  17   1        clr C
+  18   1          #pragma ENDASM  
+  19   1        if (CY!=0x0) test_status = 0;
+  20   1        
+  21   1        #pragma ASM 
+  22   1        pop acc
+  23   1          pop psw 
+  24   1          #pragma ENDASM
+  25   1          error();  
+  26   1      }
+  27          
+  28          void clr_bit(void) {
+  29   1        printf("CLR_BIT\n");
+  30   1        #pragma ASM  
+  31   1        push psw
+  32   1        push acc
+  33   1          mov  psw,#0H  
+  34   1          setb rs0     
+  35   1        setb rs1  
+  36   1          #pragma ENDASM 
+  37   1        
+  38   1        #pragma ASM
+  39   1        mov 0x20,#0ffH
+  40   1        clr 0x7
+  41   1          #pragma ENDASM  
+  42   1        if (bit_data!=0x7f) test_status = 0;
+  43   1        
+  44   1        #pragma ASM 
+  45   1        pop acc
+  46   1          pop psw 
+  47   1          #pragma ENDASM
+  48   1          error();  
+  49   1      }
+  50          
+  51          void setb_c(void) {
+  52   1        printf("SETB_C\n");
+  53   1        #pragma ASM  
+  54   1        push psw
+  55   1        push acc
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 2   
+
+  56   1          mov  psw,#0H  
+  57   1          setb rs0     
+  58   1        setb rs1  
+  59   1          #pragma ENDASM 
+  60   1        
+  61   1        #pragma ASM
+  62   1        setb C
+  63   1          #pragma ENDASM  
+  64   1        if (CY!=0x1) test_status = 0;
+  65   1        
+  66   1        #pragma ASM 
+  67   1        pop acc
+  68   1          pop psw 
+  69   1          #pragma ENDASM
+  70   1          error();  
+  71   1      }
+  72          
+  73          void setb_bit(void) {
+  74   1        printf("SETB_BIT\n");
+  75   1        #pragma ASM  
+  76   1        push psw
+  77   1        push acc
+  78   1          mov  psw,#0H  
+  79   1          setb rs0     
+  80   1        setb rs1  
+  81   1          #pragma ENDASM 
+  82   1        
+  83   1        #pragma ASM
+  84   1        mov 0x20,#0H
+  85   1        setb 0x6
+  86   1          #pragma ENDASM  
+  87   1        if (bit_data!=0x40) test_status = 0;
+  88   1        
+  89   1        #pragma ASM 
+  90   1        pop acc
+  91   1          pop psw 
+  92   1          #pragma ENDASM
+  93   1          error();  
+  94   1      }
+  95          
+  96          void cpl_c(void) {
+  97   1        printf("CPL_C\n");
+  98   1        #pragma ASM  
+  99   1        push psw
+ 100   1        push acc
+ 101   1          mov  psw,#0H  
+ 102   1          setb rs0     
+ 103   1        setb rs1  
+ 104   1          #pragma ENDASM 
+ 105   1        
+ 106   1        #pragma ASM
+ 107   1        clr C
+ 108   1        cpl C
+ 109   1          #pragma ENDASM  
+ 110   1        if (CY!=0x1) test_status = 0;
+ 111   1        
+ 112   1        #pragma ASM 
+ 113   1        pop acc
+ 114   1          pop psw 
+ 115   1          #pragma ENDASM
+ 116   1          error();  
+ 117   1      }
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 3   
+
+ 118          
+ 119          void cpl_bit(void) {
+ 120   1        printf("CPL_BIT\n");
+ 121   1        #pragma ASM  
+ 122   1        push psw
+ 123   1        push acc
+ 124   1          mov  psw,#0H  
+ 125   1          setb rs0     
+ 126   1        setb rs1  
+ 127   1          #pragma ENDASM 
+ 128   1        
+ 129   1        #pragma ASM
+ 130   1        mov 0x20,#55H
+ 131   1        cpl 0x7
+ 132   1          #pragma ENDASM  
+ 133   1        if (bit_data!=0xd5) test_status = 0;
+ 134   1        
+ 135   1        #pragma ASM 
+ 136   1        pop acc
+ 137   1          pop psw 
+ 138   1          #pragma ENDASM
+ 139   1          error();  
+ 140   1      }
+ 141          
+ 142          void anl_c_bit(void) {
+ 143   1        printf("ANL_C_BIT\n");
+ 144   1        #pragma ASM  
+ 145   1        push psw
+ 146   1        push acc
+ 147   1          mov  psw,#0H  
+ 148   1          setb rs0     
+ 149   1        setb rs1  
+ 150   1          #pragma ENDASM 
+ 151   1        
+ 152   1        #pragma ASM
+ 153   1        mov 0x20,#7fH
+ 154   1        setb C
+ 155   1        anl C,0x7
+ 156   1          #pragma ENDASM  
+ 157   1        if (CY!=0x0) test_status = 0;
+ 158   1        
+ 159   1        #pragma ASM 
+ 160   1        pop acc
+ 161   1          pop psw 
+ 162   1          #pragma ENDASM
+ 163   1          error();  
+ 164   1      }
+ 165          
+ 166          void anl_c_nbit(void) {
+ 167   1        printf("ANL_C_NBIT\n");
+ 168   1        #pragma ASM  
+ 169   1        push psw
+ 170   1        push acc
+ 171   1          mov  psw,#0H  
+ 172   1          setb rs0     
+ 173   1        setb rs1  
+ 174   1          #pragma ENDASM 
+ 175   1        
+ 176   1        #pragma ASM
+ 177   1        mov 0x20,#010H
+ 178   1        setb C
+ 179   1        anl C,/0x4
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 4   
+
+ 180   1          #pragma ENDASM  
+ 181   1        if (CY!=0x0) test_status = 0;
+ 182   1        
+ 183   1        #pragma ASM 
+ 184   1        pop acc
+ 185   1          pop psw 
+ 186   1          #pragma ENDASM
+ 187   1          error();  
+ 188   1      }
+ 189          
+ 190          void orl_c_bit(void) {
+ 191   1        printf("ORL_C_BIT\n");
+ 192   1        #pragma ASM  
+ 193   1        push psw
+ 194   1        push acc
+ 195   1          mov  psw,#0H  
+ 196   1          setb rs0     
+ 197   1        setb rs1  
+ 198   1          #pragma ENDASM 
+ 199   1        
+ 200   1        #pragma ASM
+ 201   1        mov 0x20,#80H
+ 202   1        clr C
+ 203   1        orl C,0x7
+ 204   1          #pragma ENDASM  
+ 205   1        if (CY!=0x1) test_status = 0;
+ 206   1        
+ 207   1        #pragma ASM 
+ 208   1        pop acc
+ 209   1          pop psw 
+ 210   1          #pragma ENDASM
+ 211   1          error();  
+ 212   1      }
+ 213          
+ 214          void orl_c_nbit(void) {
+ 215   1        printf("ORL_C_NBIT\n");
+ 216   1        #pragma ASM  
+ 217   1        push psw
+ 218   1        push acc
+ 219   1          mov  psw,#0H  
+ 220   1          setb rs0     
+ 221   1        setb rs1  
+ 222   1          #pragma ENDASM 
+ 223   1        
+ 224   1        #pragma ASM
+ 225   1        mov 0x20,#0efH
+ 226   1        clr C
+ 227   1        orl C,/0x4
+ 228   1          #pragma ENDASM  
+ 229   1        if (CY!=0x1) test_status = 0;
+ 230   1        
+ 231   1        #pragma ASM 
+ 232   1        pop acc
+ 233   1          pop psw 
+ 234   1          #pragma ENDASM
+ 235   1          error();  
+ 236   1      }
+ 237          
+ 238          void mov_c_bit(void) {
+ 239   1        printf("MOV_C_BIT\n");
+ 240   1        #pragma ASM  
+ 241   1        push psw
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 5   
+
+ 242   1        push acc
+ 243   1          mov  psw,#0H  
+ 244   1          setb rs0     
+ 245   1        setb rs1  
+ 246   1          #pragma ENDASM 
+ 247   1        
+ 248   1        #pragma ASM
+ 249   1        mov 0x20,#080H
+ 250   1        clr C
+ 251   1        mov C,0x7
+ 252   1          #pragma ENDASM  
+ 253   1        if (CY!=0x1) test_status = 0;
+ 254   1        
+ 255   1        #pragma ASM 
+ 256   1        pop acc
+ 257   1          pop psw 
+ 258   1          #pragma ENDASM
+ 259   1          error();  
+ 260   1      }
+ 261          
+ 262          void mov_bit_c(void) {
+ 263   1        printf("MOV_BIT_C\n");
+ 264   1        #pragma ASM  
+ 265   1        push psw
+ 266   1        push acc
+ 267   1          mov  psw,#0H  
+ 268   1          setb rs0     
+ 269   1        setb rs1  
+ 270   1          #pragma ENDASM 
+ 271   1        
+ 272   1        #pragma ASM
+ 273   1        mov 0x20,#000H
+ 274   1        setb C
+ 275   1        mov 0x4,C
+ 276   1          #pragma ENDASM  
+ 277   1        if (bit_data!=0x10) test_status = 0;
+ 278   1        
+ 279   1        #pragma ASM 
+ 280   1        pop acc
+ 281   1          pop psw 
+ 282   1          #pragma ENDASM
+ 283   1          error();  
+ 284   1      }
+ 285          
+ 286          void jc_c(void) {
+ 287   1        printf("JC_C\n");
+ 288   1        #pragma ASM  
+ 289   1        push psw
+ 290   1        push acc
+ 291   1          mov  psw,#0H  
+ 292   1          setb rs0     
+ 293   1        setb rs1  
+ 294   1          #pragma ENDASM 
+ 295   1        
+ 296   1        #pragma ASM
+ 297   1        clr C
+ 298   1        JC  ERROR0_JC_C
+ 299   1        cpl C
+ 300   1        JC  RIGHT0_JC_C
+ 301   1        nop
+ 302   1        nop
+ 303   1        nop
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 6   
+
+ 304   1      ERROR0_JC_C: clr A
+ 305   1          SJMP EXIT0_JC_C
+ 306   1          nop
+ 307   1          nop
+ 308   1      RIGHT0_JC_C: mov A,#0ffH
+ 309   1          SJMP EXIT0_JC_C
+ 310   1          nop
+ 311   1          nop
+ 312   1      EXIT0_JC_C: nop 
+ 313   1          #pragma ENDASM  
+ 314   1        if (ACC!=0xff) test_status = 0;
+ 315   1        
+ 316   1        #pragma ASM
+ 317   1          sjmp NOW_JC_C
+ 318   1        nop
+ 319   1        nop
+ 320   1        nop
+ 321   1      ERROR1_JC_C: clr A
+ 322   1          SJMP EXIT1_JC_C
+ 323   1          nop
+ 324   1          nop
+ 325   1      RIGHT1_JC_C: mov A,#0ffH
+ 326   1          SJMP EXIT1_JC_C
+ 327   1          nop
+ 328   1          nop 
+ 329   1        nop
+ 330   1        nop
+ 331   1      NOW_JC_C: clr C
+ 332   1        JC  ERROR1_JC_C
+ 333   1        cpl C
+ 334   1        JC  RIGHT1_JC_C
+ 335   1        nop
+ 336   1        nop
+ 337   1      EXIT1_JC_C: nop 
+ 338   1          #pragma ENDASM  
+ 339   1        if (ACC!=0xff) test_status = 0; 
+ 340   1        
+ 341   1        #pragma ASM 
+ 342   1        pop acc
+ 343   1          pop psw 
+ 344   1          #pragma ENDASM
+ 345   1          error();  
+ 346   1      }
+ 347          
+ 348          void jnc_c(void) {
+ 349   1        printf("JNC_C\n");
+ 350   1        #pragma ASM  
+ 351   1        push psw
+ 352   1        push acc
+ 353   1          mov  psw,#0H  
+ 354   1          setb rs0     
+ 355   1        setb rs1  
+ 356   1          #pragma ENDASM 
+ 357   1        
+ 358   1        #pragma ASM
+ 359   1        setb C
+ 360   1        JNC  ERROR0_JNC_C
+ 361   1        cpl C
+ 362   1        JNC  RIGHT0_JNC_C
+ 363   1        nop
+ 364   1        nop
+ 365   1        nop
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 7   
+
+ 366   1      ERROR0_JNC_C: clr A
+ 367   1          SJMP EXIT0_JNC_C
+ 368   1          nop
+ 369   1          nop
+ 370   1      RIGHT0_JNC_C: mov A,#0ffH
+ 371   1          SJMP EXIT0_JNC_C
+ 372   1          nop
+ 373   1          nop
+ 374   1      EXIT0_JNC_C: nop  
+ 375   1          #pragma ENDASM  
+ 376   1        if (ACC!=0xff) test_status = 0;
+ 377   1        
+ 378   1        #pragma ASM
+ 379   1          sjmp NOW_JNC_C
+ 380   1        nop
+ 381   1        nop
+ 382   1        nop
+ 383   1      ERROR1_JNC_C: clr A
+ 384   1          SJMP EXIT1_JNC_C
+ 385   1          nop
+ 386   1          nop
+ 387   1      RIGHT1_JNC_C: mov A,#0ffH
+ 388   1          SJMP EXIT1_JNC_C
+ 389   1          nop
+ 390   1          nop 
+ 391   1        nop
+ 392   1        nop
+ 393   1      NOW_JNC_C:  setb C
+ 394   1        JNC  ERROR1_JNC_C
+ 395   1        cpl C
+ 396   1        JNC  RIGHT1_JNC_C
+ 397   1        nop
+ 398   1        nop
+ 399   1      EXIT1_JNC_C: nop  
+ 400   1          #pragma ENDASM  
+ 401   1        if (ACC!=0xff) test_status = 0; 
+ 402   1        
+ 403   1        #pragma ASM 
+ 404   1        pop acc
+ 405   1          pop psw 
+ 406   1          #pragma ENDASM
+ 407   1          error();  
+ 408   1      }
+ 409          
+ 410          void jb_bit(void) {
+ 411   1        printf("JB_BIT\n");
+ 412   1        #pragma ASM  
+ 413   1        push psw
+ 414   1        push acc
+ 415   1          mov  psw,#0H  
+ 416   1          setb rs0     
+ 417   1        setb rs1  
+ 418   1          #pragma ENDASM 
+ 419   1        
+ 420   1        #pragma ASM
+ 421   1        mov 0x20,#0f7H
+ 422   1        jb  0x3,ERROR0_JB_BIT
+ 423   1        cpl 0x3
+ 424   1        jb  0x3,RIGHT0_JB_BIT
+ 425   1        nop
+ 426   1        nop
+ 427   1        nop
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 8   
+
+ 428   1      ERROR0_JB_BIT: clr A
+ 429   1          SJMP EXIT0_JB_BIT
+ 430   1          nop
+ 431   1          nop
+ 432   1      RIGHT0_JB_BIT: mov A,#0ffH
+ 433   1          SJMP EXIT0_JB_BIT
+ 434   1          nop
+ 435   1          nop
+ 436   1      EXIT0_JB_BIT: nop 
+ 437   1          #pragma ENDASM  
+ 438   1        if (ACC!=0xff) test_status = 0;
+ 439   1        
+ 440   1        #pragma ASM
+ 441   1          sjmp NOW_JB_BIT
+ 442   1        nop
+ 443   1        nop
+ 444   1        nop
+ 445   1      ERROR1_JB_BIT: clr A
+ 446   1          SJMP EXIT1_JB_BIT
+ 447   1          nop
+ 448   1          nop
+ 449   1      RIGHT1_JB_BIT: mov A,#0ffH
+ 450   1          SJMP EXIT1_JB_BIT
+ 451   1          nop
+ 452   1          nop 
+ 453   1        nop
+ 454   1        nop
+ 455   1      NOW_JB_BIT: mov 0x20,#0f7H
+ 456   1        jb  0x3,ERROR1_JB_BIT
+ 457   1        cpl 0x3
+ 458   1        jb  0x3,RIGHT1_JB_BIT
+ 459   1        nop
+ 460   1        nop
+ 461   1      EXIT1_JB_BIT: nop 
+ 462   1          #pragma ENDASM  
+ 463   1        if (ACC!=0xff) test_status = 0; 
+ 464   1        
+ 465   1        #pragma ASM 
+ 466   1        pop acc
+ 467   1          pop psw 
+ 468   1          #pragma ENDASM
+ 469   1          error();  
+ 470   1      }
+ 471          
+ 472          void jnb_bit(void) {
+ 473   1        printf("JNB_BIT\n");
+ 474   1        #pragma ASM  
+ 475   1        push psw
+ 476   1        push acc
+ 477   1          mov  psw,#0H  
+ 478   1          setb rs0     
+ 479   1        setb rs1  
+ 480   1          #pragma ENDASM 
+ 481   1        
+ 482   1        #pragma ASM
+ 483   1        mov 0x20,#010H
+ 484   1        jnb  0x4,ERROR0_JNB_BIT
+ 485   1        cpl 0x4
+ 486   1        jnb  0x4,RIGHT0_JNB_BIT
+ 487   1        nop
+ 488   1        nop
+ 489   1        nop
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 9   
+
+ 490   1      ERROR0_JNB_BIT: clr A
+ 491   1          SJMP EXIT0_JNB_BIT
+ 492   1          nop
+ 493   1          nop
+ 494   1      RIGHT0_JNB_BIT: mov A,#0ffH
+ 495   1          SJMP EXIT0_JNB_BIT
+ 496   1          nop
+ 497   1          nop
+ 498   1      EXIT0_JNB_BIT: nop  
+ 499   1          #pragma ENDASM  
+ 500   1        if (ACC!=0xff) test_status = 0;
+ 501   1        
+ 502   1        #pragma ASM
+ 503   1          sjmp NOW_JNB_BIT
+ 504   1        nop
+ 505   1        nop
+ 506   1        nop
+ 507   1      ERROR1_JNB_BIT: clr A
+ 508   1          SJMP EXIT1_JNB_BIT
+ 509   1          nop
+ 510   1          nop
+ 511   1      RIGHT1_JNB_BIT: mov A,#0ffH
+ 512   1          SJMP EXIT1_JNB_BIT
+ 513   1          nop
+ 514   1          nop 
+ 515   1        nop
+ 516   1        nop
+ 517   1      NOW_JNB_BIT: mov 0x20,#010H
+ 518   1        jnb  0x4,ERROR1_JNB_BIT
+ 519   1        cpl 0x4
+ 520   1        jnb  0x4,RIGHT1_JNB_BIT
+ 521   1        nop
+ 522   1        nop
+ 523   1      EXIT1_JNB_BIT: nop  
+ 524   1          #pragma ENDASM  
+ 525   1        if (ACC!=0xff) test_status = 0; 
+ 526   1        
+ 527   1        #pragma ASM 
+ 528   1        pop acc
+ 529   1          pop psw 
+ 530   1          #pragma ENDASM
+ 531   1          error();  
+ 532   1      }
+ 533          
+ 534          void jbc_bit(void) {
+ 535   1        printf("JBC_BIT\n");
+ 536   1        #pragma ASM  
+ 537   1        push psw
+ 538   1        push acc
+ 539   1          mov  psw,#0H  
+ 540   1          setb rs0     
+ 541   1        setb rs1  
+ 542   1          #pragma ENDASM 
+ 543   1        
+ 544   1        #pragma ASM
+ 545   1        mov 0x20,#0f7H
+ 546   1        jbc  0x3,ERROR0_JBC_BIT
+ 547   1        cpl 0x3
+ 548   1        jbc  0x3,RIGHT0_JBC_BIT
+ 549   1        nop
+ 550   1        nop
+ 551   1        nop
+C51 COMPILER V9.52.0.0   BOOLEAN                                                           07/21/2014 16:39:34 PAGE 10  
+
+ 552   1      ERROR0_JBC_BIT: clr A
+ 553   1          SJMP EXIT0_JBC_BIT
+ 554   1          nop
+ 555   1          nop
+ 556   1      RIGHT0_JBC_BIT: mov A,#0ffH
+ 557   1          SJMP EXIT0_JBC_BIT
+ 558   1          nop
+ 559   1          nop
+ 560   1      EXIT0_JBC_BIT: nop  
+ 561   1          #pragma ENDASM  
+ 562   1        if (ACC!=0xff) test_status = 0;
+ 563   1        if (bit_data!=0xf7) test_status = 0;
+ 564   1        
+ 565   1        #pragma ASM
+ 566   1          sjmp NOW_JBC_BIT
+ 567   1        nop
+ 568   1        nop
+ 569   1        nop
+ 570   1      ERROR1_JBC_BIT: clr A
+ 571   1          SJMP EXIT1_JBC_BIT
+ 572   1          nop
+ 573   1          nop
+ 574   1      RIGHT1_JBC_BIT: mov A,#0ffH
+ 575   1          SJMP EXIT1_JBC_BIT
+ 576   1          nop
+ 577   1          nop 
+ 578   1        nop
+ 579   1        nop
+ 580   1      NOW_JBC_BIT: mov 0x20,#0f7H
+ 581   1        jbc  0x3,ERROR1_JBC_BIT
+ 582   1        cpl 0x3
+ 583   1        jbc  0x3,RIGHT1_JBC_BIT
+ 584   1        nop
+ 585   1        nop
+ 586   1      EXIT1_JBC_BIT: nop  
+ 587   1          #pragma ENDASM  
+ 588   1        if (ACC!=0xff) test_status = 0; 
+ 589   1        if (bit_data!=0xf7) test_status = 0;
+ 590   1        
+ 591   1        #pragma ASM 
+ 592   1        pop acc
+ 593   1          pop psw 
+ 594   1          #pragma ENDASM
+ 595   1          error();  
+ 596   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1419    ----
+   CONSTANT SIZE    =    157    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

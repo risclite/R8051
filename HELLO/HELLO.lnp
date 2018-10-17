@@ -1,0 +1,9 @@
+"HELLO.obj",
+"program.obj",
+"boolean.obj",
+"transfer.obj",
+"logical.obj",
+"arithmetic.obj",
+"instruction.obj" 
+TO "HELLO" 
+RAMSIZE(256) 

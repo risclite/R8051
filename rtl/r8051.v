@@ -163,16 +163,14 @@ if ( rst )
     rd_wait <= 1'b0;
 else if ( cpu_restart )
     rd_wait <= 1'b0;	
-else if ( work_en )
 `ifdef TYPE8052
-    if ( ram_rd_en_data|ram_rd_en_sfr|ram_rd_en_idata|ram_rd_en_xdata )
+else if ( ram_rd_en_data|ram_rd_en_sfr|ram_rd_en_idata|ram_rd_en_xdata )
 `else
-    if ( ram_rd_en_data|ram_rd_en_sfr|ram_rd_en_xdata ) 
+else if ( ram_rd_en_data|ram_rd_en_sfr|ram_rd_en_xdata ) 
 `endif	
-        rd_wait <= 1'b1;
-    else if ( ram_rd_vld )
-        rd_wait <= 1'b0;
-	else;	
+    rd_wait <= 1'b1;
+else if ( ram_rd_vld )
+    rd_wait <= 1'b0;	
 else;
 
 reg rom_wait;
@@ -181,12 +179,10 @@ if ( rst )
     rom_wait <= 1'b0;
 else if ( cpu_restart )
     rom_wait <= 1'b0;	
-else if ( work_en )
-    if ( rom_en )
-	    rom_wait <= 1'b1;
-	else if ( rom_vld )
-	    rom_wait <= 1'b0;
-	else;
+else if ( rom_en )
+	rom_wait <= 1'b1;
+else if ( rom_vld )
+    rom_wait <= 1'b0;
 else;
 
 
