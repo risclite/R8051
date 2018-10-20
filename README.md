@@ -3,7 +3,7 @@ R8051
 
 Thank you for interesting in this new type of 8051 soft core. This core has only 2 files and the main one has 700 statements to support all 111 instructions of 8051. Yes, I make it with fully synthesizable verilog. 
 
-First of all, please open **rtl/r8051.v** and review it.The another file: **rtl/instruction.v** is an included file which has some verilog functions. That are all RTL files to implementation.
+First of all, please open **rtl/r8051.v** and review it.The another file: **rtl/instruction.v** is an included file which has some verilog functions. These are all RTL files to implementation.
 
 There is a folder: **Hello** that has 111-instructions compliance tests project. If your have the software "KEIL", you can open this project and check it. You can comment or uncomment any single instruction test and re-compile again. The other folder **sim** has one testbench file: **tb.v**, it is understandable easily for verilog designer. You may compile **tb.v** and **r8051.v** for your other simulator. This testbench file will link the compiled binary file of **HELLO** directory to the simulation. Instructions in the binary file will be fetched one by one and be executed. You can open a wave window and drag signals you are instresting in.
 
