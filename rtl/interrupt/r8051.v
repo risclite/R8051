@@ -167,7 +167,7 @@ reg      [7:0]     data0;
 
 `ifdef INTERRUPT_SUPPORTED
 
-assign next_flag = ( length2 | length2r1 | length3 ) ? 1'b0 :  cmd_flag[0];
+assign next_flag = ( length2 | length2r1 | length3 ) ? 1'b0 :  (cmd_flag[0] & rom_en);
 
 assign cmd32_flag = reti(cmdc);
 
